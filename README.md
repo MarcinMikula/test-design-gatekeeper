@@ -12,9 +12,24 @@ The project is intentionally **not a test-case generator**. Its purpose is to he
 **Implementation:** Not started by design  
 **Data policy:** Public or synthetic data only during the laboratory phase
 
-The Project Charter is complete and Requirements Analysis is in progress. Stakeholder and authority modelling (RA-01) and system workflow modelling (RA-02) are closed. The Review Package model (RA-03) is a baseline candidate: its decision set has been dispositioned, while requirement acceptance and focused static review are still pending.
+Stakeholder and authority modelling (RA-01) and system workflow modelling (RA-02) are closed. The five-document RA-03 decision package completed focused static review on 2026-09-13 under `SR-RA03-001` with the result `PASS WITH OBSERVATIONS`: all five documents were accepted, no correction-required finding was raised, and two non-blocking observations were carried forward.
+
+RA-03 remains open. Its fifty `MUST` requirements are still `PROPOSED` and require explicit Project Owner disposition. The reviewed amendment documents have not yet been designated as replacement baselines, and no `GO` to RA-04 has been granted.
 
 No source code is included yet because implementation is not authorized before the applicable requirements and design gates are complete.
+
+## Current documentation
+
+The repository contains the reviewed RA-03 decision package and its focused static-review evidence:
+
+- [Project Charter v0.4](docs/governance/test-design-gatekeeper-project-charter-v0.4.md) — accepted controlled amendment candidate;
+- [RA-01 v0.3](docs/requirements-analysis/test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md) — accepted controlled amendment candidate;
+- [RA-02 v0.3](docs/requirements-analysis/test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md) — accepted controlled amendment candidate;
+- [RA-03 v0.3](docs/requirements-analysis/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.3.md) — accepted as input to requirement disposition;
+- [RA-03 Decision Disposition and Upstream Change Record v0.1](docs/requirements-analysis/test-design-gatekeeper-ra-03-decision-disposition-upstream-change-record-v0.1.md);
+- [Focused Static Review SR-RA03-001](docs/reviews/test-design-gatekeeper-ra-03-focused-static-review-v0.1.md).
+
+Document acceptance does not imply collective requirement acceptance, baseline designation, implementation authorization, or a later phase-gate decision. Status notices inside the documents and the review record preserve those distinctions.
 
 ## MVP direction
 
@@ -60,12 +75,12 @@ A Jira-shaped file is treated as supplied content. TDG does not need to prove th
 
 ## Next controlled step
 
-Before work can proceed toward RA-04, the project must complete:
+Before work can proceed to RA-04, the project must:
 
-1. focused static review of the controlled documentation amendments and RA-03 candidate;
-2. correction verification for accepted review findings;
-3. explicit disposition of the RA-03 requirements;
-4. a separate Project Owner phase-gate decision.
+1. explicitly accept, revise, defer, or reject all fifty RA-03 requirements and their current priorities;
+2. apply and verify any corrections resulting from requirement disposition;
+3. designate verified replacement baselines through a controlled record;
+4. obtain a separate Project Owner `GO`, `REVISE`, or `NO-GO` phase-gate decision.
 
 This repository records engineering progress without presenting unfinished analysis as an implemented product.
 
