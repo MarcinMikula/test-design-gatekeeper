@@ -8,28 +8,32 @@ The project is intentionally **not a test-case generator**. Its purpose is to he
 
 ## Current status
 
-**SDLC phase:** Requirements Analysis  
+**SDLC phase:** Requirements Analysis — RA-04 authorized  
 **Implementation:** Not started by design  
 **Data policy:** Public or synthetic data only during the laboratory phase
 
 Stakeholder and authority modelling (RA-01) and system workflow modelling (RA-02) are closed. The five-document RA-03 decision package completed focused static review on 2026-09-13 under `SR-RA03-001` with the result `PASS WITH OBSERVATIONS`: all five documents were accepted, no correction-required finding was raised, and two non-blocking observations were carried forward.
 
-RA-03 remains open. Its fifty `MUST` requirements are still `PROPOSED` and require explicit Project Owner disposition. The reviewed amendment documents have not yet been designated as replacement baselines, and no `GO` to RA-04 has been granted.
+**RA-03 is closed.** On 2026-09-15, the Project Owner completed acceptance of all **50 requirements, unchanged and with priority MUST**, designated the reviewed replacement baselines, and explicitly granted **GO to RA-04**. The decisions are recorded in [PG-RA03-001 v0.2](docs/reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md).
+
+The next workstream defines how supplied test cases are qualified against the system-level, functional, black-box MVP boundary, including mixed or ambiguous cases. RA-04 analysis is authorized; its requirements have not yet been produced or accepted.
 
 No source code is included yet because implementation is not authorized before the applicable requirements and design gates are complete.
 
 ## Current documentation
 
-The repository contains the reviewed RA-03 decision package and its focused static-review evidence:
+The current baseline is designated by [PG-RA03-001 v0.2](docs/reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md), which also contains the 50-requirement acceptance register and the RA-04 entry decision:
 
-- [Project Charter v0.4](docs/governance/test-design-gatekeeper-project-charter-v0.4.md) — accepted controlled amendment candidate;
-- [RA-01 v0.3](docs/requirements-analysis/test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md) — accepted controlled amendment candidate;
-- [RA-02 v0.3](docs/requirements-analysis/test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md) — accepted controlled amendment candidate;
-- [RA-03 v0.3](docs/requirements-analysis/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.3.md) — accepted as input to requirement disposition;
+- [Project Charter v0.4](docs/governance/test-design-gatekeeper-project-charter-v0.4.md) — designated baseline;
+- [RA-01 v0.3](docs/requirements-analysis/test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md) — designated baseline;
+- [RA-02 v0.3](docs/requirements-analysis/test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md) — designated baseline;
+- [RA-03 v0.3](docs/requirements-analysis/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.3.md) — designated wording baseline, read together with the accepted requirement dispositions in PG-RA03-001;
 - [RA-03 Decision Disposition and Upstream Change Record v0.1](docs/requirements-analysis/test-design-gatekeeper-ra-03-decision-disposition-upstream-change-record-v0.1.md);
 - [Focused Static Review SR-RA03-001](docs/reviews/test-design-gatekeeper-ra-03-focused-static-review-v0.1.md).
 
-Document acceptance does not imply collective requirement acceptance, baseline designation, implementation authorization, or a later phase-gate decision. Status notices inside the documents and the review record preserve those distinctions.
+The reviewed files retain their original content and historical status notices, including the pre-disposition `PROPOSED` column in RA-03. **PG-RA03-001 records the subsequent acceptance, effective baseline, and GO decision.** Read those source documents together with the gate record; their older status notices do not describe the current project state.
+
+The two non-blocking review observations remain active: complete the explicit downstream trace chain for `RA03-VAL-014` before executable test design, and control analysis/documentation growth under `R-08`.
 
 ## MVP direction
 
@@ -75,12 +79,11 @@ A Jira-shaped file is treated as supplied content. TDG does not need to prove th
 
 ## Next controlled step
 
-Before work can proceed to RA-04, the project must:
+Prepare the RA-04 scope-qualification analysis using the accepted RA-03 baseline:
 
-1. explicitly accept, revise, defer, or reject all fifty RA-03 requirements and their current priorities;
-2. apply and verify any corrections resulting from requirement disposition;
-3. designate verified replacement baselines through a controlled record;
-4. obtain a separate Project Owner `GO`, `REVISE`, or `NO-GO` phase-gate decision.
+1. define evidence-based qualification of system-level, functional, black-box cases while preserving independent classification axes;
+2. specify treatment of mixed, ambiguous, unsupported, or insufficiently evidenced cases;
+3. identify downstream validation obligations, then perform static review and obtain Project Owner disposition.
 
 This repository records engineering progress without presenting unfinished analysis as an implemented product.
 
