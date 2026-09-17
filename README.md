@@ -8,7 +8,7 @@ The project is intentionally **not a test-case generator**. Its purpose is to he
 
 ## Current status
 
-**SDLC phase:** Requirements Analysis — RA-04 authorized  
+**SDLC phase:** Requirements Analysis — RA-05 authorized  
 **Implementation:** Not started by design  
 **Data policy:** Public or synthetic data only during the laboratory phase
 
@@ -16,22 +16,28 @@ Stakeholder and authority modelling (RA-01) and system workflow modelling (RA-02
 
 **RA-03 is closed.** On 2026-09-15, the Project Owner completed acceptance of all **50 requirements, unchanged and with priority MUST**, designated the reviewed replacement baselines, and explicitly granted **GO to RA-04**. The decisions are recorded in [PG-RA03-001 v0.2](docs/reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md).
 
-The next workstream defines how supplied test cases are qualified against the system-level, functional, black-box MVP boundary, including mixed or ambiguous cases. RA-04 analysis is authorized; its requirements have not yet been produced or accepted.
+**RA-04 is closed.** The Project Owner accepted **all 15 MUST requirements**, **three policy decisions** and **three verified wording clarifications**. The closure recorded on 2026-09-17 designates **RA-04 v0.2** and grants **GO to RA-05 — Findings and persistence**. The combined [SR-RA04-001 v0.2 / PG-RA04-001](docs/reviews/test-design-gatekeeper-ra-04-focused-static-review-v0.2.md) records `PASS AFTER VERIFIED CORRECTIONS` and the explicit gate decision.
+
+RA-04 defines evidence-based scope qualification, independent classification dimensions, treatment of mixed or undetermined cases, and the limits of partial review. Its 15 requirements and 15 validation obligations have verified direct traceability in both directions. RA-05 analysis is authorized; its requirements have not yet been produced or accepted.
 
 No source code is included yet because implementation is not authorized before the applicable requirements and design gates are complete.
 
 ## Current documentation
 
-The current baseline is designated by [PG-RA03-001 v0.2](docs/reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md), which also contains the 50-requirement acceptance register and the RA-04 entry decision:
+The effective baseline combines [PG-RA03-001 v0.2](docs/reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md) for Charter and RA-01 through RA-03 with [SR-RA04-001 v0.2 / PG-RA04-001](docs/reviews/test-design-gatekeeper-ra-04-focused-static-review-v0.2.md) for the RA-04 baseline and RA-05 entry decision:
 
 - [Project Charter v0.4](docs/governance/test-design-gatekeeper-project-charter-v0.4.md) — designated baseline;
 - [RA-01 v0.3](docs/requirements-analysis/test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md) — designated baseline;
 - [RA-02 v0.3](docs/requirements-analysis/test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md) — designated baseline;
 - [RA-03 v0.3](docs/requirements-analysis/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.3.md) — designated wording baseline, read together with the accepted requirement dispositions in PG-RA03-001;
+- [RA-04 v0.2](docs/requirements-analysis/test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md) — designated wording baseline, read together with the accepted dispositions and closure in SR-RA04-001 v0.2;
+- [RA-04 Focused Static Review and Gate Record v0.2](docs/reviews/test-design-gatekeeper-ra-04-focused-static-review-v0.2.md) — closed review, correction verification, acceptance register and GO to RA-05;
 - [RA-03 Decision Disposition and Upstream Change Record v0.1](docs/requirements-analysis/test-design-gatekeeper-ra-03-decision-disposition-upstream-change-record-v0.1.md);
 - [Focused Static Review SR-RA03-001](docs/reviews/test-design-gatekeeper-ra-03-focused-static-review-v0.1.md).
 
-The reviewed files retain their original content and historical status notices, including the pre-disposition `PROPOSED` column in RA-03. **PG-RA03-001 records the subsequent acceptance, effective baseline, and GO decision.** Read those source documents together with the gate record; their older status notices do not describe the current project state.
+The reviewed source files retain their exact content and historical authoring notices, including RA-03's `PROPOSED` column and RA-04's candidate/pending labels. **The current acceptance and GO decisions are recorded in the linked gate records.** Read the source documents together with those records; older authoring notices do not describe the current project state.
+
+Historical review evidence is also retained: [RA-04 v0.1](docs/requirements-analysis/test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.1.md) and [SR-RA04-001 v0.1](docs/reviews/test-design-gatekeeper-ra-04-focused-static-review-v0.1.md). These snapshots preserve the wording reviewed before the verified clarifications and final gate decision.
 
 The two non-blocking review observations remain active: complete the explicit downstream trace chain for `RA03-VAL-014` before executable test design, and control analysis/documentation growth under `R-08`.
 
@@ -79,11 +85,11 @@ A Jira-shaped file is treated as supplied content. TDG does not need to prove th
 
 ## Next controlled step
 
-Prepare the RA-04 scope-qualification analysis using the accepted RA-03 baseline:
+Prepare RA-05 — Findings and persistence using the accepted RA-04 baseline:
 
-1. define evidence-based qualification of system-level, functional, black-box cases while preserving independent classification axes;
-2. specify treatment of mixed, ambiguous, unsupported, or insufficiently evidenced cases;
-3. identify downstream validation obligations, then perform static review and obtain Project Owner disposition.
+1. distinguish immutable package versions, assessment runs, findings and human dispositions;
+2. define result meanings, allowed transitions, evidence, local persistence, history and comparison requirements;
+3. identify downstream validation obligations, perform static review and obtain Project Owner disposition.
 
 This repository records engineering progress without presenting unfinished analysis as an implemented product.
 
