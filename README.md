@@ -8,7 +8,7 @@ The project is intentionally **not a test-case generator**. Its purpose is to he
 
 ## Current status
 
-**SDLC phase:** Requirements Analysis — RA-06 authorized  
+**SDLC phase:** Requirements Analysis — RA-07 authorized  
 **Implementation:** Not started by design  
 **Data policy:** Public or synthetic data only during the laboratory phase
 
@@ -22,13 +22,17 @@ RA-04 defines evidence-based scope qualification, independent classification dim
 
 **RA-05 is closed.** On 2026-09-18, the Project Owner explicitly endorsed the verified run-boundary clarification, the review record, and the **RA-05 v0.2** baseline, and granted **GO to RA-06 — EP, BVA, decision tables, and state transitions**. All **22 MUST requirements** and **four policy decisions** are accepted. The combined [SR-RA05-001 v0.2 / PG-RA05-001](docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-focused-static-review-v0.2.md) records `PASS AFTER VERIFIED CORRECTION` and closes the single review finding.
 
-RA-05 defines separate processing outcomes, findings, human dispositions, evidence, version history, comparison, and local persistence requirements. Its 22 requirements and 16 validation obligations have verified direct traceability in both directions through 56 links. This is document verification, not executed product testing. RA-06 analysis is authorized; its requirements have not yet been produced or accepted.
+RA-05 defines separate processing outcomes, findings, human dispositions, evidence, version history, comparison, and local persistence requirements. Its 22 requirements and 16 validation obligations have verified direct traceability in both directions through 56 links. This is document verification, not executed product testing.
+
+**RA-06 is closed.** On 2026-09-18, the Project Owner endorsed both verified corrections, accepted the review record and the **RA-06 v0.2** baseline, and granted **GO to RA-07 — LLM roles and qualification**. All **20 MUST requirements**, **14 validation obligations**, and **four policy decisions** are accepted. The combined [SR-RA06-001 v0.2 / PG-RA06-001](docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-focused-static-review-v0.2.md) records `PASS AFTER VERIFIED CORRECTIONS` and closes both Medium findings.
+
+RA-06 defines applicability and bounded test-design coverage for EP, BVA, decision tables, and state transitions. Planned exercise and expected-result alignment are assessed separately. Supported data-selection guarantees remain distinct from randomness alone. Direct traceability is verified in both directions through **46 links**. RA-07 analysis is authorized; its requirements have not yet been produced or accepted.
 
 No source code is included yet because implementation is not authorized before the applicable requirements and design gates are complete.
 
 ## Current documentation
 
-The effective baseline combines [PG-RA03-001 v0.2](docs/reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md) for Charter and RA-01 through RA-03, [SR-RA04-001 v0.2 / PG-RA04-001](docs/reviews/test-design-gatekeeper-ra-04-focused-static-review-v0.2.md) for RA-04, and [SR-RA05-001 v0.2 / PG-RA05-001](docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-focused-static-review-v0.2.md) for RA-05 and the RA-06 entry decision:
+The effective baseline combines [PG-RA03-001 v0.2](docs/reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md) for Charter and RA-01 through RA-03, [SR-RA04-001 v0.2 / PG-RA04-001](docs/reviews/test-design-gatekeeper-ra-04-focused-static-review-v0.2.md) for RA-04, [SR-RA05-001 v0.2 / PG-RA05-001](docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-focused-static-review-v0.2.md) for RA-05, and [SR-RA06-001 v0.2 / PG-RA06-001](docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-focused-static-review-v0.2.md) for RA-06 and the RA-07 entry decision:
 
 - [Project Charter v0.4](docs/governance/test-design-gatekeeper-project-charter-v0.4.md) — designated baseline;
 - [RA-01 v0.3](docs/requirements-analysis/test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md) — designated baseline;
@@ -38,14 +42,18 @@ The effective baseline combines [PG-RA03-001 v0.2](docs/reviews/test-design-gate
 - [RA-04 Focused Static Review and Gate Record v0.2](docs/reviews/test-design-gatekeeper-ra-04-focused-static-review-v0.2.md) — closed review, correction verification, acceptance register and GO to RA-05;
 - [RA-05 v0.2](docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md) — designated wording baseline, read together with the accepted dispositions and closure in SR-RA05-001 v0.2;
 - [RA-05 Focused Static Review and Gate Record v0.2](docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-focused-static-review-v0.2.md) — closed review, correction verification, acceptance register and GO to RA-06;
+- [RA-06 v0.2](docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md) — designated wording baseline, read together with the accepted dispositions and closure in SR-RA06-001 v0.2;
+- [RA-06 Focused Static Review and Gate Record v0.2](docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-focused-static-review-v0.2.md) — closed review, correction verification, acceptance register and GO to RA-07;
 - [RA-03 Decision Disposition and Upstream Change Record v0.1](docs/requirements-analysis/test-design-gatekeeper-ra-03-decision-disposition-upstream-change-record-v0.1.md);
 - [Focused Static Review SR-RA03-001](docs/reviews/test-design-gatekeeper-ra-03-focused-static-review-v0.1.md).
 
-The reviewed source files retain their exact content and historical authoring notices, including RA-03's `PROPOSED` column and the RA-04/RA-05 candidate or pending labels. **The current acceptance and GO decisions are recorded in the linked gate records.** Read the source documents together with those records; older authoring notices do not describe the current project state.
+The reviewed source files retain their exact content and historical authoring notices, including RA-03's `PROPOSED` column, the RA-04 through RA-06 candidate or pending labels, and the RA-06 proposed-amendment notice for REQ-015. **The current acceptance and GO decisions are recorded in the linked gate records.** Read the source documents together with those records; older authoring notices do not describe the current project state.
 
 Historical review evidence is also retained: [RA-04 v0.1](docs/requirements-analysis/test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.1.md) and [SR-RA04-001 v0.1](docs/reviews/test-design-gatekeeper-ra-04-focused-static-review-v0.1.md). These snapshots preserve the wording reviewed before the verified clarifications and final gate decision.
 
 The corresponding RA-05 history is [RA-05 v0.1](docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.1.md) and [SR-RA05-001 v0.1](docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-focused-static-review-v0.1.md). The four RA-05 snapshots are grouped in one directory to preserve their original relative links without altering the reviewed content.
+
+The RA-06 history is [RA-06 v0.1](docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.1.md) and [SR-RA06-001 v0.1](docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-focused-static-review-v0.1.md). The four RA-06 snapshots are likewise grouped together; the exact original review input, corrected wording, and review history are retained.
 
 The two non-blocking review observations remain active: complete the explicit downstream trace chain for `RA03-VAL-014` before executable test design, and control analysis/documentation growth under `R-08`.
 
@@ -93,10 +101,10 @@ A Jira-shaped file is treated as supplied content. TDG does not need to prove th
 
 ## Next controlled step
 
-Prepare RA-06 — analysis of the four supported techniques using the accepted RA-04 and RA-05 baselines:
+Prepare RA-07 — analysis of permitted LLM roles and qualification using the accepted RA-06 baseline:
 
-1. define when EP, BVA, decision tables, and state transitions are applicable to the supplied scope and evidence;
-2. define bounded coverage assessment, deterministic-control allocation, and the evidence needed for technique-related findings, including partial or ungradable cases;
+1. define the division of deterministic and LLM-assisted responsibilities, evidence grounding, uncertainty, abstention, and human confirmation;
+2. define version-specific qualification and requalification obligations for model, prompt, and behavior changes, preserving the accepted evidence and assessment-run boundaries;
 3. identify validation obligations, perform static review, and obtain Project Owner disposition before any later phase gate.
 
 This repository records engineering progress without presenting unfinished analysis as an implemented product.
