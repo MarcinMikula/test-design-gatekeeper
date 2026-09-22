@@ -4,11 +4,11 @@
 
 | Field | State |
 | --- | --- |
-| Version / date | 0.1 — 2026-09-22 |
+| Version / date | 0.1 — 2026-09-22; review-closure update |
 | SDLC phase | Solution and Architecture Design; entry GO recorded in SR-RA-001 v0.2 |
 | Work allocation | B-01, first activity: component boundaries, one local review flow and operational entry points |
-| Document status | PROPOSED — ready for Owner walkthrough after the author check in Section 10 |
-| Design decisions | Three proposals in Section 3; none is recorded as accepted |
+| Document status | ACCEPTED — SAD-01 review closed for the first B-01 activity; B-01 continuation and implementation gate remain pending |
+| Design decisions | SAD-D-001, SAD-D-002 and SAD-D-003 accepted; detailed first-activity design reviewed through Section 11 |
 | Requirements baseline | The 249 accepted requirements identified by SR-RA-001 v0.2 remain authoritative |
 | Evidence boundary | Document-level design and synthetic walkthrough; no product implementation or executed product tests |
 | Author / review independence | AI-assisted draft and author check by the same assistant; no independent review claimed |
@@ -17,7 +17,7 @@
 
 This document proposes how one bounded Review Package moves through local intake, review, human decisions and local export, and assigns responsibility for each step. RA-02 established the required business workflow. SAD-01 adds application boundaries, permitted dependencies, commit points and failure handling to realize that workflow.
 
-Statements describing the proposed solution remain design proposals until accepted. Quoted status values and inherited obligations retain their accepted RA meanings. This document creates no new product requirements, role grants or numerical acceptance thresholds. A disagreement with an accepted requirement must become an explicit change request rather than a quiet design exception.
+Sections 3.1 and 4.1–11.1 record the accepted design directions and section-level review decisions. Future physical choices and enforcement details allocated to later B-01 work remain proposals until separately reviewed and accepted. Quoted status values and inherited obligations retain their accepted RA meanings. This document creates no new product requirements, role grants or numerical acceptance thresholds. A disagreement with an accepted requirement must become an explicit change request rather than a quiet design exception.
 
 The first operational target is a laboratory path using eligible public or synthetic material. The design reserves the necessary protection boundaries for sealed operation; its concrete deployment controls and verification remain part of the later B-01 security activity and B-09. Acceptance of SAD-01 alone will not authorize implementation or confidential use.
 
@@ -40,9 +40,9 @@ The inspected repository baseline is commit `8fa720fc453e5457a361fd5f4cb8ba38605
 
 The deliverable is one coherent first design document. Physical schemas, database selection, exact command syntax, parser limits, model/runtime selection and security mechanisms have named follow-up allocations in Section 11. Their absence here is explicit; they must be resolved before enabling the corresponding implementation path.
 
-## 3. Proposed design decisions
+## 3. Design directions and proposed realization
 
-These choices are recommendations derived from the accepted scope and solo working model. All three remain **PROPOSED**.
+The Owner has accepted the three design directions in Section 3.1. The table below retains their proposed realization and rationale for the continued walkthrough. In particular, the detailed seven-component allocation in Section 4 has not yet received Owner acceptance.
 
 | Decision | Proposal and reason | Consequence to review |
 | --- | --- | --- |
@@ -53,6 +53,18 @@ These choices are recommendations derived from the accepted scope and solo worki
 The foreground workflow can allow the operator to answer a clarification, leave it unresolved, or cancel. Waiting within an active run does not add a new run state. It cannot create an indefinite hidden background job. Exact interaction, interruption detection and bounded waiting policy belong to the implementation-ready contracts in the remaining B-01 work.
 
 The architecture supports a deterministic-only review where its actual prerequisites and qualified controls are available. This is a bounded capability, not an assumption that scripts can interpret arbitrary business prose. The LLM gateway is optional for independent work and mandatory for every permitted runtime model invocation.
+
+### 3.1 Recorded Owner decisions — 2026-09-22
+
+The Owner quoted the three proposed directions and responded to each. The following is the exact acceptance boundary of this review update.
+
+| Decision | Status | Accepted direction | Owner response, verbatim |
+| --- | --- | --- | --- |
+| SAD-D-001 | ACCEPTED | One local application with distinct modules. Detailed module responsibilities and dependencies remain for Section 4 review. | "ad 1. tak, jedna lokalna + moduły." |
+| SAD-D-002 | ACCEPTED | A terminal interface for the initial stage, with JSON/CSV intake and readable reports as quoted by the Owner; GUI remains outside the current interface work. | "ad 2. dokładnie tak, nie idziemy na razie w GUI inny niż terminal" |
+| SAD-D-003 | ACCEPTED | One active review run at a time, with retained outcomes and explicit interruption handling. Detailed lifecycle realization remains for the following sections. | "ad 3. pełna zgoda" |
+
+This records acceptance of the three directions, not completion of the SAD-01 walkthrough, acceptance of every detailed realization, closure of B-01 or implementation authorization. No acceptance of Sections 1–2 or 4–11 is inferred from this reply. The requirements baseline and previously granted design-phase GO remain unchanged.
 
 ## 4. Components, ownership and permitted dependencies
 
@@ -73,6 +85,14 @@ CMP-01 coordinates dependencies; CMP-06 supplies the retained record boundary. C
 Three storage domains remain distinguishable within that design: submission/operation context, immutable captured content, and derived assessment/history. This is logical separation; the physical design must decide how it is enforced without unnecessary source duplication.
 
 The common policy interface is checked at each exposed operation and again before an affected privileged commit or disclosure. Sealed use requires current actor/action/object authorization on every path, including record lookup, history, interpretation, disposition and export. A typed role in the laboratory provides logical attribution only.
+
+### 4.1 Recorded Owner acceptance — 2026-09-22
+
+The Owner accepted Section 4 without changes. The acceptance covers the seven logical responsibility boundaries and their supplied-data, authority, model-access and record-history constraints. It does not select seven deployable services, a database, a security mechanism or a physical schema, and it does not imply acceptance of the remaining SAD-01 sections.
+
+> Akceptuje §4 bez zmian, idzmy dalej
+
+The previously accepted Section 3 directions remain in force. Requirements Analysis stays closed; this section-level acceptance does not close B-01 or authorize implementation.
 
 ## 5. One package through the application
 
@@ -113,6 +133,14 @@ In the standard technique request, applicability is assessed and coverage is con
 
 CMP-07 may also present safely committed interim records during an active run, subject to current access policy. They retain availability `NOT_FINAL` and cannot be shown as a terminal result. An uncommitted preview is separately labelled unsaved; it is not retained evidence for a human disposition.
 
+### 5.3 Recorded Owner acceptance — 2026-09-22
+
+The Owner accepted Section 5 without changes. This acceptance covers the bounded Review Package flow, its separation of capture, minimum checks, qualification, assessment, human review and export, and the stated partial/interim/failure consequences. It does not imply that the flow has been implemented or executed, nor does it close the remaining design work in B-01.
+
+> tak akceptuję bez zmian
+
+Requirements Analysis remains closed and the Section 3 and Section 4 decisions remain in force. Implementation, model reliance, confidential-data use and product acceptance still require their separate gates.
+
 ## 6. Control points that determine whether the flow is trustworthy
 
 ### 6.1 Persistence and processing
@@ -146,6 +174,14 @@ Qualification and data permission are checked before invocation and again before
 
 The later protection design must allocate concrete enforcement for process access, local inference endpoints, context isolation/reset, egress, protected storage/keys, temporary copies, audit, backups and export destinations. Sealed runtime denies egress outside its approved boundary. Missing shared protection or mandatory audit blocks dependent deterministic work too. Optional debug-log failure has a narrower consequence. Emergency stopping and containment remain possible when audit is unavailable.
 
+### 6.4 Recorded Owner acceptance — 2026-09-22
+
+The Owner accepted Section 6 without changes. This acceptance covers the logical commit boundaries, retry and recovery consequences, human authority, version-impact rules, bounded LLM contribution and protection principles described above. It does not select physical persistence, a model/runtime, concrete security controls or implementation mechanisms.
+
+> tak akceptuję kolejny paragraf bez zmian
+
+The accepted Section 3 directions and Sections 4–5 boundaries remain in force. Detailed technology and enforcement choices remain allocated to the remaining B-01 design work.
+
 ## 7. Alternate and fault paths
 
 The following are design walkthrough obligations, not observed runtime results. Exact states follow the cited RA contracts and the actual work performed.
@@ -162,9 +198,18 @@ The following are design walkthrough obligations, not observed runtime results. 
 | Model timeout, resource failure or unusable response after invocation | Unfinished work is `INCOMPLETE`, with an operational cause. It is not a missing-business-rule finding. A contained failure can leave other work completed. |
 | Cancellation, lost persistence response, crash or disk failure | CMP-01/CMP-06 preserve only coherent committed work, reconcile interrupted records and respect retry identity. No success from unsaved output, silent reassessment or terminal restart. |
 | Stale disposition, authority revoked in flight, or missing mandatory audit | Reject/conflict the affected action before its unauthorized effect. Preserve existing history and any policy-permitted attempted-action evidence; no last-write-wins human judgment. |
+| Invalid operator input at a terminal confirmation or disposition prompt | CMP-01 reports a bounded input error and reprompts while the operation remains active. Only an explicit permitted decision counts; TDG does not infer accept, reject, defer or cancel from invalid, empty or ambiguous input. |
 | Export denied, interrupted or unsafe rendering requested | CMP-07 releases no unsafe partial artifact; canonical results remain unchanged. Evidence omissions, history cutoff and export failure are explicit. |
 
 For a normally completed review, zero findings can coexist with `AVAILABLE` only when the RA-05 completeness conditions for the requested ledger boundary are met. Diagnostics alone mean no completed substantive entry and therefore availability `NONE`. Neither outcome is official ISTQB conformity or testware approval.
+
+### 7.1 Recorded Owner acceptance — 2026-09-22
+
+The Owner accepted Section 7 without changes, including the explicit treatment of insufficient input, conflicts, unavailable or failed LLM work, cancellation, persistence failure, revoked authority, mandatory-audit failure, invalid terminal input and export denial.
+
+> tak, akceptuje bez zmian
+
+These are design walkthrough consequences, not executed product-test results. The accepted human-authority, fail-closed and supplied-data-only boundaries remain in force.
 
 ## 8. Synthetic customer-creation walkthrough
 
@@ -191,6 +236,14 @@ For this walkthrough the request selects BVA applicability, coverage under an ex
 
 This example exercises the architecture without requiring all four techniques or inventing promotion, credit or insurance rules for the first increment. Other reference domains remain later corpus work.
 
+### 8.1 Recorded Owner acceptance — 2026-09-22
+
+The Owner accepted Section 8 without changes. This acceptance covers the illustrative customer-creation walkthrough, the independent classification of CUST-01, CUST-02 and CUST-03, the BVA target set `17, 18, 75, 76`, and the resulting `COMPLETED`/`PARTIAL` and `PENDING` consequences. It does not turn the example into an executed test, benchmark, oracle or implementation authorization.
+
+> tak, akceptuje bez zmian
+
+The synthetic rule remains example input only. It must not be treated as a real customer-system rule or used with confidential data.
+
 ## 9. Static review and STLC handoff
 
 The table maps this design to selected accepted obligations. It is a focused design allocation, not a replacement for the 249-requirement trace ledger or a claim that the whole architecture is covered.
@@ -210,23 +263,39 @@ The immediate static walkthrough should follow the same example across capture, 
 
 Later test analysis turns the accepted VAL obligations and Section 7 into specific conditions. Test design then chooses representative data, mutations, expected records and fault points. Test implementation follows the separate implementation gate. Execution records observed outcomes and defects; completion reports distinguish tested behavior, unresolved limitations and the release envelope. A fake model response can exercise gateway contract/failure behavior, but cannot qualify a real model or establish semantic accuracy.
 
+### 9.1 Recorded Owner acceptance — 2026-09-22
+
+The Owner accepted Section 9 without changes. This acceptance covers the focused design-to-requirement allocation, the bidirectional traceability principle and the staged STLC handoff. It does not claim complete architectural coverage, independent assurance, executed product tests or implementation authorization.
+
+> tak, akceptuje bez zmian
+
+The trace ledger and accepted requirements remain authoritative; this table is a focused design allocation and does not replace them.
+
 ## 10. Author check and review status
 
 | Check | Status and scope |
 | --- | --- |
-| Existing source links and full REQ/VAL identifiers | PASS, author check — 12 local source links resolve; 68 distinct full REQ/VAL identifiers exist in their cited effective wording sources; 11 tables have consistent column counts. This checks reference integrity, not exhaustive design coverage. |
-| Acceptance/status wording | PASS, author check — three design decisions remain PROPOSED; no RA requirement, earlier acceptance or phase authority was changed. |
+| Existing source links and full REQ/VAL identifiers | PASS, author check — 12 local source links resolve; 68 distinct full REQ/VAL identifiers exist in their cited effective wording sources; 12 tables have consistent column counts after the decision-record update. This checks reference integrity, not exhaustive design coverage. |
+| Acceptance/status wording | PASS, bounded review update — Section 3.1 records only the three explicitly accepted directions; detailed realization and full-document acceptance remain pending. No RA requirement or phase authority was changed. |
 | Lifecycle and authority walkthrough | PASS within the inspected paths — capture/minimum separation, explicit start transition, interim versus terminal results, partial inventory, first-confirmation limits, new-run rules and cause-specific failures inspected against RA-03–RA-09. Start/interim wording was clarified before delivery. |
 | Requirements or implementation changes | None proposed outside the explicit architecture choices; no product code or executable TC in this artifact |
-| Formal static review / Owner decision | PENDING — not replaced by the author check |
+| Formal static review / Owner decision | CLOSED — Owner accepted Sections 3–11 without changes on 2026-09-22; AI-assisted author check only, no independent review claimed |
 
 The author check is a preparation step. It cannot establish runtime behavior, security readiness or independent assurance. After the Owner walkthrough, material findings and corrections can be recorded in a compact review entry; a separate large report is unnecessary unless the actual findings warrant it.
+
+### 10.1 Recorded Owner acceptance — 2026-09-22
+
+The Owner accepted Section 10 without changes. This acceptance covers the distinction between the author check, formal static review and product-test evidence, including the explicit statement that formal SAD-01 closure is still pending.
+
+> tak, akceptuje bez zmian
+
+No independent assurance, implementation authorization or runtime evidence is inferred from this acceptance.
 
 ## 11. Next work and completion boundary
 
 | Remaining B-01 activity | Concrete follow-up |
 | --- | --- |
-| Complete this first activity | Review Sections 3–8, resolve material findings and decide SAD-D-001 through SAD-D-003. Record the result and revisit the first activity's 4–8-hour estimate using actual human effort when available. |
+| First B-01 activity — component boundaries, one local review flow and operational entry points | COMPLETE FOR REVIEW CLOSURE — Sections 3–11 accepted; revisit the 4–8-hour estimate using actual human effort when available. |
 | Data, identity and contracts | Select local persistence; design physical records, commit/recovery behavior, operation identity and stale-write checks; specify schemas, source binding, errors, parser limits and usable command/decision inputs. |
 | Model and protection architecture | Specify the gateway, permitted qualification/evaluation paths, resource/retry/context bounds and actual trust/copy boundaries; allocate enforcement, diagnostics, containment and sealed verification. |
 | Consolidated design review and increment plan | Check cross-component contracts, settle blocking design issues, estimate the first implementation increment including reference fixtures and tests, and prepare the later implementation gate. |
@@ -235,7 +304,31 @@ Security and testability influence all activities; they are not postponed until 
 
 R-08 remains active. Keep the seven modules as responsibility boundaries, avoid one document per module or requirement, and reuse the accepted source and trace records. The approximate five-hour weekly capacity remains flexible. No actual human effort, delivery date or model feasibility is inferred from the time taken to generate this draft.
 
-**Current next action:** Owner walkthrough of SAD-01 v0.1 and the three proposed design choices. Requirements Analysis stays closed. Completion of this first activity does not complete B-01 or grant implementation GO.
+### 11.1 Recorded Owner acceptance — 2026-09-22
+
+The Owner accepted Section 11 without changes. This completes the section-by-section Owner walkthrough of SAD-01 Sections 3–11 and closes the first B-01 activity within the stated design boundary. It does not close B-01 as a whole, grant implementation authority or establish full-MVP feasibility.
+
+> tak, akceptuje bez zmian
+
+### 12. SAD-01 review closure
+
+| Closure item | Recorded result |
+| --- | --- |
+| Review scope | Sections 3–11 reviewed by the Owner and accepted without changes |
+| Design directions | SAD-D-001 one local modular application, SAD-D-002 terminal-only initial interface, SAD-D-003 one active run — ACCEPTED |
+| First B-01 activity | CLOSED for component boundaries, one bounded Review Package flow and operational entry points |
+| Author check | PASS within the documented scope; source links, REQ/VAL references, tables, lifecycle and authority boundaries checked |
+| Independent assurance | NOT CLAIMED — the draft and author check used the same AI-assisted authoring path |
+| Product implementation and execution | NOT AUTHORIZED / NOT EXECUTED |
+| LLM qualification and confidential-data use | NOT ESTABLISHED / NOT AUTHORIZED by this closure |
+| Full-MVP feasibility | UNESTABLISHED |
+| Capacity | Approximately 5 hours per week, flexible, solo with AI assistance; no fixed delivery date |
+| R-08 documentation-growth risk | ACTIVE; keep subsequent artifacts bounded and tied to concrete decisions, requirements, risks or future tests |
+| Next authorized design work | Data, identity and contracts; then model/protection architecture and an integrated design review before the separate implementation gate |
+
+This is a documentation and design-review closure, not a product acceptance or implementation phase gate. Requirements Analysis remains closed and the project remains in Solution and Architecture Design. The next design increment must produce the concrete evidence required by Section 11 before any implementation authorization is requested.
+
+**Current next action:** begin the bounded B-01 data, identity and contract design. Preserve the accepted decisions and avoid duplicating the requirements slices.
 
 [gate]: ../requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md
 [ra01]: ../requirements-analysis/test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md
