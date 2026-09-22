@@ -8,78 +8,46 @@ The project is intentionally **not a test-case generator**. Its purpose is to he
 
 ## Current status
 
-**SDLC phase:** Requirements Analysis — RA-10 authorized  
-**Implementation:** Not started by design  
+**SDLC phase:** Solution and Architecture Design — GO granted on 2026-09-22
+
+**Requirements Analysis:** Closed — RA-01 through RA-10 and the consolidated static review accepted
+
+**Implementation:** Not started; a later implementation gate is required
+
 **Data policy:** Public or synthetic data only during the laboratory phase
 
-Stakeholder and authority modelling (RA-01) and system workflow modelling (RA-02) are closed. The five-document RA-03 decision package completed focused static review on 2026-09-13 under `SR-RA03-001` with the result `PASS WITH OBSERVATIONS`: all five documents were accepted, no correction-required finding was raised, and two non-blocking observations were carried forward.
+The Project Owner accepted [SR-RA-001](docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md), including the consolidated trace review, delivery work packages, resource assessment and carried risks, and explicitly closed Requirements Analysis. The next work is the bounded solution design under that accepted baseline.
 
-**RA-03 is closed.** On 2026-09-15, the Project Owner completed acceptance of all **50 requirements, unchanged and with priority MUST**, designated the reviewed replacement baselines, and explicitly granted **GO to RA-04**. The decisions are recorded in [PG-RA03-001 v0.2](docs/reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md).
+The documentation accounts for **249 accepted requirements** and **169 validation obligations**. Every requirement has a justified validation route, and every obligation reaches existing accepted requirements, directly or through inspected intermediates. The [trace evidence](docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-traceability-audit-v0.1.json) records **424 direct relations** and the inspected intermediate paths. These figures describe requirements traceability; product test execution and feasibility measurements are still ahead.
 
-**RA-04 is closed.** The Project Owner accepted **all 15 MUST requirements**, **three policy decisions** and **three verified wording clarifications**. The closure recorded on 2026-09-17 designates **RA-04 v0.2** and grants **GO to RA-05 — Findings and persistence**. The combined [SR-RA04-001 v0.2 / PG-RA04-001](docs/reviews/test-design-gatekeeper-ra-04-focused-static-review-v0.2.md) records `PASS AFTER VERIFIED CORRECTIONS` and the explicit gate decision.
+[RA-10 v0.2](docs/requirements-analysis/ra-10/test-design-gatekeeper-ra-10-evaluation-acceptance-v0.2.md) and [SR-RA10-001 v0.2](docs/requirements-analysis/ra-10/test-design-gatekeeper-ra-10-focused-static-review-v0.2.md) close evaluation and acceptance analysis. Two verified source-table corrections are incorporated in [RA-03 v0.4](docs/requirements-analysis/ra-10/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.4.md); the targeted `SR-RA03-OBS-001` trace action is closed. Documentation/scope-growth risk `R-08` and declared independence/resource limitations remain active.
 
-RA-04 defines evidence-based scope qualification, independent classification dimensions, treatment of mixed or undetermined cases, and the limits of partial review. Its 15 requirements and 15 validation obligations have verified direct traceability in both directions.
-
-**RA-05 is closed.** On 2026-09-18, the Project Owner explicitly endorsed the verified run-boundary clarification, the review record, and the **RA-05 v0.2** baseline, and granted **GO to RA-06 — EP, BVA, decision tables, and state transitions**. All **22 MUST requirements** and **four policy decisions** are accepted. The combined [SR-RA05-001 v0.2 / PG-RA05-001](docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-focused-static-review-v0.2.md) records `PASS AFTER VERIFIED CORRECTION` and closes the single review finding.
-
-RA-05 defines separate processing outcomes, findings, human dispositions, evidence, version history, comparison, and local persistence requirements. Its 22 requirements and 16 validation obligations have verified direct traceability in both directions through 56 links. This is document verification, not executed product testing.
-
-**RA-06 is closed.** On 2026-09-18, the Project Owner endorsed both verified corrections, accepted the review record and the **RA-06 v0.2** baseline, and granted **GO to RA-07 — LLM roles and qualification**. All **20 MUST requirements**, **14 validation obligations**, and **four policy decisions** are accepted. The combined [SR-RA06-001 v0.2 / PG-RA06-001](docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-focused-static-review-v0.2.md) records `PASS AFTER VERIFIED CORRECTIONS` and closes both Medium findings.
-
-RA-06 defines applicability and bounded test-design coverage for EP, BVA, decision tables, and state transitions. Planned exercise and expected-result alignment are assessed separately. Supported data-selection guarantees remain distinct from randomness alone. Direct traceability is verified in both directions through **46 links**.
-
-**RA-07 is closed.** On 2026-09-20, the Project Owner endorsed the verified retry/configuration clarification, accepted the review record and the **RA-07 v0.2** baseline, and granted **GO to RA-08 — confidentiality, security, and privacy**. All **20 MUST requirements**, **14 validation obligations**, and **four policy decisions** are accepted. The combined [SR-RA07-001 v0.2 / PG-RA07-001](docs/requirements-analysis/ra-07/test-design-gatekeeper-ra-07-focused-static-review-v0.2.md) records `PASS AFTER VERIFIED CLARIFICATION` and closes the single Medium finding.
-
-RA-07 defines bounded LLM tasks, evidence and abstention rules, configuration-specific qualification, and controlled requalification. Executing a predeclared retry variant remains distinct from editing the qualified configuration. Direct traceability is verified in both directions through **42 links**.
-
-**RA-08 is closed.** On 2026-09-20, the Project Owner accepted the review record and designated **RA-08 v0.2** as the final baseline, granting **GO to RA-09 — canonical request/result representations and import/export contracts**. All **24 MUST requirements**, **16 validation obligations**, and **four policy decisions** are accepted. The combined [SR-RA08-001 v0.2 / PG-RA08-001](docs/requirements-analysis/ra-08/test-design-gatekeeper-ra-08-focused-static-review-v0.2.md) records `PASS` with no findings requiring correction.
-
-RA-08 defines admission, identity and access, context isolation, protected storage, diagnostics, retention, backup/restoration, local export, and fail-closed requirements. Direct traceability is verified in both directions through **46 links**. Confidential-data use still requires separate deployment evidence and ROLE-09 authorization.
-
-**RA-09 is closed.** On 2026-09-21, the Project Owner endorsed both verified clarifications, accepted the review record and designated **RA-09 v0.2** as the final baseline, granting **GO to RA-10 — Evaluation and Acceptance**. All **24 MUST requirements**, **16 validation obligations**, and **four policy decisions** are accepted. The combined [SR-RA09-001 v0.2 / PG-RA09-001](docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-focused-static-review-v0.2.md) records `PASS AFTER VERIFIED CLARIFICATIONS` and closes both Medium findings.
-
-RA-09 defines native JSON and a bounded CSV import profile, exact-source and locator preservation, capture versus minimum-admissibility outcomes, and controlled JSON/Markdown result exports. The endorsed clarifications make the root-envelope rejection rule explicit and preserve RA-07's runtime LLM task boundary for capture mapping. Direct traceability is verified in both directions through **49 links**. RA-10 analysis is authorized; its requirements have not yet been produced or accepted.
-
-No source code is included yet because implementation is not authorized before the applicable requirements and design gates are complete.
+Planning assumes a **solo, AI-assisted side project with approximately 5 hours per week available flexibly**. The accepted initial design estimate is revisable; no fixed delivery date or full-MVP feasibility claim has been established.
 
 ## Current documentation
 
-The effective baseline combines [PG-RA03-001 v0.2](docs/reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md) for Charter and RA-01 through RA-03, [SR-RA04-001 v0.2 / PG-RA04-001](docs/reviews/test-design-gatekeeper-ra-04-focused-static-review-v0.2.md) for RA-04, [SR-RA05-001 v0.2 / PG-RA05-001](docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-focused-static-review-v0.2.md) for RA-05, [SR-RA06-001 v0.2 / PG-RA06-001](docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-focused-static-review-v0.2.md) for RA-06, [SR-RA07-001 v0.2 / PG-RA07-001](docs/requirements-analysis/ra-07/test-design-gatekeeper-ra-07-focused-static-review-v0.2.md) for RA-07, [SR-RA08-001 v0.2 / PG-RA08-001](docs/requirements-analysis/ra-08/test-design-gatekeeper-ra-08-focused-static-review-v0.2.md) for RA-08, and [SR-RA09-001 v0.2 / PG-RA09-001](docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-focused-static-review-v0.2.md) for RA-09 and the RA-10 entry decision:
+Start with the [consolidated review and phase-gate record](docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md). It gives the effective baseline, accepted source precedence, both directions of traceability, the work-package sequence and downstream SDLC/STLC allocations.
 
-- [Project Charter v0.4](docs/governance/test-design-gatekeeper-project-charter-v0.4.md) — designated baseline;
-- [RA-01 v0.3](docs/requirements-analysis/test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md) — designated baseline;
-- [RA-02 v0.3](docs/requirements-analysis/test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md) — designated baseline;
-- [RA-03 v0.3](docs/requirements-analysis/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.3.md) — designated wording baseline, read together with the accepted requirement dispositions in PG-RA03-001;
-- [RA-04 v0.2](docs/requirements-analysis/test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md) — designated wording baseline, read together with the accepted dispositions and closure in SR-RA04-001 v0.2;
-- [RA-04 Focused Static Review and Gate Record v0.2](docs/reviews/test-design-gatekeeper-ra-04-focused-static-review-v0.2.md) — closed review, correction verification, acceptance register and GO to RA-05;
-- [RA-05 v0.2](docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md) — designated wording baseline, read together with the accepted dispositions and closure in SR-RA05-001 v0.2;
-- [RA-05 Focused Static Review and Gate Record v0.2](docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-focused-static-review-v0.2.md) — closed review, correction verification, acceptance register and GO to RA-06;
-- [RA-06 v0.2](docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md) — designated wording baseline, read together with the accepted dispositions and closure in SR-RA06-001 v0.2;
-- [RA-06 Focused Static Review and Gate Record v0.2](docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-focused-static-review-v0.2.md) — closed review, correction verification, acceptance register and GO to RA-07;
-- [RA-07 v0.2](docs/requirements-analysis/ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.2.md) — designated wording baseline, read together with the accepted clarification and closure in SR-RA07-001 v0.2;
-- [RA-07 Focused Static Review and Gate Record v0.2](docs/requirements-analysis/ra-07/test-design-gatekeeper-ra-07-focused-static-review-v0.2.md) — closed review, correction verification, acceptance register and GO to RA-08;
-- [RA-08 v0.2](docs/requirements-analysis/ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md) — designated wording baseline, read together with the final acceptance and closure in SR-RA08-001 v0.2;
-- [RA-08 Focused Static Review and Gate Record v0.2](docs/requirements-analysis/ra-08/test-design-gatekeeper-ra-08-focused-static-review-v0.2.md) — closed review with PASS, acceptance register, and GO to RA-09;
-- [RA-09 v0.2](docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md) — designated wording baseline, read together with the accepted clarifications and closure in SR-RA09-001 v0.2;
-- [RA-09 Focused Static Review and Gate Record v0.2](docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-focused-static-review-v0.2.md) — closed review, correction verification, final acceptance and GO to RA-10;
-- [RA-03 Decision Disposition and Upstream Change Record v0.1](docs/requirements-analysis/test-design-gatekeeper-ra-03-decision-disposition-upstream-change-record-v0.1.md);
-- [Focused Static Review SR-RA03-001](docs/reviews/test-design-gatekeeper-ra-03-focused-static-review-v0.1.md).
+| Document | Effective version | Subject |
+| --- | --- | --- |
+| [Project Charter](docs/governance/test-design-gatekeeper-project-charter-v0.4.md) | v0.4 | Product hypothesis, scope, risks and confidentiality boundary |
+| [RA-01](docs/requirements-analysis/test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md) | v0.3 | Stakeholders, roles and decision authority |
+| [RA-02](docs/requirements-analysis/test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md) | v0.3 | System context, workflows and use cases |
+| [RA-03](docs/requirements-analysis/ra-10/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.4.md) | v0.4 | Review Package content, provenance and input sufficiency |
+| [RA-04](docs/requirements-analysis/test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md) | v0.2 | Scope qualification and classification boundaries |
+| [RA-05](docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md) | v0.2 | Findings, dispositions, persistence and histories |
+| [RA-06](docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md) | v0.2 | EP, BVA, decision tables and state transitions |
+| [RA-07](docs/requirements-analysis/ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.2.md) | v0.2 | Bounded LLM tasks and configuration-specific qualification |
+| [RA-08](docs/requirements-analysis/ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md) | v0.2 | Confidentiality, security and privacy |
+| [RA-09](docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md) | v0.2 | Data representations and local import/export contracts |
+| [RA-10](docs/requirements-analysis/ra-10/test-design-gatekeeper-ra-10-evaluation-acceptance-v0.2.md) | v0.2 | Evaluation, human oracle, metrics and acceptance governance |
+| [SR-RA10-001](docs/requirements-analysis/ra-10/test-design-gatekeeper-ra-10-focused-static-review-v0.2.md) | v0.2 | RA-10 review, verified upstream corrections and slice closure |
+| [SR-RA-001](docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md) | v0.2 | Consolidated phase closure and GO to Solution and Architecture Design |
+| [Trace evidence ledger](docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-traceability-audit-v0.1.json) | v0.1 | Bidirectional requirement/validation paths and source identities |
 
-The reviewed source files retain their exact content and historical authoring notices, including RA-03's `PROPOSED` column, the RA-04 through RA-09 candidate or pending labels, the RA-06 proposed-amendment notice for REQ-015, the RA-07 pending clarification notice for VAL-008, and the RA-09 F-001/F-002 and VAL-002/VAL-010 endorsement notices. **The current acceptance and GO decisions are recorded in the linked gate records.** Read the source documents together with those records; older authoring notices do not describe the current project state.
+The [earlier review records](docs/reviews) and [requirements history](docs/requirements-analysis) remain available. The [RA-10 publication package](docs/requirements-analysis/ra-10) retains exact original, corrected and accepted review snapshots, including the corrected RA-03 source. Grouping these documents preserves their original relative links.
 
-Historical review evidence is also retained: [RA-04 v0.1](docs/requirements-analysis/test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.1.md) and [SR-RA04-001 v0.1](docs/reviews/test-design-gatekeeper-ra-04-focused-static-review-v0.1.md). These snapshots preserve the wording reviewed before the verified clarifications and final gate decision.
-
-The corresponding RA-05 history is [RA-05 v0.1](docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.1.md) and [SR-RA05-001 v0.1](docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-focused-static-review-v0.1.md). The four RA-05 snapshots are grouped in one directory to preserve their original relative links without altering the reviewed content.
-
-The RA-06 history is [RA-06 v0.1](docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.1.md) and [SR-RA06-001 v0.1](docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-focused-static-review-v0.1.md). The four RA-06 snapshots are likewise grouped together; the exact original review input, corrected wording, and review history are retained.
-
-The RA-07 history is [RA-07 v0.1](docs/requirements-analysis/ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.1.md) and [SR-RA07-001 v0.1](docs/requirements-analysis/ra-07/test-design-gatekeeper-ra-07-focused-static-review-v0.1.md). Its four snapshots preserve the exact accepted inputs, clarification, and review history in one directory.
-
-The RA-08 history is [RA-08 v0.1](docs/requirements-analysis/ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.1.md) and [SR-RA08-001 v0.1](docs/requirements-analysis/ra-08/test-design-gatekeeper-ra-08-focused-static-review-v0.1.md). The four grouped snapshots preserve the exact original input, accepted administrative edition, endorsed review record, and later closure decision.
-
-The RA-09 history is [RA-09 v0.1](docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.1.md) and [SR-RA09-001 v0.1](docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-focused-static-review-v0.1.md). Its four grouped documents retain the three exact endorsed snapshots and the separate final closure record dated 2026-09-21.
-
-The two non-blocking review observations remain active: complete the explicit downstream trace chain for `RA03-VAL-014` before executable test design, and control analysis/documentation growth under `R-08`.
+Retained source files contain historical authoring notices such as `PROPOSED`, `ENDORSEMENT PENDING` or a then-ungranted phase gate. Read them with their later acceptance records. **SR-RA10-001 v0.2 establishes the corrected RA-03/RA-10 baseline; SR-RA-001 v0.2 records the current phase authority.** The older snapshots and the trace ledger's pre-acceptance status have not been silently rewritten.
 
 ## MVP direction
 
@@ -123,17 +91,21 @@ The approved [RA-09 contract](docs/requirements-analysis/ra-09/test-design-gatek
 
 A Jira-shaped file is treated as supplied content. TDG does not need to prove that Jira produced it and does not gain permission to access Jira or follow external references.
 
-## Next controlled step
+## Roadmap and next controlled step
 
-Prepare **RA-10 — Evaluation and Acceptance** using the accepted requirements baseline:
+| Stage | State | Next evidence or outcome |
+| --- | --- | --- |
+| Concept and Feasibility | Closed | Accepted Charter and bounded product hypothesis |
+| Requirements Analysis | Closed | Ten accepted slices, static-review closure and bidirectional trace |
+| Solution and Architecture Design | GO granted; next work | Component/data flow, identity and persistence, model/protection interfaces, reviewed design and refined increment plan |
+| Implementation | Pending its gate | Bounded laboratory increments with eligible data and traceable verification |
+| Evaluation and product acceptance | Planned | Human-adjudicated evidence, task qualification, measured utility and explicit acceptance decisions |
+| Confidential deployment | Separate future gate | Verified sealed controls and explicit ROLE-09 authorization before protected input |
 
-1. define benchmark composition, sampling and human-reviewed reference outcomes, including difficult mixed cases, deficient input and bounded abstention;
-2. specify success metrics, decision thresholds, human-effort measures, usability, robustness and acceptance constraints;
-3. consolidate requirements-to-validation traceability, including the carried RA03-VAL-014 observation, perform static review and obtain the next explicit Owner gate before advancing beyond Requirements Analysis.
+Static reviews accompany each phase. STLC planning, analysis, design, implementation, execution and completion evidence will grow with the relevant product increments. Finishing a requirements review does not establish model quality or executed product coverage.
 
-This repository records engineering progress without presenting unfinished analysis as an implemented product.
+The first authorized design activity is to define component responsibilities and one bounded flow from local package intake through assessment to human review and local export. Concrete technology and interface choices will be recorded with their rationale; the accepted scope and later approval boundaries remain in force.
 
 ## Naming and reference boundary
 
 “ISTQB-informed” describes the methodological reference baseline used by the project. It does not imply endorsement, accreditation, certification, or an official conformity assessment by ISTQB.
-
