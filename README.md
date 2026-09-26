@@ -12,9 +12,11 @@ The project is intentionally **not a test-case generator**. Its purpose is to he
 
 **Requirements Analysis:** Closed — RA-01 through RA-10 and the consolidated static review accepted
 
-**SAD-01:** First B-01 design activity reviewed and closed on 2026-09-22; continuation of B-01 remains pending
+**SAD-01:** First B-01 design activity reviewed and closed on 2026-09-22
 
-**SAD-02:** Logical data, identity and contract activity reviewed and closed on 2026-09-23; model/protection architecture remains pending
+**SAD-02:** Logical data, identity and contract activity reviewed and closed on 2026-09-23
+
+**SAD-03:** All 17 sections and SAD-D-009–SAD-D-015 accepted by the Owner; v0.2 records the reviewed text and publication status. [SR-SAD03-001](docs/reviews/test-design-gatekeeper-sad-03-review-record-v0.1.md) records acceptance and two cross-contract findings for correction verification. Integrated design closure and the next gate remain pending.
 
 **Implementation:** Not started; a later implementation gate is required
 
@@ -49,6 +51,8 @@ Start with the [consolidated review and phase-gate record](docs/requirements-ana
 | [SR-RA-001](docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md) | v0.2 | Consolidated phase closure and GO to Solution and Architecture Design |
 | [SAD-01](docs/solution-design/test-design-gatekeeper-sad-01-components-review-flow-v0.1.md) | Review closed | Component boundaries, Review Package flow, fault paths and B-01 completion boundary |
 | [SAD-02](docs/solution-design/test-design-gatekeeper-sad-02-data-identity-contracts-v0.1.md) | Review closed | Logical data, identity and import/export contract boundaries |
+| [SAD-03](docs/solution-design/test-design-gatekeeper-sad-03-model-protection-v0.2.md) | v0.2; Owner walkthrough accepted | Model gateway, qualification, context, limits, protection and failure boundaries |
+| [SR-SAD03-001](docs/reviews/test-design-gatekeeper-sad-03-review-record-v0.1.md) | v0.1 | Section acceptance, publication checks and open cross-contract findings |
 | [Trace evidence ledger](docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-traceability-audit-v0.1.json) | v0.1 | Bidirectional requirement/validation paths and source identities |
 
 The [earlier review records](docs/reviews) and [requirements history](docs/requirements-analysis) remain available. The [RA-10 publication package](docs/requirements-analysis/ra-10) retains exact original, corrected and accepted review snapshots, including the corrected RA-03 source. Grouping these documents preserves their original relative links.
@@ -103,14 +107,14 @@ A Jira-shaped file is treated as supplied content. TDG does not need to prove th
 | --- | --- | --- |
 | Concept and Feasibility | Closed | Accepted Charter and bounded product hypothesis |
 | Requirements Analysis | Closed | Ten accepted slices, static-review closure and bidirectional trace |
-| Solution and Architecture Design | GO granted; SAD-01 and SAD-02 B-01 activities closed | Model/protection interfaces, consolidated design review and refined increment plan |
+| Solution and Architecture Design | GO granted; SAD-01/02 activities closed; SAD-03 Owner walkthrough accepted | SAD-03 correction verification, consolidated design review and refined increment plan |
 | Implementation | Pending its gate | Bounded laboratory increments with eligible data and traceable verification |
 | Evaluation and product acceptance | Planned | Human-adjudicated evidence, task qualification, measured utility and explicit acceptance decisions |
 | Confidential deployment | Separate future gate | Verified sealed controls and explicit ROLE-09 authorization before protected input |
 
 Static reviews accompany each phase. STLC planning, analysis, design, implementation, execution and completion evidence will grow with the relevant product increments. Finishing a requirements review does not establish model quality or executed product coverage.
 
-The first two authorized design activities — component responsibilities/one bounded flow and logical data, identity and contract boundaries — are recorded in [SAD-01](docs/solution-design/test-design-gatekeeper-sad-01-components-review-flow-v0.1.md) and [SAD-02](docs/solution-design/test-design-gatekeeper-sad-02-data-identity-contracts-v0.1.md) and closed for review. The next bounded activity is model/protection architecture. Concrete technology choices will be recorded with their rationale; the accepted scope and later approval boundaries remain in force.
+The first two design activities are recorded in [SAD-01](docs/solution-design/test-design-gatekeeper-sad-01-components-review-flow-v0.1.md) and [SAD-02](docs/solution-design/test-design-gatekeeper-sad-02-data-identity-contracts-v0.1.md) and closed for review. The Owner has also accepted the model/protection design in [SAD-03](docs/solution-design/test-design-gatekeeper-sad-03-model-protection-v0.2.md). The next controlled work is correction verification and consolidated B-01 design review, including the open physical choices and first-increment plan. Publishing this acceptance record does not grant implementation or confidential-use permission.
 
 ## Naming and reference boundary
 
