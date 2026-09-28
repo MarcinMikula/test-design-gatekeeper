@@ -12,6 +12,7 @@
 | Requirements baseline | The 249 accepted requirements identified by SR-RA-001 v0.2 remain authoritative |
 | Evidence boundary | Document-level design and contract walkthrough; no product implementation, migration or executed product tests |
 | Author / review independence | AI-assisted draft and author check by the same assistant; no independent review claimed |
+| Correction addendum | 2026-09-28 — accepted SAD-04 dispositions F-001/F-002 annotated in Sections 7.1 and 8.1; historical wording retained; final review-record acceptance pending |
 
 ## 1. Purpose and reading convention
 
@@ -208,6 +209,20 @@ The accepted package lineage, canonical/derived record boundary and guarded-writ
 
 The logical vocabulary below is aligned to the accepted RA contracts and SAD-01. Exact enum names remain subject to cross-contract verification before implementation.
 
+<!-- SAD04-F001-ADDENDUM-BEGIN -->
+**Correction addendum — 2026-09-28; SR-SAD04-F-001.** The Owner accepted this disposition in SAD-04 Section 3 on 2026-09-27. For implementation, the following vocabulary from RA-05 Sections 3.1–3.3, RA-09 Section 7.1 and [SAD-04 Section 6.2][sad04candidate] governs:
+
+| Axis | Governing values |
+| --- | --- |
+| Substantive assessment outcome | `ASSESSED`, `UNGRADABLE`, `NOT_PERFORMED`, `INCOMPLETE` |
+| Review run | `REQUESTED`, `RUNNING`, `COMPLETED`, `BLOCKED`, `FAILED`, `CANCELLED` |
+| Result availability | `NOT_FINAL`, `NONE`, `PARTIAL`, `AVAILABLE` |
+
+Internal pending/in-progress markers remain separate from the substantive outcome. `COMPLETED` and `BLOCKED` are run states. Availability is a separate derived axis governed by RA-05 Section 3.3; `NONE` may describe a terminal run and is not a universally non-terminal lifecycle state. I-01 creates no substantive review ledger. The [SAD-04 verification record][sad04review] records the documentary check and the pending final Owner closure decision.
+
+**The original table below is retained as historical wording; its conflicting ledger and availability classifications are superseded by this addendum.**
+<!-- SAD04-F001-ADDENDUM-END -->
+
 | Object | Non-terminal states | Terminal or outcome states | Rule |
 | --- | --- | --- | --- |
 | Capture receipt | `RECEIVED`, `CAPTURING` | `CAPTURED`, `REJECTED`, `FAILED` | `CAPTURED` requires a coherent durable package snapshot and receipt linkage. |
@@ -251,6 +266,22 @@ The physical transaction API, database technology and exact enum implementation 
 ## 8. Import and export contracts
 
 ### 8.1 Canonical JSON envelope — proposed shape
+
+<!-- SAD04-F002-ADDENDUM-BEGIN -->
+**Correction addendum — 2026-09-28; SR-SAD04-F-002.** The Owner accepted this disposition in SAD-04 Section 3 on 2026-09-27. RA-09 Section 2.2 and [SAD-04 Section 6.1][sad04candidate] govern the native input envelope:
+
+```json
+{
+  "document_type": "review_package_input",
+  "contract_version": "1.0",
+  "content": {}
+}
+```
+
+Exactly these three root members are permitted. The kind and version are the stated strings; `content` is an object. Supplied scope, test basis and TC belong inside `content`. Unknown root members, missing control members and incorrect kinds/types/versions reject this input path. Unknown or deficient content is preserved within the accepted capture boundary. Empty `content` is capturable but does not establish minimum admissibility; I-01 reports `NOT_EVALUATED`. Supplied identity, roles and approvals never replace trusted operation context or TDG-generated record identities. See the [verification record][sad04review].
+
+**The original illustration below is retained as historical wording. Its package/submission root and version label are superseded for interchange implementation by the accepted RA-09 envelope.**
+<!-- SAD04-F002-ADDENDUM-END -->
 
 The canonical JSON contract should carry an explicit envelope rather than relying on a file name or top-level array. The exact JSON Schema remains a follow-up deliverable, but the envelope is expected to distinguish:
 
@@ -510,3 +541,6 @@ This is a documentation and design-review closure, not a product acceptance or i
 [ra08]: ../requirements-analysis/ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md
 [ra09]: ../requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md
 [ra10]: ../requirements-analysis/ra-10/test-design-gatekeeper-ra-10-evaluation-acceptance-v0.2.md
+
+[sad04candidate]: test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md
+[sad04review]: ../reviews/test-design-gatekeeper-sad-04-review-record-v0.1.md

@@ -1,0 +1,29 @@
+[project]
+name = "test-design-gatekeeper"
+version = "0.1.0.dev2"
+description = "Local, ISTQB-informed test case review assistant — I-01 foundation"
+readme = "README.md"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "jsonschema==4.26.0",
+]
+
+[project.scripts]
+tdg = "tdg.cli:main"
+
+[build-system]
+requires = ["uv_build==0.12.18"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "tdg"
+module-root = "src"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-markers"
+
+[dependency-groups]
+dev = [
+    "pytest==9.1.1",
+]
