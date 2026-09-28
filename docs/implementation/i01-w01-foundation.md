@@ -9,7 +9,7 @@
 | Development observation | CPython 3.13.15 / SQLite 3.53.1 / Linux x86_64 — 44 passed, 4 Windows-only skips |
 | Target-platform qualification | Windows 11 Home 10.0.26200 / AMD64 / NTFS / CPython 3.13.15 — 48 passed, 0 failed, 0 skipped |
 | Scope of evidence | W01 foundation only; no complete I-01 acceptance decision or later processing capability claimed |
-| Publication state | Local changes prepared; no commit, push or merge performed for this package |
+| Publication state | Feature branch published to `origin/feature/i01-w01-foundation`; merge to `main` pending |
 
 ## Implemented boundary
 

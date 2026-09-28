@@ -73,7 +73,7 @@ Start with the [consolidated review and phase-gate record](docs/requirements-ana
 | [SAD-04](docs/solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md) | v0.2; accepted baseline | Integrated review, bounded I-01 design and STLC plan; explicit effort reservation |
 | [SR-SAD04-001](docs/reviews/test-design-gatekeeper-sad-04-review-record-v0.2.md) | v0.2; closure and GO recorded | Owner acceptance of the v0.1 verification, two closed findings and the selected B-01 boundary |
 | [SAD-04 requirement allocation](docs/solution-design/test-design-gatekeeper-sad-04-requirement-allocation-v0.2.json) | v0.2; accepted frozen plan | 249 IDs retained; 40 partial I-01 contributions, 16 planned conditions; execution evidence recorded separately |
-| [I-01 / W01](docs/implementation/i01-w01-foundation.md) | In progress; Windows verification pending | CLI foundation, controlled empty-store initialization and recorded partial evidence |
+| [I-01 / W01](docs/implementation/i01-w01-foundation.md) | Technical verification complete; formal Owner closure pending | CLI foundation, controlled empty-store initialization and recorded Windows evidence |
 | [Trace evidence ledger](docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-traceability-audit-v0.1.json) | v0.1 | Bidirectional requirement/validation paths and source identities |
 
 The [earlier review records](docs/reviews) and [requirements history](docs/requirements-analysis) remain available. The [RA-10 publication package](docs/requirements-analysis/ra-10) retains exact original, corrected and accepted review snapshots, including the corrected RA-03 source. Grouping these documents preserves their original relative links.
@@ -129,7 +129,7 @@ A Jira-shaped file is treated as supplied content. TDG does not need to prove th
 | Concept and Feasibility | Closed | Accepted Charter and bounded product hypothesis |
 | Requirements Analysis | Closed | Ten accepted slices, static-review closure and bidirectional trace |
 | Solution and Architecture Design | SAD-01–04 closed for the I-01 boundary | Accepted baseline and closed findings; later capability decisions remain allocated |
-| Implementation | I-01 GO granted; W01 in progress | Verify workspace controls on Windows, develop the traceable W02 test inventory, then implement bounded capture |
+| Implementation | I-01 GO granted; W01 technical verification complete; closure pending | Record the Owner closure decision, then develop the traceable W02 test inventory and continue bounded capture implementation |
 | Evaluation and product acceptance | Planned | Human-adjudicated evidence, task qualification, measured utility and explicit acceptance decisions |
 | Confidential deployment | Separate future gate | Verified sealed controls and explicit ROLE-09 authorization before protected input |
 
