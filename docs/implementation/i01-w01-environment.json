@@ -37,6 +37,15 @@
     "architecture": "64-bit / AMD64",
     "filesystem": "NTFS",
     "uv": "uv 0.12.19 (bea138450 2026-09-24 x86_64-pc-windows-msvc)",
+    "host_hardware_observation": {
+      "recorded_during_pr_review_follow_up": "2026-09-29",
+      "cpu_names": [
+        "AMD Ryzen 5 5500H with Radeon Graphics"
+      ],
+      "physical_cores": 4,
+      "logical_processors": 8,
+      "total_physical_memory_bytes": 16487878656
+    },
     "initial_dev1_windows_run": {
       "passed": 47,
       "failed": 1,
@@ -74,6 +83,20 @@
         "passed": 48,
         "failed": 0,
         "skipped": 0
+      },
+      "effective_sqlite_policy_observation": {
+        "verification": "PASS",
+        "foreign_keys": true,
+        "journal_mode": "DELETE",
+        "synchronous": "FULL",
+        "autocommit": true,
+        "busy_timeout_ms": 5000,
+        "max_main_file_bytes": 536870912,
+        "transaction_failure_rollback": "PASS",
+        "evidence": [
+          "tests/test_storage.py::test_writer_settings_are_effective_before_transaction",
+          "tests/test_storage.py::test_transaction_failure_leaves_no_partial_metadata"
+        ]
       },
       "uv_lock_check": "PASS",
       "wheel_build": {
@@ -117,6 +140,8 @@
     "Broader host backup or synchronization configuration was not independently inspected.",
     "Parser containment and supplied-package resource boundaries remain later work.",
     "No package import, inference, test-design review or sealed processing is enabled.",
-    "No complete I-01 acceptance decision is claimed by this record."
+    "No complete I-01 acceptance decision is claimed by this record.",
+    "Windows CPU/RAM inventory was recorded during the PR #3 review follow-up on 2026-09-29 rather than emitted by the original automated qualification run.",
+    "Repository text files are normalized to LF by .gitattributes so byte-level artifact hashes do not depend on Windows checkout line-ending conversion."
   ]
 }

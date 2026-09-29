@@ -9,12 +9,13 @@
 | Development observation | CPython 3.13.15 / SQLite 3.53.1 / Linux x86_64 — 44 passed, 4 Windows-only skips |
 | Target-platform qualification | Windows 11 Home 10.0.26200 / AMD64 / NTFS / CPython 3.13.15 — 48 passed, 0 failed, 0 skipped |
 | Scope of evidence | W01 foundation only; no complete I-01 acceptance decision or later processing capability claimed |
-| Publication state | Feature branch published to `origin/feature/i01-w01-foundation`; merge to `main` pending |
+| Publication state | Feature branch published for review through PR #3; repository history records the eventual merge outcome |
 
 ## Implemented boundary
 
 - A Python package with equivalent `tdg` and `python -m tdg` entry points, `argparse`, `jsonschema==4.26.0` and `pytest==9.1.1`.
 - Exact interpreter pin, `uv.lock` with transitive dependency hashes, a pinned build backend, and an [observed environment record](i01-w01-environment.json). Dependency installation is a setup operation; ordinary direct CLI invocation does not run a package manager.
+- Repository text files are normalized to LF through `.gitattributes`, keeping byte-level artifact hashes independent of Windows checkout line-ending conversion.
 - `version` and `capabilities` expose build/contract versions, actual runtime and unavailable functions. They do not open a store or process supplied data.
 - Windows-only `init --profile laboratory --actor-ref ID [--data-dir PATH]` orchestrates a new empty store. Omission of `--data-dir` selects `%LOCALAPPDATA%\TDG\lab\<generated-workspace-uuid>`. A supplied path is supported only as a new direct child of that managed laboratory root in this build. Other custom roots remain unimplemented, not silently redirected.
 - Initialization rejects a non-laboratory profile and an unsupported host before file creation. It refuses an existing workspace even when empty or invalid. No automatic rebuild, migration or cleanup follows a failed initialization.
