@@ -1,0 +1,158 @@
+{
+  "record_kind": "IMPLEMENTATION_ENVIRONMENT_NOT_PRODUCT_INTERCHANGE",
+  "date": "2026-09-28",
+  "increment": "I-01",
+  "work_item": "I01-W01",
+  "status": "W01_CLOSED_OWNER_ACCEPTED_2026-09-29",
+  "product_target": "Windows x64 / CPython 3.13",
+  "development_observation": {
+    "purpose": "Initial portable development observation before target-platform execution",
+    "build": "0.1.0.dev1",
+    "python": "3.13.15",
+    "implementation": "CPython",
+    "sqlite": "3.53.1",
+    "os": "Linux",
+    "os_release": "6.18.44",
+    "architecture": "x86_64",
+    "logical_cpu_count": 9,
+    "host_memory_kib": 10206540,
+    "filesystem_type": "overlay",
+    "filesystem_block_size": 4096,
+    "uv": "uv 0.12.18 (x86_64-unknown-linux-gnu)",
+    "test_result": {
+      "passed": 44,
+      "skipped": 4,
+      "failed": 0,
+      "skip_reason": "Requires real Windows x64 / CPython 3.13"
+    }
+  },
+  "windows_verification": {
+    "purpose": "Native target-platform verification of the W01 foundation",
+    "build": "0.1.0.dev2",
+    "python": "3.13.15",
+    "implementation": "CPython",
+    "sqlite": "3.53.1",
+    "os": "Microsoft Windows 11 Home",
+    "os_version": "10.0.26200",
+    "architecture": "64-bit / AMD64",
+    "filesystem": "NTFS",
+    "uv": "uv 0.12.19 (bea138450 2026-09-24 x86_64-pc-windows-msvc)",
+    "host_hardware_observation": {
+      "recorded_during_pr_review_follow_up": "2026-09-29",
+      "cpu_names": [
+        "AMD Ryzen 5 5500H with Radeon Graphics"
+      ],
+      "physical_cores": 4,
+      "logical_processors": 8,
+      "total_physical_memory_bytes": 16487878656
+    },
+    "initial_dev1_windows_run": {
+      "passed": 47,
+      "failed": 1,
+      "skipped": 0,
+      "failing_test": "tests/test_windows_workspace.py::test_windows_directory_cannot_be_renamed_while_held",
+      "observed_problem": "Directory rename succeeded while the TDG directory guard was expected to block delete-sharing operations."
+    },
+    "root_cause_experiment": {
+      "FILE_READ_ATTRIBUTES": "RENAME_SUCCEEDED",
+      "FILE_LIST_DIRECTORY_plus_FILE_READ_ATTRIBUTES": "RENAME_BLOCKED_WINERROR_32",
+      "GENERIC_READ": "RENAME_BLOCKED_WINERROR_32",
+      "DELETE_plus_FILE_READ_ATTRIBUTES": "RENAME_BLOCKED_WINERROR_32",
+      "conclusion": "FILE_READ_ATTRIBUTES alone did not establish the intended directory-sharing guard on the observed Windows host."
+    },
+    "correction": {
+      "component": "src/tdg/windows_workspace.py::_WindowsAPI.hold_directory",
+      "before_desired_access": "FILE_READ_ATTRIBUTES (0x80)",
+      "after_desired_access": "FILE_LIST_DIRECTORY | FILE_READ_ATTRIBUTES (0x01 | 0x80)",
+      "reason": "Least-privilege tested access mask that enforced the intended no-FILE_SHARE_DELETE directory guard."
+    },
+    "post_correction_dev1": {
+      "focused_regression": "1 passed",
+      "full_regression": "48 passed",
+      "manual_init_exit": 0,
+      "manual_repeat_exit": 5,
+      "manual_repeat_diagnostic": "WORKSPACE_ALREADY_EXISTS"
+    },
+    "qualified_dev2": {
+      "windows_specific_tests": {
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0
+      },
+      "full_suite": {
+        "passed": 48,
+        "failed": 0,
+        "skipped": 0
+      },
+      "effective_sqlite_policy_observation": {
+        "verification": "PASS",
+        "foreign_keys": true,
+        "journal_mode": "DELETE",
+        "synchronous": "FULL",
+        "autocommit": true,
+        "busy_timeout_ms": 5000,
+        "max_main_file_bytes": 536870912,
+        "transaction_failure_rollback": "PASS",
+        "evidence": [
+          "tests/test_storage.py::test_writer_settings_are_effective_before_transaction",
+          "tests/test_storage.py::test_transaction_failure_leaves_no_partial_metadata"
+        ]
+      },
+      "uv_lock_check": "PASS",
+      "wheel_build": {
+        "result": "PASS",
+        "artifact": "dist/test_design_gatekeeper-0.1.0.dev2-py3-none-any.whl"
+      },
+      "manual_workspace_trial": {
+        "first_init_exit": 0,
+        "profile": "laboratory",
+        "schema_version": 1,
+        "review_performed": false,
+        "destination_shape": "%LOCALAPPDATA%\\TDG\\lab\\<generated-workspace-uuid>",
+        "repeat_same_workspace_exit": 5,
+        "repeat_same_workspace_diagnostic": "WORKSPACE_ALREADY_EXISTS"
+      }
+    }
+  },
+  "selected": {
+    "python_pin": "3.13.15",
+    "build_backend": "uv_build==0.12.18",
+    "store_schema_version": 1,
+    "store_policy": {
+      "foreign_keys": true,
+      "journal_mode": "DELETE",
+      "synchronous": "FULL",
+      "autocommit": true,
+      "write_transaction": "BEGIN IMMEDIATE / COMMIT / ROLLBACK",
+      "timeout_seconds": 5,
+      "max_main_file_bytes": 536870912
+    }
+  },
+  "dependency_lock": {
+    "path": "uv.lock",
+    "sha256": "9c8df528f1efd31e4200ada3fcaeb571bbf7cc76b8559feafc28171c416145bf",
+    "packages_including_project": 12
+  },
+  "verification_boundary": [
+    "Windows verification covers the W01 project and empty-workspace foundation only.",
+    "The initial failing Windows run is retained as engineering evidence rather than replaced by the corrected result.",
+    "The laboratory workspace was created under the managed LOCALAPPDATA TDG root, outside the repository's OneDrive path.",
+    "Broader host backup or synchronization configuration was not independently inspected.",
+    "Parser containment and supplied-package resource boundaries remain later work.",
+    "No package import, inference, test-design review or sealed processing is enabled.",
+    "No complete I-01 acceptance decision is claimed by this record.",
+    "Windows CPU/RAM inventory was recorded during the PR #3 review follow-up on 2026-09-29 rather than emitted by the original automated qualification run.",
+    "Repository text files are normalized to LF by .gitattributes so byte-level artifact hashes do not depend on Windows checkout line-ending conversion.",
+    "The qualified 0.1.0.dev2 runtime manifest retains its pre-closure W01_VERIFIED_CLOSURE_PENDING build snapshot; the later Owner closure is recorded in project governance documentation rather than by rewriting the qualified build."
+  ],
+  "owner_closure": {
+    "date": "2026-09-29",
+    "authority": "Project Owner",
+    "reviewed_pr": 3,
+    "reviewed_head": "fe54914f94d52afad23f5c8341222e2e13f27f95",
+    "decision": "W01_CLOSED",
+    "next_work_item": "I01-W02",
+    "next_work_item_go": "GRANTED",
+    "boundary": "W01 closure only; no complete I-01 acceptance decision"
+  }
+}

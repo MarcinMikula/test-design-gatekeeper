@@ -1,0 +1,2395 @@
+{
+  "artifact": "TDG SAD-04 requirement allocation index",
+  "artifact_kind": "PROJECT_DESIGN_REGISTER_NOT_PRODUCT_INTERCHANGE",
+  "version": "0.2",
+  "date": "2026-09-28",
+  "status": "ALLOCATION_AND_CONDITIONS_ACCEPTED — corrected package candidate; final baseline acceptance and implementation GO pending",
+  "review_decision": {
+    "date": "2026-09-27",
+    "timezone": "Europe/Warsaw",
+    "authority": "Project Owner",
+    "source": "SAD-04 Section 11 walkthrough",
+    "statement": "ok, akceptuje bez zmian",
+    "accepted_scope": "249 requirement allocations and partial/full evidence accounting; no implementation or validation claim",
+    "test_condition_status": "PROPOSED at Section 11 acceptance; subsequent acceptance recorded in test_condition_review_decision",
+    "implementation_go": "NOT_GRANTED"
+  },
+  "test_condition_review_decision": {
+    "date": "2026-09-27",
+    "timezone": "Europe/Warsaw",
+    "authority": "Project Owner",
+    "source": "SAD-04 Section 12 walkthrough",
+    "statement": "ok, akceptuje bez uwag",
+    "accepted_scope": "STLC allocation and all 16 conditions TCND-I01-01–16; partial-evidence plans only",
+    "test_condition_status": "ACCEPTED_NOT_EXECUTED",
+    "implementation_go": "NOT_GRANTED"
+  },
+  "baseline_commit": "583356e148378c0669cee5baa9bc4cdbd2cc3182",
+  "design_document": "test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md",
+  "meaning": "One routing record per accepted requirement. A route is an allocation to design/work owners, not proof that every clause is designed, implemented, tested or accepted. An accepted I-01 condition plans only partial evidence; all other clauses remain required. No product condition has run.",
+  "scope_limits": [
+    "No accepted requirement, priority, authority or REQ–VAL route is changed.",
+    "The 249/249 count is inventory accounting only; detailed later-capability designs remain explicitly pending.",
+    "A model/protected capability disabled in I-01 does not become implemented or qualified.",
+    "Existing validation routes are read from the accepted ledger; they are not regenerated as purported independent review."
+  ],
+  "accepted_trace_ledger": {
+    "path": "docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-traceability-audit-v0.1.json",
+    "sha256": "82e7b2bcc59183532ad5edb1673555f38a777d547d24637dbc7362509dbe96ed",
+    "requirements": 249,
+    "validation_obligations": 169
+  },
+  "counts": {
+    "allocated_requirements": 249,
+    "i01_requirements_with_accepted_partial_conditions": 40,
+    "later_evidence_only": 209,
+    "conditions": 16,
+    "implemented_requirements": 0,
+    "executed_product_conditions": 0
+  },
+  "source_inventory": {
+    "RA01": {
+      "path": "docs/requirements-analysis/test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md",
+      "sha256": "77f41bc86913acefd05f0ad67d27fdb84d07abc7bcd76f8f5484b3256e8972c8",
+      "requirements": 16
+    },
+    "RA02": {
+      "path": "docs/requirements-analysis/test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md",
+      "sha256": "7ab90321bc1c7fee0dcf688afeb07cb17f80aef839a137a6d44bcb15d2f215a9",
+      "requirements": 36
+    },
+    "RA03": {
+      "path": "docs/requirements-analysis/ra-10/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.4.md",
+      "sha256": "3a308249661250132e0bfd70cde450dbfad66c4e204ede1b211030234c251fe9",
+      "requirements": 50
+    },
+    "RA04": {
+      "path": "docs/requirements-analysis/test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md",
+      "sha256": "5974b110303611505984cd26320d4e8ada10a49c75064650cd378679f373cac3",
+      "requirements": 15
+    },
+    "RA05": {
+      "path": "docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md",
+      "sha256": "c1d4a6c60a31182c78ff566034b736149e65a7e62e90c8f8bece55a66a6ee3d0",
+      "requirements": 22
+    },
+    "RA06": {
+      "path": "docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md",
+      "sha256": "de0339bfee72aa8ca7e6366cb079a5f38cc37dedbb7d1dd40c7fbe97952b6791",
+      "requirements": 20
+    },
+    "RA07": {
+      "path": "docs/requirements-analysis/ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.2.md",
+      "sha256": "91621b65c78741d6d7d99ba668708f7126d6dd281eb8c7a52bf3a80080252699",
+      "requirements": 20
+    },
+    "RA08": {
+      "path": "docs/requirements-analysis/ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md",
+      "sha256": "f75833faf13d473f2cc50cb738e57eabd5436c776c508fd040f8d42eb1c2c338",
+      "requirements": 24
+    },
+    "RA09": {
+      "path": "docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md",
+      "sha256": "8cf8db1f87d0fb8f1dadad347dba7bdf7af8132c0ec2b64b90878a26c760d5ef",
+      "requirements": 24
+    },
+    "RA10": {
+      "path": "docs/requirements-analysis/ra-10/test-design-gatekeeper-ra-10-evaluation-acceptance-v0.2.md",
+      "sha256": "f33524815c4b4af7124660b166dae9695de4bfc027b574f116057e8d3e2b9124",
+      "requirements": 22
+    }
+  },
+  "groups": {
+    "RA01": {
+      "components_or_responsibility": [
+        "CMP-01",
+        "CMP-06",
+        "CMP-07"
+      ],
+      "work_packages": [
+        "B-01",
+        "B-04",
+        "B-07",
+        "B-09"
+      ],
+      "design_routes": [
+        "SAD-01 §4/6",
+        "SAD-02 §9",
+        "SAD-04 §8/9"
+      ],
+      "scope_note": "Authority and attributable human actions; sealed identity is deferred.",
+      "routing_status": "ACCEPTED_ALLOCATION_NOT_CLAUSE_COVERAGE"
+    },
+    "RA02": {
+      "components_or_responsibility": [
+        "CMP-01",
+        "CMP-02",
+        "CMP-03",
+        "CMP-04",
+        "CMP-05",
+        "CMP-06",
+        "CMP-07"
+      ],
+      "work_packages": [
+        "B-03",
+        "B-04",
+        "B-05",
+        "B-06",
+        "B-07"
+      ],
+      "design_routes": [
+        "SAD-01 §5/6/7",
+        "SAD-04 §4/6/7/8/9"
+      ],
+      "scope_note": "Whole workflow allocation; I-01 implements capture/inspection only.",
+      "routing_status": "ACCEPTED_ALLOCATION_NOT_CLAUSE_COVERAGE"
+    },
+    "RA03": {
+      "components_or_responsibility": [
+        "CMP-02",
+        "CMP-03",
+        "CMP-06"
+      ],
+      "work_packages": [
+        "B-03",
+        "B-04"
+      ],
+      "design_routes": [
+        "SAD-02 §5/6/8",
+        "SAD-04 §6/7"
+      ],
+      "scope_note": "Source identity and capture now; minimum/semantic sufficiency remains disabled until later readiness.",
+      "routing_status": "ACCEPTED_ALLOCATION_NOT_CLAUSE_COVERAGE"
+    },
+    "RA04": {
+      "components_or_responsibility": [
+        "CMP-03"
+      ],
+      "work_packages": [
+        "B-04"
+      ],
+      "design_routes": [
+        "SAD-01 §5/7",
+        "SAD-04 §4/6.2"
+      ],
+      "scope_note": "Criterion-level classification and separability remain later detailed work; no I-01 domain verdict.",
+      "routing_status": "ACCEPTED_ALLOCATION_NOT_CLAUSE_COVERAGE"
+    },
+    "RA05": {
+      "components_or_responsibility": [
+        "CMP-01",
+        "CMP-04",
+        "CMP-06",
+        "CMP-07"
+      ],
+      "work_packages": [
+        "B-03",
+        "B-04",
+        "B-07"
+      ],
+      "design_routes": [
+        "SAD-01 §6/7",
+        "SAD-02 §5/7/10",
+        "SAD-03 §6.3/11",
+        "SAD-04 §6.2/7"
+      ],
+      "scope_note": "I-01 capture persistence contributes only to relevant clauses; review/history/export still need implementation.",
+      "routing_status": "ACCEPTED_ALLOCATION_NOT_CLAUSE_COVERAGE"
+    },
+    "RA06": {
+      "components_or_responsibility": [
+        "CMP-03",
+        "CMP-04"
+      ],
+      "work_packages": [
+        "B-02",
+        "B-05"
+      ],
+      "design_routes": [
+        "SAD-01 §5/8/9",
+        "SAD-03 §5.3",
+        "SAD-04 §4/10"
+      ],
+      "scope_note": "Technique algorithm/model contracts and oracle evidence must be developed before the affected I-03 subincrement.",
+      "routing_status": "ACCEPTED_ALLOCATION_NOT_CLAUSE_COVERAGE"
+    },
+    "RA07": {
+      "components_or_responsibility": [
+        "CMP-01",
+        "CMP-05",
+        "CMP-06"
+      ],
+      "work_packages": [
+        "B-06",
+        "B-08"
+      ],
+      "design_routes": [
+        "SAD-03 §5/6/7/9/10/11/13/14",
+        "SAD-04 §4/10"
+      ],
+      "scope_note": "Model task/configuration/qualification design is retained; every model invocation is disabled in I-01.",
+      "routing_status": "ACCEPTED_ALLOCATION_NOT_CLAUSE_COVERAGE"
+    },
+    "RA08": {
+      "components_or_responsibility": [
+        "CMP-01",
+        "CMP-02",
+        "CMP-05",
+        "CMP-06",
+        "CMP-07"
+      ],
+      "work_packages": [
+        "B-01",
+        "B-03",
+        "B-06",
+        "B-07",
+        "B-09"
+      ],
+      "design_routes": [
+        "SAD-03 §8/11/12/13",
+        "SAD-04 §7/8/9"
+      ],
+      "scope_note": "Only applicable laboratory controls contribute in I-01; protected deployment needs its own concrete design and verification.",
+      "routing_status": "ACCEPTED_ALLOCATION_NOT_CLAUSE_COVERAGE"
+    },
+    "RA09": {
+      "components_or_responsibility": [
+        "CMP-02",
+        "CMP-06",
+        "CMP-07"
+      ],
+      "work_packages": [
+        "B-03",
+        "B-07"
+      ],
+      "design_routes": [
+        "SAD-02 §8/10",
+        "SAD-04 §6/7/8/9"
+      ],
+      "scope_note": "Native capture subset only; CSV, multi-source extraction, substantive result export and full round trips remain later work.",
+      "routing_status": "ACCEPTED_ALLOCATION_NOT_CLAUSE_COVERAGE"
+    },
+    "RA10": {
+      "components_or_responsibility": [
+        "PROJECT_GOVERNANCE",
+        "CMP-05",
+        "CMP-06"
+      ],
+      "work_packages": [
+        "B-02",
+        "B-08",
+        "B-10"
+      ],
+      "design_routes": [
+        "SAD-03 §7/14",
+        "SAD-04 §12/13/14"
+      ],
+      "scope_note": "Project evaluation and human acceptance duties are not automatically application features; criteria and campaigns remain future evidence.",
+      "routing_status": "ACCEPTED_ALLOCATION_NOT_CLAUSE_COVERAGE"
+    }
+  },
+  "requirements": [
+    {
+      "requirement": "RA01-REQ-001",
+      "group": "RA01",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA01-REQ-002",
+      "group": "RA01",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA01-REQ-003",
+      "group": "RA01",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA01-REQ-004",
+      "group": "RA01",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA01-REQ-005",
+      "group": "RA01",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA01-REQ-006",
+      "group": "RA01",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA01-REQ-007",
+      "group": "RA01",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA01-REQ-008",
+      "group": "RA01",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA01-REQ-009",
+      "group": "RA01",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA01-REQ-010",
+      "group": "RA01",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA01-REQ-011",
+      "group": "RA01",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA01-REQ-012",
+      "group": "RA01",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA01-REQ-013",
+      "group": "RA01",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA01-REQ-014",
+      "group": "RA01",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA01-REQ-015",
+      "group": "RA01",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA01-REQ-016",
+      "group": "RA01",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-001",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-002",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-003",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-004",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-005",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-006",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-007",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-008",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-009",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-010",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-011",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-012",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-013",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-014",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-015",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-016",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-017",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-018",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-019",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-020",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-021",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-022",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-023",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-024",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-025",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-026",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-027",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-028",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-029",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-030",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-031",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-032",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-033",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-034",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-035",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA02-REQ-036",
+      "group": "RA02",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-001",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-002",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-003",
+      "group": "RA03",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-01"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-004",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-005",
+      "group": "RA03",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-08",
+        "TCND-I01-16"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-006",
+      "group": "RA03",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-01",
+        "TCND-I01-16"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-007",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-008",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-009",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-010",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-011",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-012",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-013",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-014",
+      "group": "RA03",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-06"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-015",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-016",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-017",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-018",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-019",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-020",
+      "group": "RA03",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-01"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-021",
+      "group": "RA03",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-07"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-022",
+      "group": "RA03",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-06"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-023",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-024",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-025",
+      "group": "RA03",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-06"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-026",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-027",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-028",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-029",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-030",
+      "group": "RA03",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-14"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-031",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-032",
+      "group": "RA03",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-15"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-033",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-034",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-035",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-036",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-037",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-038",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-039",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-040",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-041",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-042",
+      "group": "RA03",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-09"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-043",
+      "group": "RA03",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-03"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-044",
+      "group": "RA03",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-03"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-045",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-046",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-047",
+      "group": "RA03",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-03"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-048",
+      "group": "RA03",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-02"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-049",
+      "group": "RA03",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA03-REQ-050",
+      "group": "RA03",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-15"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA04-REQ-001",
+      "group": "RA04",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA04-REQ-002",
+      "group": "RA04",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA04-REQ-003",
+      "group": "RA04",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA04-REQ-004",
+      "group": "RA04",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA04-REQ-005",
+      "group": "RA04",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA04-REQ-006",
+      "group": "RA04",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA04-REQ-007",
+      "group": "RA04",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA04-REQ-008",
+      "group": "RA04",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA04-REQ-009",
+      "group": "RA04",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA04-REQ-010",
+      "group": "RA04",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA04-REQ-011",
+      "group": "RA04",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA04-REQ-012",
+      "group": "RA04",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA04-REQ-013",
+      "group": "RA04",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA04-REQ-014",
+      "group": "RA04",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA04-REQ-015",
+      "group": "RA04",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA05-REQ-001",
+      "group": "RA05",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA05-REQ-002",
+      "group": "RA05",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA05-REQ-003",
+      "group": "RA05",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA05-REQ-004",
+      "group": "RA05",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA05-REQ-005",
+      "group": "RA05",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA05-REQ-006",
+      "group": "RA05",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA05-REQ-007",
+      "group": "RA05",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA05-REQ-008",
+      "group": "RA05",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA05-REQ-009",
+      "group": "RA05",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA05-REQ-010",
+      "group": "RA05",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA05-REQ-011",
+      "group": "RA05",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA05-REQ-012",
+      "group": "RA05",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA05-REQ-013",
+      "group": "RA05",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA05-REQ-014",
+      "group": "RA05",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA05-REQ-015",
+      "group": "RA05",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA05-REQ-016",
+      "group": "RA05",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA05-REQ-017",
+      "group": "RA05",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-11",
+        "TCND-I01-12",
+        "TCND-I01-13"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA05-REQ-018",
+      "group": "RA05",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-02",
+        "TCND-I01-11",
+        "TCND-I01-13"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA05-REQ-019",
+      "group": "RA05",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-11",
+        "TCND-I01-12"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA05-REQ-020",
+      "group": "RA05",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA05-REQ-021",
+      "group": "RA05",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA05-REQ-022",
+      "group": "RA05",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA06-REQ-001",
+      "group": "RA06",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA06-REQ-002",
+      "group": "RA06",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA06-REQ-003",
+      "group": "RA06",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA06-REQ-004",
+      "group": "RA06",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA06-REQ-005",
+      "group": "RA06",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA06-REQ-006",
+      "group": "RA06",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA06-REQ-007",
+      "group": "RA06",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA06-REQ-008",
+      "group": "RA06",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA06-REQ-009",
+      "group": "RA06",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA06-REQ-010",
+      "group": "RA06",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA06-REQ-011",
+      "group": "RA06",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA06-REQ-012",
+      "group": "RA06",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA06-REQ-013",
+      "group": "RA06",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA06-REQ-014",
+      "group": "RA06",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA06-REQ-015",
+      "group": "RA06",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA06-REQ-016",
+      "group": "RA06",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA06-REQ-017",
+      "group": "RA06",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA06-REQ-018",
+      "group": "RA06",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA06-REQ-019",
+      "group": "RA06",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA06-REQ-020",
+      "group": "RA06",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA07-REQ-001",
+      "group": "RA07",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA07-REQ-002",
+      "group": "RA07",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA07-REQ-003",
+      "group": "RA07",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA07-REQ-004",
+      "group": "RA07",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA07-REQ-005",
+      "group": "RA07",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA07-REQ-006",
+      "group": "RA07",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA07-REQ-007",
+      "group": "RA07",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA07-REQ-008",
+      "group": "RA07",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA07-REQ-009",
+      "group": "RA07",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA07-REQ-010",
+      "group": "RA07",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-15"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA07-REQ-011",
+      "group": "RA07",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA07-REQ-012",
+      "group": "RA07",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA07-REQ-013",
+      "group": "RA07",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA07-REQ-014",
+      "group": "RA07",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA07-REQ-015",
+      "group": "RA07",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA07-REQ-016",
+      "group": "RA07",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA07-REQ-017",
+      "group": "RA07",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA07-REQ-018",
+      "group": "RA07",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA07-REQ-019",
+      "group": "RA07",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA07-REQ-020",
+      "group": "RA07",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-001",
+      "group": "RA08",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-002",
+      "group": "RA08",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-003",
+      "group": "RA08",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-004",
+      "group": "RA08",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-09"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-005",
+      "group": "RA08",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-006",
+      "group": "RA08",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-007",
+      "group": "RA08",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-008",
+      "group": "RA08",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-009",
+      "group": "RA08",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-010",
+      "group": "RA08",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-10"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-011",
+      "group": "RA08",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-012",
+      "group": "RA08",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-013",
+      "group": "RA08",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-014",
+      "group": "RA08",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-14"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-015",
+      "group": "RA08",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-016",
+      "group": "RA08",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-017",
+      "group": "RA08",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-018",
+      "group": "RA08",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-019",
+      "group": "RA08",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-020",
+      "group": "RA08",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-09",
+        "TCND-I01-10",
+        "TCND-I01-12"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-021",
+      "group": "RA08",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-022",
+      "group": "RA08",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-023",
+      "group": "RA08",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA08-REQ-024",
+      "group": "RA08",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-001",
+      "group": "RA09",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-04"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-002",
+      "group": "RA09",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-003",
+      "group": "RA09",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-04",
+        "TCND-I01-08"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-004",
+      "group": "RA09",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-05"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-005",
+      "group": "RA09",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-01",
+        "TCND-I01-08",
+        "TCND-I01-16"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-006",
+      "group": "RA09",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-05",
+        "TCND-I01-06"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-007",
+      "group": "RA09",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-06"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-008",
+      "group": "RA09",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-07"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-009",
+      "group": "RA09",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-02"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-010",
+      "group": "RA09",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-011",
+      "group": "RA09",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-012",
+      "group": "RA09",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-06"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-013",
+      "group": "RA09",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-04",
+        "TCND-I01-15"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-014",
+      "group": "RA09",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-01",
+        "TCND-I01-02",
+        "TCND-I01-11",
+        "TCND-I01-12",
+        "TCND-I01-16"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-015",
+      "group": "RA09",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-11",
+        "TCND-I01-15"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-016",
+      "group": "RA09",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-05",
+        "TCND-I01-10",
+        "TCND-I01-12"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-017",
+      "group": "RA09",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-15"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-018",
+      "group": "RA09",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-019",
+      "group": "RA09",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-020",
+      "group": "RA09",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-021",
+      "group": "RA09",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-022",
+      "group": "RA09",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-023",
+      "group": "RA09",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-08",
+        "TCND-I01-14"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA09-REQ-024",
+      "group": "RA09",
+      "i01_treatment": "ACCEPTED_PARTIAL_CLAUSE_EVIDENCE_PLAN",
+      "i01_test_conditions": [
+        "TCND-I01-07",
+        "TCND-I01-08"
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA10-REQ-001",
+      "group": "RA10",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA10-REQ-002",
+      "group": "RA10",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA10-REQ-003",
+      "group": "RA10",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA10-REQ-004",
+      "group": "RA10",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA10-REQ-005",
+      "group": "RA10",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA10-REQ-006",
+      "group": "RA10",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA10-REQ-007",
+      "group": "RA10",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA10-REQ-008",
+      "group": "RA10",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA10-REQ-009",
+      "group": "RA10",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA10-REQ-010",
+      "group": "RA10",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA10-REQ-011",
+      "group": "RA10",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA10-REQ-012",
+      "group": "RA10",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA10-REQ-013",
+      "group": "RA10",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA10-REQ-014",
+      "group": "RA10",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA10-REQ-015",
+      "group": "RA10",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA10-REQ-016",
+      "group": "RA10",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA10-REQ-017",
+      "group": "RA10",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA10-REQ-018",
+      "group": "RA10",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA10-REQ-019",
+      "group": "RA10",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA10-REQ-020",
+      "group": "RA10",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA10-REQ-021",
+      "group": "RA10",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    },
+    {
+      "requirement": "RA10-REQ-022",
+      "group": "RA10",
+      "i01_treatment": "LATER_PRODUCT_OR_GOVERNANCE_EVIDENCE",
+      "i01_test_conditions": [],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "validation_route_source": "accepted_requirements_trace_ledger"
+    }
+  ],
+  "candidate_record": {
+    "review_record": "../reviews/test-design-gatekeeper-sad-04-review-record-v0.1.md",
+    "retained_predecessor": "test-design-gatekeeper-sad-04-requirement-allocation-v0.1.json",
+    "change": "Administrative version/reference update only; all 249 routes, 40 partial condition links, source hashes and implementation/execution states unchanged.",
+    "final_baseline_acceptance": "PENDING",
+    "implementation_go": "NOT_GRANTED"
+  }
+}
