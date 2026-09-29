@@ -4,7 +4,8 @@
 | --- | --- |
 | Date / build | 2026-09-28 / `0.1.0.dev2` |
 | Authority | [SR-SAD04-001 v0.2](../reviews/test-design-gatekeeper-sad-04-review-record-v0.2.md): explicit Owner GO to I-01 |
-| Work item | W01 VERIFIED — technical evidence complete; formal Owner closure pending |
+| Closure authority | [W01 closure record](i01-w01-closure.md): formal Owner closure after PR #3 evidence review; W02 authorized |
+| Work item | W01 CLOSED — Owner accepted the reviewed evidence on 2026-09-29 and granted GO to W02 |
 | Product target | Windows x64 / CPython 3.13 |
 | Development observation | CPython 3.13.15 / SQLite 3.53.1 / Linux x86_64 — 44 passed, 4 Windows-only skips |
 | Target-platform qualification | Windows 11 Home 10.0.26200 / AMD64 / NTFS / CPython 3.13.15 — 48 passed, 0 failed, 0 skipped |
@@ -100,7 +101,7 @@ Qualification results:
 | first `tdg init` | exit 0 | Empty laboratory workspace created under managed LOCALAPPDATA root |
 | repeated `tdg init` using the same workspace | `WORKSPACE_ALREADY_EXISTS`, exit 5 | Existing workspace not overwritten |
 
-The runtime capability manifest therefore records `W01_VERIFIED_CLOSURE_PENDING` and `W01_WINDOWS_TRIAL_PASSED_2026-09-28`. These values describe W01 verification of this build; they do not declare the whole I-01 increment accepted.
+The qualified `0.1.0.dev2` runtime capability manifest records `W01_VERIFIED_CLOSURE_PENDING` and `W01_WINDOWS_TRIAL_PASSED_2026-09-28`. Those strings are part of the already-qualified build snapshot and are not rewritten by the later human governance decision. The current project status is governed by the [W01 closure record](i01-w01-closure.md); neither the build snapshot nor the closure declares the whole I-01 increment accepted.
 
 ## Test inventory exercised in W01
 
@@ -125,9 +126,9 @@ No confidential, project-derived or supplied test-case material was imported. Th
 
 The technical prerequisites previously blocking W01 closure are now evidenced: required native Windows behavior was observed and the defect discovered during that observation was corrected and reverified.
 
-Formal W01 closure remains an Owner decision and is not asserted by this implementation record.
+The Project Owner formally closed W01 on 2026-09-29 after the PR #3 review findings were corrected and re-reviewed. The decision is recorded separately in [i01-w01-closure.md](i01-w01-closure.md). This closes W01 only; it does not complete or accept I-01.
 
-W02 develops the synthetic corpus, specified receipt/identity oracles and detailed condition-to-test inventory. That inventory is the first re-estimation point. The Owner's reservation remains unchanged: the original 40–62 hours is a highly uncertain hypothesis; testing alone may require comparable effort, and required tests are not reduced to fit that range.
+W02 is authorized next and develops the synthetic corpus, specified receipt/identity oracles and detailed condition-to-test inventory. That inventory is the first re-estimation point. The Owner's reservation remains unchanged: the original 40–62 hours is a highly uncertain hypothesis; testing alone may require comparable effort, and required tests are not reduced to fit that range.
 
 W03–W07 and the later I-01 completion decision remain ahead.
 

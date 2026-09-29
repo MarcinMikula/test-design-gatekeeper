@@ -3,7 +3,7 @@
   "date": "2026-09-28",
   "increment": "I-01",
   "work_item": "I01-W01",
-  "status": "WINDOWS_VERIFICATION_COMPLETE_OWNER_CLOSURE_PENDING",
+  "status": "W01_CLOSED_OWNER_ACCEPTED_2026-09-29",
   "product_target": "Windows x64 / CPython 3.13",
   "development_observation": {
     "purpose": "Initial portable development observation before target-platform execution",
@@ -142,6 +142,17 @@
     "No package import, inference, test-design review or sealed processing is enabled.",
     "No complete I-01 acceptance decision is claimed by this record.",
     "Windows CPU/RAM inventory was recorded during the PR #3 review follow-up on 2026-09-29 rather than emitted by the original automated qualification run.",
-    "Repository text files are normalized to LF by .gitattributes so byte-level artifact hashes do not depend on Windows checkout line-ending conversion."
-  ]
+    "Repository text files are normalized to LF by .gitattributes so byte-level artifact hashes do not depend on Windows checkout line-ending conversion.",
+    "The qualified 0.1.0.dev2 runtime manifest retains its pre-closure W01_VERIFIED_CLOSURE_PENDING build snapshot; the later Owner closure is recorded in project governance documentation rather than by rewriting the qualified build."
+  ],
+  "owner_closure": {
+    "date": "2026-09-29",
+    "authority": "Project Owner",
+    "reviewed_pr": 3,
+    "reviewed_head": "fe54914f94d52afad23f5c8341222e2e13f27f95",
+    "decision": "W01_CLOSED",
+    "next_work_item": "I01-W02",
+    "next_work_item_go": "GRANTED",
+    "boundary": "W01 closure only; no complete I-01 acceptance decision"
+  }
 }
