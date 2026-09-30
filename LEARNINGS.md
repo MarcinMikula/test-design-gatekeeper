@@ -1,4 +1,4 @@
-﻿# Learnings
+# Learnings
 
 Chronological engineering journal for Test Design Gatekeeper.
 
@@ -12,7 +12,7 @@ The point of this file is different: preserve *why* an important boundary exists
 
 ---
 
-## Concept lesson â€” persuasive LLM output is not review evidence
+## Concept lesson — persuasive LLM output is not review evidence
 
 **Period:** Concept & Feasibility
 **Status:** Established
@@ -53,7 +53,7 @@ TDG evolved into an evidence-grounded review assistant rather than a general "AI
 
 ---
 
-## Authority lesson â€” the human owns the testware decision
+## Authority lesson — the human owns the testware decision
 
 **Period:** Charter / RA-01
 **Status:** Established
@@ -93,7 +93,7 @@ The project explicitly separates generated findings from human dispositions and 
 
 ---
 
-## Scope lesson â€” supplied-data-only is a feature, not a limitation to hide
+## Scope lesson — supplied-data-only is a feature, not a limitation to hide
 
 **Period:** Charter / Requirements Analysis
 **Status:** Established
@@ -134,7 +134,7 @@ TDG does not search an entire project repository, follow arbitrary URLs, or inve
 
 ---
 
-## Classification lesson â€” independent axes must remain independent
+## Classification lesson — independent axes must remain independent
 
 **Period:** Requirements Analysis
 **Status:** Established
@@ -168,7 +168,7 @@ Requirements and later solution design deliberately preserve separate classifica
 
 ---
 
-## Requirements lesson â€” traceability numbers are not implementation progress
+## Requirements lesson — traceability numbers are not implementation progress
 
 **Period:** Requirements Analysis closure
 **Status:** Established
@@ -215,7 +215,7 @@ Later documents explicitly say that routing all requirement IDs does not mean th
 
 ---
 
-## Static-testing lesson â€” reviewing design can find real defects before code exists
+## Static-testing lesson — reviewing design can find real defects before code exists
 
 **Period:** SAD-04 integrated review
 **Status:** Validated by two design findings
@@ -250,7 +250,7 @@ Do not rewrite old evidence merely to make the documentation look internally tim
 
 ---
 
-## Design lesson â€” illustrative examples must never outrank the governing contract
+## Design lesson — illustrative examples must never outrank the governing contract
 
 **Period:** SAD-04 review
 **Status:** Established
@@ -277,14 +277,14 @@ TDG now treats document precedence and later closure records as part of the engi
 
 ---
 
-## Planning lesson â€” an estimate is a hypothesis, not a quality gate
+## Planning lesson — an estimate is a hypothesis, not a quality gate
 
 **Period:** SAD-04 implementation planning
 **Status:** Established
 
 ### Starting estimate
 
-The first I-01 implementation estimate was 40â€“62 hours.
+The first I-01 implementation estimate was 40–62 hours.
 
 The Owner explicitly challenged that range and noted that testing alone might consume comparable effort.
 
@@ -316,7 +316,7 @@ W02 is intentionally the first re-estimation point because detailed fixtures, or
 
 ---
 
-## Increment lesson â€” implement the smallest useful foundation without pretending the product exists
+## Increment lesson — implement the smallest useful foundation without pretending the product exists
 
 **Period:** I-01 planning / W01
 **Status:** Established
@@ -349,7 +349,7 @@ The project deliberately avoids creating fake receipts, fake Review Packages, fa
 
 ---
 
-## Target-platform lesson â€” portable tests cannot prove Windows behavior
+## Target-platform lesson — portable tests cannot prove Windows behavior
 
 **Period:** I01-W01 native qualification
 **Status:** Validated
@@ -391,7 +391,7 @@ The project preserved the native failure and investigated the mechanism instead 
 
 ---
 
-## W01 defect lesson â€” "least privilege" still has to perform the required protection
+## W01 defect lesson — "least privilege" still has to perform the required protection
 
 **Period:** I01-W01 defect diagnosis
 **Status:** Validated
@@ -448,7 +448,7 @@ Broader alternatives were not selected merely because they also worked.
 
 ---
 
-## Evidence lesson â€” preserve the first real failure after the fix
+## Evidence lesson — preserve the first real failure after the fix
 
 **Period:** I01-W01 correction and qualification
 **Status:** Established and applied
@@ -504,7 +504,7 @@ The failing `0.1.0.dev1` observation remains part of W01 evidence, while the cor
 
 ---
 
-## Evidence-engineering lesson â€” byte identity makes line endings a control
+## Evidence-engineering lesson — byte identity makes line endings a control
 
 **Period:** PR #3 review
 **Status:** Established
@@ -539,7 +539,7 @@ The repository now controls line endings explicitly so local Windows checkout be
 
 ---
 
-## Governance lesson â€” qualified build state and later human closure are different facts
+## Governance lesson — qualified build state and later human closure are different facts
 
 **Period:** W01 closure
 **Status:** Established
@@ -586,7 +586,7 @@ A later governance fact does not require rewriting previously qualified evidence
 
 ---
 
-## Review lesson â€” a clean PR is not the same as an independently reviewed product
+## Review lesson — a clean PR is not the same as an independently reviewed product
 
 **Period:** PR #3 / W01 closure
 **Status:** Established
@@ -625,7 +625,7 @@ Future stronger claims may require stronger independence or automated gates, but
 
 ---
 
-## Process lesson â€” formality is useful only when it prevents a real mistake
+## Process lesson — formality is useful only when it prevents a real mistake
 
 **Period:** Requirements Analysis through W01
 **Status:** Emerging project principle
@@ -677,7 +677,7 @@ This `LEARNINGS.md` follows the same rule: it exists because the formal artifact
 
 ---
 
-## Current course â€” W02 should define the test oracle before the importer teaches us its answer
+## Current course — W02 should define the test oracle before the importer teaches us its answer
 
 **Period:** Start of I01-W02
 **Status:** Working principle carried from accepted SAD-04 design
