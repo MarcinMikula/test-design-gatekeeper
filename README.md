@@ -94,6 +94,18 @@ Its first supported test-design techniques are:
 
 TDG is expected to distinguish independent classification axes such as test level, test type, test-design technique or basis, and execution mode. A label such as unit, integration, system, manual, or automated must not determine a black-box or white-box classification by itself.
 
+## Methodological references
+
+TDG is **ISTQB-informed**, not an ISTQB certification or conformity product. The project uses official ISTQB material as a methodological reference for testing terminology, test analysis and the supported black-box test-design techniques. TDG-specific evidence, authority, workflow, persistence, model qualification, protection and LLM rules remain project engineering decisions and are not presented as ISTQB requirements.
+
+Primary references:
+
+- [ISTQB Certified Tester Foundation Level (CTFL) v4.0](https://www.istqb.org/certifications/certified-tester-foundation-level-ctfl-v4-0/) — the official CTFL page and source for the current CTFL 4.0 syllabus materials. Chapter 4 provides the test-analysis/design context; Sections 4.2.1–4.2.4 cover Equivalence Partitioning, Boundary Value Analysis, Decision Table Testing and State Transition Testing.
+- [ISTQB Glossary](https://glossary.istqb.org/) — the terminology reference for general software-testing terms.
+- [RA-06 — Technique Applicability and Test-Design Coverage](docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md) — TDG's project-level treatment of the four supported techniques, including evidence, applicability, coverage and uncertainty boundaries. RA-06 applies the methodology to TDG; it does not reproduce or replace the official syllabus.
+
+The external references provide methodological and terminological context. The accepted TDG requirements, design records and review/closure records remain authoritative for product behavior.
+
 ## Core principles
 
 - **Human authority:** TDG supports decisions; it does not own, repair, approve, or certify testware.
