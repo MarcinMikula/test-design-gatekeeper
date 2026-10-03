@@ -5,6 +5,7 @@
 | Field | Working state |
 | --- | --- |
 | Document date | 2026-10-02 (Europe/Warsaw) |
+| Review clarification date | 2026-10-03 (Europe/Warsaw) |
 | Increment | I-01 - bounded native-JSON capture and durable inspection |
 | Work item | I01-W02 |
 | Status | WORKING DRAFT - W02-A TEST-BASIS EXTRACTION |
@@ -16,6 +17,7 @@
 | I-01 acceptance | NOT CLAIMED |
 | W02 closure | NOT CLAIMED |
 | Source-inspection pin | Repository `main` as inspected after commit `e15438973564cc790237cce7e9f1bba5e14f4846` |
+| Clarification source pin | Repository `main` at `d9a6b15513f94f710cd96853f46552c1499e0f79`; governing RA-09 and SAD-04 sources unchanged |
 
 ## 1. Purpose
 
@@ -149,7 +151,7 @@ Decision record:
 
 `docs/reviews/test-design-gatekeeper-sad-04-review-record-v0.2.md`
 
-For W02, SAD-04 Sections 6, 7 and 12 are the effective design/test anchors for:
+For W02, SAD-04 Sections 6-9 and 12 are the effective design/test anchors for:
 
 - the exact three-member native JSON envelope;
 - I-01 status vocabulary;
@@ -166,8 +168,9 @@ uses the accepted later correction and preserves the historical difference.
 If source authority does not resolve a material conflict, W02 stops and requests
 a human decision instead of choosing the easiest-to-implement interpretation.
 
-No unresolved authority conflict was found in the source set used for the
-W02-A matrix below.
+No unresolved source-authority conflict was found in the inspected source set.
+The 2026-10-03 review identified an under-specified numeric-limit outcome mapping;
+Section 9.5 exposes that remaining decision instead of resolving it by inference.
 
 ## 4. Oracle design rules
 
@@ -202,6 +205,11 @@ The matrix below is a pre-implementation oracle catalogue. IDs are stable workin
 identifiers for W02. They are not runtime issue codes and do not add product
 requirements.
 
+The 2026-10-03 clarification narrows `OR-I01-SYN-004` to the numeric-token
+capacity bound and separates representation fidelity into `OR-I01-SYN-005`.
+`OR-I01-ID-007` now explicitly concerns stored-result inspection/reconciliation;
+import retries remain governed by `OR-I01-ID-001/002/010`.
+
 ### 5.1 Envelope, routing, and syntax
 
 | Oracle ID | Controlled condition | Independent expected observation | Must not be inferred | Primary trace | I-01 condition |
@@ -216,7 +224,16 @@ requirements.
 | OR-I01-SYN-001 | Duplicate JSON object member at any depth | Reject before last-value-wins or another lossy accepted projection can be constructed | Which duplicate value was "intended" | RA09-REQ-004; RA09-VAL-003; SAD-04 §6.1 | TCND-I01-05 |
 | OR-I01-SYN-002 | Leading BOM on native JSON | Reject under the native JSON profile | BOM stripping followed by a success claim | RA09-REQ-004; RA09-VAL-003; SAD-04 §6.1 | TCND-I01-05 |
 | OR-I01-SYN-003 | Invalid UTF-8, JSON comments, trailing comma, or non-finite numeric token | Reject under syntax/profile rules before lossy accepted projection | Automatic syntax repair or non-finite normalization | RA09-REQ-004; RA09-VAL-003; SAD-04 §6.1 | TCND-I01-05 |
-| OR-I01-SYN-004 | Numeric token/value cannot be retained within supported exact representation or configured token bound | Produce an explicit representation/limit rejection or limitation; never present a rounded/coerced value as the source | Binary-float rounded source value | RA09-REQ-004/006/016; RA09-VAL-003; SAD-04 §6.1/§9 | TCND-I01-05, 10 |
+| OR-I01-SYN-004 | Otherwise valid input contains a numeric token of 127, 128, or 129 characters; all other prerequisites and limits are satisfied | 127/128 do not fail the token-length check; 129 triggers an explicit numeric-token limit failure, blocks capture and creates no package version. Do not round or truncate to fit. The exact 129-character receipt-status/exit-code pair remains OPEN under §9.5 | Successful capture from a length check alone; treating a hard capacity bound as an optional projection warning | RA09-REQ-004/006/016; RA09-VAL-003; SAD-04 §6.1/§9 | TCND-I01-05, 10 |
+| OR-I01-SYN-005 | Valid numeric lexeme within all accepted bounds would lose precision through the selected numeric projection | Exact source bytes and numeric lexeme/location remain available. Preserve an exact projected value where supported; otherwise expose the affected projection limitation with a retained lexeme reference. Never present a rounded/coerced number as source or report a token-length violation for an in-bound token | That a lossy binary-float conversion is an acceptable source value, or that projection limitations erase the original | RA09-REQ-004/006; RA09-VAL-003; RA09 §3.3; SAD-04 §6.1 | TCND-I01-05, 06 |
+
+For the token-length variants, use an unquoted JSON number consisting of `1`
+followed by 126, 127, or 128 zeros in the same otherwise capturable input. These
+are 127-, 128-, and 129-character numeric tokens, not JSON strings. Keep raw size,
+container depth, item counts and other limits below their bounds. Separate
+precision probes, such as `9007199254740993` and `0.1000000000000000000001`,
+exercise exact source/lexeme retention without crossing the token-length bound.
+These are fixture recipes; files and executable tests are not materialized here.
 
 ### 5.2 Source fidelity, presence, and mapping
 
@@ -249,23 +266,25 @@ requirements.
 | --- | --- | --- | --- | --- | --- |
 | OR-I01-RCP-001 | Capture transaction commits coherent original, projection, identities, inventory, issues and receipt linkage | `capture_outcome=CAPTURED`; `package_version_ref` is present and inspectable only after durable commit | Minimum admissibility or review success | RA09-REQ-014/015; RA09-VAL-011/012; SAD-04 §6.2/§7.2 | TCND-I01-01, 15 |
 | OR-I01-RCP-002 | Safety/contract prerequisite prevents capture | `capture_outcome=REJECTED`; no committed package/version reference; minimum remains `NOT_EVALUATED` | Partial package or review result | RA09-REQ-013/014/015; RA09 §6.1-6.2 | TCND-I01-04, 09, 15 |
-| OR-I01-RCP-003 | Capture is attempted but fails before coherent durable snapshot | `capture_outcome=FAILED`; no committed package/version reference; minimum remains `NOT_EVALUATED` | A partially saved package labelled captured | RA09-REQ-014/015; RA09-VAL-011/012 | TCND-I01-11, 12, 15 |
+| OR-I01-RCP-003 | Capture fails before coherent snapshot commit, but a failure receipt can still be safely retained | Retain `capture_outcome=FAILED`; no committed package/version reference; minimum remains `NOT_EVALUATED`. If the failure receipt cannot be stored, use the distinct `OR-I01-RCP-006` condition | A partially saved package labelled captured; assuming receipt persistence always succeeds | RA09-REQ-014/015; RA09-VAL-011/012; SAD-04 §7.2 | TCND-I01-11, 12, 15 |
 | OR-I01-RCP-004 | Any I-01 `CAPTURED` result | `minimum_check=NOT_EVALUATED` with the explicit I-01 reason; inspection says substantive review not performed | `MET`, `NOT_MET`, qualification, review-run outcome, result availability, findings, approval | RA03-REQ-032/050; RA09-REQ-013/015/017; SAD-04 §6.2 | TCND-I01-15 |
 | OR-I01-RCP-005 | Receipt contains issues | Each retained issue exposes stable machine meaning plus stage/boundary/location/evidence/consequence/action to the degree permitted; raw protected payload/full path is not required in diagnostics | Severity or control behavior inferred only from localized prose | RA09-REQ-015/023; RA09-VAL-013; RA03-REQ-038/030 | TCND-I01-14, 15 |
+| OR-I01-RCP-006 | Capture fails before its transaction commits and an operational storage failure also prevents saving the FAILED receipt | No new committed package or final receipt; prior committed history remains unchanged. Emit a safe persistence diagnostic to stderr with exit 4, explicitly disclosing that the failure receipt was not durably recorded. Later inspection/reconciliation reports only actually stored evidence, including a prior intent if one exists | A durable FAILED receipt inferred from terminal text; fabricated history or CAPTURED/package success | RA09-REQ-014/015/016; RA09-VAL-012/013; SAD-04 §7.2/§8 | TCND-I01-11, 12, 14, 15 |
 
 ### 5.5 Operation identity, retry, lineage, and durable effects
 
 | Oracle ID | Controlled condition | Independent expected observation | Must not be inferred | Primary trace | I-01 condition |
 | --- | --- | --- | --- | --- | --- |
-| OR-I01-ID-001 | Same authorized `operation_id`, same exact selected bytes/input identity/action/actor/predecessor/configuration after acknowledgement loss | Reconcile the committed operation and return the same receipt/package version; no duplicate committed effect | New package because the CLI call was repeated | RA09-REQ-014; RA09-VAL-012; SAD-02 §7.3; SAD-04 §7.2 | TCND-I01-02, 11 |
-| OR-I01-ID-002 | Same `operation_id` reused with changed request fingerprint | Visible conflict; existing committed operation/version remains unchanged | Silent overwrite, merge, or last-write-wins | RA09-REQ-014; RA09-VAL-012; SAD-02 §7.3; SAD-04 §7.2 | TCND-I01-02 |
+| OR-I01-ID-001 | Explicit authorized import retry after acknowledgement loss; exact selected bytes/input identity/action/actor/predecessor/configuration establish the same request fingerprint for the same `operation_id` | Return the same committed receipt/package version after the fingerprint comparison; no duplicate committed effect | Assuming identical intent from operation ID/path alone or creating a new package because the CLI call was repeated | RA09-REQ-014; RA09-VAL-012; SAD-02 §7.3; SAD-04 §7.2 | TCND-I01-02, 11 |
+| OR-I01-ID-002 | Same `operation_id` reused with changed request fingerprint, including a file edited after commit/acknowledgement loss | Visible conflict; CLI exit 5; existing committed operation/receipt/version remains unchanged | Returning the old receipt as a successful identical import retry, silent overwrite, merge, or last-write-wins | RA09-REQ-014; RA09-VAL-012; SAD-02 §7.3; SAD-04 §7.2/§8 | TCND-I01-02 |
 | OR-I01-ID-003 | New operation submits byte-identical source without deliberate selection of an existing version | Create a separately attributable package version; without predecessor selection it starts a new lineage | Fingerprint-based merge or semantic equivalence | RA03-REQ-048; RA09-REQ-009/014; RA03-VAL-023; SAD-04 §7.2 | TCND-I01-02 |
 | OR-I01-ID-004 | New capture explicitly selects one valid predecessor | Create one new immutable child version linked to that predecessor; parent bytes/receipts/history stay unchanged | That the child fixed earlier findings or supersedes parent for every purpose | RA03-REQ-043/044/047; RA03-VAL-020/022; SAD-04 §7.2 | TCND-I01-03 |
 | OR-I01-ID-005 | Invalid predecessor reference | Reject/conflict before capture commit; no child package version is committed | Predecessor inferred from name/hash/title/content similarity | RA03-REQ-047; RA03-VAL-022; SAD-04 §7.2 | TCND-I01-03 |
 | OR-I01-ID-006 | Cancellation/crash before capture transaction commit | No captured package/version exists; where safely recordable, retain/reconcile a failed attempt with cause | Partially committed package or automatic hidden recapture | RA09-REQ-014; RA09-VAL-012; SAD-04 §7.2 | TCND-I01-11 |
-| OR-I01-ID-007 | Commit succeeds but acknowledgement/output is lost | Durable committed operation/version remains authoritative; retry reconciles it rather than rereading/reimporting source | A second package/version caused by response loss | RA09-REQ-014; RA09-VAL-012; SAD-04 §7.2 | TCND-I01-02, 11 |
+| OR-I01-ID-007 | Commit succeeds but acknowledgement/output is lost; authorized `tdg receipt OPERATION_ID` inspection or stored-operation reconciliation follows | Read the durable committed result without rereading the external source or rerunning capture; retain the same receipt/package version even if the external file later changes or disappears | Applying this source-free inspection rule to a new import invocation and bypassing its fingerprint comparison | RA09-REQ-014; RA09-VAL-012; SAD-04 §7.2/§8 | TCND-I01-02, 11 |
 | OR-I01-ID-008 | Content digest/hash of two sources is equal | Equality supports integrity/comparison only; identity, lineage, authority and semantic equivalence remain separate | Automatic package/item merge | RA03-REQ-028/048; RA09-REQ-009; SAD-02 §6.1 | TCND-I01-01, 02 |
 | OR-I01-ID-009 | Source changes or path redirection is detected during bounded acquisition | Fail the affected capture rather than combine multiple reads/content instances; retained snapshot, if any, proves only the bytes actually captured | Atomic authenticity of an external business document | RA03-REQ-005/006; RA09-REQ-005/014; SAD-04 §7.1 | TCND-I01-16 |
+| OR-I01-ID-010 | After commit/acknowledgement loss, the selected source is removed or unreadable and the operator repeats import with that path and the same operation ID | Report the input-acquisition failure; no invented fingerprint or claim of a verified identical retry, no new capture, and no overwrite of the committed result. Authorized receipt inspection remains based on stored evidence under `OR-I01-ID-007` | Substituting previously stored bytes for the unreadable newly selected input or silently changing import into receipt inspection | RA09-REQ-014; RA09-VAL-012; SAD-04 §7.2/§8 | TCND-I01-02, 11, 16 |
 
 ## 6. First coverage view against accepted I-01 conditions
 
@@ -274,17 +293,17 @@ This is a design trace only. It does not mark any condition executed or passed.
 | I-01 condition | W02-A status after this extraction |
 | --- | --- |
 | TCND-I01-01 | Oracle basis identified: byte fidelity, digest limits, order, locators, package/receipt linkage |
-| TCND-I01-02 | Oracle basis identified: retry identity, fingerprint conflict, independent identical-byte submission |
+| TCND-I01-02 | Oracle basis identified: fingerprint-checked import retry versus source-free stored-result inspection, changed/unreadable input, independent identical-byte submission |
 | TCND-I01-03 | Oracle basis identified: predecessor/child/immutability/invalid predecessor |
 | TCND-I01-04 | Oracle basis identified: exact envelope classes and empty-content distinction |
-| TCND-I01-05 | Oracle basis identified: duplicate names, BOM, UTF-8/syntax/non-finite/numeric-loss handling |
+| TCND-I01-05 | Oracle basis identified: duplicate names, BOM, UTF-8/syntax/non-finite handling, distinct numeric-token capacity and exact-representation cases; §9.5 status mapping remains open |
 | TCND-I01-06 | Oracle basis identified: presence states, wrong type, unknown fields, representation/order/source-ID preservation |
 | TCND-I01-07 | Oracle basis identified: literal origin, free text, defaults, absent/null/negative accountability |
 | TCND-I01-08 | Oracle basis identified: imported authority-like data, refs/URLs/paths, unbound source claims |
 | TCND-I01-09 | Not yet decomposed in W02-A; requires RA-08/SAD-04 admission-focused extraction |
-| TCND-I01-10 | Only representation/limit principle identified here; exact below/at/above policy inventory remains for RA-08/SAD-04 limit extraction |
+| TCND-I01-10 | Numeric-token 127/128/129-character variants identified with the §9.5 outcome-mapping decision still open; other below/at/above policy cases remain for RA-08/SAD-04 extraction |
 | TCND-I01-11 | Oracle basis identified for pre-commit and post-commit/pre-ack crash/cancel semantics; detailed fault points remain W02-B |
-| TCND-I01-12 | Not yet decomposed in W02-A; persistence/storage/history fault inventory remains for W02-B using RA-05/SAD-04 |
+| TCND-I01-12 | Partial basis identified: failed capture with and without safely retained failure receipt; remaining persistence/storage/history faults require W02-B using RA-05/SAD-04 |
 | TCND-I01-13 | Not yet decomposed in W02-A; writer/mutex/read-only boundary remains for W02-B |
 | TCND-I01-14 | Partial basis identified for inert supplied content and diagnostic/path minimization; dedicated RA-08 diagnostic cases remain |
 | TCND-I01-15 | Oracle basis identified: minimum `NOT_EVALUATED`, review not performed, no fabricated run/findings/availability |
@@ -308,7 +327,7 @@ minimum next design step suggested by the matrix.
 | `native-untrusted-controls` | URLs, paths, refs, imported IDs/roles/approvals/status | `OR-I01-FID-008/009/010` |
 | `origin-accountability` | Canonical origin, free text, defaults, explicit negative/unknown values | `OR-I01-AUTH-*` |
 | `receipt-boundary` | CAPTURED/REJECTED/FAILED and minimum/review separation | `OR-I01-RCP-*` |
-| `operation-retry` | Same-operation retry, changed fingerprint, lost acknowledgement | `OR-I01-ID-001/002/007` |
+| `operation-retry` | Fingerprint-checked import retry, changed/unreadable input, stored-result inspection after lost acknowledgement | `OR-I01-ID-001/002/007/010` |
 | `lineage` | New operation, identical bytes, predecessor child, invalid predecessor | `OR-I01-ID-003/004/005/008` |
 | `source-acquisition` | Source change/redirection and single-content-instance boundary | `OR-I01-ID-009` |
 
@@ -350,7 +369,8 @@ accepted review/closure records resolve those status differences:
 - W01 closure grants GO to W02.
 
 No new Owner decision is required merely to use those accepted contracts for
-test design.
+test design. This does not settle the missing numeric-limit classification
+identified in Section 9.5.
 
 ### 9.2 Do not over-specify issue codes yet
 
@@ -378,6 +398,28 @@ fixture/test rows or fault-injection detail to replace the original estimate.
 Re-estimation should therefore wait until W02-B has decomposed all 16 TCND
 conditions into concrete cases.
 
+### 9.5 Numeric-token limit: fixed boundary, unresolved outcome mapping
+
+SAD-04 Section 9 fixes the 128-character bound and requires a limit failure to
+block the dependent operation. A 129-character token cannot be accepted as a
+complete capture with only a representation warning. RA-09 Section 3.3 separately
+allows an explicitly limited numeric projection while retaining the exact source.
+These are different conditions, now separated in `OR-I01-SYN-004/005`.
+
+The sources do not explicitly assign the numeric-token exceedance to a receipt
+outcome and CLI exit-code pair. RA-09 Section 6.2 distinguishes prerequisite
+rejection from attempted-capture failure; SAD-04 Section 8 distinguishes
+rejected-input exit 2 from operational resource-failure exit 4. W02 must not choose
+between those classifications by observing the eventual implementation.
+
+For the 129-character case, the exact `capture_outcome`/exit-code oracle remains
+**OPEN — controlled SAD-04 clarification required**. Before finalizing that
+W02-B case or materializing its status assertions, obtain and record the human
+accepted classification, including the detection stage, receipt outcome and CLI
+exit code. An assertion accepting either pair would hide this unresolved decision.
+The already accepted limit, no-capture effect and source-fidelity invariants remain
+usable; this document grants no new product behavior or phase/work-item GO.
+
 ## 10. Next controlled step - W02-B
 
 W02-B should convert the accepted oracle basis into a concrete inventory.
@@ -402,13 +444,28 @@ The next extraction should also complete the conditions only partially covered
 here:
 
 - TCND-I01-09 - admission/public/synthetic versus denied classifications;
-- TCND-I01-10 - all accepted size/count/depth/time/memory boundaries;
+- TCND-I01-10 - remaining size/count/depth/time/memory boundaries and the
+  numeric-token outcome classification in Section 9.5;
 - TCND-I01-12 - contention/storage/read-only/schema/history-write failures;
 - TCND-I01-13 - second-writer and read-command database boundaries;
 - TCND-I01-14 - complete safe-diagnostic and inert-rendering cases.
 
 Those rows require focused use of RA-08, RA-05, and SAD-04 Sections 7-9 in
 addition to the sources already inspected.
+
+The 2026-10-03 review adds these concrete decomposition checks:
+
+- Exercise import retry and receipt inspection separately after acknowledgement
+  loss, with an unchanged, edited, deleted and unreadable external file. Change
+  one fingerprint component at a time; never overwrite the prior committed result.
+- Keep the 127/128/129-character capacity probes separate from in-bound precision
+  probes, with other limits controlled; carry the Section 9.5 open decision into
+  the affected test-inventory row.
+- For `OR-I01-RCP-006`, inject failure before capture commit and also prevent the
+  failure-receipt write. Exercise both an existing safe intent and no retained
+  intent. Assert the diagnostic, absence of fabricated final history, and prior
+  committed data preservation; inspect durable state after storage access is
+  restored. An unreadable store itself is not proof that no record exists.
 
 ## 11. Current handoff state
 
@@ -425,6 +482,7 @@ It does **not** establish:
 - that W02 is complete;
 - that I-01 is accepted.
 
-The next review question is whether the W02-A source interpretation, oracle
-boundaries, and proposed W02-B decomposition are correct before fixture
-materialization begins.
+The next review question is whether the clarified W02-A source interpretation,
+oracle boundaries, and proposed W02-B decomposition are correct before fixture
+materialization begins. Section 9.5 remains an explicit decision prerequisite for
+the numeric-token case; this update does not claim its closure.
