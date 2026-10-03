@@ -75,6 +75,7 @@ Start with the [consolidated review and phase-gate record](docs/requirements-ana
 | [SAD-04 requirement allocation](docs/solution-design/test-design-gatekeeper-sad-04-requirement-allocation-v0.2.json) | v0.2; accepted frozen plan | 249 IDs retained; 40 partial I-01 contributions, 16 planned conditions; execution evidence recorded separately |
 | [I-01 / W01](docs/implementation/i01-w01-foundation.md) | Closed 2026-09-29; Owner GO to W02 | CLI foundation, controlled empty-store initialization and recorded Windows evidence |
 | [W01 closure](docs/implementation/i01-w01-closure.md) | Owner decision 2026-09-29 | Formal W01 closure after PR #3 evidence review; authorizes W02 without accepting the whole I-01 increment |
+| [I-01 / W02](docs/implementation/i01-w02-test-design.md) | Working draft; W02-A test-basis extraction | Pre-implementation oracles, initial trace and proposed fixture families |
 | [Trace evidence ledger](docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-traceability-audit-v0.1.json) | v0.1 | Bidirectional requirement/validation paths and source identities |
 
 The [earlier review records](docs/reviews) and [requirements history](docs/requirements-analysis) remain available. The [RA-10 publication package](docs/requirements-analysis/ra-10) retains exact original, corrected and accepted review snapshots, including the corrected RA-03 source. Grouping these documents preserves their original relative links.
