@@ -119,7 +119,7 @@ External discovery is outside the MVP review workflow.
 
 Identified parsing, import mapping, or structural normalization used to establish the captured logical content of a package version.
 
-If changed transformation behavior changes captured content, a new package version is required.
+Recapturing supplied material with a changed capture mapping creates a new package version, even when the resulting logical values are unchanged. See [RA-09 §5.2](docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md#52-capture-mapping-contract).
 
 **assessment mapping**
 
@@ -155,7 +155,7 @@ content
 
 for the applicable contract version.
 
-Unknown fields inside `content` may be preserved. Unsupported or malformed control-envelope structure is not silently guessed.
+Unknown fields inside `content` are retained with their source locations and mapping status, as required by [RA-09 §3.3](docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md#33-source-fidelity-presence-and-mapping-state). If safe field projection is not possible, retain the relevant raw subtree or opaque artifact where capture is permitted and expose the affected boundary. Unsupported or malformed control-envelope structure is not silently guessed.
 
 **`review_package_input`**
 
