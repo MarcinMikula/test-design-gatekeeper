@@ -20,7 +20,7 @@ The project is intentionally **not a test-case generator**. Its purpose is to he
 
 **SAD-04:** Closed on 2026-09-28. The Owner accepted [SAD-04 v0.2](docs/solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md), allocation index v0.2 and SR-SAD04-001 v0.1, closed both findings and B-01 for I-01, and granted implementation GO. The later [decision record, SR-SAD04-001 v0.2](docs/reviews/test-design-gatekeeper-sad-04-review-record-v0.2.md), records that authority while retaining the exact accepted snapshots and the effort-estimate reservation.
 
-**Implementation:** I-01 / W01 formally closed by the Project Owner on 2026-09-29 after review of PR #3 evidence; GO is granted to begin W02. Corrected build `0.1.0.dev2` remains the qualified W01 foundation and provides `tdg version`, `tdg capabilities` and Windows-only empty-workspace initialization with directory and writer guards. Native Windows qualification completed on 2026-09-28 with 48 passing tests and no skips; all package-processing commands remain disabled. See the [W01 work and verification record](docs/implementation/i01-w01-foundation.md) and [W01 closure record](docs/implementation/i01-w01-closure.md).
+**Implementation:** I-01 / W01 formally closed by the Project Owner on 2026-09-29 after review of PR #3 evidence; GO is granted to begin W02. Corrected build `0.1.0.dev2` remains the qualified W01 foundation and provides `tdg version`, `tdg capabilities` and Windows-only empty-workspace initialization with directory and writer guards. Native Windows qualification completed on 2026-09-28 with 48 passing tests and no skips; all package-processing commands remain disabled. See the [W01 work and verification record](docs/implementation/i01-w01-foundation.md) and [W01 closure record](docs/implementation/i01-w01-closure.md). W02 is in test design: the [W02-B inventory](docs/implementation/i01-w02-test-inventory.md) is prepared for review; fixture/test materialization and W02 closure remain ahead. The Owner accepted the [numeric-token limit clarification](docs/solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md) on 2026-10-03.
 
 **Data policy:** Public or synthetic data only during the laboratory phase
 
@@ -75,7 +75,9 @@ Start with the [consolidated review and phase-gate record](docs/requirements-ana
 | [SAD-04 requirement allocation](docs/solution-design/test-design-gatekeeper-sad-04-requirement-allocation-v0.2.json) | v0.2; accepted frozen plan | 249 IDs retained; 40 partial I-01 contributions, 16 planned conditions; execution evidence recorded separately |
 | [I-01 / W01](docs/implementation/i01-w01-foundation.md) | Closed 2026-09-29; Owner GO to W02 | CLI foundation, controlled empty-store initialization and recorded Windows evidence |
 | [W01 closure](docs/implementation/i01-w01-closure.md) | Owner decision 2026-09-29 | Formal W01 closure after PR #3 evidence review; authorizes W02 without accepting the whole I-01 increment |
-| [I-01 / W02](docs/implementation/i01-w02-test-design.md) | Working draft; W02-A test-basis extraction | Pre-implementation oracles, initial trace and proposed fixture families |
+| [I-01 / W02](docs/implementation/i01-w02-test-design.md) | Working draft; numeric-limit decision recorded | Oracle basis, accepted REJECTED/2 limit outcome and link to concrete test design |
+| [W02-B test inventory](docs/implementation/i01-w02-test-inventory.md) | v0.1; prepared for review | 72 case rows, 208 listed parameter variants, all 16 condition routes; no execution or acceptance claim |
+| [SAD-04 numeric-token addendum](docs/solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md) | v0.1; Owner decision 2026-10-03 | REJECTED and CLI exit 2 above the 128-character token bound; frozen design baseline preserved |
 | [Trace evidence ledger](docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-traceability-audit-v0.1.json) | v0.1 | Bidirectional requirement/validation paths and source identities |
 
 The [earlier review records](docs/reviews) and [requirements history](docs/requirements-analysis) remain available. The [RA-10 publication package](docs/requirements-analysis/ra-10) retains exact original, corrected and accepted review snapshots, including the corrected RA-03 source. Grouping these documents preserves their original relative links.
@@ -143,7 +145,7 @@ A Jira-shaped file is treated as supplied content. TDG does not need to prove th
 | Concept and Feasibility | Closed | Accepted Charter and bounded product hypothesis |
 | Requirements Analysis | Closed | Ten accepted slices, static-review closure and bidirectional trace |
 | Solution and Architecture Design | SAD-01–04 closed for the I-01 boundary | Accepted baseline and closed findings; later capability decisions remain allocated |
-| Implementation | I-01 GO granted; W01 closed; W02 authorized | Develop the synthetic corpus, independent receipt/identity oracles and traceable W02 test inventory before bounded capture implementation continues |
+| Implementation | I-01 GO granted; W01 closed; W02-B inventory prepared for review | Review concrete cases and testing forecast, then materialize W02-C fixtures/skeletons before W02 completion |
 | Evaluation and product acceptance | Planned | Human-adjudicated evidence, task qualification, measured utility and explicit acceptance decisions |
 | Confidential deployment | Separate future gate | Verified sealed controls and explicit ROLE-09 authorization before protected input |
 

@@ -8,9 +8,9 @@
 | Review clarification date | 2026-10-03 (Europe/Warsaw) |
 | Increment | I-01 - bounded native-JSON capture and durable inspection |
 | Work item | I01-W02 |
-| Status | WORKING DRAFT - W02-A TEST-BASIS EXTRACTION |
+| Status | WORKING DRAFT - W02-A ORACLE BASIS WITH W02-B INVENTORY PREPARED |
 | Entry authority | I01-W01 closed; GO granted to I01-W02 in `docs/implementation/i01-w01-closure.md` |
-| Current activity | Extract accepted observable behavior before fixture/test implementation |
+| Current activity | Review the [W02-B concrete test inventory](i01-w02-test-inventory.md) before fixture/test materialization |
 | Product implementation in this document | NONE |
 | Fixture corpus in this revision | NOT YET MATERIALIZED |
 | Executable tests in this revision | NOT YET IMPLEMENTED |
@@ -18,6 +18,8 @@
 | W02 closure | NOT CLAIMED |
 | Source-inspection pin | Repository `main` as inspected after commit `e15438973564cc790237cce7e9f1bba5e14f4846` |
 | Clarification source pin | Repository `main` at `d9a6b15513f94f710cd96853f46552c1499e0f79`; governing RA-09 and SAD-04 sources unchanged |
+| Numeric-limit decision | Owner accepted `REJECTED` / exit `2` on 2026-10-03; [SAD04-I01-NUM-001](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md) |
+| W02-B preparation | 2026-10-04, using repository `0dc8d61144e82271839194de1fa7a466bbb4f92b` plus the recorded Owner decision |
 
 ## 1. Purpose
 
@@ -169,8 +171,9 @@ If source authority does not resolve a material conflict, W02 stops and requests
 a human decision instead of choosing the easiest-to-implement interpretation.
 
 No unresolved source-authority conflict was found in the inspected source set.
-The 2026-10-03 review identified an under-specified numeric-limit outcome mapping;
-Section 9.5 exposes that remaining decision instead of resolving it by inference.
+The 2026-10-03 review identified an under-specified numeric-limit outcome mapping.
+The Owner subsequently accepted its classification; Section 9.5 records the
+resolution and the governing SAD-04 addendum.
 
 ## 4. Oracle design rules
 
@@ -224,7 +227,7 @@ import retries remain governed by `OR-I01-ID-001/002/010`.
 | OR-I01-SYN-001 | Duplicate JSON object member at any depth | Reject before last-value-wins or another lossy accepted projection can be constructed | Which duplicate value was "intended" | RA09-REQ-004; RA09-VAL-003; SAD-04 §6.1 | TCND-I01-05 |
 | OR-I01-SYN-002 | Leading BOM on native JSON | Reject under the native JSON profile | BOM stripping followed by a success claim | RA09-REQ-004; RA09-VAL-003; SAD-04 §6.1 | TCND-I01-05 |
 | OR-I01-SYN-003 | Invalid UTF-8, JSON comments, trailing comma, or non-finite numeric token | Reject under syntax/profile rules before lossy accepted projection | Automatic syntax repair or non-finite normalization | RA09-REQ-004; RA09-VAL-003; SAD-04 §6.1 | TCND-I01-05 |
-| OR-I01-SYN-004 | Otherwise valid input contains a numeric token of 127, 128, or 129 characters; all other prerequisites and limits are satisfied | 127/128 do not fail the token-length check; 129 triggers an explicit numeric-token limit failure, blocks capture and creates no package version. Do not round or truncate to fit. The exact 129-character receipt-status/exit-code pair remains OPEN under §9.5 | Successful capture from a length check alone; treating a hard capacity bound as an optional projection warning | RA09-REQ-004/006/016; RA09-VAL-003; SAD-04 §6.1/§9 | TCND-I01-05, 10 |
+| OR-I01-SYN-004 | Otherwise valid input contains a numeric token of 127, 128, or 129 characters; all other prerequisites and limits are satisfied | 127/128 do not fail the token-length check; 129 produces `capture_outcome=REJECTED`, CLI exit `2`, no new package version/reference and `minimum_check=NOT_EVALUATED`, with safe limit/location diagnostics. Do not round or truncate to fit. See the accepted §9.5 clarification | Successful capture from a length check alone; treating a hard capacity bound as an optional projection warning | RA09-REQ-004/006/016; RA09-VAL-003; SAD-04 §6.1/§9; SAD04-I01-NUM-001 | TCND-I01-05, 10 |
 | OR-I01-SYN-005 | Valid numeric lexeme within all accepted bounds would lose precision through the selected numeric projection | Exact source bytes and numeric lexeme/location remain available. Preserve an exact projected value where supported; otherwise expose the affected projection limitation with a retained lexeme reference. Never present a rounded/coerced number as source or report a token-length violation for an in-bound token | That a lossy binary-float conversion is an acceptable source value, or that projection limitations erase the original | RA09-REQ-004/006; RA09-VAL-003; RA09 §3.3; SAD-04 §6.1 | TCND-I01-05, 06 |
 
 For the token-length variants, use an unquoted JSON number consisting of `1`
@@ -288,7 +291,10 @@ These are fixture recipes; files and executable tests are not materialized here.
 
 ## 6. First coverage view against accepted I-01 conditions
 
-This is a design trace only. It does not mark any condition executed or passed.
+This is the initial W02-A extraction view, retained with the numeric-limit
+resolution. The [W02-B inventory](i01-w02-test-inventory.md) now decomposes all 16
+conditions, including the remaining RA-05/RA-08 routes identified below. These
+are design traces only; no condition is marked executed or passed.
 
 | I-01 condition | W02-A status after this extraction |
 | --- | --- |
@@ -296,12 +302,12 @@ This is a design trace only. It does not mark any condition executed or passed.
 | TCND-I01-02 | Oracle basis identified: fingerprint-checked import retry versus source-free stored-result inspection, changed/unreadable input, independent identical-byte submission |
 | TCND-I01-03 | Oracle basis identified: predecessor/child/immutability/invalid predecessor |
 | TCND-I01-04 | Oracle basis identified: exact envelope classes and empty-content distinction |
-| TCND-I01-05 | Oracle basis identified: duplicate names, BOM, UTF-8/syntax/non-finite handling, distinct numeric-token capacity and exact-representation cases; §9.5 status mapping remains open |
+| TCND-I01-05 | Oracle basis identified: duplicate names, BOM, UTF-8/syntax/non-finite handling, distinct numeric-token capacity and exact-representation cases; §9.5 status mapping accepted |
 | TCND-I01-06 | Oracle basis identified: presence states, wrong type, unknown fields, representation/order/source-ID preservation |
 | TCND-I01-07 | Oracle basis identified: literal origin, free text, defaults, absent/null/negative accountability |
 | TCND-I01-08 | Oracle basis identified: imported authority-like data, refs/URLs/paths, unbound source claims |
 | TCND-I01-09 | Not yet decomposed in W02-A; requires RA-08/SAD-04 admission-focused extraction |
-| TCND-I01-10 | Numeric-token 127/128/129-character variants identified with the §9.5 outcome-mapping decision still open; other below/at/above policy cases remain for RA-08/SAD-04 extraction |
+| TCND-I01-10 | Numeric-token 127/128/129-character variants identified with the accepted §9.5 outcome mapping; remaining limits are decomposed in the W02-B inventory |
 | TCND-I01-11 | Oracle basis identified for pre-commit and post-commit/pre-ack crash/cancel semantics; detailed fault points remain W02-B |
 | TCND-I01-12 | Partial basis identified: failed capture with and without safely retained failure receipt; remaining persistence/storage/history faults require W02-B using RA-05/SAD-04 |
 | TCND-I01-13 | Not yet decomposed in W02-A; writer/mutex/read-only boundary remains for W02-B |
@@ -369,8 +375,8 @@ accepted review/closure records resolve those status differences:
 - W01 closure grants GO to W02.
 
 No new Owner decision is required merely to use those accepted contracts for
-test design. This does not settle the missing numeric-limit classification
-identified in Section 9.5.
+test design. The separate numeric-limit classification identified during review
+was explicitly accepted by the Owner and is recorded in Section 9.5.
 
 ### 9.2 Do not over-specify issue codes yet
 
@@ -389,83 +395,53 @@ Identity distinction, stability, lineage, and attribution are contract
 requirements. Tests should not overfit to a display encoding unless the accepted
 design fixes it for I-01.
 
-### 9.4 Re-estimation is not ready yet
+### 9.4 First inventory-based reassessment
 
 SAD-04 requires re-estimation during W02 using the **detailed test inventory**.
 
-This W02-A matrix establishes the oracle basis but does not yet contain enough
-fixture/test rows or fault-injection detail to replace the original estimate.
-Re-estimation should therefore wait until W02-B has decomposed all 16 TCND
-conditions into concrete cases.
+The initial W02-A matrix was insufficient for a revised forecast. The
+[W02-B inventory](i01-w02-test-inventory.md#7-effort-reassessment) now provides the
+first case-based testing forecast and its assumptions. It is a provisional
+planning estimate, not measured effort, an approved ceiling or a full I-01 total.
 
-### 9.5 Numeric-token limit: fixed boundary, unresolved outcome mapping
+### 9.5 Numeric-token limit: accepted outcome mapping
 
-SAD-04 Section 9 fixes the 128-character bound and requires a limit failure to
-block the dependent operation. A 129-character token cannot be accepted as a
-complete capture with only a representation warning. RA-09 Section 3.3 separately
-allows an explicitly limited numeric projection while retaining the exact source.
-These are different conditions, now separated in `OR-I01-SYN-004/005`.
+**RESOLVED — Project Owner decision, 2026-10-03.**
 
-The sources do not explicitly assign the numeric-token exceedance to a receipt
-outcome and CLI exit-code pair. RA-09 Section 6.2 distinguishes prerequisite
-rejection from attempted-capture failure; SAD-04 Section 8 distinguishes
-rejected-input exit 2 from operational resource-failure exit 4. W02 must not choose
-between those classifications by observing the eventual implementation.
+The review exposed an absent classification, rather than a dispute about the
+128-character bound. The Owner explicitly accepted `REJECTED` and CLI exit `2`
+for exceeding that bound, with no new package version/reference and minimum
+`NOT_EVALUATED`. The attributable decision, safe-diagnostic rule and scope are
+recorded in [SAD04-I01-NUM-001](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md).
 
-For the 129-character case, the exact `capture_outcome`/exit-code oracle remains
-**OPEN — controlled SAD-04 clarification required**. Before finalizing that
-W02-B case or materializing its status assertions, obtain and record the human
-accepted classification, including the detection stage, receipt outcome and CLI
-exit code. An assertion accepting either pair would hide this unresolved decision.
-The already accepted limit, no-capture effect and source-fidelity invariants remain
-usable; this document grants no new product behavior or phase/work-item GO.
+This resolves the former decision prerequisite for `OR-I01-SYN-004`. For
+otherwise eligible inputs, 127/128-character tokens pass this bound;
+129-character tokens are rejected. Exact representation within the bound remains
+the separate `OR-I01-SYN-005` concern. Existing safety and persistence failures
+retain their cause-specific handling; the numeric decision is not generalized
+to all resource failures.
 
-## 10. Next controlled step - W02-B
+The accepted SAD-04 v0.2 bytes remain frozen. Read that baseline with the addendum.
+No product execution, W02 closure or new phase/work-item GO is claimed.
 
-W02-B should convert the accepted oracle basis into a concrete inventory.
+## 10. W02-B inventory and review
 
-For each case, record:
+The [W02-B inventory](i01-w02-test-inventory.md) converts this oracle basis and
+the remaining RA-05/RA-08/SAD-04 conditions into concrete parameterized cases.
+It is prepared for review; fixtures and executable tests remain W02-C work.
 
-```text
-case ID
-fixture family
-input mutation / state setup
-oracle ID
-expected intake/identity/receipt observation
-TCND-I01 trace
-REQ/VAL/design trace
-planned test level
-required fault injection, if any
-evidence to retain
-explicit non-claim
-```
+It covers capture/identity, envelope/syntax, presence/accountability, admission
+and inert content, resource/containment boundaries, transactions/recovery,
+concurrency/source selection, diagnostics/copies and unavailable capabilities.
+Each row carries its stimulus, expected observation, condition/oracle route,
+test level, evidence and fault point. The bidirectional condition table reaches
+all 16 accepted conditions without claiming execution or full requirement fulfilment.
 
-The next extraction should also complete the conditions only partially covered
-here:
-
-- TCND-I01-09 - admission/public/synthetic versus denied classifications;
-- TCND-I01-10 - remaining size/count/depth/time/memory boundaries and the
-  numeric-token outcome classification in Section 9.5;
-- TCND-I01-12 - contention/storage/read-only/schema/history-write failures;
-- TCND-I01-13 - second-writer and read-command database boundaries;
-- TCND-I01-14 - complete safe-diagnostic and inert-rendering cases.
-
-Those rows require focused use of RA-08, RA-05, and SAD-04 Sections 7-9 in
-addition to the sources already inspected.
-
-The 2026-10-03 review adds these concrete decomposition checks:
-
-- Exercise import retry and receipt inspection separately after acknowledgement
-  loss, with an unchanged, edited, deleted and unreadable external file. Change
-  one fingerprint component at a time; never overwrite the prior committed result.
-- Keep the 127/128/129-character capacity probes separate from in-bound precision
-  probes, with other limits controlled; carry the Section 9.5 open decision into
-  the affected test-inventory row.
-- For `OR-I01-RCP-006`, inject failure before capture commit and also prevent the
-  failure-receipt write. Exercise both an existing safe intent and no retained
-  intent. Assert the diagnostic, absence of fabricated final history, and prior
-  committed data preservation; inspect durable state after storage access is
-  restored. An unreadable store itself is not proof that no record exists.
+Review particularly the separation of fingerprint-checked import retry from
+source-free receipt inspection, numeric capacity from precision retention, and
+capture failure with a stored receipt from failure that cannot retain a receipt.
+The inventory retains these concrete variants and exposes its remaining test
+harness/configuration bindings and provisional effort forecast.
 
 ## 11. Current handoff state
 
@@ -474,7 +450,7 @@ implementation.
 
 It does **not** establish:
 
-- that the oracle set is yet complete for all 16 I-01 conditions;
+- that the planned cases establish exhaustive coverage or executed evidence;
 - that fixtures exist;
 - that test code exists;
 - that W03 may start merely because this draft exists;
@@ -482,7 +458,7 @@ It does **not** establish:
 - that W02 is complete;
 - that I-01 is accepted.
 
-The next review question is whether the clarified W02-A source interpretation,
-oracle boundaries, and proposed W02-B decomposition are correct before fixture
-materialization begins. Section 9.5 remains an explicit decision prerequisite for
-the numeric-token case; this update does not claim its closure.
+The next review concerns the W02-B case inventory, fault points, evidence
+boundaries and provisional effort reassessment before fixture materialization.
+The numeric-token decision prerequisite is closed by explicit Owner acceptance;
+W02 as a work item remains open.
