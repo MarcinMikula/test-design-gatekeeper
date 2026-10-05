@@ -5,7 +5,9 @@
 | Field | State |
 | --- | --- |
 | Version / preparation date | v0.1 — 2026-10-04 (Europe/Warsaw) |
-| Status | WORKING DRAFT — prepared for review, not accepted or executed |
+| Status at initial publication | WORKING DRAFT — prepared for review, not accepted or executed |
+| Review progress — 2026-10-04 | PARTIAL OWNER ACCEPTANCE — Sections 2–3 and groups A–F accepted without changes; remaining review open |
+| Decision evidence | [SR-I01-W02B-001 v0.1](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.1.md); group G presented, decision pending; no execution or closure |
 | Work authority | W01 closure grants W02; Owner's 2026-10-03 instruction continues the work |
 | Source pin | `0dc8d61144e82271839194de1fa7a466bbb4f92b`, plus the accepted numeric-token addendum |
 | Governing numeric decision | [SAD04-I01-NUM-001](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md): REJECTED / exit 2 above 128 characters |
@@ -327,11 +329,19 @@ identities, all 16 condition routes, known W02-A oracle references, frozen basel
 preservation and consistency of the numeric decision. These are static document
 checks, not executed product tests or independent review.
 
-The next human review can proceed by groups A–H. Review whether the stimuli can
-distinguish the required effects, whether the oracles are supported, and whether
-the selected levels/faults provide sufficient evidence. Corrections belong here
-before affected fixture/test materialization. Acceptance of the numeric addendum
-does not automatically accept this inventory or its effort forecast.
+The human review proceeds by groups A–H. On 2026-10-04 the Owner accepted
+Sections 2–3 and groups A–F without changes: 58 case rows / 174 listed variants.
+[SR-I01-W02B-001 v0.1](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.1.md)
+records the attributable decisions and the parked idea of reusing case copies as
+future reviewer-development input. Group G has been presented but not accepted;
+group H and the other inventory sections, including the Section 7 forecast,
+remain without separate Owner acceptance. Resume at group G's decision.
+
+Review whether the stimuli can distinguish the required effects, whether the
+oracles are supported, and whether the selected levels/faults provide sufficient
+evidence. Corrections belong here before affected fixture/test materialization.
+Neither the numeric addendum nor partial case acceptance closes W02, accepts the
+remaining inventory/forecast, or establishes execution evidence.
 
 ### Source navigation
 
