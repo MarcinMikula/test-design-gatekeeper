@@ -430,6 +430,14 @@ be established, fail closed rather than inventing permission.
 - update documentation only to the strength supported by evidence;
 - request the required human decision before claiming closure.
 
+### Commit cadence
+
+Use small, coherent commits for completed work slices. On active workdays,
+publish ready changes daily or several times during the day, within the existing
+publication authorization. Keep related decisions and current navigation aligned
+in the same commit; do not accumulate completed work solely for a large
+phase-ending commit. Apply the existing checks to each change.
+
 ---
 
 ## 12. Documentation-change discipline

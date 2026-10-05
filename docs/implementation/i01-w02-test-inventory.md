@@ -6,8 +6,8 @@
 | --- | --- |
 | Version / preparation date | v0.1 — 2026-10-04 (Europe/Warsaw) |
 | Status at initial publication | WORKING DRAFT — prepared for review, not accepted or executed |
-| Review progress — 2026-10-05 | CASE GROUPS ACCEPTED — Sections 2–3 and groups A–H accepted without changes; Section 1 and Sections 5–8 remain open |
-| Decision evidence | [SR-I01-W02B-001 v0.2](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.2.md); G–H accepted on 2026-10-05; no execution or closure |
+| Review progress — 2026-10-05 | CASE GROUPS ACCEPTED — Sections 1–3 and groups A–H accepted without changes; Sections 5–8 remain open |
+| Decision evidence | [SR-I01-W02B-001 v0.3](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.3.md); Section 1 accepted on 2026-10-05 after G–H; no execution or closure |
 | Work authority | W01 closure grants W02; Owner's 2026-10-03 instruction continues the work |
 | Source pin | `0dc8d61144e82271839194de1fa7a466bbb4f92b`, plus the accepted numeric-token addendum |
 | Governing numeric decision | [SAD04-I01-NUM-001](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md): REJECTED / exit 2 above 128 characters |
@@ -330,13 +330,13 @@ preservation and consistency of the numeric decision. These are static document
 checks, not executed product tests or independent review.
 
 The Owner accepted Sections 2–3 and groups A–F without changes on 2026-10-04,
-then groups G–H without changes on 2026-10-05. All 72 case rows / 208 listed
-variants now have recorded test-design acceptance.
-[SR-I01-W02B-001 v0.2](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.2.md)
-records the new decisions and carries forward v0.1, including the parked idea
-of reusing case copies as future reviewer-development input. Section 1 and
-Sections 5–8, including the Section 7 forecast, remain without separate Owner
-acceptance. Resume with those remaining inventory sections.
+then groups G–H and Section 1 without changes on 2026-10-05. All 72 case rows / 208
+listed variants have recorded test-design acceptance.
+[SR-I01-W02B-001 v0.3](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.3.md)
+records Section 1 acceptance and carries forward v0.2, including the parked idea
+of reusing case copies as future reviewer-development input. Sections 5–8,
+including the Section 7 forecast, remain without separate Owner acceptance.
+Resume with Section 5.
 
 Review whether the stimuli can distinguish the required effects, whether the
 oracles are supported, and whether the selected levels/faults provide sufficient
