@@ -8,9 +8,9 @@
 | Review clarification date | 2026-10-03 (Europe/Warsaw) |
 | Increment | I-01 - bounded native-JSON capture and durable inspection |
 | Work item | I01-W02 |
-| Status | WORKING DRAFT - W02-A ORACLE BASIS; W02-B PARTIAL OWNER ACCEPTANCE RECORDED |
+| Status | WORKING DRAFT - W02-A ORACLE BASIS; W02-B GROUPS A–H ACCEPTED, REMAINING REVIEW OPEN |
 | Entry authority | I01-W01 closed; GO granted to I01-W02 in `docs/implementation/i01-w01-closure.md` |
-| Current activity | Resume the [W02-B inventory](i01-w02-test-inventory.md) at group G's decision, then review H and remaining sections before fixture/test materialization |
+| Current activity | Review [W02-B](i01-w02-test-inventory.md) Section 1 and Sections 5–8, including the effort forecast, before fixture/test materialization |
 | Product implementation in this document | NONE |
 | Fixture corpus in this revision | NOT YET MATERIALIZED |
 | Executable tests in this revision | NOT YET IMPLEMENTED |
@@ -20,7 +20,7 @@
 | Clarification source pin | Repository `main` at `d9a6b15513f94f710cd96853f46552c1499e0f79`; governing RA-09 and SAD-04 sources unchanged |
 | Numeric-limit decision | Owner accepted `REJECTED` / exit `2` on 2026-10-03; [SAD04-I01-NUM-001](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md) |
 | W02-B preparation | 2026-10-04, using repository `0dc8d61144e82271839194de1fa7a466bbb4f92b` plus the recorded Owner decision |
-| W02-B Owner review | 2026-10-04: Sections 2–3 and A–F accepted without changes; [partial decision record](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.1.md) |
+| W02-B Owner review | Sections 2–3 and A–F accepted 2026-10-04; G–H accepted 2026-10-05; all without changes — [decision record v0.2](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.2.md) |
 
 ## 1. Purpose
 
@@ -430,10 +430,11 @@ No product execution, W02 closure or new phase/work-item GO is claimed.
 The [W02-B inventory](i01-w02-test-inventory.md) converts this oracle basis and
 the remaining RA-05/RA-08/SAD-04 conditions into concrete parameterized cases.
 Its Owner review is in progress. Sections 2–3 and groups A–F were accepted
-without changes on 2026-10-04; group G awaits a decision. The
-[partial review record](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.1.md)
-keeps the accepted scope separate from remaining review and the parked future
-corpus-reuse idea. Fixtures and executable tests remain W02-C work.
+without changes on 2026-10-04, followed by G–H on 2026-10-05. The
+[review record v0.2](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.2.md)
+records acceptance of all 72 case rows / 208 variants while keeping the remaining
+inventory sections, forecast and parked future corpus-reuse idea distinct.
+Fixtures and executable tests remain W02-C work.
 
 It covers capture/identity, envelope/syntax, presence/accountability, admission
 and inert content, resource/containment boundaries, transactions/recovery,
@@ -463,9 +464,8 @@ It does **not** establish:
 - that W02 is complete;
 - that I-01 is accepted.
 
-The next review resumes at W02-B group G, which was presented but not accepted,
-then covers group H and the remaining inventory sections, including the
-provisional effort reassessment. Sections 2–3 and groups A–F have recorded Owner
-acceptance of their test design, not execution evidence. The numeric-token
-decision prerequisite is closed by explicit Owner acceptance; W02 as a work item
-remains open.
+The next review covers W02-B Section 1 and Sections 5–8, including the provisional
+effort reassessment. Sections 2–3 and all groups A–H have recorded Owner acceptance
+of their test design, not execution evidence. The numeric-token decision
+prerequisite is closed by explicit Owner acceptance; W02 as a work item remains
+open.
