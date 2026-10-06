@@ -6,8 +6,8 @@
 | --- | --- |
 | Version / preparation date | v0.1 — 2026-10-04 (Europe/Warsaw) |
 | Status at initial publication | WORKING DRAFT — prepared for review, not accepted or executed |
-| Review progress — 2026-10-06 | CASE GROUPS ACCEPTED — Sections 1–3 and 5, plus groups A–H, accepted without changes; Sections 6–8 remain open |
-| Decision evidence | [SR-I01-W02B-001 v0.4](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.4.md); Section 5 accepted on 2026-10-06; no execution or closure |
+| Review progress — 2026-10-06 | CASE GROUPS ACCEPTED — Sections 1–3 and 5–6, plus groups A–H, accepted without changes; Sections 7–8 remain open |
+| Decision evidence | [SR-I01-W02B-001 v0.5](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.5.md); Section 6 accepted on 2026-10-06; no execution or closure |
 | Work authority | W01 closure grants W02; Owner's 2026-10-03 instruction continues the work |
 | Source pin | `0dc8d61144e82271839194de1fa7a466bbb4f92b`, plus the accepted numeric-token addendum |
 | Governing numeric decision | [SAD04-I01-NUM-001](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md): REJECTED / exit 2 above 128 characters |
@@ -330,14 +330,14 @@ preservation and consistency of the numeric decision. These are static document
 checks, not executed product tests or independent review.
 
 The Owner accepted Sections 2–3 and groups A–F without changes on 2026-10-04,
-then groups G–H and Section 1 on 2026-10-05, and Section 5 on 2026-10-06, all
+then groups G–H and Section 1 on 2026-10-05, and Sections 5–6 on 2026-10-06, all
 without changes. All 72 case rows / 208 listed variants have recorded test-design
 acceptance.
-[SR-I01-W02B-001 v0.4](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.4.md)
-records Section 5 acceptance and carries forward v0.3, including the parked idea
-of reusing case copies as future reviewer-development input. Sections 6–8,
+[SR-I01-W02B-001 v0.5](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.5.md)
+records Section 6 acceptance and carries forward v0.4, including the parked idea
+of reusing case copies as future reviewer-development input. Sections 7–8,
 including the Section 7 forecast, remain without separate Owner acceptance.
-Resume with Section 6.
+Resume with Section 7.
 
 Review whether the stimuli can distinguish the required effects, whether the
 oracles are supported, and whether the selected levels/faults provide sufficient
