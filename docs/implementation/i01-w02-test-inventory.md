@@ -6,8 +6,8 @@
 | --- | --- |
 | Version / preparation date | v0.1 — 2026-10-04 (Europe/Warsaw) |
 | Status at initial publication | WORKING DRAFT — prepared for review, not accepted or executed |
-| Review progress — 2026-10-06 | CASE GROUPS ACCEPTED — Sections 1–3 and 5–6, plus groups A–H, accepted without changes; Sections 7–8 remain open |
-| Decision evidence | [SR-I01-W02B-001 v0.5](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.5.md); Section 6 accepted on 2026-10-06; no execution or closure |
+| Review progress — 2026-10-07 | CASE GROUPS ACCEPTED — Sections 1–3 and 5–7, plus groups A–H, accepted without changes; forecast accepted as provisional; Section 8 remains open |
+| Decision evidence | [SR-I01-W02B-001 v0.6](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.6.md); Section 7 accepted on 2026-10-07 as a provisional forecast; no execution or closure |
 | Work authority | W01 closure grants W02; Owner's 2026-10-03 instruction continues the work |
 | Source pin | `0dc8d61144e82271839194de1fa7a466bbb4f92b`, plus the accepted numeric-token addendum |
 | Governing numeric decision | [SAD04-I01-NUM-001](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md): REJECTED / exit 2 above 128 characters |
@@ -329,21 +329,21 @@ identities, all 16 condition routes, known W02-A oracle references, frozen basel
 preservation and consistency of the numeric decision. These are static document
 checks, not executed product tests or independent review.
 
-The Owner accepted Sections 2–3 and groups A–F without changes on 2026-10-04,
-then groups G–H and Section 1 on 2026-10-05, and Sections 5–6 on 2026-10-06, all
-without changes. All 72 case rows / 208 listed variants have recorded test-design
-acceptance.
-[SR-I01-W02B-001 v0.5](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.5.md)
-records Section 6 acceptance and carries forward v0.4, including the parked idea
-of reusing case copies as future reviewer-development input. Sections 7–8,
-including the Section 7 forecast, remain without separate Owner acceptance.
-Resume with Section 7.
+The Owner accepted Sections 2–3 and groups A–F on 2026-10-04, groups G–H and
+Section 1 on 2026-10-05, Sections 5–6 on 2026-10-06, and Section 7 on 2026-10-07,
+all without changes. All 72 case rows / 208 listed variants have recorded
+test-design acceptance.
+[SR-I01-W02B-001 v0.6](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.6.md)
+records Section 7 acceptance as a provisional forecast to be checked against
+actual work and carries forward v0.5, including the parked future corpus-reuse
+idea. Section 8 remains without separate Owner acceptance. Resume with Section 8.
 
 Review whether the stimuli can distinguish the required effects, whether the
 oracles are supported, and whether the selected levels/faults provide sufficient
 evidence. Corrections belong here before affected fixture/test materialization.
-Acceptance of the case groups and Sections 2–3 does not close W02, accept the
-remaining inventory/forecast, or establish execution evidence.
+The acceptances recorded so far do not close W02, accept Section 8, or establish
+execution evidence. Section 7 remains a provisional planning hypothesis with its
+stated reassessment points and estimate reservation.
 
 ### Source navigation
 
