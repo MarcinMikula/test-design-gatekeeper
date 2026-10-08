@@ -1,0 +1,593 @@
+{
+  "corpus_id": "I01-W02C-ENVELOPE-01",
+  "exposure": "PUBLIC_SYNTHETIC_DEVELOPMENT",
+  "inventory": {
+    "path": "docs/implementation/i01-w02-test-inventory.md",
+    "commit": "e1ff0d7a9114f3092fc10ac4734e27cdce7ea380",
+    "blob": "397a38db02b2b403ab431056a6a4b533e9abd697"
+  },
+  "base_fixture": "base-01.json",
+  "full_capture_prerequisites": "Eligible Windows x64 / CPython 3.13 laboratory context; initialized isolated healthy store; qa-demo operator; synthetic classification; lab-development purpose; fresh operation identity; all other accepted admission and containment controls satisfied.",
+  "additional_capture_observations": {
+    "TC-I01-012.02": {
+      "preserved_pointer": "/content/synthetic_marker",
+      "raw_value": "W02C_UNKNOWN_MARKER_012",
+      "mapping_state_visible": true
+    },
+    "TC-I01-015": {
+      "absent_content_dimensions": [
+        "scope",
+        "basis_elements",
+        "test_cases"
+      ],
+      "minimum_reason": "MINIMUM_CHECK_NOT_ENABLED_IN_I01"
+    }
+  },
+  "cases": [
+    {
+      "id": "TC-I01-011.01",
+      "file": "envelope/TC-I01-011.01.json",
+      "change": "Absent root member: document_type",
+      "levels": [
+        "U",
+        "C"
+      ],
+      "measurements": {
+        "byte_length": 1008,
+        "sha256": "2087fd4cd6ab0dd5fc6b3d32bf13a27bb7dd2ea7941d58cc8379330533610d33",
+        "container_depth": 6,
+        "value_nodes": 23,
+        "max_decoded_text_bytes": 154
+      },
+      "expected": {
+        "component": {
+          "envelope_permits_next_stage": false
+        },
+        "full_capture": {
+          "outcome": "REJECTED",
+          "new_package_version": false,
+          "minimum": "NOT_EVALUATED",
+          "review_performed": false
+        },
+        "cli": {
+          "exit_code_on_successful_result_delivery": 2
+        }
+      }
+    },
+    {
+      "id": "TC-I01-011.02",
+      "file": "envelope/TC-I01-011.02.json",
+      "change": "Absent root member: contract_version",
+      "levels": [
+        "U",
+        "C"
+      ],
+      "measurements": {
+        "byte_length": 1022,
+        "sha256": "b0e831c4fc1c1df23d815544c7929fb2562a383a06a57b5597f921905482d80d",
+        "container_depth": 6,
+        "value_nodes": 23,
+        "max_decoded_text_bytes": 154
+      },
+      "expected": {
+        "component": {
+          "envelope_permits_next_stage": false
+        },
+        "full_capture": {
+          "outcome": "REJECTED",
+          "new_package_version": false,
+          "minimum": "NOT_EVALUATED",
+          "review_performed": false
+        },
+        "cli": {
+          "exit_code_on_successful_result_delivery": 2
+        }
+      }
+    },
+    {
+      "id": "TC-I01-011.03",
+      "file": "envelope/TC-I01-011.03.json",
+      "change": "Absent root member: content",
+      "levels": [
+        "U",
+        "C"
+      ],
+      "measurements": {
+        "byte_length": 75,
+        "sha256": "216c0bdb7f86bcc41d316931e258892298c1923aed27bb57e98d98eeffd5ec18",
+        "container_depth": 1,
+        "value_nodes": 3,
+        "max_decoded_text_bytes": 20
+      },
+      "expected": {
+        "component": {
+          "envelope_permits_next_stage": false
+        },
+        "full_capture": {
+          "outcome": "REJECTED",
+          "new_package_version": false,
+          "minimum": "NOT_EVALUATED",
+          "review_performed": false
+        },
+        "cli": {
+          "exit_code_on_successful_result_delivery": 2
+        }
+      }
+    },
+    {
+      "id": "TC-I01-012.01",
+      "file": "envelope/TC-I01-012.01.json",
+      "change": "Unknown synthetic_marker in root",
+      "levels": [
+        "U",
+        "I"
+      ],
+      "measurements": {
+        "byte_length": 1100,
+        "sha256": "45df7dcd4d64c89dbde99a2a09688bf4a248f3185b4dd166f44735cd06071822",
+        "container_depth": 6,
+        "value_nodes": 25,
+        "max_decoded_text_bytes": 154
+      },
+      "expected": {
+        "component": {
+          "envelope_permits_next_stage": false
+        },
+        "full_capture": {
+          "outcome": "REJECTED",
+          "new_package_version": false,
+          "minimum": "NOT_EVALUATED",
+          "review_performed": false
+        }
+      }
+    },
+    {
+      "id": "TC-I01-012.02",
+      "file": "envelope/TC-I01-012.02.json",
+      "change": "Unknown synthetic_marker in content",
+      "levels": [
+        "U",
+        "I"
+      ],
+      "measurements": {
+        "byte_length": 1102,
+        "sha256": "96bede3f4979c34bd4e3934c449060dd2623ca53ba4cb31db122cc8fbad37386",
+        "container_depth": 6,
+        "value_nodes": 25,
+        "max_decoded_text_bytes": 154
+      },
+      "expected": {
+        "component": {
+          "envelope_permits_next_stage": true
+        },
+        "full_capture": {
+          "outcome": "CAPTURED",
+          "new_package_version": true,
+          "minimum": "NOT_EVALUATED",
+          "review_performed": false
+        }
+      }
+    },
+    {
+      "id": "TC-I01-013.01",
+      "file": "envelope/TC-I01-013.01.json",
+      "change": "Root document_type has type null",
+      "levels": [
+        "U",
+        "C"
+      ],
+      "measurements": {
+        "byte_length": 1033,
+        "sha256": "76bee0766f03c9d46910e428868cb4516c1bf67bd8c7c3b3600b9606d21da206",
+        "container_depth": 6,
+        "value_nodes": 24,
+        "max_decoded_text_bytes": 154
+      },
+      "expected": {
+        "component": {
+          "envelope_permits_next_stage": false
+        },
+        "full_capture": {
+          "outcome": "REJECTED",
+          "new_package_version": false,
+          "minimum": "NOT_EVALUATED",
+          "review_performed": false
+        },
+        "cli": {
+          "exit_code_on_successful_result_delivery": 2
+        }
+      }
+    },
+    {
+      "id": "TC-I01-013.02",
+      "file": "envelope/TC-I01-013.02.json",
+      "change": "Root document_type has type integer",
+      "levels": [
+        "U",
+        "C"
+      ],
+      "measurements": {
+        "byte_length": 1030,
+        "sha256": "ff5a0ea6b0a7636e830247ed573b84886016cc73d185741ca5912ba9d0fc215c",
+        "container_depth": 6,
+        "value_nodes": 24,
+        "max_decoded_text_bytes": 154
+      },
+      "expected": {
+        "component": {
+          "envelope_permits_next_stage": false
+        },
+        "full_capture": {
+          "outcome": "REJECTED",
+          "new_package_version": false,
+          "minimum": "NOT_EVALUATED",
+          "review_performed": false
+        },
+        "cli": {
+          "exit_code_on_successful_result_delivery": 2
+        }
+      }
+    },
+    {
+      "id": "TC-I01-013.03",
+      "file": "envelope/TC-I01-013.03.json",
+      "change": "Root contract_version has type null",
+      "levels": [
+        "U",
+        "C"
+      ],
+      "measurements": {
+        "byte_length": 1050,
+        "sha256": "104191785a3535c5ce0626e45055aebee3a3098719e5cf4ba6a8439b7da0450d",
+        "container_depth": 6,
+        "value_nodes": 24,
+        "max_decoded_text_bytes": 154
+      },
+      "expected": {
+        "component": {
+          "envelope_permits_next_stage": false
+        },
+        "full_capture": {
+          "outcome": "REJECTED",
+          "new_package_version": false,
+          "minimum": "NOT_EVALUATED",
+          "review_performed": false
+        },
+        "cli": {
+          "exit_code_on_successful_result_delivery": 2
+        }
+      }
+    },
+    {
+      "id": "TC-I01-013.04",
+      "file": "envelope/TC-I01-013.04.json",
+      "change": "Root contract_version has type number",
+      "levels": [
+        "U",
+        "C"
+      ],
+      "measurements": {
+        "byte_length": 1049,
+        "sha256": "4c955e9a8aa88e550a9bd82a41c5ddee570579445d17f9a337a56db323cbb8d0",
+        "container_depth": 6,
+        "value_nodes": 24,
+        "max_decoded_text_bytes": 154
+      },
+      "expected": {
+        "component": {
+          "envelope_permits_next_stage": false
+        },
+        "full_capture": {
+          "outcome": "REJECTED",
+          "new_package_version": false,
+          "minimum": "NOT_EVALUATED",
+          "review_performed": false
+        },
+        "cli": {
+          "exit_code_on_successful_result_delivery": 2
+        }
+      }
+    },
+    {
+      "id": "TC-I01-013.05",
+      "file": "envelope/TC-I01-013.05.json",
+      "change": "Root content has type null",
+      "levels": [
+        "U",
+        "C"
+      ],
+      "measurements": {
+        "byte_length": 94,
+        "sha256": "07c66a8c335a411edb14a255c7c788ef5e00bf39d853088621ba309911f3beca",
+        "container_depth": 1,
+        "value_nodes": 4,
+        "max_decoded_text_bytes": 20
+      },
+      "expected": {
+        "component": {
+          "envelope_permits_next_stage": false
+        },
+        "full_capture": {
+          "outcome": "REJECTED",
+          "new_package_version": false,
+          "minimum": "NOT_EVALUATED",
+          "review_performed": false
+        },
+        "cli": {
+          "exit_code_on_successful_result_delivery": 2
+        }
+      }
+    },
+    {
+      "id": "TC-I01-013.06",
+      "file": "envelope/TC-I01-013.06.json",
+      "change": "Root content has type array",
+      "levels": [
+        "U",
+        "C"
+      ],
+      "measurements": {
+        "byte_length": 92,
+        "sha256": "22766f7df9254450e7c1cb578e8139d2c5946b8366874d2382c88b4412f5d896",
+        "container_depth": 2,
+        "value_nodes": 4,
+        "max_decoded_text_bytes": 20
+      },
+      "expected": {
+        "component": {
+          "envelope_permits_next_stage": false
+        },
+        "full_capture": {
+          "outcome": "REJECTED",
+          "new_package_version": false,
+          "minimum": "NOT_EVALUATED",
+          "review_performed": false
+        },
+        "cli": {
+          "exit_code_on_successful_result_delivery": 2
+        }
+      }
+    },
+    {
+      "id": "TC-I01-013.07",
+      "file": "envelope/TC-I01-013.07.json",
+      "change": "Root content has type string",
+      "levels": [
+        "U",
+        "C"
+      ],
+      "measurements": {
+        "byte_length": 109,
+        "sha256": "39bb7891c85e4cb1965b401be789412531301d0637a20a6bb134e4ca4371dc34",
+        "container_depth": 1,
+        "value_nodes": 4,
+        "max_decoded_text_bytes": 20
+      },
+      "expected": {
+        "component": {
+          "envelope_permits_next_stage": false
+        },
+        "full_capture": {
+          "outcome": "REJECTED",
+          "new_package_version": false,
+          "minimum": "NOT_EVALUATED",
+          "review_performed": false
+        },
+        "cli": {
+          "exit_code_on_successful_result_delivery": 2
+        }
+      }
+    },
+    {
+      "id": "TC-I01-013.08",
+      "file": "envelope/TC-I01-013.08.json",
+      "change": "Whole document is array containing BASE-01",
+      "levels": [
+        "U",
+        "C"
+      ],
+      "measurements": {
+        "byte_length": 1125,
+        "sha256": "3548b8705dc540051ae8af2a7d843dd9b9c9a3da003f4017967211d8066ccb85",
+        "container_depth": 7,
+        "value_nodes": 25,
+        "max_decoded_text_bytes": 154
+      },
+      "expected": {
+        "component": {
+          "envelope_permits_next_stage": false
+        },
+        "full_capture": {
+          "outcome": "REJECTED",
+          "new_package_version": false,
+          "minimum": "NOT_EVALUATED",
+          "review_performed": false
+        },
+        "cli": {
+          "exit_code_on_successful_result_delivery": 2
+        }
+      }
+    },
+    {
+      "id": "TC-I01-013.09",
+      "file": "envelope/TC-I01-013.09.json",
+      "change": "Whole document is a string scalar",
+      "levels": [
+        "U",
+        "C"
+      ],
+      "measurements": {
+        "byte_length": 19,
+        "sha256": "465fa129140e4156d18ad32585dd7aa23e88f8c7e2828b196facaf994e05203c",
+        "container_depth": 0,
+        "value_nodes": 1,
+        "max_decoded_text_bytes": 16
+      },
+      "expected": {
+        "component": {
+          "envelope_permits_next_stage": false
+        },
+        "full_capture": {
+          "outcome": "REJECTED",
+          "new_package_version": false,
+          "minimum": "NOT_EVALUATED",
+          "review_performed": false
+        },
+        "cli": {
+          "exit_code_on_successful_result_delivery": 2
+        }
+      }
+    },
+    {
+      "id": "TC-I01-014.01",
+      "file": "envelope/TC-I01-014.01.json",
+      "change": "Unsupported document_type: review_export",
+      "levels": [
+        "U",
+        "C"
+      ],
+      "measurements": {
+        "byte_length": 1044,
+        "sha256": "a571257b08682edcb480def7a175720ccbd007deccf7990f9e61d8501237eec0",
+        "container_depth": 6,
+        "value_nodes": 24,
+        "max_decoded_text_bytes": 154
+      },
+      "expected": {
+        "component": {
+          "envelope_permits_next_stage": false
+        },
+        "full_capture": {
+          "outcome": "REJECTED",
+          "new_package_version": false,
+          "minimum": "NOT_EVALUATED",
+          "review_performed": false
+        },
+        "cli": {
+          "exit_code_on_successful_result_delivery": 2
+        }
+      }
+    },
+    {
+      "id": "TC-I01-014.02",
+      "file": "envelope/TC-I01-014.02.json",
+      "change": "Unsupported document_type: review_package_snapshot",
+      "levels": [
+        "U",
+        "C"
+      ],
+      "measurements": {
+        "byte_length": 1054,
+        "sha256": "fd7f4111cac811cf2edbe7e4d2e2a0541de5d783444f548fa1eb2abec3377dfe",
+        "container_depth": 6,
+        "value_nodes": 24,
+        "max_decoded_text_bytes": 154
+      },
+      "expected": {
+        "component": {
+          "envelope_permits_next_stage": false
+        },
+        "full_capture": {
+          "outcome": "REJECTED",
+          "new_package_version": false,
+          "minimum": "NOT_EVALUATED",
+          "review_performed": false
+        },
+        "cli": {
+          "exit_code_on_successful_result_delivery": 2
+        }
+      }
+    },
+    {
+      "id": "TC-I01-014.03",
+      "file": "envelope/TC-I01-014.03.json",
+      "change": "Unsupported document_type: unknown-kind",
+      "levels": [
+        "U",
+        "C"
+      ],
+      "measurements": {
+        "byte_length": 1043,
+        "sha256": "23b83802a952c7883ba2716e20017be8134250d475af676b77c92ff1bcc49648",
+        "container_depth": 6,
+        "value_nodes": 24,
+        "max_decoded_text_bytes": 154
+      },
+      "expected": {
+        "component": {
+          "envelope_permits_next_stage": false
+        },
+        "full_capture": {
+          "outcome": "REJECTED",
+          "new_package_version": false,
+          "minimum": "NOT_EVALUATED",
+          "review_performed": false
+        },
+        "cli": {
+          "exit_code_on_successful_result_delivery": 2
+        }
+      }
+    },
+    {
+      "id": "TC-I01-014.04",
+      "file": "envelope/TC-I01-014.04.json",
+      "change": "Unsupported contract_version: 999.0",
+      "levels": [
+        "U",
+        "C"
+      ],
+      "measurements": {
+        "byte_length": 1053,
+        "sha256": "066b473059e34673cf7d899a88451f59fe60621220c27a3c8329510a98a3b50e",
+        "container_depth": 6,
+        "value_nodes": 24,
+        "max_decoded_text_bytes": 154
+      },
+      "expected": {
+        "component": {
+          "envelope_permits_next_stage": false
+        },
+        "full_capture": {
+          "outcome": "REJECTED",
+          "new_package_version": false,
+          "minimum": "NOT_EVALUATED",
+          "review_performed": false
+        },
+        "cli": {
+          "exit_code_on_successful_result_delivery": 2
+        }
+      }
+    },
+    {
+      "id": "TC-I01-015",
+      "file": "envelope/TC-I01-015.json",
+      "change": "Supported envelope with empty content object",
+      "levels": [
+        "U",
+        "I",
+        "C"
+      ],
+      "measurements": {
+        "byte_length": 92,
+        "sha256": "fcc4972cd769743a8409fb1a7ca475aff0f5b05833ad2e9019ff2603adf26687",
+        "container_depth": 2,
+        "value_nodes": 4,
+        "max_decoded_text_bytes": 20
+      },
+      "expected": {
+        "component": {
+          "envelope_permits_next_stage": true
+        },
+        "full_capture": {
+          "outcome": "CAPTURED",
+          "new_package_version": true,
+          "minimum": "NOT_EVALUATED",
+          "review_performed": false
+        },
+        "cli": {
+          "exit_code_on_successful_result_delivery": 0
+        }
+      }
+    }
+  ]
+}

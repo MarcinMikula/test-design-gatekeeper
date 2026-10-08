@@ -1,0 +1,35 @@
+{
+  "document_type": "review_export",
+  "contract_version": "1.0",
+  "content": {
+    "scope": {
+      "description": "Synthetic customer-registration system: validation of the supplied integer age during registration."
+    },
+    "basis_elements": [
+      {
+        "source_id": "BR-AGE-01",
+        "text": "For this synthetic scenario, the supplied age is an integer. Values from 18 through 120 inclusive are accepted; values outside this interval are rejected."
+      }
+    ],
+    "test_cases": [
+      {
+        "source_id": "TC-CREATE-01",
+        "title": "Register a customer aged 30",
+        "preconditions": "Other required registration fields contain valid synthetic data.",
+        "steps": [
+          {
+            "action": "Submit the registration form for a customer aged 30.",
+            "expected_result": "Registration is accepted."
+          }
+        ],
+        "test_data": {
+          "age": 30
+        },
+        "origin": "HUMAN_AUTHORED",
+        "basis_refs": [
+          "BR-AGE-01"
+        ]
+      }
+    ]
+  }
+}
