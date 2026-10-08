@@ -1,0 +1,124 @@
+{
+  "corpus_id": "I01-W02C-NUMERIC-01",
+  "exposure": "PUBLIC_SYNTHETIC_DEVELOPMENT",
+  "inventory": {
+    "path": "docs/implementation/i01-w02-test-inventory.md",
+    "commit": "577e0eef38bf4865f955ddd2d06f4ed6e9e1f4ba",
+    "blob": "397a38db02b2b403ab431056a6a4b533e9abd697"
+  },
+  "governing_decision": "SAD04-I01-NUM-001",
+  "source_pointer": "/content/test_cases/0/test_data/n",
+  "token_span_convention": "zero-based UTF-8 byte offsets; end exclusive",
+  "full_capture_prerequisites": "Eligible Windows x64 / CPython 3.13 laboratory context; initialized isolated healthy store; qa-demo operator; synthetic classification; lab-development purpose; fresh operation identity; all other accepted admission and containment controls satisfied.",
+  "base": {
+    "id": "BASE-01",
+    "file": "base-01.json",
+    "measurements": {
+      "byte_length": 1051,
+      "sha256": "630be02e0549a22f2371635a79c76bc3588af6fc953dfcf3e5a892e2bb87c7a1",
+      "container_depth": 6,
+      "value_nodes": 24,
+      "max_decoded_text_bytes": 154,
+      "tc_entries": 1,
+      "basis_entries": 1
+    }
+  },
+  "cases": [
+    {
+      "id": "TC-I01-018.01",
+      "file": "numeric-token/TC-I01-018.01.json",
+      "measurements": {
+        "byte_length": 1195,
+        "sha256": "c0d5efe99dd82b35615205bdfbf253c6bc374e84a67ff69e17c671f0fba332e3",
+        "container_depth": 6,
+        "value_nodes": 25,
+        "max_decoded_text_bytes": 154,
+        "tc_entries": 1,
+        "basis_entries": 1
+      },
+      "token": {
+        "length": 127,
+        "start_byte": 944,
+        "end_byte": 1071
+      },
+      "expected": {
+        "component": {
+          "within_numeric_token_limit": true
+        },
+        "full_capture": {
+          "outcome": "CAPTURED",
+          "new_package_version": true,
+          "minimum": "NOT_EVALUATED",
+          "review_performed": false
+        },
+        "cli": {
+          "exit_code_on_successful_result_delivery": 0
+        }
+      }
+    },
+    {
+      "id": "TC-I01-018.02",
+      "file": "numeric-token/TC-I01-018.02.json",
+      "measurements": {
+        "byte_length": 1196,
+        "sha256": "72ffee2df057a7a2e05a31dc32fed456c36d3f05c6415f81f3b108a7233057b1",
+        "container_depth": 6,
+        "value_nodes": 25,
+        "max_decoded_text_bytes": 154,
+        "tc_entries": 1,
+        "basis_entries": 1
+      },
+      "token": {
+        "length": 128,
+        "start_byte": 944,
+        "end_byte": 1072
+      },
+      "expected": {
+        "component": {
+          "within_numeric_token_limit": true
+        },
+        "full_capture": {
+          "outcome": "CAPTURED",
+          "new_package_version": true,
+          "minimum": "NOT_EVALUATED",
+          "review_performed": false
+        },
+        "cli": {
+          "exit_code_on_successful_result_delivery": 0
+        }
+      }
+    },
+    {
+      "id": "TC-I01-018.03",
+      "file": "numeric-token/TC-I01-018.03.json",
+      "measurements": {
+        "byte_length": 1197,
+        "sha256": "25393eed20f58587361a46c4a2069bb8d78759483cafc453783d5825509aa756",
+        "container_depth": 6,
+        "value_nodes": 25,
+        "max_decoded_text_bytes": 154,
+        "tc_entries": 1,
+        "basis_entries": 1
+      },
+      "token": {
+        "length": 129,
+        "start_byte": 944,
+        "end_byte": 1073
+      },
+      "expected": {
+        "component": {
+          "within_numeric_token_limit": false
+        },
+        "full_capture": {
+          "outcome": "REJECTED",
+          "new_package_version": false,
+          "minimum": "NOT_EVALUATED",
+          "review_performed": false
+        },
+        "cli": {
+          "exit_code_on_successful_result_delivery": 2
+        }
+      }
+    }
+  ]
+}

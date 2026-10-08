@@ -1,1 +1,4 @@
 * text=auto eol=lf
+
+# Test-input bytes and their recorded digests must survive checkout unchanged.
+tests/fixtures/i01/** -text

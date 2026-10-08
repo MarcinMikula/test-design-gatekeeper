@@ -8,12 +8,12 @@
 | Review clarification date | 2026-10-03 (Europe/Warsaw) |
 | Increment | I-01 - bounded native-JSON capture and durable inspection |
 | Work item | I01-W02 |
-| Status | WORKING DRAFT - W02-A ORACLE BASIS; W02-B INVENTORY ACCEPTED; W02-C PREPARATION NEXT |
+| Status | WORKING DRAFT - W02-A ORACLE BASIS; W02-B INVENTORY ACCEPTED; W02-C IN PROGRESS |
 | Entry authority | I01-W01 closed; GO granted to I01-W02 in `docs/implementation/i01-w01-closure.md` |
-| Current activity | Prepare W02-C fixtures and executable skeletons from the accepted [W02-B inventory](i01-w02-test-inventory.md); forecast remains provisional; W02 open |
+| Current activity | W02-C: first [numeric-token fixture family](i01-w02c-numeric-fixtures.md) prepared; continue the accepted W02-B inventory; forecast remains provisional; W02 open |
 | Product implementation in this document | NONE |
-| Fixture corpus in this revision | NOT YET MATERIALIZED |
-| Executable tests in this revision | NOT YET IMPLEMENTED |
+| Fixture corpus progress | BASE-01 and TC-I01-018.01–.03 materialized; remaining families pending |
+| Executable test progress | 9 fixture checks passed; 9 product skeletons skipped/unbound; no capture execution evidence |
 | I-01 acceptance | NOT CLAIMED |
 | W02 closure | NOT CLAIMED |
 | Source-inspection pin | Repository `main` as inspected after commit `e15438973564cc790237cce7e9f1bba5e14f4846` |
@@ -52,8 +52,9 @@ implementation result
 -> expected result copied from observed behavior
 ```
 
-This revision does not create product behavior, execute tests, or mark any
-requirement or TCND condition as passed.
+This oracle basis does not create product behavior or mark any requirement or
+TCND condition as passed. Dated W02-C asset checks are recorded separately in the
+[numeric-token slice](i01-w02c-numeric-fixtures.md).
 
 ## 2. W02 boundary
 
@@ -322,8 +323,8 @@ RA-03, SAD-02 and SAD-04 receipt/identity behavior.
 
 ## 7. Candidate fixture families for W02-B
 
-No fixture files are created by this revision. The following families are the
-minimum next design step suggested by the matrix.
+The W02-A extraction proposed the following families for W02-B. Materialization
+progress is now recorded separately in the W02-C slice linked above.
 
 | Family | Purpose | Principal oracle groups |
 | --- | --- | --- |
@@ -342,8 +343,7 @@ Fixture families must remain synthetic/public laboratory material.
 
 ## 8. Test-skeleton rules for W02-C
 
-Executable skeletons are not yet created. When W02-C begins, each skeleton should
-record at least:
+Each W02-C skeleton should record at least:
 
 - test ID;
 - fixture ID or generated mutation;
@@ -459,17 +459,19 @@ implementation.
 It does **not** establish:
 
 - that the planned cases establish exhaustive coverage or executed evidence;
-- that fixtures exist;
-- that test code exists;
+- that the whole fixture corpus or executable product assertions are ready;
 - that W03 may start merely because this draft exists;
 - that any I-01 condition has passed;
 - that W02 is complete;
 - that I-01 is accepted.
 
-The next work is W02-C: materialize exact synthetic fixture bytes, stable variant
-IDs, expected outcomes and executable skeletons using the accepted W02-B inventory
-and its Section 6 controls. The whole inventory has recorded Owner acceptance;
-the Section 7 forecast remains provisional and subject to reassessment. No
-execution evidence, full I-01 total, budget ceiling or delivery date is claimed.
+W02-C began with BASE-01 and TC-I01-018.01–.03; the
+[2026-10-08 slice record](i01-w02c-numeric-fixtures.md) separates passing asset
+checks from unbound product skeletons and states the runtime limitation.
+Continue the remaining fixture families and real assertion bindings under the
+accepted inventory's Section 6 controls. The whole inventory has recorded Owner
+acceptance; the Section 7 forecast remains provisional and subject to
+reassessment. No product execution evidence, full I-01 total, budget ceiling or
+delivery date is claimed.
 W02 remains open pending its remaining deliverables and completion review; this
 inventory acceptance does not start W03 or accept I-01.
