@@ -1,0 +1,213 @@
+{
+  "corpus_id": "I01-W02C-TITLE-PRESENCE-01",
+  "exposure": "PUBLIC_SYNTHETIC_DEVELOPMENT",
+  "inventory": {
+    "path": "docs/implementation/i01-w02-test-inventory.md",
+    "commit": "35e9ae1cce9debc1b11258ed6b96cf4b67119061",
+    "blob": "397a38db02b2b403ab431056a6a4b533e9abd697"
+  },
+  "metadata_boundary": "Test observations, not a new product schema or issue-code catalog. Presence is separate from mapping status; no per-variant MAPPED/UNMAPPED verdict is invented.",
+  "target_field_pointer": "/content/test_cases/0/title",
+  "containing_item_pointer": "/content/test_cases/0",
+  "source_reference_rule": "Present values resolve inside the exact retained artifact. For ABSENT, retain the containing-item boundary and missing-field observation; no fictitious title value, token span or resolving title pointer is claimed.",
+  "span_convention": "Zero-based UTF-8 byte offsets, end exclusive; null value_span denotes no supplied member. A supplied JSON null has the four-byte raw lexeme null and an actual span.",
+  "levels": [
+    "U",
+    "I"
+  ],
+  "evidence": [
+    "E1",
+    "E2"
+  ],
+  "oracles": [
+    "OR-I01-FID-001",
+    "OR-I01-FID-004"
+  ],
+  "conditions": [
+    "TCND-I01-06"
+  ],
+  "trace": {
+    "requirements": [
+      "RA09-REQ-006",
+      "RA09-REQ-007",
+      "RA09-REQ-012"
+    ],
+    "validation": [
+      "RA09-VAL-003",
+      "RA09-VAL-006"
+    ],
+    "design": [
+      "RA-09 section 3.3",
+      "SAD-04 section 6.1"
+    ]
+  },
+  "full_capture_prerequisites": "Eligible Windows x64 / CPython 3.13 laboratory context; initialized isolated schema-1 healthy store; qa-demo operator; synthetic classification; lab-development purpose; fresh operation identity; all other accepted admission and containment controls satisfied.",
+  "expected_full_capture": {
+    "outcome": "CAPTURED",
+    "new_package_version": true,
+    "minimum": "NOT_EVALUATED",
+    "minimum_reason": "MINIMUM_CHECK_NOT_ENABLED_IN_I01",
+    "review_performed": false,
+    "source_bytes_unchanged": true,
+    "deficiency_preserved_without_filling_or_coercion": true
+  },
+  "control": {
+    "id": "BASE-01",
+    "file": "base-01.json",
+    "value_variant": "TC-I01-021.05",
+    "purpose": "The VALUE variant is intentionally byte-identical to BASE-01; fixture identity does not imply different source bytes."
+  },
+  "cases": [
+    {
+      "id": "TC-I01-021.01",
+      "file": "title-presence/TC-I01-021.01.json",
+      "source": {
+        "member_present": false,
+        "raw_lexeme": null,
+        "value_span": null
+      },
+      "measurements": {
+        "byte_length": 1003,
+        "sha256": "88a583c6b6773087d7e9920aaddd730306bdef9b2701f2ea33e59d5e8c4d4520",
+        "container_depth": 6,
+        "value_nodes": 23,
+        "max_decoded_text_bytes": 154,
+        "tc_entries": 1,
+        "basis_entries": 1
+      },
+      "expected_presence": "ABSENT"
+    },
+    {
+      "id": "TC-I01-021.02",
+      "file": "title-presence/TC-I01-021.02.json",
+      "source": {
+        "member_present": true,
+        "raw_lexeme": "null",
+        "value_span": {
+          "start_byte": 570,
+          "end_byte": 574
+        }
+      },
+      "measurements": {
+        "byte_length": 1026,
+        "sha256": "14b008b4b0cd3f7cc96e7b5398a45e26d92b317d80e1852163bf2dc164c92c32",
+        "container_depth": 6,
+        "value_nodes": 24,
+        "max_decoded_text_bytes": 154,
+        "tc_entries": 1,
+        "basis_entries": 1
+      },
+      "expected_presence": "NULL"
+    },
+    {
+      "id": "TC-I01-021.03",
+      "file": "title-presence/TC-I01-021.03.json",
+      "source": {
+        "member_present": true,
+        "raw_lexeme": "\"\"",
+        "value_span": {
+          "start_byte": 570,
+          "end_byte": 572
+        }
+      },
+      "measurements": {
+        "byte_length": 1024,
+        "sha256": "15508d323c86d168e67ac6e5c17bf6c620cc6b5448aaf6936f9bb1ea6a306992",
+        "container_depth": 6,
+        "value_nodes": 24,
+        "max_decoded_text_bytes": 154,
+        "tc_entries": 1,
+        "basis_entries": 1
+      },
+      "expected_presence": "EMPTY"
+    },
+    {
+      "id": "TC-I01-021.04",
+      "file": "title-presence/TC-I01-021.04.json",
+      "source": {
+        "member_present": true,
+        "raw_lexeme": "\" \\t\\r\\n \"",
+        "value_span": {
+          "start_byte": 570,
+          "end_byte": 580
+        }
+      },
+      "measurements": {
+        "byte_length": 1032,
+        "sha256": "bbca7c04c537a25af7914b88b9318fc6e32fff5926c6b9764ee7911106be531b",
+        "container_depth": 6,
+        "value_nodes": 24,
+        "max_decoded_text_bytes": 154,
+        "tc_entries": 1,
+        "basis_entries": 1
+      },
+      "expected_presence": "WHITESPACE_ONLY"
+    },
+    {
+      "id": "TC-I01-021.05",
+      "file": "title-presence/TC-I01-021.05.json",
+      "source": {
+        "member_present": true,
+        "raw_lexeme": "\"Register a customer aged 30\"",
+        "value_span": {
+          "start_byte": 570,
+          "end_byte": 599
+        }
+      },
+      "measurements": {
+        "byte_length": 1051,
+        "sha256": "630be02e0549a22f2371635a79c76bc3588af6fc953dfcf3e5a892e2bb87c7a1",
+        "container_depth": 6,
+        "value_nodes": 24,
+        "max_decoded_text_bytes": 154,
+        "tc_entries": 1,
+        "basis_entries": 1
+      },
+      "expected_presence": "VALUE"
+    },
+    {
+      "id": "TC-I01-021.06",
+      "file": "title-presence/TC-I01-021.06.json",
+      "source": {
+        "member_present": true,
+        "raw_lexeme": "0",
+        "value_span": {
+          "start_byte": 570,
+          "end_byte": 571
+        }
+      },
+      "measurements": {
+        "byte_length": 1023,
+        "sha256": "478761c4fcac11dd37383eecea2e1cd3647aaeb68e9617425979bdd93463f7fb",
+        "container_depth": 6,
+        "value_nodes": 24,
+        "max_decoded_text_bytes": 154,
+        "tc_entries": 1,
+        "basis_entries": 1
+      },
+      "expected_presence": "TYPE_MISMATCH"
+    },
+    {
+      "id": "TC-I01-021.07",
+      "file": "title-presence/TC-I01-021.07.json",
+      "source": {
+        "member_present": true,
+        "raw_lexeme": "[]",
+        "value_span": {
+          "start_byte": 570,
+          "end_byte": 572
+        }
+      },
+      "measurements": {
+        "byte_length": 1024,
+        "sha256": "0c9f7cb3757a2309f799875e7a5cb561d4419c6131b6e61fae3144c26f0b5ec3",
+        "container_depth": 6,
+        "value_nodes": 24,
+        "max_decoded_text_bytes": 154,
+        "tc_entries": 1,
+        "basis_entries": 1
+      },
+      "expected_presence": "TYPE_MISMATCH"
+    }
+  ]
+}
