@@ -1,0 +1,273 @@
+{
+  "corpus_id": "I01-W02C-NUMERIC-RETENTION-01",
+  "exposure": "PUBLIC_SYNTHETIC_DEVELOPMENT",
+  "inventory": {
+    "path": "docs/implementation/i01-w02-test-inventory.md",
+    "commit": "1e2a637e54a891be4c078759d695f8f2893b4f24",
+    "blob": "397a38db02b2b403ab431056a6a4b533e9abd697"
+  },
+  "metadata_boundary": "Test-only observations and policies, not a new product schema, API, issue-code catalog or numeric implementation choice.",
+  "span_convention": "Zero-based UTF-8 byte offsets, end exclusive; JSON string spans include both quotes. Byte spans are fixture instrumentation, not a mandated product locator encoding.",
+  "full_capture_prerequisites": "Eligible Windows x64 / CPython 3.13 laboratory context; initialized isolated schema-1 healthy store; qa-demo operator; synthetic classification; lab-development purpose; fresh operation identity; all other accepted admission and containment controls satisfied.",
+  "expected_full_capture": {
+    "outcome": "CAPTURED",
+    "new_package_version": true,
+    "minimum": "NOT_EVALUATED",
+    "minimum_reason": "MINIMUM_CHECK_NOT_ENABLED_IN_I01",
+    "review_performed": false,
+    "source_bytes_unchanged": true,
+    "source_reference_resolves_to_retained_artifact": true
+  },
+  "reused_controls": [
+    {
+      "id": "BASE-01",
+      "file": "base-01.json",
+      "purpose": "Unmodified source and mutation inverse."
+    },
+    {
+      "id": "CTRL-SYN-NUMBER",
+      "file": "syntax/control-number-zero.json",
+      "purpose": "Numeric zero contrasted with the distinct source lexeme -0."
+    },
+    {
+      "id": "TC-I01-018.03",
+      "file": "numeric-token/TC-I01-018.03.json",
+      "purpose": "The same 129 digits unquoted exceed the numeric-token bound; this is a rejection contrast, not a new positive input."
+    }
+  ],
+  "cases": [
+    {
+      "id": "TC-I01-019.01",
+      "file": "numeric-retention/TC-I01-019.01.json",
+      "measurements": {
+        "byte_length": 1084,
+        "sha256": "1d820c500baf41e8a2322d7b87f3a14027eba8b4d9ddb17b8b2684bea55e0b2f",
+        "container_depth": 6,
+        "value_nodes": 25,
+        "max_decoded_text_bytes": 154,
+        "tc_entries": 1,
+        "basis_entries": 1
+      },
+      "source": {
+        "kind": "number",
+        "pointer": "/content/test_cases/0/test_data/n",
+        "raw_lexeme": "9007199254740993",
+        "start_byte": 944,
+        "end_byte": 960
+      },
+      "levels": [
+        "U",
+        "I"
+      ],
+      "evidence": [
+        "E1",
+        "E2"
+      ],
+      "oracles": [
+        "OR-I01-SYN-005"
+      ],
+      "conditions": [
+        "TCND-I01-05",
+        "TCND-I01-06"
+      ],
+      "trace": {
+        "requirements": [
+          "RA09-REQ-004",
+          "RA09-REQ-006"
+        ],
+        "validation": [
+          "RA09-VAL-003"
+        ],
+        "design": [
+          "RA-09 section 3.3",
+          "SAD-04 section 6.1",
+          "SAD-04 section 9"
+        ]
+      },
+      "expected_component": {
+        "numeric_token_limit_applies_to_n": true,
+        "within_numeric_token_limit": true,
+        "decoded_text": null,
+        "projection_policy": "exact_or_explicit_limitation_with_source_reference",
+        "source_lexeme_and_locator_retained": true,
+        "false_numeric_limit_violation": false
+      }
+    },
+    {
+      "id": "TC-I01-019.02",
+      "file": "numeric-retention/TC-I01-019.02.json",
+      "measurements": {
+        "byte_length": 1092,
+        "sha256": "e8896fca0f62de53da7771288cbc76cbf6f9799c6d41648b2f5c2f88aa60254e",
+        "container_depth": 6,
+        "value_nodes": 25,
+        "max_decoded_text_bytes": 154,
+        "tc_entries": 1,
+        "basis_entries": 1
+      },
+      "source": {
+        "kind": "number",
+        "pointer": "/content/test_cases/0/test_data/n",
+        "raw_lexeme": "0.1000000000000000000001",
+        "start_byte": 944,
+        "end_byte": 968
+      },
+      "levels": [
+        "U",
+        "I"
+      ],
+      "evidence": [
+        "E1",
+        "E2"
+      ],
+      "oracles": [
+        "OR-I01-SYN-005"
+      ],
+      "conditions": [
+        "TCND-I01-05",
+        "TCND-I01-06"
+      ],
+      "trace": {
+        "requirements": [
+          "RA09-REQ-004",
+          "RA09-REQ-006"
+        ],
+        "validation": [
+          "RA09-VAL-003"
+        ],
+        "design": [
+          "RA-09 section 3.3",
+          "SAD-04 section 6.1",
+          "SAD-04 section 9"
+        ]
+      },
+      "expected_component": {
+        "numeric_token_limit_applies_to_n": true,
+        "within_numeric_token_limit": true,
+        "decoded_text": null,
+        "projection_policy": "exact_or_explicit_limitation_with_source_reference",
+        "source_lexeme_and_locator_retained": true,
+        "false_numeric_limit_violation": false
+      }
+    },
+    {
+      "id": "TC-I01-019.03",
+      "file": "numeric-retention/TC-I01-019.03.json",
+      "measurements": {
+        "byte_length": 1070,
+        "sha256": "874aa497b80fdf41a2c5c1808552716095aefdc294950d742304eff96666ad17",
+        "container_depth": 6,
+        "value_nodes": 25,
+        "max_decoded_text_bytes": 154,
+        "tc_entries": 1,
+        "basis_entries": 1
+      },
+      "source": {
+        "kind": "number",
+        "pointer": "/content/test_cases/0/test_data/n",
+        "raw_lexeme": "-0",
+        "start_byte": 944,
+        "end_byte": 946
+      },
+      "levels": [
+        "U",
+        "I"
+      ],
+      "evidence": [
+        "E1",
+        "E2"
+      ],
+      "oracles": [
+        "OR-I01-SYN-005"
+      ],
+      "conditions": [
+        "TCND-I01-05",
+        "TCND-I01-06"
+      ],
+      "trace": {
+        "requirements": [
+          "RA09-REQ-004",
+          "RA09-REQ-006"
+        ],
+        "validation": [
+          "RA09-VAL-003"
+        ],
+        "design": [
+          "RA-09 section 3.3",
+          "SAD-04 section 6.1",
+          "SAD-04 section 9"
+        ]
+      },
+      "expected_component": {
+        "numeric_token_limit_applies_to_n": true,
+        "within_numeric_token_limit": true,
+        "decoded_text": null,
+        "projection_policy": "exact_or_explicit_limitation_with_source_reference",
+        "source_lexeme_and_locator_retained": true,
+        "false_numeric_limit_violation": false
+      }
+    },
+    {
+      "id": "TC-I01-020",
+      "file": "numeric-retention/TC-I01-020.json",
+      "measurements": {
+        "byte_length": 1199,
+        "sha256": "6a3efb9a3f623cf9f9c1008739ae568cf411ed5d8a44931549c2ee13222194fb",
+        "container_depth": 6,
+        "value_nodes": 25,
+        "max_decoded_text_bytes": 154,
+        "tc_entries": 1,
+        "basis_entries": 1
+      },
+      "source": {
+        "kind": "string",
+        "pointer": "/content/test_cases/0/test_data/n",
+        "raw_lexeme": "\"100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\"",
+        "start_byte": 944,
+        "end_byte": 1075
+      },
+      "levels": [
+        "U",
+        "I"
+      ],
+      "evidence": [
+        "E1",
+        "E2"
+      ],
+      "oracles": [
+        "OR-I01-FID-003",
+        "OR-I01-SYN-004"
+      ],
+      "conditions": [
+        "TCND-I01-05",
+        "TCND-I01-06",
+        "TCND-I01-10"
+      ],
+      "trace": {
+        "requirements": [
+          "RA09-REQ-004",
+          "RA09-REQ-006",
+          "RA09-REQ-016"
+        ],
+        "validation": [
+          "RA09-VAL-003",
+          "RA09-VAL-006"
+        ],
+        "design": [
+          "RA-09 section 3.3",
+          "SAD-04 section 6.1",
+          "SAD-04 section 9",
+          "SAD04-I01-NUM-001"
+        ]
+      },
+      "expected_component": {
+        "numeric_token_limit_applies_to_n": false,
+        "within_numeric_token_limit": null,
+        "decoded_text": "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "projection_policy": "preserve_string_without_numeric_conversion",
+        "source_lexeme_and_locator_retained": true,
+        "false_numeric_limit_violation": false
+      }
+    }
+  ]
+}

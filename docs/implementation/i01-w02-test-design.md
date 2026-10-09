@@ -10,10 +10,10 @@
 | Work item | I01-W02 |
 | Status | WORKING DRAFT - W02-A ORACLE BASIS; W02-B INVENTORY ACCEPTED; W02-C IN PROGRESS |
 | Entry authority | I01-W01 closed; GO granted to I01-W02 in `docs/implementation/i01-w01-closure.md` |
-| Current activity | W02-C: [numeric-token](i01-w02c-numeric-fixtures.md), [envelope](i01-w02c-envelope-fixtures.md) and [syntax/encoding](i01-w02c-syntax-fixtures.md) assets prepared; forecast remains provisional; W02 open |
+| Current activity | W02-C: [numeric-token](i01-w02c-numeric-fixtures.md), [envelope](i01-w02c-envelope-fixtures.md), [syntax/encoding](i01-w02c-syntax-fixtures.md) and [numeric/text retention](i01-w02c-numeric-retention-fixtures.md) assets prepared; forecast remains provisional; W02 open |
 | Product implementation in this document | NONE |
-| Fixture corpus progress | BASE-01 plus 32 variants across TC-I01-011–018 and two valid controls materialized; remaining families pending |
-| Executable test progress | 86 fixture checks passed; 68 product skeletons skipped/unbound; no capture execution evidence |
+| Fixture corpus progress | BASE-01 plus 36 variants across TC-I01-011–020 (group B) and two valid controls materialized; remaining families pending |
+| Executable test progress | 99 fixture checks passed; 76 product skeletons skipped/unbound; no capture execution evidence |
 | I-01 acceptance | NOT CLAIMED |
 | W02 closure | NOT CLAIMED |
 | Source-inspection pin | Repository `main` as inspected after commit `e15438973564cc790237cce7e9f1bba5e14f4846` |
@@ -55,8 +55,9 @@ implementation result
 This oracle basis does not create product behavior or mark any requirement or
 TCND condition as passed. Dated W02-C asset checks are recorded separately in the
 [numeric-token](i01-w02c-numeric-fixtures.md),
-[envelope](i01-w02c-envelope-fixtures.md) and
-[syntax/encoding](i01-w02c-syntax-fixtures.md) slices.
+[envelope](i01-w02c-envelope-fixtures.md),
+[syntax/encoding](i01-w02c-syntax-fixtures.md) and
+[numeric/text retention](i01-w02c-numeric-retention-fixtures.md) slices.
 
 ## 2. W02 boundary
 
@@ -475,6 +476,10 @@ from TC-I01-011–015, with the same separation of asset and product evidence.
 The [syntax/encoding slice](i01-w02c-syntax-fixtures.md) adds ten variants from
 TC-I01-016–017 and two valid controls, retaining the initial authoring-guard
 failure and its correction separately from product evidence.
+The [numeric/text retention slice](i01-w02c-numeric-retention-fixtures.md) adds
+four TC-I01-019–020 variants and reuses existing controls. This completes asset
+materialization and unbound skeletons for the listed group-B inputs, not product
+verification or condition acceptance.
 Continue the remaining fixture families and real assertion bindings under the
 accepted inventory's Section 6 controls. The whole inventory has recorded Owner
 acceptance; the Section 7 forecast remains provisional and subject to
