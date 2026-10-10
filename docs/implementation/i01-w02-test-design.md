@@ -10,10 +10,10 @@
 | Work item | I01-W02 |
 | Status | WORKING DRAFT - W02-A ORACLE BASIS; W02-B INVENTORY ACCEPTED; W02-C IN PROGRESS |
 | Entry authority | I01-W01 closed; GO granted to I01-W02 in `docs/implementation/i01-w01-closure.md` |
-| Current activity | W02-C: five fixture families prepared; latest is [title presence](i01-w02c-title-presence-fixtures.md); forecast remains provisional; W02 open |
+| Current activity | W02-C: six fixture families prepared; latest is [step representation](i01-w02c-step-representation-fixtures.md); forecast remains provisional; W02 open |
 | Product implementation in this document | NONE |
-| Fixture corpus progress | BASE-01 plus 43 variants across TC-I01-011–021 (group B and first group-C case) and two valid controls materialized; remaining families pending |
-| Executable test progress | 118 fixture checks passed; 90 product skeletons skipped/unbound; no capture execution evidence |
+| Fixture corpus progress | BASE-01 plus 46 variants across TC-I01-011–022 (group B and two group-C cases) and two valid controls materialized; remaining families pending |
+| Executable test progress | 129 fixture checks passed; 96 product skeletons skipped/unbound; no capture execution evidence |
 | I-01 acceptance | NOT CLAIMED |
 | W02 closure | NOT CLAIMED |
 | Source-inspection pin | Repository `main` as inspected after commit `e15438973564cc790237cce7e9f1bba5e14f4846` |
@@ -57,8 +57,9 @@ TCND condition as passed. Dated W02-C asset checks are recorded separately in th
 [numeric-token](i01-w02c-numeric-fixtures.md),
 [envelope](i01-w02c-envelope-fixtures.md),
 [syntax/encoding](i01-w02c-syntax-fixtures.md),
-[numeric/text retention](i01-w02c-numeric-retention-fixtures.md) and
-[title presence](i01-w02c-title-presence-fixtures.md) slices.
+[numeric/text retention](i01-w02c-numeric-retention-fixtures.md),
+[title presence](i01-w02c-title-presence-fixtures.md) and
+[step representation](i01-w02c-step-representation-fixtures.md) slices.
 
 ## 2. W02 boundary
 
@@ -485,6 +486,10 @@ The [title-presence slice](i01-w02c-title-presence-fixtures.md) begins group C
 with seven TC-I01-021 variants, including explicit absence, null and empty-array
 type mismatch. Asset observations remain separate from the unbound U/I product
 assertions and do not invent mapping status or repair a supplied title.
+The [step-representation slice](i01-w02c-step-representation-fixtures.md) adds
+three TC-I01-022 variants: narrative, ordered structured steps and identical
+numbered repetitions. It prepares exact-content/order/location observations
+without executing the unbound product assertions or inventing actions.
 Continue the remaining fixture families and real assertion bindings under the
 accepted inventory's Section 6 controls. The whole inventory has recorded Owner
 acceptance; the Section 7 forecast remains provisional and subject to

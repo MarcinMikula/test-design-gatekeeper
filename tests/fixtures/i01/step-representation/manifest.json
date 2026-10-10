@@ -1,0 +1,173 @@
+{
+  "corpus_id": "I01-W02C-STEP-REPRESENTATION-01",
+  "exposure": "PUBLIC_SYNTHETIC_DEVELOPMENT",
+  "inventory": {
+    "path": "docs/implementation/i01-w02-test-inventory.md",
+    "commit": "8cdcb8f05db2d2f02a952b8f3bd4ef9d3fae8a89",
+    "blob": "397a38db02b2b403ab431056a6a4b533e9abd697"
+  },
+  "metadata_boundary": "Test-only observations, not a product schema or executable-step model. The supplied number member is a fixture convention for retained numbering, not a new mandatory field or guessed mapping alias.",
+  "span_convention": "Zero-based UTF-8 byte offsets, end exclusive; narrative spans include quotes and escapes, array spans include their original layout.",
+  "levels": [
+    "U",
+    "I"
+  ],
+  "evidence": [
+    "E1",
+    "E2"
+  ],
+  "oracles": [
+    "OR-I01-FID-002"
+  ],
+  "conditions": [
+    "TCND-I01-01",
+    "TCND-I01-06"
+  ],
+  "trace": {
+    "requirements": [
+      "RA09-REQ-006",
+      "RA09-REQ-007",
+      "RA03-REQ-006",
+      "RA03-REQ-022"
+    ],
+    "validation": [
+      "RA09-VAL-006"
+    ],
+    "design": [
+      "RA-09 section 3.2",
+      "RA-09 section 3.3",
+      "SAD-04 section 6.1"
+    ]
+  },
+  "full_capture_prerequisites": "Eligible Windows x64 / CPython 3.13 laboratory context; initialized isolated schema-1 healthy store; qa-demo operator; synthetic classification; lab-development purpose; fresh operation identity; all other accepted admission and containment controls satisfied.",
+  "expected_full_capture": {
+    "outcome": "CAPTURED",
+    "new_package_version": true,
+    "minimum": "NOT_EVALUATED",
+    "minimum_reason": "MINIMUM_CHECK_NOT_ENABLED_IN_I01",
+    "review_performed": false,
+    "source_bytes_unchanged": true,
+    "original_representation_order_and_occurrences_preserved": true,
+    "numbering_and_nested_expectations_preserved": true,
+    "top_level_tc_expected_result_remains_absent": true,
+    "no_invented_actions": true
+  },
+  "control": {
+    "id": "BASE-01",
+    "file": "base-01.json",
+    "purpose": "Only the supplied steps value changes; all surrounding bytes and other TC dimensions are unchanged."
+  },
+  "cases": [
+    {
+      "id": "TC-I01-022.01",
+      "file": "step-representation/TC-I01-022.01.json",
+      "source": {
+        "pointer": "/content/test_cases/0/steps",
+        "representation": "narrative_text",
+        "value_span": {
+          "start_byte": 711,
+          "end_byte": 844
+        }
+      },
+      "measurements": {
+        "byte_length": 1012,
+        "sha256": "ec8ca401f091e066fa6e402a267eda11aeb448fd51ef671ae779999eb220efc7",
+        "container_depth": 5,
+        "value_nodes": 21,
+        "max_decoded_text_bytes": 154,
+        "tc_entries": 1,
+        "basis_entries": 1
+      },
+      "expected_steps": "1. Enter age 30.\n   Expected: The age field displays 30.\n2. Submit the registration form.\n   Expected: Registration is accepted.",
+      "structured_step_count": null,
+      "nested_expected_result_pointers": [],
+      "supplied_array_numbers": null
+    },
+    {
+      "id": "TC-I01-022.02",
+      "file": "step-representation/TC-I01-022.02.json",
+      "source": {
+        "pointer": "/content/test_cases/0/steps",
+        "representation": "array",
+        "value_span": {
+          "start_byte": 711,
+          "end_byte": 984
+        }
+      },
+      "measurements": {
+        "byte_length": 1152,
+        "sha256": "74aa6c540ce779a9502db1d39ced0755389421d160f0fc25dfe4e3d2dd2e0f5d",
+        "container_depth": 6,
+        "value_nodes": 27,
+        "max_decoded_text_bytes": 154,
+        "tc_entries": 1,
+        "basis_entries": 1
+      },
+      "expected_steps": [
+        {
+          "action": "Enter age 30.",
+          "expected_result": "The age field displays 30."
+        },
+        {
+          "action": "Submit the registration form.",
+          "expected_result": "Registration is accepted."
+        }
+      ],
+      "structured_step_count": 2,
+      "nested_expected_result_pointers": [
+        "/content/test_cases/0/steps/0/expected_result",
+        "/content/test_cases/0/steps/1/expected_result"
+      ],
+      "supplied_array_numbers": null
+    },
+    {
+      "id": "TC-I01-022.03",
+      "file": "step-representation/TC-I01-022.03.json",
+      "source": {
+        "pointer": "/content/test_cases/0/steps",
+        "representation": "array",
+        "value_span": {
+          "start_byte": 711,
+          "end_byte": 1192
+        }
+      },
+      "measurements": {
+        "byte_length": 1360,
+        "sha256": "e92963d53152236ba9db4334ca459b7a0a932a1a5f4e09401b28406ec1320675",
+        "container_depth": 6,
+        "value_nodes": 33,
+        "max_decoded_text_bytes": 154,
+        "tc_entries": 1,
+        "basis_entries": 1
+      },
+      "expected_steps": [
+        {
+          "number": "02",
+          "action": "Enter age 30.",
+          "expected_result": "The age field displays 30."
+        },
+        {
+          "number": "02",
+          "action": "Enter age 30.",
+          "expected_result": "The age field displays 30."
+        },
+        {
+          "number": "01",
+          "action": "Submit the registration form.",
+          "expected_result": "Registration is accepted."
+        }
+      ],
+      "structured_step_count": 3,
+      "nested_expected_result_pointers": [
+        "/content/test_cases/0/steps/0/expected_result",
+        "/content/test_cases/0/steps/1/expected_result",
+        "/content/test_cases/0/steps/2/expected_result"
+      ],
+      "supplied_array_numbers": [
+        "02",
+        "02",
+        "01"
+      ]
+    }
+  ]
+}
