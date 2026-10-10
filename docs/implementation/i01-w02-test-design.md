@@ -10,10 +10,10 @@
 | Work item | I01-W02 |
 | Status | WORKING DRAFT - W02-A ORACLE BASIS; W02-B INVENTORY ACCEPTED; W02-C IN PROGRESS |
 | Entry authority | I01-W01 closed; GO granted to I01-W02 in `docs/implementation/i01-w01-closure.md` |
-| Current activity | W02-C: seven fixture families prepared; latest is [source-ID collisions](i01-w02c-source-id-collision-fixtures.md); forecast remains provisional; W02 open |
+| Current activity | W02-C: eight fixture families prepared; latest is [source-ID fidelity](i01-w02c-source-id-fidelity-fixtures.md); forecast remains provisional; W02 open |
 | Product implementation in this document | NONE |
-| Fixture corpus progress | BASE-01 plus 48 variants across TC-I01-011–023 (group B and three group-C cases) and two valid controls materialized; remaining families pending |
-| Executable test progress | 140 fixture checks passed; 100 product skeletons skipped/unbound; no capture execution evidence |
+| Fixture corpus progress | BASE-01 plus 52 variants across TC-I01-011–024 (group B and four group-C cases) and two valid controls materialized; remaining families pending |
+| Executable test progress | 153 fixture checks passed; 108 product skeletons skipped/unbound; no capture execution evidence |
 | I-01 acceptance | NOT CLAIMED |
 | W02 closure | NOT CLAIMED |
 | Source-inspection pin | Repository `main` as inspected after commit `e15438973564cc790237cce7e9f1bba5e14f4846` |
@@ -60,7 +60,8 @@ TCND condition as passed. Dated W02-C asset checks are recorded separately in th
 [numeric/text retention](i01-w02c-numeric-retention-fixtures.md),
 [title presence](i01-w02c-title-presence-fixtures.md),
 [step representation](i01-w02c-step-representation-fixtures.md) and
-[source-ID collisions](i01-w02c-source-id-collision-fixtures.md) slices.
+[source-ID collisions](i01-w02c-source-id-collision-fixtures.md) and
+[source-ID fidelity](i01-w02c-source-id-fidelity-fixtures.md) slices.
 
 ## 2. W02 boundary
 
@@ -496,6 +497,9 @@ two TC-I01-023 variants with separate identical TC or basis items. Source-positi
 and candidate-reference observations distinguish duplicated TC keys from an
 ambiguous basis reference; actual generated identities and durable links remain
 unbound U/I assertions. Equal content does not authorize merging either pair.
+The [source-ID fidelity slice](i01-w02c-source-id-fidelity-fixtures.md) adds
+four TC-I01-024 pairs distinguishing leading zeros, case, surrounding whitespace
+and Unicode code points. Its asset checks do not establish product preservation.
 Continue the remaining fixture families and real assertion bindings under the
 accepted inventory's Section 6 controls. The whole inventory has recorded Owner
 acceptance; the Section 7 forecast remains provisional and subject to

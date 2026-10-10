@@ -1,0 +1,150 @@
+{
+  "corpus_id": "I01-W02C-SOURCE-ID-FIDELITY-01",
+  "exposure": "PUBLIC_SYNTHETIC_DEVELOPMENT",
+  "source_pin": "1a3414137c478178888632e282340c35335dab9a",
+  "oracles": [
+    "OR-I01-FID-003"
+  ],
+  "conditions": [
+    "TCND-I01-01",
+    "TCND-I01-06"
+  ],
+  "trace": [
+    "RA09-REQ-006",
+    "RA09-VAL-003",
+    "RA09-VAL-006"
+  ],
+  "levels": [
+    "U",
+    "I"
+  ],
+  "evidence": [
+    "E1",
+    "E2"
+  ],
+  "expected_component": {
+    "preserve_ordered_source_strings_and_code_points": true,
+    "no_conversion_trimming_case_folding_normalization_or_merging": true
+  },
+  "expected_full_capture": {
+    "outcome": "CAPTURED",
+    "source_bytes_unchanged": true,
+    "two_independent_items": true,
+    "minimum": "NOT_EVALUATED",
+    "minimum_reason": "MINIMUM_CHECK_NOT_ENABLED_IN_I01",
+    "review_performed": false
+  },
+  "cases": [
+    {
+      "id": "TC-I01-024.01",
+      "file": "source-id-fidelity/TC-I01-024.01.json",
+      "source_ids": [
+        "001",
+        "1"
+      ],
+      "code_points": [
+        [
+          48,
+          48,
+          49
+        ],
+        [
+          49
+        ]
+      ],
+      "source_pointers": [
+        "/content/test_cases/0/source_id",
+        "/content/test_cases/1/source_id"
+      ],
+      "byte_length": 1563,
+      "sha256": "f017ce87d551100e37cd9d032e1b92ec56935c7b96828e28d9a68b607ec54ca5"
+    },
+    {
+      "id": "TC-I01-024.02",
+      "file": "source-id-fidelity/TC-I01-024.02.json",
+      "source_ids": [
+        "TC-A",
+        "tc-a"
+      ],
+      "code_points": [
+        [
+          84,
+          67,
+          45,
+          65
+        ],
+        [
+          116,
+          99,
+          45,
+          97
+        ]
+      ],
+      "source_pointers": [
+        "/content/test_cases/0/source_id",
+        "/content/test_cases/1/source_id"
+      ],
+      "byte_length": 1567,
+      "sha256": "3ac106380f934621cd9e6512275e78aa1628a2ca573a653a35b89517227cbbc7"
+    },
+    {
+      "id": "TC-I01-024.03",
+      "file": "source-id-fidelity/TC-I01-024.03.json",
+      "source_ids": [
+        " TC-A\t",
+        "TC-A"
+      ],
+      "code_points": [
+        [
+          32,
+          84,
+          67,
+          45,
+          65,
+          9
+        ],
+        [
+          84,
+          67,
+          45,
+          65
+        ]
+      ],
+      "source_pointers": [
+        "/content/test_cases/0/source_id",
+        "/content/test_cases/1/source_id"
+      ],
+      "byte_length": 1570,
+      "sha256": "9454014336588768779ecf1a9f973b9078cc3ef72872d95a286cde3a01530ef6"
+    },
+    {
+      "id": "TC-I01-024.04",
+      "file": "source-id-fidelity/TC-I01-024.04.json",
+      "source_ids": [
+        "TC-é",
+        "TC-é"
+      ],
+      "code_points": [
+        [
+          84,
+          67,
+          45,
+          233
+        ],
+        [
+          84,
+          67,
+          45,
+          101,
+          769
+        ]
+      ],
+      "source_pointers": [
+        "/content/test_cases/0/source_id",
+        "/content/test_cases/1/source_id"
+      ],
+      "byte_length": 1570,
+      "sha256": "d4d96256968307d406ee28f762b0fa8e0dd434d2cdba98de03b28297cd418524"
+    }
+  ]
+}
