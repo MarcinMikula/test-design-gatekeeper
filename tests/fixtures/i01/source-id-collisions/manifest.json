@@ -1,0 +1,155 @@
+{
+  "corpus_id": "I01-W02C-SOURCE-ID-COLLISIONS-01",
+  "exposure": "PUBLIC_SYNTHETIC_DEVELOPMENT",
+  "inventory": {
+    "path": "docs/implementation/i01-w02-test-inventory.md",
+    "commit": "c466cca4165a40bb92885d94c2c3ca9d00af9126",
+    "blob": "397a38db02b2b403ab431056a6a4b533e9abd697"
+  },
+  "metadata_boundary": "Test-only source observations and relational expectations, not a product schema, issue catalog or preassigned TDG IDs. Candidate source pointers are not resolved internal links.",
+  "span_convention": "Zero-based UTF-8 byte offsets, end exclusive; each item span includes its original indentation but not the separating comma/newline. Product locators bind to the retained artifact, not these instrumentation offsets.",
+  "levels": [
+    "U",
+    "I"
+  ],
+  "evidence": [
+    "E1",
+    "E2"
+  ],
+  "oracles": [
+    "OR-I01-FID-007"
+  ],
+  "conditions": [
+    "TCND-I01-06"
+  ],
+  "trace": {
+    "requirements": [
+      "RA09-REQ-009",
+      "RA03-REQ-014",
+      "RA03-REQ-037"
+    ],
+    "validation": [
+      "RA09-VAL-005",
+      "RA09-VAL-008"
+    ],
+    "design": [
+      "RA-09 section 3.2",
+      "RA-09 section 4.1",
+      "SAD-04 section 5 / SAD-D-019"
+    ]
+  },
+  "full_capture_prerequisites": "Eligible Windows x64 / CPython 3.13 laboratory context; initialized isolated schema-1 healthy store; qa-demo operator; synthetic classification; lab-development purpose; fresh operation identity; all other accepted admission and containment controls satisfied.",
+  "expected_component": {
+    "all_source_occurrences_preserved": true,
+    "source_id_collision_visible": true,
+    "no_source_id_repair_or_key_based_merge": true,
+    "no_arbitrary_target_selection": true
+  },
+  "expected_full_capture": {
+    "outcome": "CAPTURED",
+    "new_package_version": true,
+    "minimum": "NOT_EVALUATED",
+    "minimum_reason": "MINIMUM_CHECK_NOT_ENABLED_IN_I01",
+    "review_performed": false,
+    "source_bytes_unchanged": true,
+    "duplicated_items_have_distinct_generated_internal_ids": true,
+    "item_id_to_source_location_binding_survives_reopen": true
+  },
+  "control": {
+    "id": "BASE-01",
+    "file": "base-01.json",
+    "purpose": "Removing only the second array item restores exact BASE-01 bytes. Unique-key witnesses change only the second supplied ID in memory; no fixture is repaired."
+  },
+  "cases": [
+    {
+      "id": "TC-I01-023.01",
+      "file": "source-id-collisions/TC-I01-023.01.json",
+      "duplicated_collection": "test_cases",
+      "supplied_source_id": "TC-CREATE-01",
+      "item_pointers": [
+        "/content/test_cases/0",
+        "/content/test_cases/1"
+      ],
+      "item_byte_spans": [
+        {
+          "start_byte": 508,
+          "end_byte": 1038
+        },
+        {
+          "start_byte": 1040,
+          "end_byte": 1570
+        }
+      ],
+      "measurements": {
+        "byte_length": 1583,
+        "sha256": "b2c4b8140a45a65450fe87b2ef1641b3da310e529f788a18d408d94ef4fbf8b7",
+        "container_depth": 6,
+        "value_nodes": 37,
+        "max_decoded_text_bytes": 154,
+        "tc_entries": 2,
+        "basis_entries": 1
+      },
+      "reference_observations": [
+        {
+          "source_pointer": "/content/test_cases/0/basis_refs/0",
+          "supplied_value": "BR-AGE-01",
+          "candidate_source_pointers": [
+            "/content/basis_elements/0"
+          ],
+          "must_remain_ambiguous": false,
+          "unique_target_if_resolved": "/content/basis_elements/0"
+        },
+        {
+          "source_pointer": "/content/test_cases/1/basis_refs/0",
+          "supplied_value": "BR-AGE-01",
+          "candidate_source_pointers": [
+            "/content/basis_elements/0"
+          ],
+          "must_remain_ambiguous": false,
+          "unique_target_if_resolved": "/content/basis_elements/0"
+        }
+      ]
+    },
+    {
+      "id": "TC-I01-023.02",
+      "file": "source-id-collisions/TC-I01-023.02.json",
+      "duplicated_collection": "basis_elements",
+      "supplied_source_id": "BR-AGE-01",
+      "item_pointers": [
+        "/content/basis_elements/0",
+        "/content/basis_elements/1"
+      ],
+      "item_byte_spans": [
+        {
+          "start_byte": 258,
+          "end_byte": 480
+        },
+        {
+          "start_byte": 482,
+          "end_byte": 704
+        }
+      ],
+      "measurements": {
+        "byte_length": 1275,
+        "sha256": "63479ff0d3f46ab2cec309c0c007c141429ea42efaba185f2c85aa1102343a98",
+        "container_depth": 6,
+        "value_nodes": 27,
+        "max_decoded_text_bytes": 154,
+        "tc_entries": 1,
+        "basis_entries": 2
+      },
+      "reference_observations": [
+        {
+          "source_pointer": "/content/test_cases/0/basis_refs/0",
+          "supplied_value": "BR-AGE-01",
+          "candidate_source_pointers": [
+            "/content/basis_elements/0",
+            "/content/basis_elements/1"
+          ],
+          "must_remain_ambiguous": true,
+          "unique_target_if_resolved": null
+        }
+      ]
+    }
+  ]
+}
