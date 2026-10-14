@@ -2,9 +2,15 @@
 
 Prepared and checked 2026-10-09 (Europe/Warsaw).
 Source pin: `main` at `1e2a637e54a891be4c078759d695f8f2893b4f24`.
-Status: **four variants prepared; product assertions remain unbound**.
+Status: **four variants prepared; tests of TDG behavior still need to be connected to the implementation**.
 
-This slice materializes TC-I01-019–020 from the Owner-accepted
+Reading this record: *fixtures* are prepared input files and test setup.
+*Asset checks* verify those files. *Product skeletons* are placeholders for tests
+of TDG itself; they are skipped until connected to the implementation.
+The dated results below describe the state at that point in the project.
+Wording clarified on 2026-10-14; recorded results and decisions are unchanged.
+
+This document records the test data prepared for TC-I01-019–020 from the Owner-accepted
 [W02-B inventory](i01-w02-test-inventory.md). The
 [manifest](../../tests/fixtures/i01/numeric-retention/manifest.json) records
 exact bytes/digests, source lexemes and locations, independent expected outcomes,
@@ -92,7 +98,9 @@ enabling them:
 This slice adds no CLI case beyond the inventory's U + I allocation, changes no
 product module and does not enable import.
 
-## Preparation evidence and handoff
+<a id="preparation-evidence-and-handoff"></a>
+
+## What was checked and what remains to do
 
 [Asset checks](../../tests/test_i01_numeric_retention_assets.py) use a tagged
 numeric-lexeme observer and exact rational comparisons only for these small
@@ -114,13 +122,23 @@ On a prepared target environment, the focused command is:
 .\.venv\Scripts\python.exe -m pytest -q -rs tests/test_i01_numeric_retention_assets.py tests/test_i01_numeric_retention_pending.py
 ~~~
 
-BASE-01 plus 36 variants across ten case rows and two additional valid controls
-are now materialized. This supplies assets and unbound skeletons for all listed
-group-B variants (TC-I01-011–020); it does not execute or accept those product
-cases, complete W02, or cover the whole 72-row / 208-variant inventory.
-The data are exposed development material, not held-out acceptance evidence;
-author checking remains solo AI-assisted. Effort is unreported and the forecast
-remains provisional.
+At the time of this record, the prepared files included the baseline example
+`BASE-01` and 36 input variants for ten test cases (TC-I01-011–020).
+Two additional valid files serve as comparison examples.
+The complete plan contains 72 test cases with 208 input variants, so more
+test data remain to be prepared. These counts describe files prepared, not
+tests passed by TDG. One input variant can be used by several automated checks,
+so the number of pytest results differs from the number of input variants.
 
-Next small slice: TC-I01-021, the seven title-presence/type variants in group C.
-W02 remains open; no W03 GO or I-01 acceptance is claimed.
+These files contain synthetic examples used while developing TDG. Because they
+are already available to the author, they are not a separate, previously unseen
+set for acceptance testing. The checks recorded here were performed by the
+author with AI assistance. They do not count as an independent human review.
+
+No record of human time spent was provided for this work. The estimate of
+remaining work is still provisional and will be checked against actual effort.
+Preparing these files does not finish W02 (test preparation), authorize W03
+(the next work item), or mean that I-01 (the first product increment) has been
+accepted.
+
+Next planned task at the time of this record: TC-I01-021, the seven title-presence/type variants in group C.

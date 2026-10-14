@@ -2,7 +2,13 @@
 
 Prepared 2026-10-07; verification/publication slice 2026-10-08 (Europe/Warsaw).
 Source pin: `main` at `577e0eef38bf4865f955ddd2d06f4ed6e9e1f4ba`.
-Status: **partial W02-C assets prepared; product assertions remain unbound**.
+Status: **first set of W02-C test data prepared; tests of TDG behavior still need to be connected to the implementation**.
+
+Reading this record: *fixtures* are prepared input files and test setup.
+*Asset checks* verify those files. *Product skeletons* are placeholders for tests
+of TDG itself; they are skipped until connected to the implementation.
+The dated results below describe the state at that point in the project.
+Wording clarified on 2026-10-14; recorded results and decisions are unchanged.
 
 The Owner accepted the whole [W02-B inventory](i01-w02-test-inventory.md) as the
 basis for W02-C on 2026-10-07, recorded in
@@ -77,15 +83,15 @@ becomes possible; a contrary product result must not redefine these oracles.
 ## Verification and limits
 
 On 2026-10-08 the focused selection produced **9 passed, 9 skipped**. The passes
-are fixture/manifest checks; the skips are the nine deliberately unbound product
-skeletons. Neither number is an executed TC-I01-018 product result.
+are fixture/manifest checks; the nine skipped tests are placeholders awaiting connections to
+TDG. Neither number is an executed TC-I01-018 product result.
 
 The available host was Linux x86_64, CPython 3.12.14, using cached pytest 9.1.1
 modules. CPython 3.13 was unavailable; the TDG package was not installed or run
 under 3.12. This is portable asset validation only, not supported-runtime or
 native Windows qualification. Source code, dependency pins and the qualified
 W01 build remain unchanged. The existing product regression was not rerun for
-this test-asset-only slice.
+this change to test data and test placeholders.
 
 With the normal project environment already prepared, the focused command on the
 target Windows host is:
@@ -94,13 +100,23 @@ target Windows host is:
 .\.venv\Scripts\python.exe -m pytest -q -rs tests/test_i01_numeric_assets.py tests/test_i01_numeric_pending.py
 ```
 
-Expected outcomes were specified from accepted contracts before any product
-capture output. This remains solo AI-assisted author checking, not independent
-human assurance. All assets are exposed synthetic development data, not a fresh
-held-out acceptance corpus.
+Expected results were taken from the accepted requirements and design before
+observing any TDG import result. The automated checks verify the prepared files;
+the nine skipped tests still need to be connected to TDG's implementation.
 
-Next small slice: envelope fixtures TC-I01-011–015. W02 remains open for the
-remaining assets, actual bindings, corrections and completion review. The §7
-forecast remains provisional; human effort was not reported for this slice and
-must not be invented from elapsed chat time. Reassessment still needs observed
-effort and the first real persistence/native harness.
+These files contain synthetic examples used while developing TDG. Because they
+are already available to the author, they are not a separate, previously unseen
+set for acceptance testing. The checks recorded here were performed by the
+author with AI assistance. They do not count as an independent human review.
+
+No record of human time spent was provided for this work. The estimate of
+remaining work is still provisional and will be checked against actual effort.
+Preparing these files does not finish W02 (test preparation), authorize W03
+(the next work item), or mean that I-01 (the first product increment) has been
+accepted.
+
+Next planned task at the time of this record: prepare the envelope inputs for
+TC-I01-011–015. The remaining data, connections to the implementation, corrections
+and completion review still need work. Re-estimation needs recorded human effort
+and the first working test setup for persistence or native Windows controls;
+elapsed conversation time is not a measure of human effort.

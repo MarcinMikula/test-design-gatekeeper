@@ -2,9 +2,15 @@
 
 Prepared and checked 2026-10-10 (Europe/Warsaw).
 Source pin: `main` at `1a3414137c478178888632e282340c35335dab9a`.
-Status: **four variants prepared; product observations remain unbound**.
+Status: **four variants prepared; tests of TDG behavior still need to be connected to the implementation**.
 
-This slice materializes TC-I01-024 from the accepted
+Reading this record: *fixtures* are prepared input files and test setup.
+*Asset checks* verify those files. *Product skeletons* are placeholders for tests
+of TDG itself; they are skipped until connected to the implementation.
+The dated results below describe the state at that point in the project.
+Wording clarified on 2026-10-14; recorded results and decisions are unchanged.
+
+This document records the test data prepared for TC-I01-024 from the accepted
 [W02-B inventory](i01-w02-test-inventory.md), using OR-I01-FID-003 in the
 [W02 oracle basis](i01-w02-test-design.md): RA09-REQ-006 and RA09-VAL-003/006,
 conditions TCND-I01-01/06, levels U/I and evidence E1/E2. The governing
@@ -54,18 +60,20 @@ store connection after commit/reopen. Test-generated IDs or decoding the fixture
 alone cannot prove these outcomes. No new matching policy or diagnostic code is
 introduced by this slice.
 
-## Preparation evidence and handoff
+<a id="preparation-evidence-and-handoff"></a>
+
+## What was checked and what remains to do
 
 The [asset checks](../../tests/test_i01_source_id_fidelity_assets.py) independently
 check the pair recipes, exact bytes/digests, unique JSON members, resource measures,
 unchanged baseline content and distinguishing lossy-transform witnesses.
 First focused execution: 13 passed, eight skipped; two pytest iterator-deprecation
-warnings were corrected by materializing parametrization lists. No test failed.
+warnings were corrected by passing lists to test parametrization. No test failed.
 Combined execution afterward: **153 passed, 108 skipped**, with no warnings,
 on Linux / CPython 3.12.14 using cached pytest 9.1.1 modules. TDG was not installed
 or executed under 3.12. This is asset evidence, not product execution or native
 Windows/Python 3.13 qualification. Existing fixtures and accepted snapshots remain
-unchanged; no product regression is claimed.
+unchanged; product regression tests were not run for this change.
 
 Target command after environment preparation:
 
@@ -73,10 +81,24 @@ Target command after environment preparation:
 .\.venv\Scripts\python.exe -m pytest -q -rs tests/test_i01_source_id_fidelity_assets.py tests/test_i01_source_id_fidelity_pending.py
 ~~~
 
-Eight families now materialize BASE-01 plus 52 variants across fourteen case rows
-and two valid controls. These exposed synthetic inputs and solo AI-assisted checks
-remain development evidence. Effort is unreported; the forecast stays provisional.
-W02 remains open; no W03 GO or I-01 acceptance is claimed.
+At the time of this record, the prepared files included the baseline example
+`BASE-01` and 52 input variants for fourteen test cases (TC-I01-011–024).
+Two additional valid files serve as comparison examples.
+The complete plan contains 72 test cases with 208 input variants, so more
+test data remain to be prepared. These counts describe files prepared, not
+tests passed by TDG. One input variant can be used by several automated checks,
+so the number of pytest results differs from the number of input variants.
 
-Next small slice: TC-I01-025 — unknown nested content, malformed test_cases member,
+These files contain synthetic examples used while developing TDG. Because they
+are already available to the author, they are not a separate, previously unseen
+set for acceptance testing. The checks recorded here were performed by the
+author with AI assistance. They do not count as an independent human review.
+
+No record of human time spent was provided for this work. The estimate of
+remaining work is still provisional and will be checked against actual effort.
+Preparing these files does not finish W02 (test preparation), authorize W03
+(the next work item), or mean that I-01 (the first product increment) has been
+accepted.
+
+Next planned task at the time of this record: TC-I01-025 — unknown nested content, malformed test_cases member,
 and title-only TC (three variants).

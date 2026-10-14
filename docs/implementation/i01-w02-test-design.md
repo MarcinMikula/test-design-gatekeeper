@@ -10,10 +10,10 @@
 | Work item | I01-W02 |
 | Status | WORKING DRAFT - W02-A ORACLE BASIS; W02-B INVENTORY ACCEPTED; W02-C IN PROGRESS |
 | Entry authority | I01-W01 closed; GO granted to I01-W02 in `docs/implementation/i01-w01-closure.md` |
-| Current activity | W02-C: eight fixture families prepared; latest is [source-ID fidelity](i01-w02c-source-id-fidelity-fixtures.md); forecast remains provisional; W02 open |
+| Current activity | W02-C: eight groups of test data prepared; latest is [source-ID fidelity](i01-w02c-source-id-fidelity-fixtures.md); remaining effort will be re-estimated; W02 is still in progress |
 | Product implementation in this document | NONE |
-| Fixture corpus progress | BASE-01 plus 52 variants across TC-I01-011–024 (group B and four group-C cases) and two valid controls materialized; remaining families pending |
-| Executable test progress | 153 fixture checks passed; 108 product skeletons skipped/unbound; no capture execution evidence |
+| Test data prepared | BASE-01 plus 52 variants across TC-I01-011–024 (group B and four group-C cases) and two valid comparison files prepared; other planned inputs still need to be created |
+| Executable test progress | 153 checks of the input files passed; 108 tests of TDG behavior are skipped until connected to the implementation; import behavior has not been tested here |
 | I-01 acceptance | NOT CLAIMED |
 | W02 closure | NOT CLAIMED |
 | Source-inspection pin | Repository `main` as inspected after commit `e15438973564cc790237cce7e9f1bba5e14f4846` |
@@ -79,7 +79,7 @@ independent oracles, traceability, and later executable skeleton preparation.
 - trace those oracles to accepted REQ/VAL/design sources and
   `TCND-I01-01` through `TCND-I01-16`;
 - prepare the later W02-B fixture/oracle inventory;
-- prepare the later W02-C materialized fixtures and test skeletons;
+- prepare the input files and product test placeholders in W02-C;
 - provide evidence for the W02 re-estimation point once the detailed inventory
   exists.
 
@@ -245,7 +245,8 @@ are 127-, 128-, and 129-character numeric tokens, not JSON strings. Keep raw siz
 container depth, item counts and other limits below their bounds. Separate
 precision probes, such as `9007199254740993` and `0.1000000000000000000001`,
 exercise exact source/lexeme retention without crossing the token-length bound.
-These are fixture recipes; files and executable tests are not materialized here.
+This section specifies the inputs to prepare; creating the files and executable
+tests is part of W02-C.
 
 ### 5.2 Source fidelity, presence, and mapping
 
@@ -330,7 +331,7 @@ RA-03, SAD-02 and SAD-04 receipt/identity behavior.
 
 ## 7. Candidate fixture families for W02-B
 
-The W02-A extraction proposed the following families for W02-B. Materialization
+The W02-A extraction proposed the following families for W02-B. Preparing the files
 progress is now recorded separately in the W02-C slice linked above.
 
 | Family | Purpose | Principal oracle groups |
@@ -458,52 +459,38 @@ capture failure with a stored receipt from failure that cannot retain a receipt.
 The inventory retains these concrete variants and exposes its remaining test
 harness/configuration bindings and provisional effort forecast.
 
-## 11. Current handoff state
+<a id="11-current-handoff-state"></a>
 
-W02-A establishes a first independent oracle matrix before product capture
-implementation.
+## 11. What is ready and what remains to do
 
-It does **not** establish:
+W02-A defines expected results from the accepted requirements and design before
+TDG's import behavior is implemented. W02-B turns those expectations into the
+approved test plan. W02-C prepares the files and tests needed to carry out that plan.
 
-- that the planned cases establish exhaustive coverage or executed evidence;
-- that the whole fixture corpus or executable product assertions are ready;
-- that W03 may start merely because this draft exists;
-- that any I-01 condition has passed;
-- that W02 is complete;
-- that I-01 is accepted.
+The following test data have been prepared:
 
-W02-C began with BASE-01 and TC-I01-018.01–.03; the
-[2026-10-08 slice record](i01-w02c-numeric-fixtures.md) separates passing asset
-checks from unbound product skeletons and states the runtime limitation.
-The subsequent [envelope slice](i01-w02c-envelope-fixtures.md) adds 19 variants
-from TC-I01-011–015, with the same separation of asset and product evidence.
-The [syntax/encoding slice](i01-w02c-syntax-fixtures.md) adds ten variants from
-TC-I01-016–017 and two valid controls, retaining the initial authoring-guard
-failure and its correction separately from product evidence.
-The [numeric/text retention slice](i01-w02c-numeric-retention-fixtures.md) adds
-four TC-I01-019–020 variants and reuses existing controls. This completes asset
-materialization and unbound skeletons for the listed group-B inputs, not product
-verification or condition acceptance.
-The [title-presence slice](i01-w02c-title-presence-fixtures.md) begins group C
-with seven TC-I01-021 variants, including explicit absence, null and empty-array
-type mismatch. Asset observations remain separate from the unbound U/I product
-assertions and do not invent mapping status or repair a supplied title.
-The [step-representation slice](i01-w02c-step-representation-fixtures.md) adds
-three TC-I01-022 variants: narrative, ordered structured steps and identical
-numbered repetitions. It prepares exact-content/order/location observations
-without executing the unbound product assertions or inventing actions.
-The [source-ID collision slice](i01-w02c-source-id-collision-fixtures.md) adds
-two TC-I01-023 variants with separate identical TC or basis items. Source-position
-and candidate-reference observations distinguish duplicated TC keys from an
-ambiguous basis reference; actual generated identities and durable links remain
-unbound U/I assertions. Equal content does not authorize merging either pair.
-The [source-ID fidelity slice](i01-w02c-source-id-fidelity-fixtures.md) adds
-four TC-I01-024 pairs distinguishing leading zeros, case, surrounding whitespace
-and Unicode code points. Its asset checks do not establish product preservation.
-Continue the remaining fixture families and real assertion bindings under the
-accepted inventory's Section 6 controls. The whole inventory has recorded Owner
-acceptance; the Section 7 forecast remains provisional and subject to
-reassessment. No product execution evidence, full I-01 total, budget ceiling or
-delivery date is claimed.
-W02 remains open pending its remaining deliverables and completion review; this
-inventory acceptance does not start W03 or accept I-01.
+| Record | Inputs prepared and purpose |
+| --- | --- |
+| [Numeric-token limits — 2026-10-08](i01-w02c-numeric-fixtures.md) | BASE-01 and TC-I01-018.01–.03; numbers around the accepted token-length limit |
+| [Document envelope](i01-w02c-envelope-fixtures.md) | 19 TC-I01-011–015 variants covering fields, types and versions |
+| [JSON syntax and encoding](i01-w02c-syntax-fixtures.md) | Ten TC-I01-016–017 variants and two valid comparison files; the record also preserves the initial data-generator failure and its correction |
+| [Numbers and text](i01-w02c-numeric-retention-fixtures.md) | Four TC-I01-019–020 variants, reusing existing comparison files; this completes the input data and test placeholders for group B |
+| [Title presence and type](i01-w02c-title-presence-fixtures.md) | Seven TC-I01-021 variants, including an absent field, explicit null and an empty array of the wrong type |
+| [Step representation](i01-w02c-step-representation-fixtures.md) | Three TC-I01-022 variants: narrative, structured steps and repeated numbered steps |
+| [Repeated source identifiers](i01-w02c-source-id-collision-fixtures.md) | Two TC-I01-023 variants that keep separate TC or basis records with identical content and expose ambiguous references |
+| [Preserving source identifiers](i01-w02c-source-id-fidelity-fixtures.md) | Four TC-I01-024 pairs that differ in leading zeros, case, surrounding whitespace or Unicode code points |
+
+The checks so far verify these input files. Tests of TDG itself still need to be
+connected to the implementation. They must check the expected outcomes, including
+preserved titles and steps, separate item identities, original locations and
+stored links. The prepared data do not establish that TDG performs these actions
+correctly or that every possible defect is covered.
+
+Next, prepare the remaining inputs and connect the tests to TDG, following
+Section 6 of the accepted inventory. W02 still requires the remaining deliverables,
+any review corrections and the completion review. Approval of the test plan does
+not authorize W03 or accept I-01; those remain separate decisions.
+
+The Section 7 effort estimate is still provisional and must be revised using
+actual work. A new total estimate for all of I-01, a maximum budget and a delivery
+date have not been established.

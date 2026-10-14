@@ -12,8 +12,13 @@
 | Source pin | `0dc8d61144e82271839194de1fa7a466bbb4f92b`, plus the accepted numeric-token addendum |
 | Governing numeric decision | [SAD04-I01-NUM-001](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md): REJECTED / exit 2 above 128 characters |
 | Oracle basis | [W02-A](i01-w02-test-design.md), read with RA/SAD and their acceptance records |
-| Fixtures / executable tests | Recipes and test design only; materialization remains W02-C |
+| Fixtures / executable tests | Input specifications and test designs; W02-C creates the files and executable tests |
 | Execution / closure | No runtime results, W02 closure or I-01 acceptance claimed |
+
+Editorial clarification — 2026-10-14: explanatory wording has been simplified.
+The test definitions, expected results, estimates and recorded decisions keep
+their accepted meaning. The review dates above remain historical; current
+preparation progress is summarized in [README](../../README.md).
 
 ### 1. Scope and counting
 
@@ -44,7 +49,8 @@ synthetic customer-registration scope; basis `BR-AGE-01` states that integer age
 registration acceptance, with narrative preconditions, a structured step,
 `HUMAN_AUTHORED` origin and a `basis_refs` link. This is supplied test data, not a
 business rule inferred or assessed by I-01. Human authority does not arise from
-payload fields. W02-C will materialize and independently inspect the exact bytes.
+payload fields. W02-C will create the files and check their exact bytes
+independently of TDG.
 
 Unless a row says otherwise: clone BASE-01, vary only the stated factor, use a new
 operation ID and a healthy eligible store, perform the indicated operation, and
@@ -266,10 +272,10 @@ capture/protection part. A row is not a new requirement or an executed result.
 
 ### 6. Review boundary and W02-C binding work
 
-The oracle designs above precede implementation. W02-C must materialize exact
-fixture bytes, expand listed variants to separate stable IDs and bind assertions
-to the selected service/CLI boundary. Preserve the original failing evidence if
-the future implementation contradicts an accepted oracle; do not update expected
+The expected results above were defined before implementation. In W02-C, create
+the exact input files, give each listed variant its own stable ID and connect
+test assertions to the selected service or CLI entry point. Preserve the original
+failing evidence if the future implementation contradicts an accepted oracle; do not update expected
 values merely to match it.
 
 Before an affected executable test is considered ready:
@@ -284,12 +290,13 @@ Before an affected executable test is considered ready:
   a mocked control or skipped Windows test does not satisfy native evidence;
 - keep end-to-end receipt/exit assertions separate from component gate assertions;
   resolve any genuinely missing product classification through change control;
-- keep development fixtures exposed; do not later relabel them independent held-out
-  acceptance data or call solo AI-assisted review independent assurance.
+- keep data used during development identified as such; do not later describe
+  them as previously unseen acceptance data. An author checking their own work
+  with AI assistance is not an independent review.
 
-No automatic verdict is assigned from the number of cases. W02 remains open:
-fixture/skeleton materialization, review corrections and the applicable completion
-decision remain. W03 is not started by publication of this inventory.
+The number of planned cases does not determine whether testing is complete.
+W02 still requires prepared data and test placeholders, review corrections and
+a completion decision. Publishing this plan does not authorize work on W03.
 
 ### 7. Effort reassessment
 
@@ -300,7 +307,7 @@ boundary fixtures and diagnosis; case count alone is not the estimate.
 
 | Activity | Allocation | Provisional human effort |
 | --- | --- | ---: |
-| Refine fixture/oracle recipes and materialize W02-C assets/skeletons | Remaining W02 | 8–14 h |
+| Refine input specifications and expected results; prepare W02-C files and test placeholders | Remaining W02 | 8–14 h |
 | Test adapters and persistence/crash injection harness | Testing share of W03/W05/W06 | 8–14 h |
 | Native Windows containment/path/concurrency verification assets | Testing share of W04/W06 | 8–16 h |
 | Execute and diagnose the selected suite | Testing share of W03–W07 | 6–10 h |
@@ -341,7 +348,7 @@ fixtures and executable skeletons under the accepted Section 6 controls.
 
 Review whether the stimuli can distinguish the required effects, whether the
 oracles are supported, and whether the selected levels/faults provide sufficient
-evidence. Corrections belong here before affected fixture/test materialization.
+evidence. Corrections belong here before preparing the affected input files and tests.
 Whole-inventory acceptance does not close W02 or establish execution evidence.
 W02 completion requires its remaining deliverables and applicable completion
 review. Section 7 remains a provisional planning hypothesis with its stated

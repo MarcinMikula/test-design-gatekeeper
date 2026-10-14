@@ -3,9 +3,15 @@
 Prepared and first checked 2026-10-09; combined verification and publication
 slice 2026-10-10 (Europe/Warsaw).
 Source pin: `main` at `8cdcb8f05db2d2f02a952b8f3bd4ef9d3fae8a89`.
-Status: **three variants prepared; product assertions remain unbound**.
+Status: **three variants prepared; tests of TDG behavior still need to be connected to the implementation**.
 
-This slice materializes TC-I01-022 from the accepted
+Reading this record: *fixtures* are prepared input files and test setup.
+*Asset checks* verify those files. *Product skeletons* are placeholders for tests
+of TDG itself; they are skipped until connected to the implementation.
+The dated results below describe the state at that point in the project.
+Wording clarified on 2026-10-14; recorded results and decisions are unchanged.
+
+This document records the test data prepared for TC-I01-022 from the accepted
 [W02-B inventory](i01-w02-test-inventory.md). The
 [manifest](../../tests/fixtures/i01/step-representation/manifest.json) records
 source sizes/digests and value spans, expected supplied steps, occurrence counts,
@@ -68,7 +74,9 @@ ordered arrays rather than sets. A whole-source digest alone cannot prove that
 the projection preserves step order, and capture success alone cannot prove
 that an absent TC-level expected result was not invented.
 
-## Preparation evidence and handoff
+<a id="preparation-evidence-and-handoff"></a>
+
+## What was checked and what remains to do
 
 [Asset checks](../../tests/test_i01_step_representation_assets.py) verify exact
 bytes, independent resource measures, the isolated steps replacement, fixed
@@ -82,7 +90,7 @@ skeletons skipped**. Combined verification on 2026-10-10 across all six families
 **129 passed; 96 skipped**, on Linux x86_64 / CPython 3.12.14 with cached pytest
 9.1.1 modules. TDG was not installed or run under 3.12. Target Windows/Python 3.13
 verification and product E2 observations remain pending; product regression was
-not rerun for this asset-only slice. Existing assets and accepted snapshots stay
+not rerun for this change to test data and test placeholders. Existing assets and accepted snapshots stay
 unchanged.
 
 On a prepared target environment:
@@ -91,12 +99,25 @@ On a prepared target environment:
 .\.venv\Scripts\python.exe -m pytest -q -rs tests/test_i01_step_representation_assets.py tests/test_i01_step_representation_pending.py
 ~~~
 
-BASE-01 plus 46 named variants across twelve case rows and two valid controls
-are materialized: all group-B inputs and TC-I01-021–022 in group C. This is not
-completion or product execution of the whole 72-row / 208-variant inventory.
-The exposed synthetic corpus and solo AI-assisted checks remain development
-evidence. Effort is unreported and the forecast remains provisional.
+At the time of this record, the prepared files included the baseline example
+`BASE-01` and 46 input variants for twelve test cases (TC-I01-011–022).
+This covers group B and TC-I01-021–022 in group C.
+Two additional valid files serve as comparison examples.
+The complete plan contains 72 test cases with 208 input variants, so more
+test data remain to be prepared. These counts describe files prepared, not
+tests passed by TDG. One input variant can be used by several automated checks,
+so the number of pytest results differs from the number of input variants.
 
-Next small slice: TC-I01-023, repeated source identifiers on separate TC or
-basis elements and the resulting ambiguous reference. W02 remains open;
-no W03 GO or I-01 acceptance is claimed.
+These files contain synthetic examples used while developing TDG. Because they
+are already available to the author, they are not a separate, previously unseen
+set for acceptance testing. The checks recorded here were performed by the
+author with AI assistance. They do not count as an independent human review.
+
+No record of human time spent was provided for this work. The estimate of
+remaining work is still provisional and will be checked against actual effort.
+Preparing these files does not finish W02 (test preparation), authorize W03
+(the next work item), or mean that I-01 (the first product increment) has been
+accepted.
+
+Next planned task at the time of this record: TC-I01-023, repeated source identifiers on separate TC or
+basis elements and the resulting ambiguous reference.

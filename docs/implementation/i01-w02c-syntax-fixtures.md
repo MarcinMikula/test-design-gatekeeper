@@ -2,9 +2,15 @@
 
 Prepared and checked 2026-10-08; publication slice 2026-10-09 (Europe/Warsaw).
 Source pin: `main` at `bf696d9eb8f6933976b1a4a3f9f1ce360193dd36`.
-Status: **10 negative variants prepared; product assertions remain unbound**.
+Status: **10 negative variants prepared; tests of TDG behavior still need to be connected to the implementation**.
 
-This slice materializes TC-I01-016–017 from the Owner-accepted
+Reading this record: *fixtures* are prepared input files and test setup.
+*Asset checks* verify those files. *Product skeletons* are placeholders for tests
+of TDG itself; they are skipped until connected to the implementation.
+The dated results below describe the state at that point in the project.
+Wording clarified on 2026-10-14; recorded results and decisions are unchanged.
+
+This document records the test data prepared for TC-I01-016–017 from the Owner-accepted
 [W02-B inventory](i01-w02-test-inventory.md). The
 [manifest](../../tests/fixtures/i01/syntax/manifest.json) records exact raw sizes
 and digests, intended defects, valid counterparts, levels and expected outcomes.
@@ -79,7 +85,9 @@ placeholders with explicit skips and fail guards. Before enabling them:
 The current asset observations do not provide those product E2/E3/E4 results.
 Neither fixture validation nor a skipped test is product verification.
 
-## Preparation evidence and handoff
+<a id="preparation-evidence-and-handoff"></a>
+
+## What was checked and what remains to do
 
 The first authoring attempt stopped with an AssertionError at
 `raw.count(anchor) == 1`: the comment recipe used `b'{\n'`, which also occurred
@@ -93,7 +101,7 @@ skipped**. With the earlier numeric and envelope families: **86 passed,
 68 skipped** on Linux x86_64 / CPython 3.12.14 with cached pytest 9.1.1 modules.
 TDG was not installed or run under 3.12. Target Windows/Python 3.13 verification
 remains pending; source/dependency pins and earlier assets remain unchanged.
-The product regression was not rerun for this test-asset-only slice.
+The product regression was not rerun for this change to test data and test placeholders.
 
 For this family on a prepared target environment:
 
@@ -101,12 +109,24 @@ For this family on a prepared target environment:
 .\.venv\Scripts\python.exe -m pytest -q -rs tests/test_i01_syntax_assets.py tests/test_i01_syntax_pending.py
 ~~~
 
-Across the three slices, BASE-01 and 32 variants from eight case rows are
-materialized, with two additional valid controls. This is not completion of
-the 72-row / 208-variant inventory or execution of those product cases.
-The assets are exposed development data; author checking remains solo
-AI-assisted, not independent assurance. Human effort is unreported and the
-forecast remains provisional.
+At the time of this record, the prepared files included the baseline example
+`BASE-01` and 32 input variants for eight test cases (TC-I01-011–018).
+Two additional valid files serve as comparison examples.
+The complete plan contains 72 test cases with 208 input variants, so more
+test data remain to be prepared. These counts describe files prepared, not
+tests passed by TDG. One input variant can be used by several automated checks,
+so the number of pytest results differs from the number of input variants.
 
-Next small slice: TC-I01-019–020, exact in-bound numeric lexemes and a long
-numeric-looking string. W02 remains open; no W03 GO or I-01 acceptance is claimed.
+These files contain synthetic examples used while developing TDG. Because they
+are already available to the author, they are not a separate, previously unseen
+set for acceptance testing. The checks recorded here were performed by the
+author with AI assistance. They do not count as an independent human review.
+
+No record of human time spent was provided for this work. The estimate of
+remaining work is still provisional and will be checked against actual effort.
+Preparing these files does not finish W02 (test preparation), authorize W03
+(the next work item), or mean that I-01 (the first product increment) has been
+accepted.
+
+Next planned task at the time of this record: TC-I01-019–020, exact in-bound numeric lexemes and a long
+numeric-looking string.

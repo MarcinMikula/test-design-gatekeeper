@@ -2,7 +2,13 @@
 
 Prepared and checked 2026-10-08 (Europe/Warsaw).
 Source pin: `main` at `e1ff0d7a9114f3092fc10ac4734e27cdce7ea380`.
-Status: **19 input variants prepared; product assertions remain unbound**.
+Status: **19 input variants prepared; tests of TDG behavior still need to be connected to the implementation**.
+
+Reading this record: *fixtures* are prepared input files and test setup.
+*Asset checks* verify those files. *Product skeletons* are placeholders for tests
+of TDG itself; they are skipped until connected to the implementation.
+The dated results below describe the state at that point in the project.
+Wording clarified on 2026-10-14; recorded results and decisions are unchanged.
 
 This slice follows the Owner-accepted [W02-B inventory](i01-w02-test-inventory.md),
 TC-I01-011–015, and reuses the unchanged BASE-01 from the
@@ -69,13 +75,15 @@ before its real assertions are supplied.
 | I | Real capture, effective containment and separate SQLite inspection: coherent original/projection/inventory/receipt and post-commit reference for the two capturable variants; no new package/reference for root-marker rejection. Check unknown marker location/mapping and missing dimensions of empty content. |
 | C | Installed entry point, bounded stdout/stderr, delivered exit code and independent durable-effect checks for the 17 allocated variants. Preserve prior history; no fabricated successful receipt or package after rejection. |
 
-Actual receipt/projection fields, issue codes, observer qualification and the
-native runtime remain unbound. Bind the accepted minimum reason on capture and
+The tests still need to use the actual receipt/projection fields and issue codes,
+and run with verified observation tools on the target environment. Bind the accepted minimum reason on capture and
 verify no fabricated review. Safe rejection-retention and storage-failure rules
 still apply. Prepared E1 assets do not supply product E2/E4 evidence. Preserve the
 first meaningful product failure rather than changing the oracle to match it.
 
-## Verification and handoff
+<a id="verification-and-handoff"></a>
+
+## What was checked and what remains to do
 
 Focused execution on 2026-10-08: **40 new asset checks passed; 39 new product
 skeletons skipped**. Including the numeric family: **49 passed, 48 skipped**.
@@ -83,7 +91,7 @@ The host was Linux x86_64 / CPython 3.12.14 with cached pytest 9.1.1 modules.
 These are portable asset checks only. TDG was not installed or run under 3.12;
 Windows x64 / CPython 3.13 qualification remains pending for these assets.
 Product source/dependency pins and the earlier numeric artifacts are unchanged;
-the product regression was not rerun for this test-asset-only change.
+the product regression was not rerun for this change to test data and test placeholders.
 
 With the normal target environment already prepared:
 
@@ -91,11 +99,23 @@ With the normal target environment already prepared:
 .\.venv\Scripts\python.exe -m pytest -q -rs tests/test_i01_envelope_assets.py tests/test_i01_envelope_pending.py tests/test_i01_numeric_assets.py tests/test_i01_numeric_pending.py
 ```
 
-Together the two slices materialize BASE-01 and 22 variants from six of the 72
-case rows / 208 planned variants. This is fixture progress, not 22 executed
-product cases or completed W02. Review is solo AI-assisted author checking;
-these public synthetic development inputs are not held-out acceptance data.
-The effort forecast remains provisional, with human effort unreported.
+At the time of this record, the prepared files included the baseline example
+`BASE-01` and 22 input variants for six test cases (TC-I01-011–015 and TC-I01-018).
+The complete plan contains 72 test cases with 208 input variants, so more
+test data remain to be prepared. These counts describe files prepared, not
+tests passed by TDG. One input variant can be used by several automated checks,
+so the number of pytest results differs from the number of input variants.
 
-Next small slice: syntax/encoding fixtures TC-I01-016–017. Remaining fixtures,
+These files contain synthetic examples used while developing TDG. Because they
+are already available to the author, they are not a separate, previously unseen
+set for acceptance testing. The checks recorded here were performed by the
+author with AI assistance. They do not count as an independent human review.
+
+No record of human time spent was provided for this work. The estimate of
+remaining work is still provisional and will be checked against actual effort.
+Preparing these files does not finish W02 (test preparation), authorize W03
+(the next work item), or mean that I-01 (the first product increment) has been
+accepted.
+
+Next planned task at the time of this record: syntax/encoding fixtures TC-I01-016–017. Remaining fixtures,
 actual assertion bindings, corrections and the W02 completion decision are open.

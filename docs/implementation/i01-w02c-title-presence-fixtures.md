@@ -2,9 +2,15 @@
 
 Prepared and checked 2026-10-09 (Europe/Warsaw).
 Source pin: `main` at `35e9ae1cce9debc1b11258ed6b96cf4b67119061`.
-Status: **seven variants prepared; product assertions remain unbound**.
+Status: **seven variants prepared; tests of TDG behavior still need to be connected to the implementation**.
 
-This slice materializes TC-I01-021 from the accepted
+Reading this record: *fixtures* are prepared input files and test setup.
+*Asset checks* verify those files. *Product skeletons* are placeholders for tests
+of TDG itself; they are skipped until connected to the implementation.
+The dated results below describe the state at that point in the project.
+Wording clarified on 2026-10-14; recorded results and decisions are unchanged.
+
+This document records the test data prepared for TC-I01-021 from the accepted
 [W02-B inventory](i01-w02-test-inventory.md). The
 [manifest](../../tests/fixtures/i01/title-presence/manifest.json) records exact
 source bytes/digests, title presence or raw lexeme/span, resource measurements,
@@ -72,7 +78,9 @@ separate store inspection after commit/reopen: original bytes, deficiencies,
 source boundaries, projection and receipt must agree; prior immutable records
 must remain unchanged. Generic success or capture alone cannot prove the state.
 
-## Preparation evidence and handoff
+<a id="preparation-evidence-and-handoff"></a>
+
+## What was checked and what remains to do
 
 [Asset checks](../../tests/test_i01_title_presence_assets.py) validate exact
 bytes, valid envelope, independent resource measures, isolated title changes,
@@ -85,7 +93,7 @@ skipped**. All five families together: **118 passed; 90 skipped** on Linux
 x86_64 / CPython 3.12.14 with cached pytest 9.1.1 modules. TDG was not installed
 or run under 3.12. Target Windows/Python 3.13 verification and actual product
 E2 observations remain pending; product regression was not rerun for this
-asset-only change. Existing assets and accepted snapshots are unchanged.
+change to test data and test placeholders. Existing assets and accepted snapshots are unchanged.
 
 On a prepared target environment:
 
@@ -93,14 +101,24 @@ On a prepared target environment:
 .\.venv\Scripts\python.exe -m pytest -q -rs tests/test_i01_title_presence_assets.py tests/test_i01_title_presence_pending.py
 ~~~
 
-BASE-01 plus 43 named variants across eleven case rows and two valid controls
-are materialized. These are all group-B variants plus TC-I01-021 in group C,
-not completed product verification or the whole 72-row / 208-variant inventory.
-Pytest item totals and inventory-variant counts measure different things.
-The exposed synthetic corpus and solo AI-assisted checks are development
-evidence, not held-out acceptance or independent assurance. Effort is unreported;
-the forecast remains provisional.
+At the time of this record, the prepared files included the baseline example
+`BASE-01` and 43 input variants for eleven test cases (TC-I01-011–021).
+Two additional valid files serve as comparison examples.
+The complete plan contains 72 test cases with 208 input variants, so more
+test data remain to be prepared. These counts describe files prepared, not
+tests passed by TDG. One input variant can be used by several automated checks,
+so the number of pytest results differs from the number of input variants.
 
-Next small slice: TC-I01-022, narrative/structured/repeated steps with their
-order, numbering and nested expected results preserved. W02 remains open;
-no W03 GO or I-01 acceptance is claimed.
+These files contain synthetic examples used while developing TDG. Because they
+are already available to the author, they are not a separate, previously unseen
+set for acceptance testing. The checks recorded here were performed by the
+author with AI assistance. They do not count as an independent human review.
+
+No record of human time spent was provided for this work. The estimate of
+remaining work is still provisional and will be checked against actual effort.
+Preparing these files does not finish W02 (test preparation), authorize W03
+(the next work item), or mean that I-01 (the first product increment) has been
+accepted.
+
+Next planned task at the time of this record: TC-I01-022, narrative/structured/repeated steps with their
+order, numbering and nested expected results preserved.
