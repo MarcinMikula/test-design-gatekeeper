@@ -1,0 +1,173 @@
+{
+  "corpus_id": "I01-W02C-DEFICIENT-CONTENT-01",
+  "exposure": "PUBLIC_SYNTHETIC_DEVELOPMENT",
+  "source_pin": "74fa190c08e2b19149d6948eb53340f6fe2b48f8",
+  "metadata_boundary": "Test-only observations. Null expected mapping/presence means this test does not prescribe that state, not that TDG should return null. No new diagnostic names or product schema are defined.",
+  "span_convention": "Zero-based UTF-8 byte offsets, end exclusive, for the original JSON value. Product locators also require the retained artifact identity.",
+  "oracles": [
+    "OR-I01-FID-004",
+    "OR-I01-ENV-007"
+  ],
+  "conditions": [
+    "TCND-I01-06",
+    "TCND-I01-15"
+  ],
+  "trace": {
+    "requirements": [
+      "RA09-REQ-006",
+      "RA09-REQ-012",
+      "RA03-REQ-025"
+    ],
+    "validation": [
+      "RA09-VAL-002",
+      "RA09-VAL-003"
+    ],
+    "design": [
+      "RA-09 sections 3.1\u20133.3",
+      "SAD-04 sections 6.1\u20136.2"
+    ]
+  },
+  "levels": [
+    "U",
+    "I"
+  ],
+  "evidence": [
+    "E1",
+    "E2"
+  ],
+  "control": {
+    "id": "BASE-01",
+    "file": "base-01.json"
+  },
+  "full_capture_prerequisites": "Eligible Windows x64 / CPython 3.13 laboratory operation; synthetic classification; lab-development purpose; qa-demo operator; fresh operation identity; initialized healthy isolated store; all other admission and containment controls satisfied.",
+  "expected_full_capture": {
+    "outcome": "CAPTURED",
+    "new_package_version": true,
+    "source_bytes_unchanged": true,
+    "source_deficiencies_visible": true,
+    "minimum": "NOT_EVALUATED",
+    "minimum_reason": "MINIMUM_CHECK_NOT_ENABLED_IN_I01",
+    "review_performed": false
+  },
+  "cases": [
+    {
+      "id": "TC-I01-025.01",
+      "file": "deficient-content/TC-I01-025.01.json",
+      "purpose": "unknown_nested_content",
+      "source_pointer": "/content/vendor_extension",
+      "source_value": {
+        "details": {
+          "marker": "KEEP-NESTED-025",
+          "values": [
+            0,
+            false,
+            null,
+            ""
+          ]
+        }
+      },
+      "value_span": {
+        "start_byte": 1070,
+        "end_byte": 1230
+      },
+      "measurements": {
+        "byte_length": 1237,
+        "sha256": "1e31ae3988e2d34d43b7c0cc53739e471951cfe7d6310f646b6a3c36a5547799",
+        "container_depth": 6,
+        "value_nodes": 32,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      },
+      "expected_component": {
+        "mapping_state": "UNMAPPED",
+        "presence_state": null,
+        "retain_raw_value_and_source_location": true,
+        "visible_issue_or_limitation": true,
+        "no_content_repair": true
+      }
+    },
+    {
+      "id": "TC-I01-025.02",
+      "file": "deficient-content/TC-I01-025.02.json",
+      "purpose": "test_cases_object_instead_of_array",
+      "source_pointer": "/content/test_cases",
+      "source_value": {
+        "source_id": "TC-CREATE-01",
+        "title": "Register a customer aged 30",
+        "preconditions": "Other required registration fields contain valid synthetic data.",
+        "steps": [
+          {
+            "action": "Submit the registration form for a customer aged 30.",
+            "expected_result": "Registration is accepted."
+          }
+        ],
+        "test_data": {
+          "age": 30
+        },
+        "origin": "HUMAN_AUTHORED",
+        "basis_refs": [
+          "BR-AGE-01"
+        ]
+      },
+      "value_span": {
+        "start_byte": 506,
+        "end_byte": 996
+      },
+      "measurements": {
+        "byte_length": 1003,
+        "sha256": "e9f93afb04d7aacadfc2b9bea3635e6862b4c73f4c8cf74bdd8cc8a1c98a6591",
+        "container_depth": 5,
+        "value_nodes": 23,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": null,
+        "basis_array_entries": 1
+      },
+      "expected_component": {
+        "mapping_state": null,
+        "presence_state": "TYPE_MISMATCH",
+        "retain_raw_value_and_source_location": true,
+        "visible_issue_or_limitation": true,
+        "no_content_repair": true
+      }
+    },
+    {
+      "id": "TC-I01-025.03",
+      "file": "deficient-content/TC-I01-025.03.json",
+      "purpose": "title_only_case",
+      "source_pointer": "/content/test_cases/0",
+      "source_value": {
+        "title": "Register a customer aged 30"
+      },
+      "value_span": {
+        "start_byte": 514,
+        "end_byte": 570
+      },
+      "measurements": {
+        "byte_length": 583,
+        "sha256": "6f33b4b79d4f8d7cb531aa9f58a61b729de8acbc109b2765dcad9fdf3686bc9c",
+        "container_depth": 4,
+        "value_nodes": 13,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      },
+      "expected_component": {
+        "mapping_state": null,
+        "presence_state": null,
+        "retain_raw_value_and_source_location": true,
+        "visible_issue_or_limitation": true,
+        "no_content_repair": true
+      },
+      "absent_fields": [
+        "source_id",
+        "preconditions",
+        "steps",
+        "test_data",
+        "origin",
+        "basis_refs"
+      ],
+      "absent_field_evidence_pointer": "/content/test_cases/0"
+    }
+  ]
+}

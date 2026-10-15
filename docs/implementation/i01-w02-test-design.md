@@ -10,10 +10,10 @@
 | Work item | I01-W02 |
 | Status | WORKING DRAFT - W02-A ORACLE BASIS; W02-B INVENTORY ACCEPTED; W02-C IN PROGRESS |
 | Entry authority | I01-W01 closed; GO granted to I01-W02 in `docs/implementation/i01-w01-closure.md` |
-| Current activity | W02-C: eight groups of test data prepared; latest is [source-ID fidelity](i01-w02c-source-id-fidelity-fixtures.md); remaining effort will be re-estimated; W02 is still in progress |
+| Current activity | W02-C: nine groups of test data prepared; latest is [incomplete/unfamiliar content](i01-w02c-deficient-content-fixtures.md); remaining effort will be re-estimated; W02 is still in progress |
 | Product implementation in this document | NONE |
-| Test data prepared | BASE-01 plus 52 variants across TC-I01-011–024 (group B and four group-C cases) and two valid comparison files prepared; other planned inputs still need to be created |
-| Executable test progress | 153 checks of the input files passed; 108 tests of TDG behavior are skipped until connected to the implementation; import behavior has not been tested here |
+| Test data prepared | BASE-01 plus 55 variants across TC-I01-011–025 (group B and five group-C cases) and two valid comparison files prepared; other planned inputs still need to be created |
+| Executable test progress | 166 checks of the input files passed; 114 tests of TDG behavior are skipped until connected to the implementation; import behavior has not been tested here |
 | I-01 acceptance | NOT CLAIMED |
 | W02 closure | NOT CLAIMED |
 | Source-inspection pin | Repository `main` as inspected after commit `e15438973564cc790237cce7e9f1bba5e14f4846` |
@@ -59,9 +59,10 @@ TCND condition as passed. Dated W02-C asset checks are recorded separately in th
 [syntax/encoding](i01-w02c-syntax-fixtures.md),
 [numeric/text retention](i01-w02c-numeric-retention-fixtures.md),
 [title presence](i01-w02c-title-presence-fixtures.md),
-[step representation](i01-w02c-step-representation-fixtures.md) and
-[source-ID collisions](i01-w02c-source-id-collision-fixtures.md) and
-[source-ID fidelity](i01-w02c-source-id-fidelity-fixtures.md) slices.
+[step representation](i01-w02c-step-representation-fixtures.md),
+[source-ID collisions](i01-w02c-source-id-collision-fixtures.md),
+[source-ID fidelity](i01-w02c-source-id-fidelity-fixtures.md) and
+[incomplete/unfamiliar content](i01-w02c-deficient-content-fixtures.md) records.
 
 ## 2. W02 boundary
 
@@ -331,8 +332,8 @@ RA-03, SAD-02 and SAD-04 receipt/identity behavior.
 
 ## 7. Candidate fixture families for W02-B
 
-The W02-A extraction proposed the following families for W02-B. Preparing the files
-progress is now recorded separately in the W02-C slice linked above.
+The W02-A extraction proposed the following groups of test data for W02-B.
+Progress on preparing the files is recorded in the W02-C records linked above.
 
 | Family | Purpose | Principal oracle groups |
 | --- | --- | --- |
@@ -479,6 +480,7 @@ The following test data have been prepared:
 | [Step representation](i01-w02c-step-representation-fixtures.md) | Three TC-I01-022 variants: narrative, structured steps and repeated numbered steps |
 | [Repeated source identifiers](i01-w02c-source-id-collision-fixtures.md) | Two TC-I01-023 variants that keep separate TC or basis records with identical content and expose ambiguous references |
 | [Preserving source identifiers](i01-w02c-source-id-fidelity-fixtures.md) | Four TC-I01-024 pairs that differ in leading zeros, case, surrounding whitespace or Unicode code points |
+| [Incomplete and unfamiliar content](i01-w02c-deficient-content-fixtures.md) | Three TC-I01-025 variants: unknown nested content, a TC object instead of an array, and a title-only TC |
 
 The checks so far verify these input files. Tests of TDG itself still need to be
 connected to the implementation. They must check the expected outcomes, including
