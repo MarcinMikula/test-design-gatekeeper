@@ -1,0 +1,174 @@
+{
+  "corpus_id": "I01-W02C-ORIGIN-LITERALS-01",
+  "exposure": "PUBLIC_SYNTHETIC_DEVELOPMENT",
+  "source_pin": "c8f5870f3a6e8894fd82efaffbbd342215c4cfe5",
+  "metadata_boundary": "Expected source observations and outcomes for tests, not a new product schema or diagnostic catalog. The origin labels describe synthetic submissions, not the authorship of these fixture files.",
+  "mapping_precondition": "Use an explicitly selected, identified mapping that implements the five canonical literal mappings in RA-09 section 4.2. Bind and record its real version before enabling product tests; this file does not invent that identifier.",
+  "levels": [
+    "U",
+    "I"
+  ],
+  "evidence": [
+    "E1",
+    "E2"
+  ],
+  "conditions": [
+    "TCND-I01-07",
+    "TCND-I01-15"
+  ],
+  "oracles": [
+    "OR-I01-AUTH-001",
+    "OR-I01-RCP-004"
+  ],
+  "trace": {
+    "requirements": [
+      "RA09-REQ-008",
+      "RA03-REQ-021",
+      "RA03-REQ-032",
+      "RA03-REQ-050",
+      "RA09-REQ-013",
+      "RA09-REQ-015",
+      "RA09-REQ-017"
+    ],
+    "validation": [
+      "RA09-VAL-007"
+    ],
+    "design": [
+      "RA-09 section 4.2",
+      "SAD-04 sections 6.1\u20136.2"
+    ]
+  },
+  "control": {
+    "id": "BASE-01",
+    "file": "base-01.json",
+    "identical_variant": "TC-I01-026.01"
+  },
+  "full_capture_prerequisites": "Eligible Windows x64 / CPython 3.13 laboratory operation; synthetic classification; lab-development purpose; qa-demo operator; fresh operation identity; initialized healthy isolated store; all other accepted admission and containment controls satisfied.",
+  "expected_full_capture": {
+    "outcome": "CAPTURED",
+    "new_package_version": true,
+    "source_bytes_unchanged": true,
+    "minimum": "NOT_EVALUATED",
+    "minimum_reason": "MINIMUM_CHECK_NOT_ENABLED_IN_I01",
+    "review_performed": false,
+    "origin_declaration_grants_authority": false,
+    "accountability_created_from_origin": false
+  },
+  "cases": [
+    {
+      "id": "TC-I01-026.01",
+      "file": "origin-literals/TC-I01-026.01.json",
+      "supplied_origin": "HUMAN_AUTHORED",
+      "expected_origin_code": "HUMAN_AUTHORED",
+      "expected_presence": "VALUE",
+      "expected_mapping": "MAPPED",
+      "expected_accountability_presence": "ABSENT",
+      "source_pointer": "/content/test_cases/0/origin",
+      "value_span": {
+        "start_byte": 957,
+        "end_byte": 973
+      },
+      "measurements": {
+        "byte_length": 1051,
+        "sha256": "630be02e0549a22f2371635a79c76bc3588af6fc953dfcf3e5a892e2bb87c7a1",
+        "container_depth": 6,
+        "value_nodes": 24,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      }
+    },
+    {
+      "id": "TC-I01-026.02",
+      "file": "origin-literals/TC-I01-026.02.json",
+      "supplied_origin": "HUMAN_CONTROLLED_AI_ASSISTED",
+      "expected_origin_code": "HUMAN_CONTROLLED_AI_ASSISTED",
+      "expected_presence": "VALUE",
+      "expected_mapping": "MAPPED",
+      "expected_accountability_presence": "ABSENT",
+      "source_pointer": "/content/test_cases/0/origin",
+      "value_span": {
+        "start_byte": 957,
+        "end_byte": 987
+      },
+      "measurements": {
+        "byte_length": 1065,
+        "sha256": "9425aa5853dc9880bd428a4b892050065353276f6e99d70461eb6bab44a71f41",
+        "container_depth": 6,
+        "value_nodes": 24,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      }
+    },
+    {
+      "id": "TC-I01-026.03",
+      "file": "origin-literals/TC-I01-026.03.json",
+      "supplied_origin": "WITHOUT_ACCOUNTABLE_ADOPTION",
+      "expected_origin_code": "WITHOUT_ACCOUNTABLE_ADOPTION",
+      "expected_presence": "VALUE",
+      "expected_mapping": "MAPPED",
+      "expected_accountability_presence": "ABSENT",
+      "source_pointer": "/content/test_cases/0/origin",
+      "value_span": {
+        "start_byte": 957,
+        "end_byte": 987
+      },
+      "measurements": {
+        "byte_length": 1065,
+        "sha256": "97c3d46ddb38b124db3045f1c94f90dc6f0e04dce7c5f27db7ad0247c1505b20",
+        "container_depth": 6,
+        "value_nodes": 24,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      }
+    },
+    {
+      "id": "TC-I01-026.04",
+      "file": "origin-literals/TC-I01-026.04.json",
+      "supplied_origin": "OTHER",
+      "expected_origin_code": "OTHER",
+      "expected_presence": "VALUE",
+      "expected_mapping": "MAPPED",
+      "expected_accountability_presence": "ABSENT",
+      "source_pointer": "/content/test_cases/0/origin",
+      "value_span": {
+        "start_byte": 957,
+        "end_byte": 964
+      },
+      "measurements": {
+        "byte_length": 1042,
+        "sha256": "8d615929c9374dbe21c1cf7d12c38b44c71787f34c8ab94d1fbfe6957d8d5d12",
+        "container_depth": 6,
+        "value_nodes": 24,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      }
+    },
+    {
+      "id": "TC-I01-026.05",
+      "file": "origin-literals/TC-I01-026.05.json",
+      "supplied_origin": "UNKNOWN",
+      "expected_origin_code": "UNKNOWN",
+      "expected_presence": "VALUE",
+      "expected_mapping": "MAPPED",
+      "expected_accountability_presence": "ABSENT",
+      "source_pointer": "/content/test_cases/0/origin",
+      "value_span": {
+        "start_byte": 957,
+        "end_byte": 966
+      },
+      "measurements": {
+        "byte_length": 1044,
+        "sha256": "1d158ff31816bd16723c66f1e22b8d07c8f037c76f50d25c635f38a9b90afbb7",
+        "container_depth": 6,
+        "value_nodes": 24,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      }
+    }
+  ]
+}
