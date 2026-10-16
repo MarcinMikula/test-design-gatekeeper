@@ -1,0 +1,106 @@
+{
+  "corpus_id": "I01-W02C-ORIGIN-UNMAPPED-01",
+  "exposure": "PUBLIC_SYNTHETIC_DEVELOPMENT",
+  "source_pin": "bafb8537ea48c74293a6f71f443bc18116d925e2",
+  "metadata_boundary": "Test expectations, not a product schema. A null expected_origin_code means that no canonical origin meaning has been established; it does not mean that the supplied origin is null or require a particular runtime field representation.",
+  "mapping_precondition": {
+    "required_control_mapping": {
+      "source": "HUMAN_AUTHORED",
+      "code": "HUMAN_AUTHORED"
+    },
+    "unmapped_source_values": [
+      "written by QA engineer",
+      "human_authored"
+    ],
+    "binding": "Select and record an actual versioned mapping that recognizes the uppercase control and defines no mapping or alias for either test value. No human resolution or adoption is supplied. Bind the real mapping identity before enabling these tests."
+  },
+  "levels": [
+    "U"
+  ],
+  "evidence": [
+    "E1",
+    "E2"
+  ],
+  "conditions": [
+    "TCND-I01-07"
+  ],
+  "oracles": [
+    "OR-I01-AUTH-002"
+  ],
+  "trace": {
+    "requirements": [
+      "RA09-REQ-008",
+      "RA03-REQ-021"
+    ],
+    "validation": [
+      "RA09-VAL-007"
+    ],
+    "design": [
+      "RA-09 section 4.2"
+    ]
+  },
+  "control": {
+    "id": "BASE-01",
+    "file": "base-01.json",
+    "source_pointer": "/content/test_cases/0/origin",
+    "supplied_origin": "HUMAN_AUTHORED",
+    "expected_mapping": "MAPPED",
+    "expected_origin_code": "HUMAN_AUTHORED"
+  },
+  "expected_component": {
+    "original_text_preserved": true,
+    "source_location_preserved": true,
+    "authorship_inferred": false,
+    "ai_involvement_inferred": false,
+    "accountable_adoption_inferred": false,
+    "origin_declaration_grants_authority": false
+  },
+  "cases": [
+    {
+      "id": "TC-I01-027.01",
+      "file": "origin-unmapped/TC-I01-027.01.json",
+      "supplied_origin": "written by QA engineer",
+      "expected_presence": "VALUE",
+      "expected_mapping": "UNMAPPED",
+      "expected_origin_code": null,
+      "expected_accountability_presence": "ABSENT",
+      "source_pointer": "/content/test_cases/0/origin",
+      "value_span": {
+        "start_byte": 957,
+        "end_byte": 981
+      },
+      "measurements": {
+        "byte_length": 1059,
+        "sha256": "da7f0731b2d2804041a22a6cbac900460a1070d5f80f1c76cbc28e30ee0abfde",
+        "container_depth": 6,
+        "value_nodes": 24,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      }
+    },
+    {
+      "id": "TC-I01-027.02",
+      "file": "origin-unmapped/TC-I01-027.02.json",
+      "supplied_origin": "human_authored",
+      "expected_presence": "VALUE",
+      "expected_mapping": "UNMAPPED",
+      "expected_origin_code": null,
+      "expected_accountability_presence": "ABSENT",
+      "source_pointer": "/content/test_cases/0/origin",
+      "value_span": {
+        "start_byte": 957,
+        "end_byte": 973
+      },
+      "measurements": {
+        "byte_length": 1051,
+        "sha256": "1e55621bf334c784da1091e98567ac949588c8b7a2d76aa416d620236153a29a",
+        "container_depth": 6,
+        "value_nodes": 24,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      }
+    }
+  ]
+}
