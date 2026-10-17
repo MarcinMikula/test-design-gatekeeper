@@ -1,0 +1,186 @@
+{
+  "corpus_id": "I01-W02C-CASE-DEFAULTS-01",
+  "exposure": "PUBLIC_SYNTHETIC_DEVELOPMENT",
+  "source_pin": "cb741adaeecde6f8d1e50c5cd6865e97816c29e2",
+  "metadata_boundary": "Test expectations, not a product schema. Supplied presence describes the original TC; effective_value records the expected declaration after applying the scoped default. An absent source field has no supplied_value or value_span entry. Actor references and accepted=true are synthetic declarations, not verified human adoption or authority.",
+  "mapping_precondition": "Select and record the actual versioned native mapping. It must preserve the exact canonical origin literals and structured accountability declarations and apply case_defaults only to genuinely absent fields in native test_cases. No implicit role or human acceptance is established.",
+  "levels": [
+    "U",
+    "I"
+  ],
+  "evidence": [
+    "E1",
+    "E2"
+  ],
+  "conditions": [
+    "TCND-I01-07"
+  ],
+  "oracles": [
+    "OR-I01-AUTH-003",
+    "OR-I01-AUTH-004"
+  ],
+  "trace": {
+    "requirements": [
+      "RA09-REQ-008"
+    ],
+    "validation": [
+      "RA09-VAL-007"
+    ],
+    "design": [
+      "RA-09 sections 3.1-3.3 and 4.2",
+      "SAD-04 section 6.1"
+    ],
+    "common_capture_boundary": "SAD-04 section 6.2"
+  },
+  "control": {
+    "id": "BASE-01",
+    "file": "base-01.json"
+  },
+  "full_capture_prerequisites": "Eligible Windows x64 / CPython 3.13 laboratory operation; synthetic classification; lab-development purpose; qa-demo operator; fresh operation identity; initialized healthy isolated store; all other accepted admission and containment controls satisfied.",
+  "expected_full_capture": {
+    "outcome": "CAPTURED",
+    "new_package_version": true,
+    "source_bytes_unchanged": true,
+    "native_tc_count": 2,
+    "minimum": "NOT_EVALUATED",
+    "minimum_reason": "MINIMUM_CHECK_NOT_ENABLED_IN_I01",
+    "review_performed": false,
+    "declarations_grant_authority": false,
+    "accountable_adoption_inferred": false
+  },
+  "scope_limit": "These inputs contain two native TC each and no separately selected source. Cross-source behavior and the null/empty/negative default cases need their own inventory checks.",
+  "cases": [
+    {
+      "id": "TC-I01-028.01",
+      "file": "case-defaults/TC-I01-028.01.json",
+      "field": "origin",
+      "default_scope_pointer": "/content/test_cases",
+      "defaults_object_span": {
+        "start_byte": 509,
+        "end_byte": 549
+      },
+      "default": {
+        "source_pointer": "/content/case_defaults/origin",
+        "supplied_value": "HUMAN_AUTHORED",
+        "value_span": {
+          "start_byte": 527,
+          "end_byte": 543
+        }
+      },
+      "tc_expectations": [
+        {
+          "source_id": "TC-ORIGIN-ABSENT",
+          "record_pointer": "/content/test_cases/0",
+          "record_span": {
+            "start_byte": 577,
+            "end_byte": 1069
+          },
+          "field_pointer": "/content/test_cases/0/origin",
+          "supplied_presence": "ABSENT",
+          "default_applied": true,
+          "effective_value": "HUMAN_AUTHORED",
+          "effective_source_pointer": "/content/case_defaults/origin"
+        },
+        {
+          "source_id": "TC-ORIGIN-EXPLICIT",
+          "record_pointer": "/content/test_cases/1",
+          "record_span": {
+            "start_byte": 1077,
+            "end_byte": 1621
+          },
+          "field_pointer": "/content/test_cases/1/origin",
+          "supplied_presence": "VALUE",
+          "default_applied": false,
+          "effective_value": "HUMAN_CONTROLLED_AI_ASSISTED",
+          "effective_source_pointer": "/content/test_cases/1/origin",
+          "supplied_value": "HUMAN_CONTROLLED_AI_ASSISTED",
+          "value_span": {
+            "start_byte": 1526,
+            "end_byte": 1556
+          }
+        }
+      ],
+      "measurements": {
+        "byte_length": 1634,
+        "sha256": "f18314b205e26fd961841db6c3d5b991eee4a92ba05bfbfc4ce2fd716e24b5e4",
+        "container_depth": 6,
+        "value_nodes": 38,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 2,
+        "basis_array_entries": 1
+      }
+    },
+    {
+      "id": "TC-I01-028.02",
+      "file": "case-defaults/TC-I01-028.02.json",
+      "field": "accountability",
+      "default_scope_pointer": "/content/test_cases",
+      "defaults_object_span": {
+        "start_byte": 509,
+        "end_byte": 615
+      },
+      "default": {
+        "source_pointer": "/content/case_defaults/accountability",
+        "supplied_value": {
+          "actor_ref": "qa-default-demo",
+          "accepted": true
+        },
+        "value_span": {
+          "start_byte": 535,
+          "end_byte": 609
+        }
+      },
+      "tc_expectations": [
+        {
+          "source_id": "TC-ACCOUNTABILITY-ABSENT",
+          "record_pointer": "/content/test_cases/0",
+          "record_span": {
+            "start_byte": 643,
+            "end_byte": 1179
+          },
+          "field_pointer": "/content/test_cases/0/accountability",
+          "supplied_presence": "ABSENT",
+          "default_applied": true,
+          "effective_value": {
+            "actor_ref": "qa-default-demo",
+            "accepted": true
+          },
+          "effective_source_pointer": "/content/case_defaults/accountability"
+        },
+        {
+          "source_id": "TC-ACCOUNTABILITY-EXPLICIT",
+          "record_pointer": "/content/test_cases/1",
+          "record_span": {
+            "start_byte": 1187,
+            "end_byte": 1834
+          },
+          "field_pointer": "/content/test_cases/1/accountability",
+          "supplied_presence": "VALUE",
+          "default_applied": false,
+          "effective_value": {
+            "actor_ref": "qa-explicit-demo",
+            "accepted": true
+          },
+          "effective_source_pointer": "/content/test_cases/1/accountability",
+          "supplied_value": {
+            "actor_ref": "qa-explicit-demo",
+            "accepted": true
+          },
+          "value_span": {
+            "start_byte": 1745,
+            "end_byte": 1826
+          }
+        }
+      ],
+      "measurements": {
+        "byte_length": 1847,
+        "sha256": "7bf37e81909c6ca5046f13f4498e316e653e19069be5143c0b007720df56629a",
+        "container_depth": 6,
+        "value_nodes": 44,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 2,
+        "basis_array_entries": 1
+      }
+    }
+  ]
+}
