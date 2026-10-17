@@ -1,0 +1,179 @@
+{
+  "corpus_id": "I01-W02C-PAYLOAD-AUTHORITY-01",
+  "exposure": "PUBLIC_SYNTHETIC_DEVELOPMENT",
+  "source_pin": "f1bc627c372d0da548489457a7b8197f81194e86",
+  "metadata_boundary": "Test setup and expectations, not TDG API fields, persistence tables or a new authorization model. The content.role and content.actor_ref members are untrusted supplied claims, not new canonical intake controls. Source declarations, trusted operation context and later human decisions remain separate.",
+  "mapping_precondition": "Select and record the actual versioned native mapping. Preserve HUMAN_AUTHORED and the supplied accountability object. Preserve role/actor claims with their source locations, mapping status and applicable issues; do not infer role authority or human adoption. No exact issue code or runtime field shape is prescribed here.",
+  "levels": [
+    "U",
+    "I"
+  ],
+  "evidence": [
+    "E1",
+    "E2",
+    "E3"
+  ],
+  "conditions": [
+    "TCND-I01-07",
+    "TCND-I01-08",
+    "TCND-I01-15"
+  ],
+  "oracles": [
+    "OR-I01-AUTH-005",
+    "OR-I01-FID-009"
+  ],
+  "trace": {
+    "requirements": [
+      "RA09-REQ-008",
+      "RA09-REQ-024"
+    ],
+    "validation": [
+      "RA09-VAL-007",
+      "RA09-VAL-008",
+      "RA09-VAL-015"
+    ],
+    "design": [
+      "RA-09 sections 2.3, 3.1-3.3 and 4.2",
+      "SAD-04 section 6.1"
+    ],
+    "common_capture_boundary": "SAD-04 section 6.2; OR-I01-RCP-004"
+  },
+  "base_control": {
+    "id": "BASE-01",
+    "file": "base-01.json"
+  },
+  "trusted_context_setup": {
+    "source": "Test harness outside the selected input file; bind to the real submission-context boundary before enabling product tests.",
+    "operator_ref": "qa-demo",
+    "acting_role": "ROLE-01",
+    "profile": "laboratory",
+    "classification": "synthetic",
+    "purpose": "lab-development",
+    "claimed_actor_has_role_03": false,
+    "applicable_role_03_acceptance_exists": false,
+    "operation_id": "Fresh per execution, supplied by the harness.",
+    "selected_input_files": [
+      "payload-authority/TC-I01-030.json"
+    ]
+  },
+  "full_capture_prerequisites": "Eligible Windows x64 / CPython 3.13 laboratory operation; initialized healthy isolated schema-1 store; all other accepted admission and containment controls satisfied. Intake permission is supplied independently of the file. Absence of ROLE-03 adoption does not turn this capture-only case into an admission-refusal test.",
+  "expected_full_capture": {
+    "outcome": "CAPTURED",
+    "new_package_version": true,
+    "source_bytes_unchanged": true,
+    "native_tc_count": 1,
+    "minimum": "NOT_EVALUATED",
+    "minimum_reason": "MINIMUM_CHECK_NOT_ENABLED_IN_I01",
+    "eligibility_assessed": false,
+    "qualification_assessed": false,
+    "review_performed": false,
+    "review_run_created": false,
+    "substantive_ledger_created": false,
+    "result_availability_calculated": false,
+    "declarations_grant_authority": false,
+    "accountable_adoption_inferred": false,
+    "trusted_context_unchanged": true
+  },
+  "observation_plan": {
+    "status": "PENDING_PRODUCT_BINDING",
+    "authority_observers": [
+      "trusted_context",
+      "role_or_adoption_effects"
+    ],
+    "assessment_observers": [
+      "eligibility",
+      "qualification",
+      "review"
+    ],
+    "before_capture": "Record the actual trusted context, absent ROLE-03 authority/adoption for qa-claimed-demo, relevant prior immutable records and observer baselines. Select and record the actual mapping version.",
+    "observer_positive_control": {
+      "required": true,
+      "method": "Exercise every negative observer with an identifiable harmless test probe at its actual observed boundary, or an isolated test seam when that boundary is deliberately unavailable. Confirm the probe was detected. Do not change trusted authority, create adoption or enable review. Separate/reset probe observations before the case. An empty log without this control cannot prove non-effect."
+    },
+    "during_capture": "Retain an ordered trace of the actual operation and the observed authority/assessment boundaries. Confirm the file is retained as supplied content; any role/adoption change or assessment invocation caused by its claims fails the test.",
+    "after_capture": "Compare the trusted context, then reopen the real store using a separate connection. Verify bytes, source locations, claims, mapping issues, generated identities and receipt; no new role grant, adoption decision, review run or substantive ledger may be attributed to this input. Prior immutable records remain unchanged. Inspect logical effects, not equality of the whole SQLite file.",
+    "binding_rule": "Connect observations to actual owned boundaries and persisted records. A stand-in authorization function or a manifest Boolean is not evidence of TDG behavior. Record unavailable observations explicitly; keep the product tests skipped until all required observations and positive controls are connected."
+  },
+  "cases": [
+    {
+      "id": "TC-I01-030",
+      "file": "payload-authority/TC-I01-030.json",
+      "content_pointer": "/content",
+      "content_span": {
+        "start_byte": 87,
+        "end_byte": 1215
+      },
+      "record_pointer": "/content/test_cases/0",
+      "record_span": {
+        "start_byte": 573,
+        "end_byte": 1205
+      },
+      "source_id": "TC-CREATE-01",
+      "declared_actor_ref": "qa-claimed-demo",
+      "declared_role": "ROLE-03",
+      "declared_accepted": true,
+      "declarations": [
+        {
+          "source_pointer": "/content/role",
+          "supplied_value": "ROLE-03",
+          "expected_retained_value": "ROLE-03",
+          "value_span": {
+            "start_byte": 500,
+            "end_byte": 509
+          }
+        },
+        {
+          "source_pointer": "/content/actor_ref",
+          "supplied_value": "qa-claimed-demo",
+          "expected_retained_value": "qa-claimed-demo",
+          "value_span": {
+            "start_byte": 528,
+            "end_byte": 545
+          }
+        },
+        {
+          "source_pointer": "/content/test_cases/0/accountability",
+          "supplied_value": {
+            "actor_ref": "qa-claimed-demo",
+            "accepted": true
+          },
+          "expected_retained_value": {
+            "actor_ref": "qa-claimed-demo",
+            "accepted": true
+          },
+          "value_span": {
+            "start_byte": 1117,
+            "end_byte": 1197
+          }
+        },
+        {
+          "source_pointer": "/content/test_cases/0/accountability/actor_ref",
+          "supplied_value": "qa-claimed-demo",
+          "expected_retained_value": "qa-claimed-demo",
+          "value_span": {
+            "start_byte": 1142,
+            "end_byte": 1159
+          }
+        },
+        {
+          "source_pointer": "/content/test_cases/0/accountability/accepted",
+          "supplied_value": true,
+          "expected_retained_value": true,
+          "value_span": {
+            "start_byte": 1183,
+            "end_byte": 1187
+          }
+        }
+      ],
+      "measurements": {
+        "byte_length": 1218,
+        "sha256": "15ff21d6350bddff00aef9989664f06cb2f5fa5e3c05734d8bc62d60bfc7d13d",
+        "container_depth": 6,
+        "value_nodes": 29,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      }
+    }
+  ]
+}

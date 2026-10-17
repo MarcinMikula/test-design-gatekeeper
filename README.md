@@ -24,14 +24,14 @@ The project is intentionally **not a test-case generator**. Its purpose is to he
 
 **W02 — test preparation:** The [accepted test plan](docs/implementation/i01-w02-test-inventory.md)
 contains 72 test cases with 208 input variants. We have prepared the baseline
-example `BASE-01`, 70 variants for 19 cases (TC-I01-011–029), and two additional
+example `BASE-01`, 71 variants for 20 cases (TC-I01-011–030), and two additional
 valid files for comparison. The data cover document structure, JSON syntax,
 numbers, titles, steps, source identifiers, incomplete content and declarations
 of origin or accountability. The latest addition checks that
-[explicit declarations survive defaults](docs/implementation/i01-w02c-default-preservation-fixtures.md).
+[a claim in a file does not grant a role](docs/implementation/i01-w02c-payload-authority-fixtures.md).
 
-**What has been checked:** 206 automated checks of the test data passed on
-Linux/Python 3.12. Another 142 tests are placeholders for checking TDG itself;
+**What has been checked:** 212 automated checks of the test data passed on
+Linux/Python 3.12. Another 144 tests are placeholders for checking TDG itself;
 they are skipped until connected to the implementation. These results establish
 the condition of the test data, not whether TDG imports them correctly. Checking
 these materials on the target Windows/Python 3.13 environment is still pending.
@@ -102,7 +102,7 @@ Start with the [consolidated review and phase-gate record](docs/requirements-ana
 | [SAD-04 requirement allocation](docs/solution-design/test-design-gatekeeper-sad-04-requirement-allocation-v0.2.json) | v0.2; accepted frozen plan | 249 IDs retained; 40 partial I-01 contributions, 16 planned conditions; execution evidence recorded separately |
 | [I-01 / W01](docs/implementation/i01-w01-foundation.md) | Closed 2026-09-29; Owner GO to W02 | CLI foundation, controlled empty-store initialization and recorded Windows evidence |
 | [W01 closure](docs/implementation/i01-w01-closure.md) | Owner decision 2026-09-29 | Formal W01 closure after PR #3 evidence review; authorizes W02 without accepting the whole I-01 increment |
-| [I-01 / W02](docs/implementation/i01-w02-test-design.md) | Work item open; W02-C in progress | Oracle basis, accepted REJECTED/2 limit outcome, test data for group B and nine groups of test data for group C |
+| [I-01 / W02](docs/implementation/i01-w02-test-design.md) | Work item open; W02-C in progress | Oracle basis, accepted REJECTED/2 limit outcome, test data for group B and ten groups of test data for group C |
 | [W02-B test inventory](docs/implementation/i01-w02-test-inventory.md) | v0.1; whole inventory accepted 2026-10-07 | 72 test cases / 208 input variants approved for W02-C preparation; effort estimate remains provisional; tests have not yet run against TDG |
 | [W02-B acceptance record](docs/reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.7.md) | v0.7; Section 8 and whole inventory accepted 2026-10-07 | Accepted basis for W02-C; W02 remains open; earlier decisions, estimate reservation and future corpus-reuse idea preserved |
 | [W02-C numeric-token fixtures](docs/implementation/i01-w02c-numeric-fixtures.md) | First set of test data, 2026-10-08 | BASE-01 plus 127/128/129-character inputs, checked file sizes and expected values and product test placeholders awaiting implementation |
@@ -118,6 +118,7 @@ Start with the [consolidated review and phase-gate record](docs/requirements-ana
 | [W02-C unrecognized origin declarations](docs/implementation/i01-w02c-origin-unmapped-fixtures.md) | Eleventh set of test data, 2026-10-16 | Two TC-I01-027 variants, six new checks of the input files and two unit/component test placeholders awaiting implementation |
 | [W02-C defaults for missing declarations](docs/implementation/i01-w02c-case-defaults-fixtures.md) | Twelfth set of test data, 2026-10-17 | Two TC-I01-028 variants, seven new checks of the input files and four unit/integration test placeholders awaiting implementation |
 | [W02-C explicit declarations and defaults](docs/implementation/i01-w02c-default-preservation-fixtures.md) | Thirteenth set of test data, 2026-10-17 | Six TC-I01-029 variants, 14 new checks of the input files and twelve unit/integration test placeholders awaiting implementation |
+| [W02-C claims of role and responsibility](docs/implementation/i01-w02c-payload-authority-fixtures.md) | Fourteenth set of test data, 2026-10-17 | One TC-I01-030 input, six new checks of the data and setup, and two unit/integration test placeholders awaiting implementation |
 | [SAD-04 numeric-token addendum](docs/solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md) | v0.1; Owner decision 2026-10-03 | REJECTED and CLI exit 2 above the 128-character token bound; frozen design baseline preserved |
 | [Trace evidence ledger](docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-traceability-audit-v0.1.json) | v0.1 | Bidirectional requirement/validation paths and source identities |
 
