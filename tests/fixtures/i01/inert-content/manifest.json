@@ -1,0 +1,291 @@
+{
+  "corpus_id": "I01-W02C-INERT-CONTENT-01",
+  "exposure": "PUBLIC_SYNTHETIC_DEVELOPMENT",
+  "source_pin": "35565b5d0b74ebccaa6e36bf91640c8945f4d048",
+  "metadata_boundary": "Test data and expected observations, not TDG API fields or a new schema/resolver. All five stimuli are source strings. No URL, path, schema reference, issue key or instruction is followed by these asset checks. Attempt counts describe product-test observations still to be bound.",
+  "mapping_precondition": "Select and record the actual versioned native mapping and approved local schema registry. Retain the supplementary object, exact strings, source locations, mapping status and applicable issues. No supplied reference becomes additional substantive evidence or changes the chosen schema; do not prescribe an unaccepted issue code.",
+  "levels": [
+    "U",
+    "I"
+  ],
+  "evidence": [
+    "E1",
+    "E3",
+    "E4"
+  ],
+  "conditions": [
+    "TCND-I01-08",
+    "TCND-I01-16"
+  ],
+  "oracles": [
+    "OR-I01-FID-008"
+  ],
+  "trace": {
+    "requirements": [
+      "RA03-REQ-005",
+      "RA09-REQ-003",
+      "RA09-REQ-005",
+      "RA09-REQ-023",
+      "RA08-REQ-010"
+    ],
+    "validation": [
+      "RA09-VAL-002",
+      "RA09-VAL-013",
+      "RA08-VAL-004",
+      "RA08-VAL-007"
+    ],
+    "design": [
+      "RA-08 section 4.2",
+      "RA-09 sections 3.1, 3.3 and 3.4",
+      "SAD-04 sections 6.1, 7.1 and 9"
+    ],
+    "diagnostic_boundary": "RA-08 section 6.2; RA08-REQ-014; SAD-04 section 9",
+    "common_capture_boundary": "SAD-04 section 6.2"
+  },
+  "base_control": {
+    "id": "BASE-01",
+    "file": "base-01.json"
+  },
+  "operation_setup": {
+    "operator_ref": "qa-demo",
+    "profile": "laboratory",
+    "classification": "synthetic",
+    "purpose": "lab-development",
+    "operation_id": "Fresh per execution.",
+    "selected_source": "Only the current case JSON, selected through the trusted operation context.",
+    "references_are_selected_inputs": false
+  },
+  "full_capture_prerequisites": "Eligible Windows x64 / CPython 3.13 laboratory operation; initialized healthy isolated schema-1 store; all other admission, containment and resource controls satisfied. The fixture path is the selected file. Strings inside its content are never acquisition instructions.",
+  "expected_full_capture": {
+    "outcome": "CAPTURED",
+    "new_package_version": true,
+    "source_bytes_unchanged": true,
+    "native_tc_count": 1,
+    "selected_source_count": 1,
+    "minimum": "NOT_EVALUATED",
+    "minimum_reason": "MINIMUM_CHECK_NOT_ENABLED_IN_I01",
+    "review_performed": false,
+    "references_become_substantive_evidence": false,
+    "schema_selection_unchanged": true
+  },
+  "expected_forbidden_attempts": {
+    "supplied_reference_file_open": 0,
+    "supplied_reference_resolution": 0,
+    "remote_schema_resolution": 0,
+    "network": 0,
+    "payload_code_or_shell_execution": 0
+  },
+  "observation_plan": {
+    "status": "PENDING_PRODUCT_BINDING",
+    "e3_observers": [
+      "supplied_reference_file_open",
+      "supplied_reference_resolution",
+      "remote_schema_resolution",
+      "network",
+      "payload_code_or_shell_execution"
+    ],
+    "e4_sinks": [
+      "routine_stdout",
+      "routine_stderr",
+      "routine_logs"
+    ],
+    "expected_routine_marker_occurrences": 0,
+    "observer_positive_control": {
+      "required": true,
+      "method": "Before the case, prove each observer detects an identifiable harmless probe at the actual boundary in an isolated setup. Use a disposable local file for file access, a controlled local endpoint or an intercepted network-attempt seam, resolver probes, and a harmless execution probe. Exercise diagnostic-marker detection in a separate captured buffer. Never use the source strings as probe instructions. Separate/reset all probe observations before capture."
+    },
+    "attempt_boundary": "Observe attempted actions before the operating system or a network guard can deny them, across both parent and parser worker. A blocked attempt still violates this case. A DNS error, missing referenced file or empty response is not evidence that no attempt occurred. Missing coverage keeps the result unestablished.",
+    "allowed_baseline": "Distinguish explicit selected-input acquisition, approved local registry reads, application/runtime/store access and the configured parser-worker startup from any action caused by supplied content. Do not mistake the legitimate parser process for execution of the payload instruction. Record the actual allowed resources and boundaries used.",
+    "during_capture": "Keep an ordered operation trace and observe all five forbidden-attempt boundaries for each variant, not only its apparent type. No issue tracker lookup, browser launch, external fetch, reference-driven read or payload interpretation is permitted. Inspection must not automatically open a link or render an external resource.",
+    "after_capture": "Reopen the real store through a separate connection. Verify the retained bytes, supplementary value/location, actual one-file inventory, mapping/registry identity, issues and receipt; preserve prior immutable records. Referenced content must not appear as a second source or supplied business evidence.",
+    "diagnostic_checks": "Capture bounded routine stdout/stderr/log observations and verify that neither the source value nor its marker is echoed, including escaped representations. Keep deliberately authorized source inspection separate from routine diagnostics; it may display retained content safely, with applicable escaping, bounds and no activation. Do not create a raw-payload diagnostic archive.",
+    "binding_rule": "Bind to real owned boundaries before enabling tests. An asset-check pass, a mocked no-op importer or an empty uncalibrated trace cannot establish no retrieval/execution. Record observer blind spots. This finite I-01 laboratory test is not sealed-profile qualification or proof of zero egress."
+  },
+  "cases": [
+    {
+      "id": "TC-I01-031.01",
+      "file": "inert-content/TC-I01-031.01.json",
+      "kind": "url",
+      "field": "url",
+      "content_pointer": "/content",
+      "content_span": {
+        "start_byte": 87,
+        "end_byte": 1138
+      },
+      "container_pointer": "/content/supplementary_content",
+      "container_span": {
+        "start_byte": 1075,
+        "end_byte": 1134
+      },
+      "source_pointer": "/content/supplementary_content/url",
+      "value_span": {
+        "start_byte": 1090,
+        "end_byte": 1128
+      },
+      "supplied_value": "https://tdg.invalid/TC031-URL-MARKER",
+      "expected_retained_value": "https://tdg.invalid/TC031-URL-MARKER",
+      "leakage_marker": "TC031-URL-MARKER",
+      "expected_inventory": {
+        "selected_source_count": 1,
+        "extra_source_count": 0
+      },
+      "measurements": {
+        "byte_length": 1141,
+        "sha256": "1217f0ea8c89429d83e46ea1bc9344412acf2fa40b22d64fa2d7f38bd44bcf6c",
+        "container_depth": 6,
+        "value_nodes": 26,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      }
+    },
+    {
+      "id": "TC-I01-031.02",
+      "file": "inert-content/TC-I01-031.02.json",
+      "kind": "local_path",
+      "field": "path",
+      "content_pointer": "/content",
+      "content_span": {
+        "start_byte": 87,
+        "end_byte": 1143
+      },
+      "container_pointer": "/content/supplementary_content",
+      "container_span": {
+        "start_byte": 1075,
+        "end_byte": 1139
+      },
+      "source_pointer": "/content/supplementary_content/path",
+      "value_span": {
+        "start_byte": 1091,
+        "end_byte": 1133
+      },
+      "supplied_value": "C:\\TDG-Synthetic\\TC031-PATH-MARKER.txt",
+      "expected_retained_value": "C:\\TDG-Synthetic\\TC031-PATH-MARKER.txt",
+      "leakage_marker": "TC031-PATH-MARKER",
+      "expected_inventory": {
+        "selected_source_count": 1,
+        "extra_source_count": 0
+      },
+      "measurements": {
+        "byte_length": 1146,
+        "sha256": "3829d6eb87fc53a87ee63c69713f24be03f3887cc215b12c3103e43f29c9904c",
+        "container_depth": 6,
+        "value_nodes": 26,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      }
+    },
+    {
+      "id": "TC-I01-031.03",
+      "file": "inert-content/TC-I01-031.03.json",
+      "kind": "schema_reference",
+      "field": "$ref",
+      "content_pointer": "/content",
+      "content_span": {
+        "start_byte": 87,
+        "end_byte": 1151
+      },
+      "container_pointer": "/content/supplementary_content",
+      "container_span": {
+        "start_byte": 1075,
+        "end_byte": 1147
+      },
+      "source_pointer": "/content/supplementary_content/$ref",
+      "value_span": {
+        "start_byte": 1091,
+        "end_byte": 1141
+      },
+      "supplied_value": "https://tdg.invalid/TC031-REF-MARKER.schema.json",
+      "expected_retained_value": "https://tdg.invalid/TC031-REF-MARKER.schema.json",
+      "leakage_marker": "TC031-REF-MARKER",
+      "expected_inventory": {
+        "selected_source_count": 1,
+        "extra_source_count": 0
+      },
+      "measurements": {
+        "byte_length": 1154,
+        "sha256": "d10def0fb7591dec5a6eb0e6eb0403a309ac0988ca9ac38fa3b2e18d7a30fe8b",
+        "container_depth": 6,
+        "value_nodes": 26,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      }
+    },
+    {
+      "id": "TC-I01-031.04",
+      "file": "inert-content/TC-I01-031.04.json",
+      "kind": "issue_key",
+      "field": "issue_key",
+      "content_pointer": "/content",
+      "content_span": {
+        "start_byte": 87,
+        "end_byte": 1118
+      },
+      "container_pointer": "/content/supplementary_content",
+      "container_span": {
+        "start_byte": 1075,
+        "end_byte": 1114
+      },
+      "source_pointer": "/content/supplementary_content/issue_key",
+      "value_span": {
+        "start_byte": 1096,
+        "end_byte": 1108
+      },
+      "supplied_value": "TDG031-404",
+      "expected_retained_value": "TDG031-404",
+      "leakage_marker": "TDG031-404",
+      "expected_inventory": {
+        "selected_source_count": 1,
+        "extra_source_count": 0
+      },
+      "measurements": {
+        "byte_length": 1121,
+        "sha256": "c78cb6b40dbea0b435efc77cb4b6e0642470355ef141aeb2086c5c4c07496c30",
+        "container_depth": 6,
+        "value_nodes": 26,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      }
+    },
+    {
+      "id": "TC-I01-031.05",
+      "file": "inert-content/TC-I01-031.05.json",
+      "kind": "instruction",
+      "field": "instruction",
+      "content_pointer": "/content",
+      "content_span": {
+        "start_byte": 87,
+        "end_byte": 1143
+      },
+      "container_pointer": "/content/supplementary_content",
+      "container_span": {
+        "start_byte": 1075,
+        "end_byte": 1139
+      },
+      "source_pointer": "/content/supplementary_content/instruction",
+      "value_span": {
+        "start_byte": 1098,
+        "end_byte": 1133
+      },
+      "supplied_value": "cmd.exe /c echo TC031-EXEC-MARKER",
+      "expected_retained_value": "cmd.exe /c echo TC031-EXEC-MARKER",
+      "leakage_marker": "TC031-EXEC-MARKER",
+      "expected_inventory": {
+        "selected_source_count": 1,
+        "extra_source_count": 0
+      },
+      "measurements": {
+        "byte_length": 1146,
+        "sha256": "23cd3a3185eb7b2acf037e13c030757e2b8c77bab887a0c72c109b1dfb2c16eb",
+        "container_depth": 6,
+        "value_nodes": 26,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      }
+    }
+  ]
+}

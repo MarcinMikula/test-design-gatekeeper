@@ -10,10 +10,10 @@
 | Work item | I01-W02 |
 | Status | WORKING DRAFT - W02-A ORACLE BASIS; W02-B INVENTORY ACCEPTED; W02-C IN PROGRESS |
 | Entry authority | I01-W01 closed; GO granted to I01-W02 in `docs/implementation/i01-w01-closure.md` |
-| Current activity | W02-C: fourteen groups of test data prepared; latest is [claims of role and responsibility](i01-w02c-payload-authority-fixtures.md); remaining effort will be re-estimated; W02 is still in progress |
+| Current activity | W02-C: fifteen groups of test data prepared; latest is [links and instructions as data](i01-w02c-inert-content-fixtures.md); remaining effort will be re-estimated; W02 is still in progress |
 | Product implementation in this document | NONE |
-| Test data prepared | BASE-01 plus 71 variants across TC-I01-011–030 (group B and ten group-C cases) and two valid comparison files prepared; other planned inputs still need to be created |
-| Executable test progress | 212 checks of the input files and setup passed; 144 tests of TDG behavior are skipped until connected to the implementation; import behavior has not been tested here |
+| Test data prepared | BASE-01 plus 76 variants across TC-I01-011–031 (groups B and C and the first group-D case) and two valid comparison files prepared; other planned inputs still need to be created |
+| Executable test progress | 225 checks of the input files and setup passed; 154 tests of TDG behavior are skipped until connected to the implementation; import behavior has not been tested here |
 | I-01 acceptance | NOT CLAIMED |
 | W02 closure | NOT CLAIMED |
 | Source-inspection pin | Repository `main` as inspected after commit `e15438973564cc790237cce7e9f1bba5e14f4846` |
@@ -66,8 +66,9 @@ TCND condition as passed. Dated W02-C asset checks are recorded separately in th
 [declared test-case origin](i01-w02c-origin-literal-fixtures.md),
 [unrecognized origin declarations](i01-w02c-origin-unmapped-fixtures.md),
 [defaults for missing declarations](i01-w02c-case-defaults-fixtures.md),
-[explicit declarations and defaults](i01-w02c-default-preservation-fixtures.md) and
-[claims of role and responsibility](i01-w02c-payload-authority-fixtures.md) records.
+[explicit declarations and defaults](i01-w02c-default-preservation-fixtures.md),
+[claims of role and responsibility](i01-w02c-payload-authority-fixtures.md) and
+[links and instructions as data](i01-w02c-inert-content-fixtures.md) records.
 
 ## 2. W02 boundary
 
@@ -491,6 +492,7 @@ The following test data have been prepared:
 | [Defaults for missing declarations](i01-w02c-case-defaults-fixtures.md) | Two TC-I01-028 variants: defaults for absent origin or accountability, with explicit per-case declarations preserved and each effective value traced to its source |
 | [Explicit declarations and defaults](i01-w02c-default-preservation-fixtures.md) | Six TC-I01-029 variants: preserve null, empty, unknown, mistyped, free-text and negative declarations without replacing them with positive defaults |
 | [Claims of role and responsibility](i01-w02c-payload-authority-fixtures.md) | One TC-I01-030 input: retain a role, actor and accepted=true declaration without granting authority or inventing human adoption or review |
+| [Links and instructions as data](i01-w02c-inert-content-fixtures.md) | Five TC-I01-031 variants: retain a URL, file path, schema reference, issue key and command text without retrieving content or executing instructions |
 
 The checks so far verify these input files. Tests of TDG itself still need to be
 connected to the implementation. They must check the expected outcomes, including
