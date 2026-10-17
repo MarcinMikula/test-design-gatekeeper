@@ -1,0 +1,347 @@
+{
+  "corpus_id": "I01-W02C-DEFAULT-PRESERVATION-01",
+  "exposure": "PUBLIC_SYNTHETIC_DEVELOPMENT",
+  "source_pin": "e38a8165f7a45a2e3cf3a72a7b53a3b6ba72cb67",
+  "metadata_boundary": "Test expectations, not a product schema. Presence, origin resolution and default application are separate observations. No runtime mapping enum is invented for null, empty or mistyped origin values. Canonical-code absence does not prescribe a null/missing runtime field. Conflicts and applicable issues remain visible.",
+  "mapping_precondition": "Select and record the actual versioned native mapping. HUMAN_AUTHORED and UNKNOWN are recognized canonical origin literals. The phrase written by QA engineer has no agreed mapping or alias and remains UNMAPPED. Defaults apply only to absent fields; these six target fields are all present. Supplied actor references and accepted=true do not establish human authority.",
+  "levels": [
+    "U",
+    "I"
+  ],
+  "evidence": [
+    "E1",
+    "E2"
+  ],
+  "conditions": [
+    "TCND-I01-07"
+  ],
+  "oracles": [
+    "OR-I01-AUTH-004",
+    "OR-I01-AUTH-005"
+  ],
+  "trace": {
+    "requirements": [
+      "RA09-REQ-008",
+      "RA09-REQ-024"
+    ],
+    "validation": [
+      "RA09-VAL-007",
+      "RA09-VAL-008"
+    ],
+    "design": [
+      "RA-09 sections 3.1-3.3 and 4.2",
+      "SAD-04 section 6.1"
+    ],
+    "common_capture_boundary": "SAD-04 section 6.2"
+  },
+  "base_control": {
+    "id": "BASE-01",
+    "file": "base-01.json"
+  },
+  "default_controls": [
+    {
+      "id": "TC-I01-028.01",
+      "file": "case-defaults/TC-I01-028.01.json",
+      "field": "origin",
+      "absent_case_pointer": "/content/test_cases/0"
+    },
+    {
+      "id": "TC-I01-028.02",
+      "file": "case-defaults/TC-I01-028.02.json",
+      "field": "accountability",
+      "absent_case_pointer": "/content/test_cases/0"
+    }
+  ],
+  "full_capture_prerequisites": "Eligible Windows x64 / CPython 3.13 laboratory operation; synthetic classification; lab-development purpose; qa-demo operator; fresh operation identity; initialized healthy isolated store; all other accepted admission and containment controls satisfied.",
+  "expected_full_capture": {
+    "outcome": "CAPTURED",
+    "new_package_version": true,
+    "source_bytes_unchanged": true,
+    "native_tc_count": 1,
+    "minimum": "NOT_EVALUATED",
+    "minimum_reason": "MINIMUM_CHECK_NOT_ENABLED_IN_I01",
+    "review_performed": false,
+    "declarations_grant_authority": false,
+    "accountable_adoption_inferred": false
+  },
+  "cases": [
+    {
+      "id": "TC-I01-029.01",
+      "file": "default-preservation/TC-I01-029.01.json",
+      "field": "origin",
+      "default_scope_pointer": "/content/test_cases",
+      "defaults_object_span": {
+        "start_byte": 509,
+        "end_byte": 549
+      },
+      "default": {
+        "source_pointer": "/content/case_defaults/origin",
+        "supplied_value": "HUMAN_AUTHORED",
+        "value_span": {
+          "start_byte": 527,
+          "end_byte": 543
+        }
+      },
+      "record_pointer": "/content/test_cases/0",
+      "record_span": {
+        "start_byte": 577,
+        "end_byte": 1089
+      },
+      "source_pointer": "/content/test_cases/0/origin",
+      "value_span": {
+        "start_byte": 1020,
+        "end_byte": 1024
+      },
+      "supplied_value": null,
+      "expected_retained_value": null,
+      "expected_presence": "NULL",
+      "expected_default_applied": false,
+      "measurements": {
+        "byte_length": 1102,
+        "sha256": "0927fefad23f225655120c6c925e0a8cb631ed20afa57d9d8f22c8a04de5f4a8",
+        "container_depth": 6,
+        "value_nodes": 26,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      },
+      "expected_origin_resolution": {
+        "canonical_code_established": false
+      }
+    },
+    {
+      "id": "TC-I01-029.02",
+      "file": "default-preservation/TC-I01-029.02.json",
+      "field": "origin",
+      "default_scope_pointer": "/content/test_cases",
+      "defaults_object_span": {
+        "start_byte": 509,
+        "end_byte": 549
+      },
+      "default": {
+        "source_pointer": "/content/case_defaults/origin",
+        "supplied_value": "HUMAN_AUTHORED",
+        "value_span": {
+          "start_byte": 527,
+          "end_byte": 543
+        }
+      },
+      "record_pointer": "/content/test_cases/0",
+      "record_span": {
+        "start_byte": 577,
+        "end_byte": 1087
+      },
+      "source_pointer": "/content/test_cases/0/origin",
+      "value_span": {
+        "start_byte": 1020,
+        "end_byte": 1022
+      },
+      "supplied_value": "",
+      "expected_retained_value": "",
+      "expected_presence": "EMPTY",
+      "expected_default_applied": false,
+      "measurements": {
+        "byte_length": 1100,
+        "sha256": "fc296f4d5e81726714530b8ba0e850082746017ab91a7f9e73d5a696519be880",
+        "container_depth": 6,
+        "value_nodes": 26,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      },
+      "expected_origin_resolution": {
+        "canonical_code_established": false
+      }
+    },
+    {
+      "id": "TC-I01-029.03",
+      "file": "default-preservation/TC-I01-029.03.json",
+      "field": "origin",
+      "default_scope_pointer": "/content/test_cases",
+      "defaults_object_span": {
+        "start_byte": 509,
+        "end_byte": 549
+      },
+      "default": {
+        "source_pointer": "/content/case_defaults/origin",
+        "supplied_value": "HUMAN_AUTHORED",
+        "value_span": {
+          "start_byte": 527,
+          "end_byte": 543
+        }
+      },
+      "record_pointer": "/content/test_cases/0",
+      "record_span": {
+        "start_byte": 577,
+        "end_byte": 1094
+      },
+      "source_pointer": "/content/test_cases/0/origin",
+      "value_span": {
+        "start_byte": 1020,
+        "end_byte": 1029
+      },
+      "supplied_value": "UNKNOWN",
+      "expected_retained_value": "UNKNOWN",
+      "expected_presence": "VALUE",
+      "expected_default_applied": false,
+      "measurements": {
+        "byte_length": 1107,
+        "sha256": "a35974dcfcb2a285f6c010b342dc2f09cf59f04089fb7e672bbca75b3c01cab6",
+        "container_depth": 6,
+        "value_nodes": 26,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      },
+      "expected_origin_resolution": {
+        "canonical_code_established": true,
+        "code": "UNKNOWN"
+      }
+    },
+    {
+      "id": "TC-I01-029.04",
+      "file": "default-preservation/TC-I01-029.04.json",
+      "field": "origin",
+      "default_scope_pointer": "/content/test_cases",
+      "defaults_object_span": {
+        "start_byte": 509,
+        "end_byte": 549
+      },
+      "default": {
+        "source_pointer": "/content/case_defaults/origin",
+        "supplied_value": "HUMAN_AUTHORED",
+        "value_span": {
+          "start_byte": 527,
+          "end_byte": 543
+        }
+      },
+      "record_pointer": "/content/test_cases/0",
+      "record_span": {
+        "start_byte": 577,
+        "end_byte": 1087
+      },
+      "source_pointer": "/content/test_cases/0/origin",
+      "value_span": {
+        "start_byte": 1020,
+        "end_byte": 1022
+      },
+      "supplied_value": [],
+      "expected_retained_value": [],
+      "expected_presence": "TYPE_MISMATCH",
+      "expected_default_applied": false,
+      "measurements": {
+        "byte_length": 1100,
+        "sha256": "e25eda8ac206962aac67bb3f001677254c9a7713023df8433a000f629dbf7ecb",
+        "container_depth": 6,
+        "value_nodes": 26,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      },
+      "expected_origin_resolution": {
+        "canonical_code_established": false
+      }
+    },
+    {
+      "id": "TC-I01-029.05",
+      "file": "default-preservation/TC-I01-029.05.json",
+      "field": "origin",
+      "default_scope_pointer": "/content/test_cases",
+      "defaults_object_span": {
+        "start_byte": 509,
+        "end_byte": 549
+      },
+      "default": {
+        "source_pointer": "/content/case_defaults/origin",
+        "supplied_value": "HUMAN_AUTHORED",
+        "value_span": {
+          "start_byte": 527,
+          "end_byte": 543
+        }
+      },
+      "record_pointer": "/content/test_cases/0",
+      "record_span": {
+        "start_byte": 577,
+        "end_byte": 1109
+      },
+      "source_pointer": "/content/test_cases/0/origin",
+      "value_span": {
+        "start_byte": 1020,
+        "end_byte": 1044
+      },
+      "supplied_value": "written by QA engineer",
+      "expected_retained_value": "written by QA engineer",
+      "expected_presence": "VALUE",
+      "expected_default_applied": false,
+      "measurements": {
+        "byte_length": 1122,
+        "sha256": "96ea7c677a626726032b1417fe14b25629fd9bcd92bd81d676f04949f527675c",
+        "container_depth": 6,
+        "value_nodes": 26,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      },
+      "expected_origin_resolution": {
+        "canonical_code_established": false,
+        "unmapped_text": true
+      }
+    },
+    {
+      "id": "TC-I01-029.06",
+      "file": "default-preservation/TC-I01-029.06.json",
+      "field": "accountability",
+      "default_scope_pointer": "/content/test_cases",
+      "defaults_object_span": {
+        "start_byte": 509,
+        "end_byte": 615
+      },
+      "default": {
+        "source_pointer": "/content/case_defaults/accountability",
+        "supplied_value": {
+          "actor_ref": "qa-default-demo",
+          "accepted": true
+        },
+        "value_span": {
+          "start_byte": 535,
+          "end_byte": 609
+        }
+      },
+      "record_pointer": "/content/test_cases/0",
+      "record_span": {
+        "start_byte": 643,
+        "end_byte": 1276
+      },
+      "source_pointer": "/content/test_cases/0/accountability",
+      "value_span": {
+        "start_byte": 1187,
+        "end_byte": 1268
+      },
+      "supplied_value": {
+        "actor_ref": "qa-default-demo",
+        "accepted": false
+      },
+      "expected_retained_value": {
+        "actor_ref": "qa-default-demo",
+        "accepted": false
+      },
+      "expected_presence": "VALUE",
+      "expected_default_applied": false,
+      "measurements": {
+        "byte_length": 1289,
+        "sha256": "5d7940537d46bcf1d2596de98797d38ae0d2bece83f8f0efb753bc45c8d185ee",
+        "container_depth": 6,
+        "value_nodes": 31,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      },
+      "accepted_pointer": "/content/test_cases/0/accountability/accepted",
+      "accepted_span": {
+        "start_byte": 1253,
+        "end_byte": 1258
+      },
+      "expected_accepted": false
+    }
+  ]
+}
