@@ -1,0 +1,241 @@
+{
+  "corpus_id": "I01-W02C-IMPORTED-CLAIMS-01",
+  "exposure": "PUBLIC_SYNTHETIC_DEVELOPMENT",
+  "source_pin": "531fb50cb9d90a570e50f97f41ea0e9919469a31",
+  "metadata_boundary": "Test expectations and setup, not TDG API fields, runtime enums or new database tables. The five added content members are supplied claims, not new control-envelope fields. Stored source text may contain ACCEPTED, COMPLETED or IN_SCOPE; only its promotion into a trusted identity, decision or result is forbidden.",
+  "mapping_precondition": "Select and record the actual versioned native mapping. Preserve each unknown or authority-like field with exact source value/location, mapping status and applicable issues. No unaccepted issue code is prescribed. Trusted context, generated identity and later human decisions stay separate from the supplied content.",
+  "levels": [
+    "U",
+    "I"
+  ],
+  "evidence": [
+    "E1",
+    "E2",
+    "E3"
+  ],
+  "conditions": [
+    "TCND-I01-08",
+    "TCND-I01-15"
+  ],
+  "oracles": [
+    "OR-I01-FID-009"
+  ],
+  "trace": {
+    "requirements": [
+      "RA09-REQ-024"
+    ],
+    "validation": [
+      "RA09-VAL-008",
+      "RA09-VAL-015"
+    ],
+    "design": [
+      "RA-09 sections 2.2-2.3, 3.1-3.3, 4.1 and 7.3",
+      "SAD-04 sections 5, 6.1 and 7"
+    ],
+    "common_capture_boundary": "SAD-04 section 6.2; OR-I01-RCP-004"
+  },
+  "base_control": {
+    "id": "BASE-01",
+    "file": "base-01.json"
+  },
+  "operation_setup": {
+    "operator_ref": "qa-demo",
+    "acting_role": "ROLE-01",
+    "profile": "laboratory",
+    "classification": "synthetic",
+    "purpose": "lab-development",
+    "operation_id": "Fresh per execution, supplied independently of the source.",
+    "predecessor_selected": false,
+    "operator_has_claimed_role_05": false,
+    "selected_source": "Only the current case JSON, selected through the trusted operation context."
+  },
+  "prior_store_setup": {
+    "method": "For each integration variant, prepare an isolated eligible store with a prior BASE-01 capture through the actual owned service. Retain its real generated identities, receipt and immutable-record digests. Do not seed invented review, approval or qualification tables.",
+    "supplied_package_uuid_absent": true,
+    "check": "Before the package_id variant, verify that its fixed supplied UUID is not an existing trusted package/lineage/version identity. Do not copy it into setup records. Snapshot trusted context and policy outside the input."
+  },
+  "full_capture_prerequisites": "Eligible Windows x64 / CPython 3.13 laboratory operation; healthy isolated schema-1 store; all other accepted admission, containment and resource controls satisfied. The source declarations do not supply or change intake permission.",
+  "expected_full_capture": {
+    "outcome": "CAPTURED",
+    "new_package_version": true,
+    "new_lineage": true,
+    "source_bytes_unchanged": true,
+    "native_tc_count": 1,
+    "selected_source_count": 1,
+    "minimum": "NOT_EVALUATED",
+    "minimum_reason": "MINIMUM_CHECK_NOT_ENABLED_IN_I01",
+    "review_performed": false
+  },
+  "expected_separation": {
+    "trusted_context_unchanged": true,
+    "policy_unchanged": true,
+    "supplied_identity_restored": false,
+    "role_granted": false,
+    "human_approval_or_disposition_created": false,
+    "trusted_history_restored": false,
+    "eligibility_assessed": false,
+    "domain_qualification_assessed": false,
+    "model_or_configuration_qualified": false,
+    "review_run_created_or_restored": false,
+    "substantive_ledger_created": false,
+    "result_availability_calculated": false,
+    "prior_immutable_records_unchanged": true
+  },
+  "observation_plan": {
+    "status": "PENDING_PRODUCT_BINDING",
+    "e3_boundaries": [
+      "generated_identity",
+      "trusted_context_and_policy",
+      "role_or_approval_effects",
+      "qualification_or_review_activity",
+      "history_restoration"
+    ],
+    "observer_positive_control": {
+      "required": true,
+      "method": "Prove each observer detects an identifiable harmless probe at its actual owned boundary, or an isolated test seam for a deliberately unavailable capability. Do not grant a real role, create a human decision, restore history or enable review. Separate/reset probe observations before the case. Empty observations without this check do not prove non-effect."
+    },
+    "during_capture": "Record ordered observations of actual identity allocation, trusted context and policy, and any attempted authority/history/assessment promotion in parent and worker as applicable. Observe all listed boundaries for each variant. A supplied role or status must not alter routing or activate an unavailable capability.",
+    "after_capture": "Close and reopen the real store through a separate connection. Compare original bytes, located claims, actual generated identities, receipt and mapping issues. Confirm new package/version/lineage behavior with no predecessor, unchanged prior immutable records and no promoted trusted decision, status or authority. Inspect logical records, not equality of the whole changing SQLite file.",
+    "source_vs_authority_check": "The supplied UUID and positive-looking literals must remain in retained source/projection. Compare their provenance and use in actual trusted records; a global search that rejects those strings anywhere in storage is invalid. The package_id literal must not be the new TDG package/lineage/version identity.",
+    "unavailable_capability_check": "No placeholder review, disposition or qualification tables are required. Bind assertions to the actual store model and owned service boundaries; show that only permitted capture effects occurred and that unavailable assessment/history paths were not activated.",
+    "binding_rule": "Connect real identity/context/effect observers and separate-store inspection before enabling tests. A stand-in identity or authorization function and manifest Booleans are not TDG execution evidence. Missing essential observations keep the tests skipped and the claim unestablished."
+  },
+  "cases": [
+    {
+      "id": "TC-I01-032.01",
+      "file": "imported-claims/TC-I01-032.01.json",
+      "field": "package_id",
+      "content_pointer": "/content",
+      "content_span": {
+        "start_byte": 87,
+        "end_byte": 1106
+      },
+      "source_pointer": "/content/package_id",
+      "value_span": {
+        "start_byte": 1064,
+        "end_byte": 1102
+      },
+      "supplied_value": "11111111-2222-4333-8444-555555555555",
+      "expected_retained_value": "11111111-2222-4333-8444-555555555555",
+      "prohibited_promotion": "Do not adopt this supplied UUID as a TDG package, lineage or version identity, or restore history from it.",
+      "measurements": {
+        "byte_length": 1109,
+        "sha256": "8d1caaed7528cac55927ebff1c2033632ccf9b15fc1bb7f34d247a076325d4af",
+        "container_depth": 6,
+        "value_nodes": 25,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      },
+      "expected_generated_package_identity_differs_from": "11111111-2222-4333-8444-555555555555"
+    },
+    {
+      "id": "TC-I01-032.02",
+      "file": "imported-claims/TC-I01-032.02.json",
+      "field": "role",
+      "content_pointer": "/content",
+      "content_span": {
+        "start_byte": 87,
+        "end_byte": 1071
+      },
+      "source_pointer": "/content/role",
+      "value_span": {
+        "start_byte": 1058,
+        "end_byte": 1067
+      },
+      "supplied_value": "ROLE-05",
+      "expected_retained_value": "ROLE-05",
+      "prohibited_promotion": "Do not grant the claimed role or change the trusted operator context.",
+      "measurements": {
+        "byte_length": 1074,
+        "sha256": "fc0411d47301d56986c16ca154703db2eb564e90f237c954cfddbaafe15b38a0",
+        "container_depth": 6,
+        "value_nodes": 25,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      }
+    },
+    {
+      "id": "TC-I01-032.03",
+      "file": "imported-claims/TC-I01-032.03.json",
+      "field": "approval",
+      "content_pointer": "/content",
+      "content_span": {
+        "start_byte": 87,
+        "end_byte": 1076
+      },
+      "source_pointer": "/content/approval",
+      "value_span": {
+        "start_byte": 1062,
+        "end_byte": 1072
+      },
+      "supplied_value": "ACCEPTED",
+      "expected_retained_value": "ACCEPTED",
+      "prohibited_promotion": "Do not create a human approval, acceptance or finding disposition from the supplied text.",
+      "measurements": {
+        "byte_length": 1079,
+        "sha256": "09a0a51b7b3cdcc888760c5d034951b8eea395162f408e52b1187821e34d62cb",
+        "container_depth": 6,
+        "value_nodes": 25,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      }
+    },
+    {
+      "id": "TC-I01-032.04",
+      "file": "imported-claims/TC-I01-032.04.json",
+      "field": "status",
+      "content_pointer": "/content",
+      "content_span": {
+        "start_byte": 87,
+        "end_byte": 1075
+      },
+      "source_pointer": "/content/status",
+      "value_span": {
+        "start_byte": 1060,
+        "end_byte": 1071
+      },
+      "supplied_value": "COMPLETED",
+      "expected_retained_value": "COMPLETED",
+      "prohibited_promotion": "Do not create or restore a completed review run, or overwrite the actual capture outcome.",
+      "measurements": {
+        "byte_length": 1078,
+        "sha256": "8562c99a6f3da766deebde84ca068d2c0390e82082b996baa53b1a60aaf0cbf9",
+        "container_depth": 6,
+        "value_nodes": 25,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      }
+    },
+    {
+      "id": "TC-I01-032.05",
+      "file": "imported-claims/TC-I01-032.05.json",
+      "field": "qualification",
+      "content_pointer": "/content",
+      "content_span": {
+        "start_byte": 87,
+        "end_byte": 1081
+      },
+      "source_pointer": "/content/qualification",
+      "value_span": {
+        "start_byte": 1067,
+        "end_byte": 1077
+      },
+      "supplied_value": "IN_SCOPE",
+      "expected_retained_value": "IN_SCOPE",
+      "prohibited_promotion": "Do not establish an in-scope verdict, eligibility or model/configuration qualification.",
+      "measurements": {
+        "byte_length": 1084,
+        "sha256": "a21d8d022a61cc569c45e38e1cb5e5b92b55530e4b5370298d1b638ec3c845cb",
+        "container_depth": 6,
+        "value_nodes": 25,
+        "max_decoded_text_bytes": 154,
+        "tc_array_entries": 1,
+        "basis_array_entries": 1
+      }
+    }
+  ]
+}
