@@ -1,607 +1,92 @@
 # AGENTS.md
 
-## Purpose
+This file guides agents working on Test Design Gatekeeper (TDG). It explains how to find the relevant sources, keep work within its authorized scope and make claims supported by evidence. Product requirements and accepted design decisions belong in their governing documents, not here.
 
-This file is the operating contract for an AI or coding agent working in
-Test Design Gatekeeper (TDG).
+Keep project documentation in **English**. Explain proposed changes and document contents to the Owner in **Polish**.
 
-It is a router and execution discipline. It is **not** a source of product
-requirements, design authority, project status, implementation authorization,
-acceptance, or Owner decisions.
+## Current work boundary
 
-Use this file to determine:
+The Owner has paused development for documentation cleanup; see [README.md](README.md). TC-I01-033 remains on hold. Prepare changes **one file at a time**, explain the exact proposal in Polish and obtain the Owner's approval before publishing that file. Do not resume development without an explicit decision to do so.
 
-- what to read;
-- which source is authoritative for the current question;
-- how to bound a change;
-- what evidence is required before making a claim;
-- when to stop and request a human decision.
+Carry out work already covered by approval without asking for the same permission again. Silence is not a substitute for a required human decision.
 
-Current product status belongs in `README.md`. Canonical terminology belongs in
-`CONTEXT.md`. Historical reasoning belongs in `LEARNINGS.md`. Normative
-requirements, accepted design, review decisions, implementation evidence, and
-closure records remain in `docs/`.
+## Read the sources needed for the task
 
-If this file conflicts with an accepted governing artifact, the governing
-artifact wins.
+Before a substantive change, establish the branch and commit, inspect local changes, identify the authorized scope and read the relevant governing sources. Use [README.md](README.md) for orientation and [CONTEXT.md](CONTEXT.md) for unfamiliar terms. Do not read the whole repository mechanically before every small edit.
 
----
-
-## 1. Start here
-
-Before any non-trivial change:
-
-1. Read `CONTEXT.md` for canonical project terminology.
-2. Read `README.md` for current project status and supported capability.
-3. Identify the exact task type.
-4. Read the smallest authoritative source set needed for that task.
-5. Establish the currently authorized increment and work-item boundary.
-6. Pin the repository state before editing.
-7. Identify the acceptance oracle or evidence boundary before implementation.
-8. Do not proceed when authority, scope, or governing behavior is unresolved.
-
-Do not read the whole repository mechanically before every small change. Read the
-sources required to understand the current decision boundary.
-
-A trivial editorial correction may require less review than a behavioral,
-contract, architecture, persistence, authority, or evidence change.
-
----
-
-## 2. Source routing
-
-Use the source that is authoritative for the question being answered.
-
-| Question or task | Read first |
+| Question | Source |
 | --- | --- |
-| What is the current public project status? | `README.md` plus the relevant latest review/closure record |
-| What does a TDG term mean? | `CONTEXT.md` |
-| Why does an important boundary or decision exist? | `LEARNINGS.md`, then the source requirement/design/review artifact |
-| What is the approved product scope or project-level boundary? | `docs/governance/` |
-| What behavior, authority, data rule, or evaluation obligation is required? | the relevant `docs/requirements-analysis/` artifact |
-| What technical/logical solution was accepted? | the relevant `docs/solution-design/` artifact plus its review/decision record |
-| Was a document, work item, or phase actually accepted or authorized? | the relevant review, decision, gate, or closure record |
-| What was actually implemented? | source code plus `docs/implementation/` |
-| What was actually executed or verified? | executable tests plus recorded implementation/verification evidence |
-| What was learned from a defect, review, or course correction? | `LEARNINGS.md` |
-| What does an old `PROPOSED`, `PENDING`, or pre-GO snapshot mean now? | read that snapshot together with its later review/closure record |
+| What is the project scope? | Accepted Charter and decisions in [docs/governance](docs/governance) |
+| What behavior, authority or data rule is required? | Relevant accepted document in [docs/requirements-analysis](docs/requirements-analysis) |
+| What solution was accepted? | Relevant document in [docs/solution-design](docs/solution-design), with its acceptance or correction record |
+| What was approved, closed or authorized? | Actual Owner decision and its recorded scope; existing records in [docs/reviews](docs/reviews) or the relevant work-item document |
+| What is implemented? | [Source code](src/tdg) and relevant [implementation records](docs/implementation) |
+| What was exercised and observed? | [Tests](tests), execution results and dated verification evidence |
+| Why was a boundary introduced? | [LEARNINGS.md](LEARNINGS.md), then the original source |
 
-Do not use chat history as a stronger source than the repository contract.
+Authority depends on the question. README, CONTEXT, LEARNINGS and this file help navigation and understanding; they do not replace accepted product contracts. An example or a newer filename does not override an accepted rule by itself. Read an old proposal together with its later decision when establishing what is currently accepted.
 
-Do not use `LEARNINGS.md` as a substitute for normative requirements.
+A new explicit Owner decision can change the authorized work or an accepted baseline. Establish and record its scope; do not treat it as proof of implementation or verification. If accepted decisions resolve a conflict, follow them. If a material conflict remains unresolved, show the affected rule and sources and ask for a decision before changing that behavior.
 
-Do not use `CONTEXT.md` as a substitute for accepted data/status contracts.
+## Keep documentation small and current
 
-Do not use `README.md` alone to reconstruct detailed behavior when an accepted
-RA/SAD contract exists.
+- Give each active document a clear purpose. Keep a rule or definition in its governing source and link to it where needed, instead of copying it into successive layers.
+- Put approved corrections into the current text so a reader can find the applicable rule. Preserve the earlier wording and decision history through Git history and, where needed, linked evidence or an archive.
+- Do not create another version, addendum, review record or closure document solely because a small edit was made, a status changed or this cleanup progressed. Use the existing relevant document and commit history when they are sufficient. Create a separate artifact only for a distinct need that cannot be met there.
+- Keep actual human decisions attributable, with their date and scope. Record a decision once and link to it where necessary; do not invent acceptance or multiply records of the same approval.
+- Distinguish editorial simplification from a change to required behavior. Preserve requirement IDs, validation IDs, status meanings, contract fields, authority, identity, retry rules and acceptance conditions unless their change has been explicitly approved.
+- Before consolidating or removing a file, account for its unique decisions, evidence and incoming links. Preserve access to necessary history. Do not rewrite dated results, earlier failures or historical build evidence as if later knowledge had existed at the time.
+- Keep detailed test inputs and technical measurements with tests and manifests. Describe their purpose and evidence limits in documentation without repeating their contents in multiple progress reports.
+- Use plain language. State what works, what was checked, what remains uncertain and what decision is needed. Add detail when it helps the reader act or assess a claim.
 
----
+This changes how current documentation is maintained. It does not change the product's requirements for immutable records or permit altering historical test results.
 
-## 3. Source authority and conflict handling
+## Keep changes within the approved scope
 
-TDG does not use one universal document hierarchy.
+Read what each authorization actually permits. A decision may authorize several steps; do not invent an extra gate between them. Conversely, approval of one work item does not authorize adjacent capability unless the decision includes it. A design acceptance is implementation permission only when its scope says so, and it is never evidence that the implementation has passed.
 
-Authority depends on the question.
+Make small, coherent changes. Avoid unrelated refactoring or abstractions introduced only to make a test easier. Keep unavailable capability explicitly unavailable, and describe planned behavior as planned.
 
-In general:
+Agents may analyze, propose, implement authorized work and record decisions that humans have actually made. They must not independently accept requirements, grant implementation permission, close work items or phases, accept increments or products, qualify models/configuration, disposition findings, approve testware or authorize confidential-data use. Use the applicable human authority for those decisions.
 
-- the Charter and accepted governance records define project scope and
-  project-level constraints;
-- Requirements Analysis defines required behavior, authority, domain boundaries,
-  data/evaluation obligations, and validation intent;
-- Solution and Architecture Design defines accepted technical/logical decisions
-  within its approved scope;
-- review, decision, gate, and closure records establish whether a proposal was
-  accepted, corrected, rejected, closed, or authorized;
-- implementation records and executable evidence establish what was actually
-  built and exercised;
-- `README.md` summarizes current public status but does not replace the source
-  contracts;
-- `CONTEXT.md` explains terminology but is not normative authority;
-- `LEARNINGS.md` preserves engineering reasoning but is not normative authority.
+## Verify behavior and preserve evidence
 
-Use the source authoritative for the specific question.
+Derive expected outcomes from accepted contracts before observing the implementation. Identify the observable boundary, suitable test level and relevant negative or failure cases. A test must distinguish the behavior claimed; copying observed behavior into an expectation does not create an independent oracle.
 
-### Conflict rule
+When a meaningful failure occurs, preserve it, reproduce it and distinguish a product defect from a test/harness problem, environment problem, contract conflict, unavailable capability or expected refusal. Apply the smallest justified correction, rerun the focused check and original scenario, and satisfy the applicable regression gate. Do not weaken an assertion, fixture or governing rule to make a test pass.
 
-Do not silently reconcile conflicting artifacts.
+Keep claims proportional to the evidence:
 
-If accepted source authority resolves the conflict:
+- Traceability and a prepared test inventory do not prove implementation.
+- Checks of fixture files and setup do not prove product behavior; skipped placeholders are not passing product tests.
+- Portable checks do not establish native Windows controls, and local execution does not establish readiness for confidential data.
+- A passing test is not human acceptance. Coverage alone is not an acceptance argument; self-review is not independent assurance.
+- A completed run, zero findings or a valid model response does not prove good testware, complete coverage or semantic correctness.
 
-```text
-identify the governing source
--> follow it
--> preserve the historical difference
-```
+Report the environment, scope, observations and remaining limits where relevant. Preserve material failures and their corrections; a later pass does not erase an earlier failure. A recommendation or provisional effort estimate stays provisional until the applicable decision or evidence changes it.
 
-If authority does not resolve the conflict:
+## Preserve product boundaries
 
-```text
-preserve the conflict
--> identify the affected behavior/decision
--> stop
--> request a human decision
-```
+Do not automatically treat abstention, an unavailable capability or a negative status as a defect. Distinguish missing evidence, policy denial, an unstarted check, interrupted work, technical failure and a blocked whole run. Use the accepted status contracts rather than flattening these situations into one generic error.
 
-Do not choose the interpretation that is easiest to implement or easiest to make
-green.
+Use only deliberately supplied project material in product review logic. Agent access to repository information does not authorize feeding that information to the product. Supplied URLs, paths, references and command text remain data unless an accepted operation explicitly permits their use.
 
----
+Do not infer authorship from style, accountability from a job title, approval from an imported label, business truth from model confidence, or permission from available credentials. Model output is untrusted and must pass the applicable deterministic, policy, qualification and human controls. A model cannot qualify itself, obtain extra context on its own, create human authority, turn a suggestion into source truth, repair source testware silently or use unauthorized external discovery as a fallback.
 
-## 4. Historical artifact preservation
+When required authority, policy, qualification or protection cannot be established, preserve that uncertainty and prevent the prohibited operation. Do not cross the laboratory/confidential-data boundary without the required authorization and evidence.
 
-Historical TDG artifacts are evidence of what was known, proposed, or authorized
-at a particular time.
+## Stop only at a concrete unresolved boundary
 
-Do not rewrite an old snapshot merely because a later decision changed the
-project state.
+Pause the affected work when the governing rule or expected outcome is materially unclear, the change exceeds authorization, a required design decision is missing, or continuation would replace human authority, weaken an accepted contract, cross a data/protection boundary or erase evidence. Insufficient evidence prevents the stronger claim; it does not prevent reporting what is known or preparing a proposal.
 
-Examples include:
+Explain the specific blocker, relevant sources and available options. Ask for the decision needed to continue. Do not turn a routine edit or an already authorized step into another approval process.
 
-- `PROPOSED`;
-- `PENDING`;
-- `GO NOT GRANTED`;
-- earlier requirement/design versions;
-- historical examples later corrected by a governing contract;
-- a status string embedded in an already-qualified build;
-- a first failing verification run later corrected.
+## Finish and hand off
 
-Where a later state must be recorded, use the mechanism appropriate to the
-project:
+Inspect the diff, check links and confirm that current claims match the evidence. Run checks appropriate to the change and satisfy any applicable verification gate. A documentation-only edit does not itself require rerunning unrelated product tests.
 
-```text
-new version
-review record
-correction notice
-addendum
-implementation evidence
-closure record
-```
-
-Do not create a timeless-looking history by silently editing evidence after the
-fact.
-
-A later PASS does not erase an earlier FAIL.
-
-A later Owner decision does not rewrite the historical state of an already
-qualified artifact.
-
----
-
-## 5. Authorization and scope control
-
-Before implementation or a substantive documentation change, establish exactly
-what is authorized.
-
-At minimum determine:
-
-```text
-Which increment?
-Which work item?
-Which capability?
-Which accepted contracts govern it?
-Which activities remain outside the authorized boundary?
-```
-
-Authorization is bounded.
-
-The following implications are invalid:
-
-```text
-work-item GO
--> permission to implement the next work item
-```
-
-```text
-work-item closure
--> increment acceptance
-```
-
-```text
-increment acceptance
--> MVP acceptance
-```
-
-```text
-design acceptance
--> implementation GO
-```
-
-```text
-implementation complete
--> product acceptance
-```
-
-Do not implement adjacent future capability "while already in the area".
-
-Do not enable unavailable capability merely because the supporting code would be
-easy to add.
-
-Do not convert planned future behavior into current product claims.
-
----
-
-## 6. Human authority
-
-TDG preserves explicit human authority. An AI/coding agent is not a substitute
-for that authority.
-
-An agent may:
-
-- analyze accepted sources;
-- identify contradictions or gaps;
-- propose a design or correction;
-- implement work that is already authorized;
-- create tests and evidence;
-- prepare a review or closure record for human decision;
-- record a human decision after that decision has actually been made.
-
-An agent must not independently:
-
-- accept or reject a project requirement on behalf of the Owner;
-- grant an SDLC phase gate;
-- grant implementation GO;
-- close a work item;
-- accept an increment or product;
-- qualify a model/configuration;
-- disposition a finding on behalf of the designated human authority;
-- approve testware;
-- authorize confidential-data use;
-- infer that silence or continued work means approval.
-
-Human authority must be attributable to the actual human decision.
-
-A recommendation produced by the agent remains a recommendation until accepted
-through the applicable project mechanism.
-
----
-
-## 7. Test and oracle discipline
-
-Expected behavior must come from accepted contracts before implementation results
-are observed.
-
-Prefer:
-
-```text
-accepted contract
--> independent expected outcome
--> fixture/oracle/test
--> implementation
--> execution evidence
-```
-
-Avoid:
-
-```text
-implementation behaves this way
--> encode observed behavior as expected
--> call the test independent
-```
-
-A test is evidence only for the behavior it can actually distinguish.
-
-Before implementing a material behavior:
-
-- identify the governing requirement/design contract;
-- identify the observable boundary;
-- define the expected outcome;
-- decide the correct test level;
-- identify relevant negative/failure cases;
-- state what the test will **not** prove.
-
-Do not weaken a test, assertion, fixture, or oracle merely to obtain GREEN.
-
-Do not derive an acceptance claim from line coverage alone.
-
----
-
-## 8. Failure preservation and defect diagnosis
-
-A material first failure is engineering evidence.
-
-When a real defect is suspected:
-
-```text
-reproduce
--> preserve the first meaningful RED
--> classify the failure
--> identify the correct seam
--> define/confirm the oracle
--> apply the smallest justified correction
--> focused GREEN
--> original scenario
--> broader required regression
-```
-
-Before changing product behavior, classify the observation where possible as:
-
-- product defect;
-- test/validation-harness defect;
-- environment/platform problem;
-- contract ambiguity or contradiction;
-- unsupported capability;
-- insufficient evidence;
-- expected fail-closed behavior.
-
-A failing test is not automatically a product defect.
-
-A passing test after a harness correction is not automatically product evidence.
-
-Do not overwrite or delete the original failure merely because a later run passes.
-
----
-
-## 9. Evidence discipline
-
-Keep evidence layers distinct.
-
-These implications are invalid:
-
-```text
-configured != exercised
-exercised != passed
-passed != accepted
-traceability != implementation
-implementation != executed verification
-verification != product acceptance
-local execution != confidential/sealed readiness
-deterministic != automatically correct
-LLM-assisted != qualified != accepted
-```
-
-A claim must not be stronger than the evidence supporting it.
-
-Examples:
-
-- a green portable test suite does not prove a native platform-specific control;
-- successful package capture does not prove minimum review admissibility;
-- a completed run does not prove good testware;
-- zero findings do not prove complete coverage;
-- a valid model response does not prove semantic correctness;
-- 100% requirement traceability does not prove implementation completion;
-- a self-review does not become independent assurance.
-
-When evidence is incomplete, say exactly what is and is not established.
-
----
-
-## 10. Fail-visible behavior, abstention, and unavailable capability
-
-TDG is designed to preserve uncertainty instead of guessing it away.
-
-An agent must not "repair" the product merely because a result is:
-
-- `UNGRADABLE`;
-- `NOT_PERFORMED`;
-- `INCOMPLETE`;
-- `PARTIAL`;
-- `BLOCKED`;
-- an explicit unavailable capability;
-- a justified abstention.
-
-Those states may represent correct product behavior.
-
-Always distinguish:
-
-```text
-evidence missing
-capability unavailable
-policy denied
-work started but incomplete
-technical failure
-whole-run prerequisite blocked
-```
-
-Do not flatten them into one generic failure.
-
-Where a required authority, policy, qualification, or protection boundary cannot
-be established, fail closed rather than inventing permission.
-
----
-
-## 11. Change discipline
-
-### Before editing
-
-- pin branch and HEAD;
-- inspect working-tree state;
-- identify the authorized scope;
-- identify the governing contract;
-- understand whether the change is behavioral, documentary, evidential, or
-  historical.
-
-### During editing
-
-- make the smallest justified change;
-- avoid opportunistic scope growth;
-- preserve unrelated historical evidence;
-- do not refactor authority, identity, persistence, or status semantics merely for
-  convenience;
-- do not introduce abstractions only to make a test easier;
-- keep unsupported capability explicitly unavailable.
-
-### After editing
-
-- run focused checks for the changed boundary;
-- run the required broader regression/verification gate;
-- inspect the diff;
-- preserve meaningful failures and corrections;
-- update documentation only to the strength supported by evidence;
-- request the required human decision before claiming closure.
+Report what changed, why, how it was checked and any material remaining limitation. Name any human decision still required. Agent completion and green tests do not themselves close a work item or establish product acceptance.
 
 ### Commit cadence
 
-Use small, coherent commits for completed work slices. On active workdays,
-publish ready changes daily or several times during the day, within the existing
-publication authorization. Keep related decisions and current navigation aligned
-in the same commit; do not accumulate completed work solely for a large
-phase-ending commit. Apply the existing checks to each change.
-
----
-
-## 12. Documentation-change discipline
-
-TDG documentation is part of the engineered product boundary.
-
-Before changing a document, classify the change.
-
-Possible classes include:
-
-**Editorial correction**
-
-Formatting, spelling, grammar, or wording that does not change normative meaning.
-
-**Normative change**
-
-A change to required behavior, authority, status meaning, data contract, allowed
-operation, invariant, or acceptance rule.
-
-**Controlled amendment**
-
-A deliberate change to an accepted baseline using the project's recorded
-change-control mechanism.
-
-**New version**
-
-A successor artifact preserving the previous version as historical evidence.
-
-**Review finding/correction**
-
-A documented contradiction, defect, or ambiguity and its accepted disposition.
-
-**Implementation evidence update**
-
-A record of what was actually built, executed, observed, or qualified.
-
-**Closure/acceptance decision**
-
-An attributable human governance decision.
-
-Do not treat every Markdown change as a harmless `docs:` edit.
-
-Changing `shall` to `may`, an enum value, envelope field, authority boundary,
-identity rule, retry rule, or acceptance condition can alter the product contract.
-
-When a historical artifact contains wording that became obsolete, prefer a
-governing correction/addendum/new version over silent retroactive editing.
-
----
-
-## 13. Data, model, and protection boundaries
-
-The supplied-data-only rule applies to agent work as well as product behavior.
-
-Do not introduce hidden project context into product logic merely because the
-agent can access more repository information.
-
-Do not make a supplied URL/path/reference executable by default.
-
-Do not infer:
-
-- authorship from writing style;
-- accountability from a job title;
-- approval from a status-like source field;
-- domain truth from model confidence;
-- sealed readiness from local execution;
-- permission from the existence of credentials or infrastructure.
-
-Model output remains untrusted data until the applicable deterministic checks,
-policy checks, qualification boundary, and human workflow permit its use.
-
-An LLM cannot:
-
-- qualify itself;
-- grant itself more context;
-- create human authority;
-- turn a suggestion into source truth;
-- silently repair source testware;
-- use unavailable external discovery as a fallback.
-
----
-
-## 14. Stop conditions
-
-Stop implementation or substantive document change when any of these is true:
-
-- the governing authority cannot be identified;
-- two authoritative sources remain materially contradictory;
-- the acceptance oracle is unclear;
-- the proposed change exceeds the authorized increment/work item;
-- implementation requires a new unaccepted design decision;
-- the observed failure has not been classified well enough to justify a product
-  change;
-- available evidence is insufficient for the requested claim;
-- a required human authority would be replaced by agent inference;
-- the change would cross the supplied-data-only boundary;
-- the change would cross the laboratory/sealed protection boundary without
-  authority;
-- the only way to make a test pass is to weaken the accepted contract;
-- the only way to continue is to treat historical evidence as if it never
-  existed.
-
-When stopping:
-
-```text
-preserve what is known
--> identify the unresolved decision
--> identify the governing sources
--> present the evidence and options
--> escalate to the appropriate human authority
-```
-
-Stopping on insufficient evidence is correct behavior.
-
----
-
-## 15. Completion and handoff
-
-Agent work is ready for handoff only when the evidence supports that statement.
-
-A useful completion check is:
-
-```text
-scope remained bounded
-governing contract was followed
-required checks were executed
-material failures were classified
-historical evidence was preserved
-documentation matches the evidence strength
-no unresolved authority conflict is hidden
-required human decision is clearly identified
-```
-
-Do not reduce completion to:
-
-```text
-tests are green
-```
-
-Green tests are one evidence source, not the complete project decision.
-
-Agent completion is not Owner acceptance.
-
-A work item is not closed merely because implementation and tests are complete.
-Closure requires the applicable review/evidence boundary and the human decision
-defined by the project governance model.
-
----
-
-## 16. Durable operating principles
-
-When in doubt, prefer these rules:
-
-```text
-authority before action
-contract before implementation
-oracle before result
-evidence before claim
-preserve history before cleanup
-smallest authorized change before adjacent improvement
-explicit uncertainty before convenient guessing
-human decision before governance closure
-```
-
-These principles are intended to keep future AI-assisted work aligned with TDG's
-evidence-grounded design without turning `AGENTS.md` into a second requirements or
-architecture specification.
+Use small, coherent commits for completed work. On active workdays, publish ready changes daily or several times during the day within the existing publication authorization. Keep related documentation aligned when it is part of the approved scope; during the current cleanup, respect the one-file approval process. A commit does not require a separate progress document.
