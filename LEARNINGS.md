@@ -1,748 +1,141 @@
 # Learnings
 
-Chronological engineering journal for Test Design Gatekeeper.
+Lessons from decisions, reviews and observed failures in Test Design Gatekeeper. This journal explains what changed our understanding and what to carry into later work. It is not a second specification or an acceptance record. [README.md](README.md) describes current capability; the linked source records preserve detailed evidence and decisions. The [earlier journal][earlier-journal] remains available in Git history.
 
-This file preserves the reasoning, evidence, turning points, and course corrections that changed our understanding of the project.
+## Concept and requirements: fluent output still needs evidence
 
-Current product behavior and normative contracts belong in `README.md`, `docs/governance/`, `docs/requirements-analysis/`, `docs/solution-design/`, `docs/reviews/`, and `docs/implementation/`.
+An LLM can plausibly identify missing test conditions while inventing business rules, assuming a technique applies or treating its own interpretation as confirmed. This risk shaped the proposed hybrid approach: deterministic checks where explicit rules support them, bounded model assistance for interpretation, inspectable evidence and human decisions. The usefulness of that approach remains to be demonstrated by product evaluation.
 
-`LEARNINGS.md` is not an authoritative specification and does not replace an accepted requirement, design decision, review record, implementation record, or Owner decision. When this journal and a current governing artifact differ, the governing artifact wins.
+The human review boundary matters just as much. TDG reviews the deliberately supplied package; it does not search for missing context or silently edit the source test cases. Reporting an issue, accepting that issue, editing a test and formally approving testware are separate responsibilities. Identified human accountability permits controlled AI-assisted testware without requiring every word to have been typed by a human.
 
-The point of this file is different: preserve *why* an important boundary exists, *what evidence changed our thinking*, and *what should not be forgotten when the project moves on*.
+**Carry forward:** a convincing explanation is a proposal to examine. Keep the evidence, uncertainty and responsible human visible. Missing input can justify withholding a conclusion.
 
----
+Sources: [Project Charter][charter] and [RA-01][ra01].
 
-## Concept lesson — persuasive LLM output is not review evidence
+## Requirements analysis: separate questions need separate answers
 
-**Period:** Concept & Feasibility
-**Status:** Established
+Automation does not establish white-box testing, and a manual test is not automatically black-box. Test level, type, design basis and execution mode must be assessed separately. Similarly, scope, technique applicability, sufficient evidence, a reported finding and result availability answer different questions.
 
-### Starting point
+**Carry forward:** avoid a convenient label or single PASS/FAIL value that erases these distinctions. Use the [glossary](CONTEXT.md) for orientation and the governing [classification][ra04] and [result contracts][ra05] for the rules.
 
-The project began from a useful but dangerous idea: an LLM can read functional test cases and point out missing coverage, weak expected results, or places where black-box test-design techniques may help.
+## Requirements closure: traceability is not working software
 
-That is easy to demonstrate conversationally. It is much harder to turn into a review assistant whose output deserves engineering trust.
+The accepted requirements baseline contained **249 requirements, 169 validation obligations and 424 inspected direct relations**. These counts describe the specification and its traceability. A requirement could be accepted, traced and allocated while still unimplemented and untested.
 
-A fluent answer can still:
+**Carry forward:** report specification work, implemented behavior, executed verification and human acceptance as separate facts. A traceability count is not a product-completion percentage.
 
-- invent a missing business rule;
-- assume a technique is applicable without enough evidence;
-- confuse test level, test type, technique, and execution mode;
-- treat a plausible interpretation as confirmed fact;
-- produce a convincing verdict without showing why it is justified.
+Source: [requirements review and phase-gate record][ra-baseline].
 
-### Learning
+## SAD-04 review: repeated descriptions can contradict an existing contract
 
-The product cannot be based on unrestricted model judgment.
+The integrated review found two significant problems in SAD-02: a table mixed processing states with assessment outcomes and misdescribed result availability; a native JSON example used an incompatible envelope. Concrete examples were especially risky because later implementation could copy them.
 
-The useful direction is hybrid:
+RA-09's corrected baseline had already been accepted on **21 September 2026**, before the **23 September SAD-02** document. The earlier version of this journal incorrectly described RA-09 as a later accepted contract. The example contradicted an existing rule. That chronology matters when diagnosing why document layers drifted.
 
-```text
-bounded supplied evidence
--> deterministic controls where reproducible rules exist
--> bounded probabilistic assistance where semantics are needed
--> explicit evidence and limitations
--> human decision
-```
+The review added correction notices while retaining the original text. This preserved history, but left readers to reconcile the old example with its correction. The October cleanup revisits that maintenance approach.
 
-The LLM may contribute to analysis. It is not the source of truth merely because its explanation sounds convincing.
+**Carry forward:** check examples directly against their governing contract. Put approved corrections into the active description and keep earlier text accessible in history. A resolved documentation finding is not evidence that the corresponding runtime behavior has been tested.
 
-### Consequence
+Sources: [SAD-04 findings][sad-review], [RA-09 acceptance][ra09-review] and [SAD-02][sad02].
 
-TDG evolved into an evidence-grounded review assistant rather than a general "AI test-case reviewer". Qualification, provenance, abstention, deterministic checks, and human authority became product concerns rather than implementation details.
+## I-01 planning: an estimate remains a hypothesis
 
----
+The initial I-01 estimate was **40–62 hours**. The Owner challenged it because testing alone might require comparable effort. It was retained as an uncertain forecast, not an approved budget, deadline or reason to reduce necessary testing. W02 was chosen as the first reassessment point.
 
-## Authority lesson — the human owns the testware decision
+**Carry forward:** revisit an estimate as concrete work reveals its cost. Include test preparation, execution, diagnosis and human review. The later [W02 forecast][effort] is also provisional; actual human effort remains unreported, so it cannot establish estimation accuracy.
 
-**Period:** Charter / RA-01
-**Status:** Established
+Source: [SAD-04 review and effort reservation][sad-review].
 
-### Problem
+## W01: expose only the capability that exists
 
-It was initially easy to describe TDG as a "gatekeeper" and accidentally give the tool more authority than intended.
+The foundation build provided `version`, `capabilities` and controlled empty-store `init`. Package processing stayed explicitly unavailable. This avoided fake receipts, packages, review runs or findings that could make the CLI appear more complete than it was.
 
-A tool that reports a problem, a reviewer who accepts that problem, a test author who edits the TC, and an organizational approver are not the same actor.
+**Carry forward:** describe demonstrated capability directly. A foundation is useful engineering work, but it does not demonstrate the usefulness of test-case review.
 
-The same issue appears with AI-assisted testware. The meaningful boundary is not "was every word typed by a human?" but "is an identified human accountable for this testware and its use?"
+Source: [W01 implementation and verification][w01].
 
-### Learning
+## W01 verification: the target platform exposed a real defect
 
-Human accountability is more important than authorship purity.
+| Recorded run | Result | What it established |
+| --- | --- | --- |
+| Initial portable development run | 44 passed, 4 skipped | The four Windows tests had not run. |
+| First native Windows run | 47 passed, 1 failed, 0 skipped | A directory held by the guard could still be renamed. |
+| After the guard correction | Focused test passed; full Windows regression: 48 passed | The original scenario and regression passed after the change. |
+| Corrected `0.1.0.dev2` on the target platform | 48 passed, 0 failed, 0 skipped | Verification of the identified corrected W01 build. |
 
-TDG may:
+The initial guard requested only `FILE_READ_ATTRIBUTES` while omitting `FILE_SHARE_DELETE`. A focused Windows experiment showed that the smallest tested access combination preventing rename was `FILE_LIST_DIRECTORY | FILE_READ_ATTRIBUTES`. Wider access combinations also worked; the detailed comparison remains in the source record.
 
-- identify a gap;
-- explain the evidence;
-- suggest a direction;
-- record a human disposition.
+**Carry forward:** portable success cannot establish platform-specific controls. Least privilege means the minimum authority that actually performs the required protection. Preserve the first meaningful failure and its diagnosis after a fix: they show that the test could detect the defect. The failing `0.1.0.dev1` observation and corrected `0.1.0.dev2` remain distinguishable.
 
-TDG must not:
+Source: [W01 evidence, diagnosis and access-mask comparison][w01].
 
-- approve a test case;
-- certify completeness;
-- silently repair the source TC;
-- infer human acceptance from its own finding;
-- represent self-review as independent review.
+## PR #3: byte identity makes line endings part of verification
 
-### Consequence
+PR review identified that Windows Git line-ending conversion could change artifact bytes without an obvious textual difference. The repository introduced `* text=auto eol=lf`, then rechecked the accepted SAD-04 artifact identities.
 
-"Human authority" became a system boundary, not a disclaimer.
+**Carry forward:** when evidence depends on byte-level hashes, verify the actual bytes and control relevant checkout transformations. A visually identical file may have a different digest.
 
-The project explicitly separates generated findings from human dispositions and keeps source test-case modification outside TDG. Human-controlled AI-assisted testware may be eligible when accountable human ownership is explicit.
+Source: [W01 closure and PR #3 correction evidence][w01-closure].
 
----
+## W01 closure: the tested build and a later decision have different dates
 
-## Scope lesson — supplied-data-only is a feature, not a limitation to hide
+Build `0.1.0.dev2` was verified with `W01_VERIFIED_CLOSURE_PENDING` in its capability manifest. The Owner closed W01 on **29 September 2026** and authorized W02. Editing the executable merely to display `W01_CLOSED` would have changed the tested artifact.
 
-**Period:** Charter / Requirements Analysis
-**Status:** Established
+**Carry forward:** retain the identified tested build. Record the later decision with its real date and scope, and explain current status in current documentation. W01 closure did not accept the whole I-01 increment.
 
-### Problem
+Source: [W01 closure decision][w01-closure].
 
-A review assistant could always appear more capable by searching for additional project context when the submitted package is incomplete.
+## PR #3 and W01: useful self-review still has an independence limit
 
-That creates several problems at once:
+Technical self-review found documentation and evidence gaps, and corrections were made before closure. The earlier journal records that PR #3 had neither an independent reviewer nor GitHub CI status checks at that time. The Owner accepted W01 within the solo, AI-assisted project model.
 
-- the actual review boundary becomes unclear;
-- provenance becomes harder to prove;
-- confidential material may be accessed unexpectedly;
-- missing information is silently converted into hidden context;
-- the user cannot tell what evidence produced a finding.
+**Carry forward:** describe what the review actually checked and who performed it. Its findings are useful, but calling it a review does not make it independent assurance. Stronger claims need the evidence appropriate to those claims.
 
-### Learning
+Sources: [W01 closure review boundary][w01-closure] and the [earlier journal's self-review entry][earlier-journal].
 
-The Review Package boundary should be deliberate and visible.
+## Start of W02: define expectations before observing implementation
 
-TDG reviews what the operator deliberately supplies. Missing, contradictory, opaque, or mismatched information remains visible as an evidence limitation.
+The agreed sequence put synthetic inputs, receipt/identity expectations and the detailed test inventory before native JSON capture implementation. The intention was to derive expected behavior from accepted contracts rather than copy observed implementation behavior into tests.
 
-The correct response to insufficient evidence can be:
+This was a methodological choice, not a measured improvement. Fixture checks establish properties of prepared data and setup; they do not establish importer behavior. At the October pause, the latest preparation record reported **238 passing asset checks and 164 skipped product-test placeholders** on Linux/Python 3.12. The corresponding importer behavior and target-platform checks of those materials remained unverified.
 
-```text
-cannot assess this dimension safely
-```
+**Carry forward:** keep independent expected outcomes, and distinguish preparation from execution. Reassess the amount and sequence of preparation when its cost delays a useful product experiment.
 
-rather than:
+Sources: [W02 expected-behavior basis][w02-design], [test inventory][w02-inventory] and [last preparation record before the pause][w02-last].
 
-```text
-search for more context and guess what the user probably meant
-```
+## 18–19 October 2026: a written warning did not prevent documentation growth
 
-### Consequence
+An earlier entry in this journal already warned that formality was useful only when it prevented a concrete mistake. It identified document-growth risk and advised against duplicate summaries and ceremonial records. We did not turn that warning into a sufficiently effective working practice.
 
-TDG does not search an entire project repository, follow arbitrary URLs, or invent unstated business rules to rescue a review. Scope and provenance became explicit parts of the product model.
+At the pause, the repository contained **80 Markdown files**, including successive document versions and sixteen W02-C preparation reports. Definitions and status descriptions were repeated across layers. Corrections were added beside retained conflicting text, and later acceptance records were needed to interpret old preparation labels. This increased the effort needed to find the applicable rule.
 
----
+The review work had also found real defects, and all four SAD activities were part of the earlier plan. The audit therefore did not establish that every document or requirement was invented. It established duplication, drift and excessive process around a product whose usefulness had still not been evaluated. The assistant should have challenged this cost earlier; simplifying individual sentences had not addressed the structure.
 
-## Classification lesson — independent axes must remain independent
+The Owner paused development and TC-I01-033. Cleanup began with README, agent instructions and the glossary, with one proposed file explained in Polish and approved before publication. Project documentation remains in English. Approved agent guidance now favors updating current text and preserving history over creating a new file for every status change.
 
-**Period:** Requirements Analysis
-**Status:** Established
+**Carry forward:** a lesson is useful when it changes the next decision. Give each active document a distinct purpose, maintain a rule in its governing source, and preserve necessary history without forcing readers through successive corrections. Record a new lesson when evidence changes our understanding, not after every routine step.
 
-### Problem
+After cleanup, the implementation sequence still needs an explicit decision so a small useful review can be evaluated sooner. Documentation cleanup alone does not demonstrate product value, validate the effort estimate or resume development.
 
-Testing terminology can tempt an implementation into convenient shortcuts.
+Sources: [repository at the pause][pause-tree], [earlier design allocation][ra-baseline], [current project status](README.md) and [approved agent guidance](AGENTS.md).
 
-Examples:
+## Adding or revisiting a lesson
 
-```text
-automated != white-box
-integration != structural
-manual != black-box
-LLM-generated != automatically out of scope
-```
+Use this existing journal when a decision, failure or observation materially changes product understanding, test strategy, architecture, evidence or working practice. State what happened, what supports the conclusion, what changed and what remains uncertain. Link detailed evidence instead of copying it. Routine commits, spelling fixes and ordinary passing checks do not need entries. When later evidence changes a lesson, identify the earlier view and explain the change; preserve the underlying historical record.
 
-Likewise, whether a test case is in scope, whether a technique is applicable, whether evidence is sufficient, whether a finding exists, and whether a result is available are different questions.
-
-### Learning
-
-Do not compress independent meanings into one label or one PASS/FAIL verdict.
-
-TDG needs separate axes for concepts that can vary independently.
-
-This applies both to testing classification and to TDG's own processing states.
-
-### Consequence
-
-Requirements and later solution design deliberately preserve separate classification, qualification, processing, assessment, availability, and human disposition concepts. A convenient boolean is not allowed to erase those distinctions.
-
----
-
-## Requirements lesson — traceability numbers are not implementation progress
-
-**Period:** Requirements Analysis closure
-**Status:** Established
-
-### Evidence
-
-Requirements Analysis closed with:
-
-- 249 accepted requirements;
-- 169 validation obligations;
-- a bidirectional trace structure;
-- 424 inspected direct relations.
-
-That is substantial engineering evidence about the specification.
-
-It is not product execution evidence.
-
-### Learning
-
-A requirement can be:
-
-```text
-identified
--> accepted
--> traced
--> allocated
-```
-
-and still be:
-
-```text
-not implemented
-not executed
-not validated
-```
-
-A large traceability number can create false confidence if it is presented like a coverage score for working software.
-
-### Consequence
-
-TDG keeps requirement allocation, test planning, implementation state, execution evidence, and acceptance as separate facts.
-
-Later documents explicitly say that routing all requirement IDs does not mean that all requirements are implemented or passed.
-
----
-
-## Static-testing lesson — reviewing design can find real defects before code exists
-
-**Period:** SAD-04 integrated review
-**Status:** Validated by two design findings
-
-### Evidence
-
-The integrated design review exposed two implementation-relevant contradictions.
-
-First, historical ledger wording mixed processing/run states with substantive assessment outcomes. Implementing the illustrative vocabulary literally would have produced incompatible lifecycle semantics.
-
-Second, an illustrative JSON example in SAD-02 did not match the later accepted RA-09 wire envelope. It was explicitly an example, but it was still dangerous as an implementation template.
-
-### Learning
-
-Documentation defects can be product defects waiting to happen.
-
-Static testing is not "proofreading before the real work". When contracts, identities, status semantics, or interchange formats are involved, finding a contradiction before implementation is cheaper and cleaner than discovering it through data migration or runtime behavior.
-
-### Consequence
-
-The original historical material was retained, corrective notices were added, and the governing contract was made explicit.
-
-The project also gained a practical rule:
-
-```text
-historical snapshot
-!=
-current governing decision
-```
-
-Do not rewrite old evidence merely to make the documentation look internally timeless.
-
----
-
-## Design lesson — illustrative examples must never outrank the governing contract
-
-**Period:** SAD-04 review
-**Status:** Established
-
-### Problem
-
-Examples are useful because they make abstract contracts understandable.
-
-They are also dangerous because implementation work often begins by copying the most concrete-looking artifact.
-
-### Evidence
-
-The SAD-02 JSON example looked implementation-ready enough to be copied, while RA-09 already defined a different accepted control envelope.
-
-### Learning
-
-Examples need an explicit authority boundary.
-
-When an example and a normative contract disagree, the implementation must follow the normative contract, and the discrepancy must be preserved as a finding rather than "fixed silently" in history.
-
-### Consequence
-
-TDG now treats document precedence and later closure records as part of the engineering model. Retained `PENDING`, `PROPOSED`, or historical candidate wording is interpreted together with the later decision record instead of being rewritten after the fact.
-
----
-
-## Planning lesson — an estimate is a hypothesis, not a quality gate
-
-**Period:** SAD-04 implementation planning
-**Status:** Established
-
-### Starting estimate
-
-The first I-01 implementation estimate was 40–62 hours.
-
-The Owner explicitly challenged that range and noted that testing alone might consume comparable effort.
-
-### Learning
-
-An early estimate does not become more true because it appears in an accepted document.
-
-For this project, the dangerous failure mode would be:
-
-```text
-estimate too small
--> tests look expensive
--> reduce test depth to fit the estimate
-```
-
-The correct direction is the opposite:
-
-```text
-test inventory becomes concrete
--> actual complexity becomes visible
--> estimate changes
-```
-
-### Consequence
-
-The original range is retained as an uncertain planning hypothesis, not a budget, deadline, effort ceiling, or acceptance criterion.
-
-W02 is intentionally the first re-estimation point because detailed fixtures, oracles, test variants, and fault-injection needs should reveal more realistic testing effort.
-
----
-
-## Increment lesson — implement the smallest useful foundation without pretending the product exists
-
-**Period:** I-01 planning / W01
-**Status:** Established
-
-### Problem
-
-Once implementation started, it would have been easy to create placeholder commands or partial import behavior and then describe the project as if Review Package processing already existed.
-
-### Learning
-
-Capability exposure must be honest.
-
-W01 needed only the project/runtime foundation, capability manifest, environment pinning, controlled workspace initialization, and empty-store behavior.
-
-Everything else could remain visibly unavailable.
-
-### Consequence
-
-The qualified W01 build exposes:
-
-```text
-version
-capabilities
-init
-```
-
-while package-processing paths remain disabled.
-
-The project deliberately avoids creating fake receipts, fake Review Packages, fake review runs, or placeholder findings merely to make the CLI look complete.
-
----
-
-## Target-platform lesson — portable tests cannot prove Windows behavior
-
-**Period:** I01-W01 native qualification
-**Status:** Validated
-
-### Evidence
-
-The first portable development run on Linux produced:
-
-```text
-44 passed
-4 skipped
-```
-
-All four skipped tests were native Windows tests.
-
-That result was useful development evidence, but it did not prove the intended Windows directory and writer protections.
-
-The first actual Windows run produced:
-
-```text
-47 passed
-1 failed
-0 skipped
-```
-
-The failing test showed that a held directory could still be renamed.
-
-### Learning
-
-A green portable suite cannot substitute for executing platform-specific controls on the platform whose semantics matter.
-
-This matters especially for filesystem sharing, reparse points, mutex behavior, path admission, and other OS-level mechanisms.
-
-### Consequence
-
-Windows became a real qualification boundary rather than a target mentioned in metadata.
-
-The project preserved the native failure and investigated the mechanism instead of treating the Linux result as sufficient evidence.
-
----
-
-## W01 defect lesson — "least privilege" still has to perform the required protection
-
-**Period:** I01-W01 defect diagnosis
-**Status:** Validated
-
-### Evidence
-
-The original directory guard requested only:
-
-```text
-FILE_READ_ATTRIBUTES
-```
-
-while omitting `FILE_SHARE_DELETE`.
-
-The expectation was that the open handle would prevent rename. On the observed Windows host, rename still succeeded.
-
-A focused native experiment compared access masks:
-
-```text
-FILE_READ_ATTRIBUTES
--> rename succeeded
-
-FILE_LIST_DIRECTORY | FILE_READ_ATTRIBUTES
--> rename blocked
-
-GENERIC_READ
--> rename blocked
-
-DELETE | FILE_READ_ATTRIBUTES
--> rename blocked
-```
-
-### Learning
-
-Choosing the narrowest-looking permission is not automatically correct least privilege.
-
-The useful definition is:
-
-```text
-minimum authority that still establishes the required invariant
-```
-
-A control that is theoretically narrower but does not enforce the required boundary is not the safer implementation.
-
-### Consequence
-
-The guard was changed to the smallest tested access combination that established the intended behavior:
-
-```text
-FILE_LIST_DIRECTORY | FILE_READ_ATTRIBUTES
-```
-
-Broader alternatives were not selected merely because they also worked.
-
----
-
-## Evidence lesson — preserve the first real failure after the fix
-
-**Period:** I01-W01 correction and qualification
-**Status:** Established and applied
-
-### Problem
-
-After a defect is corrected, it is tempting to leave only the final green result in project documentation.
-
-That produces a cleaner story but weaker engineering evidence.
-
-### Evidence
-
-W01 retained the sequence:
-
-```text
-first Windows run
--> 47 passed / 1 failed
-
-focused diagnosis
--> access-mask behavior isolated
-
-correction
--> focused regression passed
-
-full Windows regression
--> 48 passed
-
-qualified dev2
--> 48 passed / 0 failed / 0 skipped
-```
-
-### Learning
-
-A later PASS should not erase the RED that justified the change.
-
-The failed run answers:
-
-```text
-did the test have power to detect the defect?
-```
-
-The corrected run answers:
-
-```text
-did the proposed change resolve it?
-```
-
-Both matter.
-
-### Consequence
-
-The failing `0.1.0.dev1` observation remains part of W01 evidence, while the corrected implementation received a distinct `0.1.0.dev2` build identity.
-
----
-
-## Evidence-engineering lesson — byte identity makes line endings a control
-
-**Period:** PR #3 review
-**Status:** Established
-
-### Problem
-
-TDG records SHA-256 identities for accepted artifacts.
-
-On Windows, ordinary Git line-ending conversion can make two visually identical text files have different bytes.
-
-If artifact identity is defined at byte level, CRLF versus LF is no longer a formatting preference.
-
-### Evidence
-
-PR review identified the risk before W01 closure.
-
-A repository-level `.gitattributes` policy was added:
-
-```text
-* text=auto eol=lf
-```
-
-The accepted SAD-04 artifact identities were then rechecked against repository bytes.
-
-### Learning
-
-Once byte-level identity becomes evidence, text normalization becomes part of the evidence system.
-
-### Consequence
-
-The repository now controls line endings explicitly so local Windows checkout behavior cannot silently undermine documented artifact hashes.
-
----
-
-## Governance lesson — qualified build state and later human closure are different facts
-
-**Period:** W01 closure
-**Status:** Established
-
-### Situation
-
-Qualified build `0.1.0.dev2` was tested while its runtime capability manifest said:
-
-```text
-W01_VERIFIED_CLOSURE_PENDING
-```
-
-After the technical review findings were corrected, the Owner formally closed W01 and granted GO to W02.
-
-### Temptation
-
-Rebuild or edit the qualified product only to replace the old status string with:
-
-```text
-W01_CLOSED
-```
-
-That would make the latest executable look tidier, but it would also change the artifact that had already been qualified.
-
-### Learning
-
-Technical qualification and governance decisions have different timelines.
-
-The qualified build should keep the status that was true for that build snapshot. A later Owner decision belongs in a later governance/closure record.
-
-### Consequence
-
-`0.1.0.dev2` remains unchanged as the qualified W01 build.
-
-The current project state is instead recorded by the W01 Owner closure record:
-
-```text
-W01 CLOSED
-W02 GO GRANTED
-I-01 still incomplete
-```
-
-A later governance fact does not require rewriting previously qualified evidence.
-
----
-
-## Review lesson — a clean PR is not the same as an independently reviewed product
-
-**Period:** PR #3 / W01 closure
-**Status:** Established
-
-### Evidence
-
-PR #3 received a deliberate technical self-review of code, tests, documentation, environment evidence, hashes, and scope boundaries.
-
-That review found real documentation/evidence gaps and resulted in correction commits before closure.
-
-At the same time, the repository had no independent reviewer and no GitHub CI status checks for the PR.
-
-### Learning
-
-Useful self-review evidence should neither be dismissed nor overstated.
-
-The correct claim is not:
-
-```text
-nobody independent reviewed it, therefore the evidence is worthless
-```
-
-and not:
-
-```text
-the PR was reviewed, therefore independent assurance exists
-```
-
-The actual evidence boundary matters.
-
-### Consequence
-
-W01 could be closed by the Project Owner within the project's solo, AI-assisted development model while still retaining the explicit limitation that this is not independent assurance.
-
-Future stronger claims may require stronger independence or automated gates, but those should be earned by the claim being made rather than retroactively invented.
-
----
-
-## Process lesson — formality is useful only when it prevents a real mistake
-
-**Period:** Requirements Analysis through W01
-**Status:** Emerging project principle
-
-### Observation
-
-TDG became much more formal than the other repositories in the same engineering ecosystem.
-
-It accumulated:
-
-- a controlled Charter;
-- ten Requirements Analysis slices;
-- traceability and static-review records;
-- four solution-design activities;
-- explicit Owner gates;
-- implementation and closure evidence.
-
-This created documentation cost and an active scope/document-growth risk.
-
-It also prevented or exposed real problems:
-
-- authority ambiguity;
-- scope expansion through hidden context;
-- mixed classification axes;
-- incompatible status vocabulary;
-- a conflicting JSON implementation template;
-- premature implementation claims;
-- platform-specific behavior that portable execution could not prove;
-- byte-identity risk from line endings.
-
-### Learning
-
-The lesson is not "more documentation is always better".
-
-The useful rule is:
-
-```text
-keep formality where it protects authority, evidence, contracts, scope,
-irreversible data semantics, or acceptance claims
-
-remove or avoid formality that only duplicates an existing source
-```
-
-### Consequence
-
-TDG should continue to use explicit SDLC/STLC gates where they prevent a concrete failure mode, while resisting duplicate architecture summaries, duplicate requirements, ceremonial review records, or documents created only because another project has them.
-
-This `LEARNINGS.md` follows the same rule: it exists because the formal artifacts record the *current contract* well but do not provide one readable history of *how our understanding changed*.
-
----
-
-## Current course — W02 should define the test oracle before the importer teaches us its answer
-
-**Period:** Start of I01-W02
-**Status:** Working principle carried from accepted SAD-04 design
-
-W01 established the project/runtime foundation.
-
-The next authorized work is deliberately test-design-heavy:
-
-```text
-synthetic fixtures
-+ independent receipt/identity oracles
-+ traceable detailed test inventory
-```
-
-before native JSON capture implementation proceeds.
-
-The reason is methodological.
-
-If implementation comes first, there is a strong risk of:
-
-```text
-write behavior
--> observe behavior
--> encode observed behavior as expected
--> call the test independent
-```
-
-W02 is intended to reverse that order:
-
-```text
-accepted contract
--> fixture
--> expected observable outcome
--> traceable test
--> later implementation
-```
-
-This principle has not yet been validated by W02 execution. It is the governing design discipline for the next work item and should be revisited after W02 to see whether it actually improved defect detection, implementation clarity, and effort estimation.
-
----
-
-## How to use this journal
-
-Add a new entry when evidence materially changes at least one of these:
-
-- our understanding of the product boundary;
-- authority or safety rules;
-- architecture or data semantics;
-- the meaning of a status or identity;
-- the acceptance oracle;
-- the strength of a product claim;
-- implementation direction;
-- test strategy;
-- the interpretation of a failure;
-- the relationship between design and observed behavior.
-
-Do not add an entry for every commit, typo, refactor, or routine PASS.
-
-A useful learning should answer:
-
-```text
-What did we think or risk before?
-What evidence changed that?
-What did we decide?
-What consequence should survive into later work?
-```
-
-When a learning later becomes obsolete, do not silently delete history. Mark the newer evidence and explain what superseded the earlier understanding.
+[charter]: docs/governance/test-design-gatekeeper-project-charter-v0.4.md
+[ra01]: docs/requirements-analysis/test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md
+[ra04]: docs/requirements-analysis/test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md
+[ra05]: docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md
+[ra-baseline]: docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md
+[sad-review]: docs/reviews/test-design-gatekeeper-sad-04-review-record-v0.1.md
+[ra09-review]: docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-focused-static-review-v0.2.md
+[sad02]: docs/solution-design/test-design-gatekeeper-sad-02-data-identity-contracts-v0.1.md
+[effort]: docs/implementation/i01-w02-test-inventory.md#7-effort-reassessment
+[w01]: docs/implementation/i01-w01-foundation.md
+[w01-closure]: docs/implementation/i01-w01-closure.md
+[w02-design]: docs/implementation/i01-w02-test-design.md
+[w02-inventory]: docs/implementation/i01-w02-test-inventory.md
+[w02-last]: docs/implementation/i01-w02c-imported-claims-fixtures.md
+[pause-tree]: https://github.com/MarcinMikula/test-design-gatekeeper/tree/19948de4cb79b49904980ba335692752f291d3dd
+[earlier-journal]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/19948de4cb79b49904980ba335692752f291d3dd/LEARNINGS.md
