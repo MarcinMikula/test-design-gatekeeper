@@ -1,67 +1,47 @@
 # Test Design Gatekeeper
 
-**An evidence-grounded, ISTQB-informed test case review assistant.**
+**An experimental assistant for reviewing functional test cases against supplied requirements and business rules.**
 
-Test Design Gatekeeper (TDG) is a documentation-first project exploring whether a hybrid of deterministic controls, a bounded local LLM, explicit evidence, and human review can improve the quality of functional test cases.
-
-The project is intentionally **not a test-case generator**. Its purpose is to help a human reviewer detect shallow coverage, missing conditions, weak observability, and opportunities to apply suitable test-design techniques.
+Test Design Gatekeeper (TDG) aims to help a human reviewer find missing test conditions, gaps in coverage and unclear expected results. The planned approach combines deterministic checks with a local LLM and human review. Its usefulness has not yet been demonstrated through a product evaluation.
 
 ## Current status
 
-**SDLC phase:** Implementation — bounded I-01 GO granted on 2026-09-28
+**Development is paused for documentation cleanup.** On 18 October 2026, the Project Owner paused feature development and further test-data preparation to address duplication, conflicting descriptions and excessive documentation. TC-I01-033 remains on hold. Documents are being reviewed one at a time, with Owner approval before each change is applied.
 
-**Requirements Analysis:** Closed — RA-01 through RA-10 and the consolidated static review accepted
+The current build, `0.1.0.dev2`, provides the application foundation:
 
-**SAD-01:** First B-01 design activity reviewed and closed on 2026-09-22
+| Command | Available behavior |
+| --- | --- |
+| `tdg version` | Shows the build, runtime and contract versions. |
+| `tdg capabilities` | Lists available and unavailable functions. |
+| `tdg init` | Creates a new empty laboratory workspace on Windows x64 / CPython 3.13. |
 
-**SAD-02:** Logical data, identity and contract activity reviewed and closed on 2026-09-23
+Importing JSON or CSV, inspecting captured packages and receipts, reviewing test cases, invoking a model and exporting review results are not implemented. The `import`, `receipt` and `package` commands report that they are unavailable.
 
-**SAD-03:** Model contribution and protection architecture reviewed and closed on 2026-09-27. [SAD-03 v0.3](docs/solution-design/test-design-gatekeeper-sad-03-model-protection-v0.3.md) is the accepted corrected baseline; [SR-SAD03-001 v0.2](docs/reviews/test-design-gatekeeper-sad-03-review-record-v0.2.md) records both closed findings, documentary verification and the Owner's closure decision.
+## Evidence so far
 
-**SAD-04:** Closed on 2026-09-28. The Owner accepted [SAD-04 v0.2](docs/solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md), allocation index v0.2 and SR-SAD04-001 v0.1, closed both findings and B-01 for I-01, and granted implementation GO. The later [decision record, SR-SAD04-001 v0.2](docs/reviews/test-design-gatekeeper-sad-04-review-record-v0.2.md), records that authority while retaining the exact accepted snapshots and the effort-estimate reservation.
+- **Application foundation (W01):** the recorded Windows run on 28 September 2026 passed 48 tests with no skips. It covers workspace initialization and its supporting controls. The Owner accepted this work on 29 September. See the [implementation and verification record](docs/implementation/i01-w01-foundation.md) and [closure decision](docs/implementation/i01-w01-closure.md).
+- **Test preparation (W02):** at the pause, the prepared material comprised the baseline example `BASE-01`, 81 input variants for 22 planned test cases and two valid comparison files. The [latest preparation record](docs/implementation/i01-w02c-imported-claims-fixtures.md) reports 238 passing checks of the data and setup on Linux/Python 3.12. The 164 product-test placeholders are skipped until connected to the implementation. These checks do not establish importer behavior; target Windows/Python 3.13 verification of these materials remains pending.
 
-**Implementation:** I-01 / W01 formally closed by the Project Owner on 2026-09-29 after review of PR #3 evidence; GO is granted to begin W02. Corrected build `0.1.0.dev2` remains the qualified W01 foundation and provides `tdg version`, `tdg capabilities` and Windows-only empty-workspace initialization with directory and writer guards. Native Windows qualification completed on 2026-09-28 with 48 passing tests and no skips; all package-processing commands remain disabled. See the [W01 work and verification record](docs/implementation/i01-w01-foundation.md) and [W01 closure record](docs/implementation/i01-w01-closure.md).
+W02 and the first implementation increment, I-01, remain incomplete. The accepted test inventory contains 72 test cases and 208 input variants. Detailed expectations belong in the [test inventory](docs/implementation/i01-w02-test-inventory.md) and the files under [tests](tests).
 
-**W02 — test preparation:** The [accepted test plan](docs/implementation/i01-w02-test-inventory.md)
-contains 72 test cases with 208 input variants. We have prepared the baseline
-example `BASE-01`, 81 variants for 22 cases (TC-I01-011–032), and two additional
-valid files for comparison. The data cover document structure, JSON syntax,
-numbers, titles, steps, source identifiers, incomplete content and declarations
-of origin, accountability or status. The latest addition checks that
-[labels in a file do not create decisions or permissions](docs/implementation/i01-w02c-imported-claims-fixtures.md).
+This is a solo project supported by AI, with about five flexible hours available per week. The [test-work forecast](docs/implementation/i01-w02-test-inventory.md#7-effort-reassessment) remains provisional. There is no validated total effort estimate or committed delivery date.
 
-**What has been checked:** 238 automated checks of the test data passed on
-Linux/Python 3.12. Another 164 tests are placeholders for checking TDG itself;
-they are skipped until connected to the implementation. These results establish
-the condition of the test data, not whether TDG imports them correctly. Checking
-these materials on the target Windows/Python 3.13 environment is still pending.
-W02 is still in progress, and the estimate of remaining work will be revised
-using actual effort. The Owner accepted the
-[numeric-token limit clarification](docs/solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md)
-on 2026-10-03.
+## Intended MVP
 
-**Data policy:** Public or synthetic data only during the laboratory phase
+The intended first product reviews system-level, functional black-box test cases for one feature or small business process. The reviewer deliberately supplies the test cases, scope and test basis. Planned input formats are native JSON and a defined local CSV profile.
 
-The Project Owner accepted [SR-RA-001](docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md), including the consolidated trace review, delivery work packages, resource assessment and carried risks, and explicitly closed Requirements Analysis. The completed design now authorizes the bounded native-JSON capture/inspection increment I-01; substantive TC review remains later work.
+The four planned test-design techniques are equivalence partitioning, boundary-value analysis, decision tables and state transitions. A technique is used only when the supplied evidence supports it. Test level, test type, design basis and execution mode are assessed separately; automation alone does not make a test white-box.
 
-The documentation accounts for **249 accepted requirements** and **169 validation obligations**. Every requirement has a justified validation route, and every obligation reaches existing accepted requirements, directly or through inspected intermediates. The [trace evidence](docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-traceability-audit-v0.1.json) records **424 direct relations** and the inspected intermediate paths. These figures describe requirements traceability. Initial implementation tests provide limited evidence; no complete requirement or accepted I-01 condition is declared fulfilled by the W01 foundation.
+The reviewer retains decisions and edits the source test cases. TDG is intended to show the evidence and uncertainty behind each observation. It does not generate or repair test suites, approve testware, invent missing business rules, fetch unsubmitted project sources or write changes back to Jira, Xray or Zephyr. Reviewing test cases for AI/LLM systems remains outside this MVP.
 
-[RA-10 v0.2](docs/requirements-analysis/ra-10/test-design-gatekeeper-ra-10-evaluation-acceptance-v0.2.md) and [SR-RA10-001 v0.2](docs/requirements-analysis/ra-10/test-design-gatekeeper-ra-10-focused-static-review-v0.2.md) close evaluation and acceptance analysis. Two verified source-table corrections are incorporated in [RA-03 v0.4](docs/requirements-analysis/ra-10/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.4.md); the targeted `SR-RA03-OBS-001` trace action is closed. Documentation/scope-growth risk `R-08` and declared independence/resource limitations remain active.
+Current laboratory work permits only public or synthetic data. Confidential use requires separately verified protection and authorization; a local model alone does not establish that readiness.
 
-This is a **one-person project supported by AI, with about 5 flexible hours
-available each week**. The initial estimate of 40–62 hours for all of I-01 is
-under review because testing alone may take a similar amount of time. It is
-not an agreed budget or time limit. The
-[revised test-work estimate](docs/implementation/i01-w02-test-inventory.md#7-effort-reassessment),
-accepted on 2026-10-07 as a working estimate, allows 36–66 hours for the remaining
-test work and documentation of results, plus 8–16 hours for fixing defects
-(44–82 hours in total). Building the product features is estimated separately.
-These figures will be revised using actual effort. No delivery date has been
-set, and this estimate does not establish whether the entire MVP is feasible.
+[ISTQB CTFL](https://www.istqb.org/certifications/certified-tester-foundation-level-ctfl-v4-0/) and the [ISTQB Glossary](https://glossary.istqb.org/) provide methodological references. TDG's product policies are project decisions. The project claims no official ISTQB endorsement, certification or proof of test-suite completeness.
 
 ## Running the foundation
 
-The first product target is Windows x64 with CPython 3.13. Development dependencies are pinned in `pyproject.toml` and `uv.lock`; the initial interpreter patch is recorded in `.python-version`. With [uv installed](https://docs.astral.sh/uv/getting-started/installation/), run setup once from the repository root:
+The product target is Windows x64 with CPython 3.13. From the repository root, with [uv installed](https://docs.astral.sh/uv/getting-started/installation/):
 
 ```powershell
 uv sync --locked
@@ -70,133 +50,24 @@ uv sync --locked
 .\.venv\Scripts\python.exe -m pytest -q
 ```
 
-Setup may download the pinned interpreter and dependencies. The subsequent direct virtual-environment commands do not invoke a package manager. On Linux, use `.venv/bin/python` and `.venv/bin/tdg` for development checks; this does not add Linux as a supported product target.
+Setup may download the pinned interpreter and dependencies. Versions are recorded in `.python-version`, `pyproject.toml` and `uv.lock`. Direct commands from the virtual environment do not invoke a package manager.
 
-This build does not accept Review Packages. `import`, `receipt` and `package` return an explicit unavailable-capability diagnostic. `init` is available only on Windows x64 / CPython 3.13 and only for a new direct child of `%LOCALAPPDATA%\TDG\lab`. It refuses existing workspaces, network paths, redirection, repository ancestors and recognized sync roots. See the [work record](docs/implementation/i01-w01-foundation.md) for the native Windows trial, the defect found during first execution, its correction, and the remaining control limitations.
+`init` supports a new direct child of `%LOCALAPPDATA%\TDG\lab` and refuses an existing workspace. The [W01 record](docs/implementation/i01-w01-foundation.md) explains path restrictions and verified controls. Linux can be used for portable development checks with `.venv/bin/python`; it is not an additional supported product target.
 
-## Current documentation
+## Documentation guide
 
-Start with the [consolidated review and phase-gate record](docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md). It gives the effective baseline, accepted source precedence, both directions of traceability, the work-package sequence and downstream SDLC/STLC allocations.
+| Question | Start here |
+| --- | --- |
+| What is the project's purpose and scope? | [Project Charter](docs/governance/test-design-gatekeeper-project-charter-v0.4.md) |
+| Which requirements were accepted? | [Requirements baseline and acceptance record](docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md) |
+| What is the planned input contract? | [RA-09](docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md), with its [accepted clarifications](docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-focused-static-review-v0.2.md) |
+| What design was accepted for I-01? | [SAD-04](docs/solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md), its [acceptance record](docs/reviews/test-design-gatekeeper-sad-04-review-record-v0.2.md) and [numeric-token clarification](docs/solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md) |
+| What must the tests observe? | [Expected-behavior basis](docs/implementation/i01-w02-test-design.md) and [case inventory](docs/implementation/i01-w02-test-inventory.md) |
+| What do project terms mean? | [CONTEXT.md](CONTEXT.md) |
+| What rules guide agent work? | [AGENTS.md](AGENTS.md) |
 
-| Document | Effective version | Subject |
-| --- | --- | --- |
-| [Project Charter](docs/governance/test-design-gatekeeper-project-charter-v0.4.md) | v0.4 | Product hypothesis, scope, risks and confidentiality boundary |
-| [RA-01](docs/requirements-analysis/test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md) | v0.3 | Stakeholders, roles and decision authority |
-| [RA-02](docs/requirements-analysis/test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md) | v0.3 | System context, workflows and use cases |
-| [RA-03](docs/requirements-analysis/ra-10/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.4.md) | v0.4 | Review Package content, provenance and input sufficiency |
-| [RA-04](docs/requirements-analysis/test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md) | v0.2 | Scope qualification and classification boundaries |
-| [RA-05](docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md) | v0.2 | Findings, dispositions, persistence and histories |
-| [RA-06](docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md) | v0.2 | EP, BVA, decision tables and state transitions |
-| [RA-07](docs/requirements-analysis/ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.2.md) | v0.2 | Bounded LLM tasks and configuration-specific qualification |
-| [RA-08](docs/requirements-analysis/ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md) | v0.2 | Confidentiality, security and privacy |
-| [RA-09](docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md) | v0.2 | Data representations and local import/export contracts |
-| [RA-10](docs/requirements-analysis/ra-10/test-design-gatekeeper-ra-10-evaluation-acceptance-v0.2.md) | v0.2 | Evaluation, human oracle, metrics and acceptance governance |
-| [SR-RA10-001](docs/requirements-analysis/ra-10/test-design-gatekeeper-ra-10-focused-static-review-v0.2.md) | v0.2 | RA-10 review, verified upstream corrections and slice closure |
-| [SR-RA-001](docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md) | v0.2 | Consolidated phase closure and GO to Solution and Architecture Design |
-| [SAD-01](docs/solution-design/test-design-gatekeeper-sad-01-components-review-flow-v0.1.md) | Review closed | Component boundaries, Review Package flow, fault paths and B-01 completion boundary |
-| [SAD-02](docs/solution-design/test-design-gatekeeper-sad-02-data-identity-contracts-v0.1.md) | Original review closed; 2026-09-28 correction addendum | Historical text retained with governing ledger/envelope corrections from SAD-04 |
-| [SAD-03](docs/solution-design/test-design-gatekeeper-sad-03-model-protection-v0.3.md) | v0.3; accepted baseline, review closed | Model/protection design with separate candidate evaluation and cause-specific assessment outcomes |
-| [SR-SAD03-001](docs/reviews/test-design-gatekeeper-sad-03-review-record-v0.2.md) | v0.2; accepted closure record | Section and correction acceptances, documentary verification and granted SAD-04 gate |
-| [SAD-04](docs/solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md) | v0.2; accepted baseline | Integrated review, bounded I-01 design and STLC plan; explicit effort reservation |
-| [SR-SAD04-001](docs/reviews/test-design-gatekeeper-sad-04-review-record-v0.2.md) | v0.2; closure and GO recorded | Owner acceptance of the v0.1 verification, two closed findings and the selected B-01 boundary |
-| [SAD-04 requirement allocation](docs/solution-design/test-design-gatekeeper-sad-04-requirement-allocation-v0.2.json) | v0.2; accepted frozen plan | 249 IDs retained; 40 partial I-01 contributions, 16 planned conditions; execution evidence recorded separately |
-| [I-01 / W01](docs/implementation/i01-w01-foundation.md) | Closed 2026-09-29; Owner GO to W02 | CLI foundation, controlled empty-store initialization and recorded Windows evidence |
-| [W01 closure](docs/implementation/i01-w01-closure.md) | Owner decision 2026-09-29 | Formal W01 closure after PR #3 evidence review; authorizes W02 without accepting the whole I-01 increment |
-| [I-01 / W02](docs/implementation/i01-w02-test-design.md) | Work item open; W02-C in progress | Oracle basis, accepted REJECTED/2 limit outcome, test data for groups B and C and two sets for group D |
-| [W02-B test inventory](docs/implementation/i01-w02-test-inventory.md) | v0.1; whole inventory accepted 2026-10-07 | 72 test cases / 208 input variants approved for W02-C preparation; effort estimate remains provisional; tests have not yet run against TDG |
-| [W02-B acceptance record](docs/reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.7.md) | v0.7; Section 8 and whole inventory accepted 2026-10-07 | Accepted basis for W02-C; W02 remains open; earlier decisions, estimate reservation and future corpus-reuse idea preserved |
-| [W02-C numeric-token fixtures](docs/implementation/i01-w02c-numeric-fixtures.md) | First set of test data, 2026-10-08 | BASE-01 plus 127/128/129-character inputs, checked file sizes and expected values and product test placeholders awaiting implementation |
-| [W02-C envelope fixtures](docs/implementation/i01-w02c-envelope-fixtures.md) | Second set of test data, 2026-10-08 | 19 TC-I01-011–015 variants, 40 new checks of the input files and 39 product test placeholders awaiting implementation |
-| [W02-C syntax/encoding fixtures](docs/implementation/i01-w02c-syntax-fixtures.md) | Third set of test data, 2026-10-09 | 10 TC-I01-016–017 variants, two valid controls, 37 new checks of the input files and 20 product test placeholders awaiting implementation |
-| [W02-C numeric/text retention fixtures](docs/implementation/i01-w02c-numeric-retention-fixtures.md) | Fourth set of test data, 2026-10-09 | Four TC-I01-019–020 variants, 13 new checks of the input files and eight unit/integration test placeholders awaiting implementation |
-| [W02-C title-presence fixtures](docs/implementation/i01-w02c-title-presence-fixtures.md) | Fifth set of test data, 2026-10-09 | Seven TC-I01-021 variants, 19 new checks of the input files and 14 unit/integration test placeholders awaiting implementation |
-| [W02-C step-representation fixtures](docs/implementation/i01-w02c-step-representation-fixtures.md) | Sixth set of test data, 2026-10-10 | Three TC-I01-022 variants, 11 new checks of the input files and six unit/integration test placeholders awaiting implementation |
-| [W02-C source-ID collision fixtures](docs/implementation/i01-w02c-source-id-collision-fixtures.md) | Seventh set of test data, 2026-10-10 | Two TC-I01-023 variants, 11 new checks of the input files and four unit/integration test placeholders awaiting implementation |
-| [W02-C source-ID fidelity fixtures](docs/implementation/i01-w02c-source-id-fidelity-fixtures.md) | Eighth set of test data, 2026-10-10 | Four TC-I01-024 variants, 13 new checks of the input files and eight unit/integration test placeholders awaiting implementation |
-| [W02-C incomplete/unfamiliar content](docs/implementation/i01-w02c-deficient-content-fixtures.md) | Ninth set of test data, 2026-10-14 | Three TC-I01-025 variants, 13 new checks of the input files and six unit/integration test placeholders awaiting implementation |
-| [W02-C declared test-case origin](docs/implementation/i01-w02c-origin-literal-fixtures.md) | Tenth set of test data, 2026-10-15 | Five TC-I01-026 variants, 13 new checks of the input files and ten unit/integration test placeholders awaiting implementation |
-| [W02-C unrecognized origin declarations](docs/implementation/i01-w02c-origin-unmapped-fixtures.md) | Eleventh set of test data, 2026-10-16 | Two TC-I01-027 variants, six new checks of the input files and two unit/component test placeholders awaiting implementation |
-| [W02-C defaults for missing declarations](docs/implementation/i01-w02c-case-defaults-fixtures.md) | Twelfth set of test data, 2026-10-17 | Two TC-I01-028 variants, seven new checks of the input files and four unit/integration test placeholders awaiting implementation |
-| [W02-C explicit declarations and defaults](docs/implementation/i01-w02c-default-preservation-fixtures.md) | Thirteenth set of test data, 2026-10-17 | Six TC-I01-029 variants, 14 new checks of the input files and twelve unit/integration test placeholders awaiting implementation |
-| [W02-C claims of role and responsibility](docs/implementation/i01-w02c-payload-authority-fixtures.md) | Fourteenth set of test data, 2026-10-17 | One TC-I01-030 input, six new checks of the data and setup, and two unit/integration test placeholders awaiting implementation |
-| [W02-C links and instructions as data](docs/implementation/i01-w02c-inert-content-fixtures.md) | Fifteenth set of test data, 2026-10-17 | Five TC-I01-031 variants, 13 new checks of the data and setup, and ten unit/integration test placeholders awaiting implementation |
-| [W02-C imported identity and status claims](docs/implementation/i01-w02c-imported-claims-fixtures.md) | Sixteenth set of test data, 2026-10-18 | Five TC-I01-032 variants, 13 new checks of the data and setup, and ten unit/integration test placeholders awaiting implementation |
-| [SAD-04 numeric-token addendum](docs/solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md) | v0.1; Owner decision 2026-10-03 | REJECTED and CLI exit 2 above the 128-character token bound; frozen design baseline preserved |
-| [Trace evidence ledger](docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-traceability-audit-v0.1.json) | v0.1 | Bidirectional requirement/validation paths and source identities |
+Documentation consolidation is in progress. Existing requirements and design decisions remain in place until an approved change replaces them. Older files can contain preparation-time labels such as `PENDING`; their linked acceptance records establish the later decisions. [Review records](docs/reviews) and the full [documentation tree](docs) retain the history.
 
-The [earlier review records](docs/reviews) and [requirements history](docs/requirements-analysis) remain available. The [RA-10 publication package](docs/requirements-analysis/ra-10) retains exact original, corrected and accepted review snapshots, including the corrected RA-03 source. Grouping these documents preserves their original relative links.
+## Next step
 
-Retained source files contain historical authoring notices such as `PROPOSED`, `ENDORSEMENT PENDING` or a then-ungranted phase gate. Read them with their later acceptance records. **SR-RA10-001 v0.2 establishes the corrected RA-03/RA-10 baseline; SR-RA-001 v0.2 records the design-entry authority; SR-SAD04-001 v0.2 records the current I-01 implementation authority.** Earlier snapshots, including the SAD-04 candidate labels and pending-GO metadata, have not been silently rewritten.
-
-## MVP direction
-
-The initial MVP is intended to review tester-controlled, system-level functional test cases for one bounded feature or small business process.
-
-Its first supported test-design techniques are:
-
-- Equivalence Partitioning (EP);
-- Boundary Value Analysis (BVA);
-- Decision Table Testing;
-- State Transition Testing.
-
-TDG is expected to distinguish independent classification axes such as test level, test type, test-design technique or basis, and execution mode. A label such as unit, integration, system, manual, or automated must not determine a black-box or white-box classification by itself.
-
-## Methodological references
-
-TDG is **ISTQB-informed**, not an ISTQB certification or conformity product. The project uses official ISTQB material as a methodological reference for testing terminology, test analysis and the supported black-box test-design techniques. TDG-specific evidence, authority, workflow, persistence, model qualification, protection and LLM rules remain project engineering decisions and are not presented as ISTQB requirements.
-
-Primary references:
-
-- [ISTQB Certified Tester Foundation Level (CTFL) v4.0](https://www.istqb.org/certifications/certified-tester-foundation-level-ctfl-v4-0/) — the official CTFL page and source for the current CTFL 4.0 syllabus materials. Chapter 4 provides the test-analysis/design context; Sections 4.2.1–4.2.4 cover Equivalence Partitioning, Boundary Value Analysis, Decision Table Testing and State Transition Testing.
-- [ISTQB Glossary](https://glossary.istqb.org/) — the terminology reference for general software-testing terms.
-- [RA-06 — Technique Applicability and Test-Design Coverage](docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md) — TDG's project-level treatment of the four supported techniques, including evidence, applicability, coverage and uncertainty boundaries. RA-06 applies the methodology to TDG; it does not reproduce or replace the official syllabus.
-
-The external references provide methodological and terminological context. The accepted TDG requirements, design records and review/closure records remain authoritative for product behavior.
-
-## Core principles
-
-- **Human authority:** TDG supports decisions; it does not own, repair, approve, or certify testware.
-- **Supplied-data only:** the review uses only the deliberately submitted Review Package and does not search external project sources.
-- **Evidence before verdict:** findings and suggestions must expose their basis, limitations, and uncertainty.
-- **Deterministic and probabilistic separation:** reproducible controls remain distinguishable from LLM-assisted semantic suggestions.
-- **Fail-visible behavior:** missing, conflicting, opaque, or unsupported input is reported rather than guessed away.
-- **Immutable review history:** package versions, assessment runs, findings, and human dispositions remain attributable.
-- **Confidentiality by design:** confidential enterprise documentation must not leave an approved sealed environment.
-
-## Deliberate MVP exclusions
-
-The MVP does not:
-
-- automatically write complete test suites;
-- modify source test-case steps without human action;
-- write changes back to Jira, Xray, or Zephyr;
-- claim official ISTQB conformity, certification, or test-suite completeness;
-- force every technique onto every requirement;
-- invent missing business rules;
-- review test cases designed specifically to evaluate AI or LLM systems;
-- send confidential project documentation to external models.
-
-## Input direction
-
-The approved [RA-09 contract](docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md) defines a bounded, serialization-neutral **Review Package** represented through native JSON and a specified local CSV profile for TC. Scope and substantive test basis accompany the TC. Capture preserves deficient content and separates import success from minimum admissibility and supported review. I-01 implements only the bounded native JSON capture/inspection path; CSV and result exports follow later increments.
-
-A Jira-shaped file is treated as supplied content. TDG does not need to prove that Jira produced it and does not gain permission to access Jira or follow external references.
-
-## Roadmap and next controlled step
-
-| Stage | State | Next evidence or outcome |
-| --- | --- | --- |
-| Concept and Feasibility | Closed | Accepted Charter and bounded product hypothesis |
-| Requirements Analysis | Closed | Ten accepted slices, static-review closure and bidirectional trace |
-| Solution and Architecture Design | SAD-01–04 closed for the I-01 boundary | Accepted baseline and closed findings; later capability decisions remain allocated |
-| Implementation | I-01 GO granted; W01 closed; W02-B inventory accepted; W02 open | Materialize W02-C fixtures/skeletons using the accepted inventory and complete the applicable W02 review |
-| Evaluation and product acceptance | Planned | Human-adjudicated evidence, task qualification, measured utility and explicit acceptance decisions |
-| Confidential deployment | Separate future gate | Verified sealed controls and explicit ROLE-09 authorization before protected input |
-
-Static reviews accompany each phase. STLC planning, analysis, design, implementation, execution and completion evidence will grow with the relevant product increments. Finishing a requirements review does not establish model quality or executed product coverage.
-
-The four design activities culminate in the [accepted SAD-04 baseline](docs/solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md) and [Owner's implementation GO](docs/reviews/test-design-gatekeeper-sad-04-review-record-v0.2.md). SAD-04 Section 10 retains the decisions that must precede later review/model/sealed capabilities. This GO authorizes I-01 implementation; increment acceptance and confidential use retain their subsequent gates.
-
-## Naming and reference boundary
-
-“ISTQB-informed” describes the methodological reference baseline used by the project. It does not imply endorsement, accreditation, certification, or an official conformity assessment by ISTQB.
+Consolidate the documentation and make the current rules easy to find. Then review the delivery sequence so a small, useful test-case review can be evaluated sooner. The revised implementation plan still needs to be agreed before development resumes.
