@@ -4,75 +4,54 @@
 
 | Field | Value |
 | --- | --- |
-| Document version | 0.3 |
-| Document date | 2026-09-12 |
-| SDLC phase | Requirements Analysis |
-| Workstream | `RA-02` |
-| Status | CONTROLLED AMENDMENT CANDIDATE — RA-02 v0.2 and `PG-RA02-001` remain effective; focused delta review required |
+| Basis | Accepted RA-02 v0.3, originally dated 2026-09-12 |
+| Original acceptance and gate | Sections 1–22, ten decisions and five review corrections accepted; GO to RA-03 under `PG-RA02-001`, 2026-09-09 |
+| Replacement baseline | v0.3 designated on 2026-09-15 in [PG-RA03-001][baseline] |
+| Text maintenance | Consolidated on 2026-10-20; section numbers and identifiers retained |
 | Decision authority | Project Owner |
-| Entry authorization | `PG-RA01-001` — `GO`, 2026-09-09 |
-| Phase-gate record | `PG-RA02-001` — `GO` to RA-03, 2026-09-09 |
-| Approved upstream baselines | Project Charter v0.3; RA-01 v0.2 |
-| Amendment source | `OD-RA03-001`, accepted by Project Owner on 2026-09-12 |
-| Project Owner review | Sections 1–22 accepted; all ten recommendations accepted on 2026-09-09 |
-| Project Owner correction disposition | `SR-RA02-F-002` through `SR-RA02-F-005` accepted on 2026-09-09 |
-| Static-review result | `SR-RA02-001` closed; 5 of 5 findings corrected and verified |
-| Implementation authorization | NOT GRANTED |
-| Confidential-data use | NOT AUTHORIZED |
+| Upstream scope and authority | [Charter v0.4][charter]; [RA-01 v0.3][ra01] |
 
-> **Document status notice:** The Project Owner accepted the RA-02 subject matter, all ten recommended decisions, and all five static-review corrections on 2026-09-09; `PG-RA02-001` subsequently authorized RA-03. RA-02 v0.2 and that historical gate remain effective. This v0.3 candidate applies only the mapping-category clarification accepted through `OD-RA03-001`. It requires focused delta review before replacing v0.2. It does not authorize implementation, confidential-data use, or a later phase transition.
+This is the maintained workflow description. The [original v0.3 text][original] remains in Git history; earlier review hashes and trace ledgers identify that historical snapshot. Later acceptance resolved its candidate labels. The behavior described here is required product behavior, not a claim that it is implemented. See [README.md](../../README.md) for current capability and the development pause.
 
 ### v0.3 controlled amendment summary
 
-| Change | Source | Effect | Boundary preserved |
-| --- | --- | --- | --- |
-| `CR-RA03-003` | `OD-RA03-001` | Distinguish capture/import transformations, which can change captured package content, from assessment mappings, which affect a run against unchanged capture | Package history is not overwritten; changed behavior is not disguised as the same run |
+`CR-RA03-003`, based on the Owner's `OD-RA03-001` decision of 2026-09-12, distinguishes capture/import transformations from assessment mappings. Recapture that changes logical package content creates a new package version; changed assessment behavior against unchanged capture creates a new run. History cannot be overwritten or changed behavior presented as the old run. The reviewed amendment became the baseline on 2026-09-15.
 
 ## 1. Purpose
 
-RA-02 defines the externally observable TDG system context, actor goals, one bounded pre-review workflow, its alternate paths, and the points at which the system must narrow, block, fail, or abstain.
-
-RA-01 remains the sole approved source for role definitions and decision authority. RA-02 applies that model to behavior; it does not redefine it.
+Define TDG's observable boundary, actor goals, bounded pre-review workflow and the situations requiring narrowing, blocking, failure or abstention. [RA-01][ra01] owns role definitions and authority; RA-02 applies them to behavior.
 
 ## 2. Scope of RA-02
 
-RA-02 covers the system boundary, actor-to-system participation, the primary and non-nominal review flows, workflow-level use cases, lifecycle distinctions, requirements, and later validation obligations.
-
-Detailed package, classification, status, technique, LLM, security, import/export, and evaluation requirements remain allocated to `RA-03` through `RA-10` as summarized in Section 15. User-interface, architecture, and implementation choices remain outside Requirements Analysis. Synthetic examples may clarify behavior but do not authorize implementation or confidential-data processing.
+RA-02 covers system context, actor participation, normal and alternate flows, use cases, lifecycle distinctions, requirements and validation obligations. Detailed contracts belong in RA-03 through RA-10, linked in Section 15. Interface, architecture and implementation choices belong in design; this document grants no implementation or confidential-data permission.
 
 ## 3. Source baseline and precedence
 
-| Source | Binding contribution |
-| --- | --- |
-| Project Charter v0.3, Sections 5–13 | Product boundary, primary use case, Review Package, scope, results, integration, and confidentiality |
-| Requirements Analysis Entry Record v0.1 | `RA-IN-002` through `RA-IN-006` and `RA-IN-008` carried into this workstream |
-| `PG-RA01-001` | Authorization for RA-02 only |
-| RA-01 v0.2 | Sole source for `AP-01` through `AP-07`, `AUTH-01` through `AUTH-14`, roles, and `RA01-REQ-001` through `016` |
-| `OD-RA03-001` and RA-03 v0.3 amendment candidate | Accepted distinction between capture/import transformation and assessment mapping; controlled RA-02 wording impact only |
+The [Charter][charter] governs MVP scope and [RA-01][ra01] governs human authority. Original inputs included the Requirements Analysis Entry Record v0.1 (`RA-IN-002` through `RA-IN-006`, plus `RA-IN-008`) and `PG-RA01-001`, which authorized RA-02. [PG-RA03-001][baseline] records the later accepted `OD-RA03-001` amendment and v0.3 designation.
 
-The Charter takes precedence for MVP scope, and RA-01 takes precedence for human authority. Any conflict requires explicit change control rather than duplicated reinterpretation in RA-02.
+Use the accepted detailed contracts in Section 15 for the fields, states and rules originally allocated to later workstreams. In particular, [RA-05][ra05] defines result and retry semantics; its [acceptance record][ra05review] resolves the source's historical candidate notice. A conflict with scope or authority requires explicit change control rather than a competing definition here.
 
 ## 4. Terminology and object distinctions
 
 | Term | Meaning in RA-02 |
 | --- | --- |
-| System of interest | Test Design Gatekeeper considered as a black box whose externally observable responsibilities are being specified |
-| Review Package | A deliberately bounded set of supplied scope, test-basis material, test cases, and provenance concerning one feature or small business process |
-| Package version | An immutable identity for the exact supplied content used by an assessment; content change requires a distinct version |
+| System of interest | TDG treated as a black box with observable responsibilities |
+| Review Package | Deliberately supplied scope, basis, cases and provenance for one feature or small process |
+| Package version | Immutable identity for exact captured content; changed content requires another version |
 | Assessment run | One execution of identified TDG behavior against one exact package version |
-| Capture/import transformation | Identified parsing, import mapping, or structural normalization used to establish the captured logical content of a package version; changed recapture may therefore create a new package version |
-| Assessment mapping | Versioned behavior artifact used to interpret an already captured package during assessment; a change against unchanged captured content creates a new run, not a package version |
-| Assessment scope | The package items and review dimensions that TDG can support in a particular run |
-| Supported subset | Items and assessment dimensions that may be reviewed without pretending that excluded or unassessable material was covered |
-| Substantive assessment | Evaluation of test-design quality or coverage after intake, policy, scope, and sufficiency checks permit it |
-| Review result | The scoped set of findings, suggestions, limitations, evidence, and run metadata produced by an assessment |
-| Human disposition | A ROLE-05 decision on an individual finding, separate from its derivation and from testware approval |
-| Review cycle | Submission, qualification, assessment, human consideration, optional external repair, and optional versioned re-review |
-| Re-review | A later assessment of a new package version after human changes, or a new run of an unchanged version under explicitly identified assessment behavior |
-| Fail closed | Refuse the affected processing or action when a required authority, policy, verified control, or approved processing path is absent |
-| External discovery | Retrieval or search of material not deliberately included in the submitted Review Package; prohibited for the MVP review workflow |
+| Capture/import transformation | Parsing, import mapping or normalization that establishes captured logical content; changed recapture may create another package version |
+| Assessment mapping | Versioned behavior interpreting existing capture; a change requires a new run, not a content version |
+| Assessment scope | Items and dimensions supported for review in a particular run |
+| Supported subset | Items and dimensions that can be reviewed while exposing exclusions and limitations |
+| Substantive assessment | Test-design quality or coverage evaluation after applicable intake, policy, scope and sufficiency checks |
+| Review result | Scoped findings, suggestions, limitations, evidence and run metadata |
+| Human disposition | ROLE-05 judgment on an item, separate from derivation and testware approval |
+| Review cycle | Submission, scope qualification, assessment, human consideration and optional external repair and re-review |
+| Re-review | A new run of revised content, or of unchanged content under explicitly identified behavior |
+| Fail closed | Refuse the affected action when required authority, policy, verified controls or approved processing are absent |
+| External discovery | Retrieval of unsubmitted material; prohibited in MVP review |
 
-The definitive identifiers and status vocabulary belong primarily to `RA-03` through `RA-05`. RA-02 defines the semantic distinctions that those later models must preserve.
+These explanations support the workflow. The definitive identities, fields and status vocabulary are in [RA-03][ra03], [RA-04][ra04] and [RA-05][ra05].
 
 ## 5. Workflow principles and inherited constraints
 
@@ -118,7 +97,7 @@ The diagram is logical, not architectural. It does not decide whether a capabili
 | --- | --- | --- | --- |
 | CTX-01 | Authorized human roles | Supply scope and evidence, operate review, make human decisions, and receive results according to RA-01 authority | REQUIRED |
 | CTX-02 | Local import source | Provides deliberately selected canonical JSON and defined CSV-based input without granting access to the surrounding repository | REQUIRED |
-| CTX-03 | Organization-controlled review record | Internal TDG responsibility that retains package, run, evidence, finding, disposition, and behavior-version identity under later-defined persistence rules | REQUIRED |
+| CTX-03 | Organization-controlled review record | Internal TDG responsibility that retains package, run, evidence, finding, disposition, and behavior-version identity under RA-05 persistence rules | REQUIRED |
 | CTX-04 | Qualified inference capability | Logical TDG capability, potentially backed by a controlled deployment dependency, that may support only explicitly permitted semantic assessments inside the applicable approved trust boundary | CONDITIONAL |
 | CTX-05 | Approved behavior-affecting artifacts | Controlled TDG inputs comprising identified rules, controls, prompts, assessment mappings, model identity, and relevant configuration approved for their role; capture/import transformations remain intake artifacts | REQUIRED WHEN APPLICABLE |
 | CTX-06 | Controlled local export destination | Receives an explicitly requested review record under applicable authority and policy | MVP-SUPPORTED DIRECTION |
@@ -128,25 +107,17 @@ The diagram is logical, not architectural. It does not decide whether a capabili
 
 ### 6.3 Boundary summary
 
-| Within the TDG system responsibility | Outside or prohibited |
-| --- | --- |
-| Deliberate local intake; package identity and provenance; validation and qualification; authorized assessment; scoped evidence; attributable human interaction; local history; controlled output; explicit narrowing, blocking, abstention, cancellation, or failure | External discovery; requirement or test-case repair; test execution; organizational readiness or approval; official ISTQB conformity or certification; any guarantee that undetected gaps do not exist |
+TDG is responsible for deliberate local intake, provenance and identity, qualification, authorized assessment, evidence, attributable human interaction, local history and controlled output. It must expose narrowing, blocking, abstention, cancellation and failure.
+
+External discovery, repair of source requirements or test cases, test execution, organizational readiness or approval, ISTQB conformity or certification and guarantees of completeness remain outside its responsibility.
 
 ### 6.4 Trust-boundary statement at RA-02 level
 
-The laboratory profile permits public or synthetic material only. The sealed profile requires a later approved trust boundary, local inference, organization-controlled processing and storage, authorized import and export, and fail-closed behavior. RA-02 specifies workflow consequences; `RA-08` will define the detailed security and privacy requirements and the test basis needed to verify them.
+Laboratory work uses public or synthetic data only. Sealed use requires an approved boundary, local inference, organization-controlled processing and storage, authorized import and export and fail-closed controls. [RA-08][ra08] defines protection requirements and their verification basis; a workflow description does not establish that these controls exist.
 
 ## 7. Inherited actors and RA-02 participation classes
 
-RA-02 introduces no role and changes no authority. RA-01 v0.2 remains the source of truth; Section 8 maps those roles to use cases.
-
-| Participation class | Inherited roles | RA-02 relevance |
-| --- | --- | --- |
-| Core review interaction | ROLE-01 through ROLE-05 | Submission, scope, source interpretation, result inspection, human disposition, and external repair loop |
-| Supporting operation and governance | ROLE-07 through ROLE-09 | Approved operational artifacts, behavior qualification, and data/security policy |
-| External governance | ROLE-06 and ROLE-10 | Organizational testware approval and SDLC gates remain outside direct MVP business use cases |
-
-Combined-role and independence rules are not repeated here; every use-case interaction inherits them from RA-01.
+RA-01 defines all roles. ROLE-01 through ROLE-05 participate in the review; ROLE-07 through ROLE-09 support operation, qualification and data policy. ROLE-06 formal approval and ROLE-10 project gates remain external governance. Role combinations and independence limitations follow RA-01.
 
 ## 8. Use-case inventory
 
@@ -169,39 +140,17 @@ Formal testware approval by ROLE-06 and SDLC gate decisions by ROLE-10 are exter
 
 ### 8.1 Actor-to-use-case participation
 
-| Role | Initiates or performs | May decide or confirm | Must not gain by participation |
-| --- | --- | --- | --- |
-| ROLE-01 | UC-RA02-001, 002, 005, 006, and 009 | Operational choices only | Scope, rule, finding, approval, qualification, or data authority |
-| ROLE-02 | UC-RA02-003; may participate in UC-RA02-001/002 | Package boundary and explicit boundary change | Automatic test-basis, disposition, or approval authority |
-| ROLE-03 | UC-RA02-008; may participate in UC-RA02-001/006 | Whether and how source testware changes | Automatic rule-confirmation or approval authority |
-| ROLE-04 | UC-RA02-004 | Supplied-rule interpretation within assigned competence | Finding disposition or testware approval |
-| ROLE-05 | UC-RA02-007; may participate in UC-RA02-006 | Individual finding disposition | Overall completeness or testware approval |
-| ROLE-06 | External organizational workflow only | Formal testware approval outside direct MVP | TDG-issued approval or conformity claim |
-| ROLE-07 | UC-RA02-010 | Application of already approved operational artifacts | Content, qualification, security, or approval authority |
-| ROLE-08 | UC-RA02-011 | Role-specific qualification of behavior artifacts | Self-qualification by an evaluated component |
-| ROLE-09 | UC-RA02-012 | Protected-data and export policy decisions | Content or domain authority merely through security responsibility |
-| ROLE-10 | External requirements/change/gate workflow | Project scope and SDLC gates | Automatic domain, security, qualification, or testware authority |
+The inventory identifies each primary actor; the core contracts below identify supporting decisions. Participation grants no additional authority. Apply [RA-01's authority matrix][ra01], including the distinction between ROLE-07 applying an approved artifact, ROLE-08 qualifying it and ROLE-09 authorizing protected use. ROLE-06 and ROLE-10 decisions remain outside direct MVP business use cases.
 
 ## 9. Primary pre-review workflow
 
 ### 9.1 Preconditions
 
-Document-control note: specifying this future workflow does not authorize its implementation.
-
-The nominal runtime preconditions are:
-
-- A human ROLE-01 is identified at least by a laboratory actor identifier; sealed use will require verified identity.
-- Acting roles required for authority-bearing decisions are declared.
-- The operating profile is known.
-- Laboratory input is public or synthetic; confidential input remains prohibited until sealed-profile controls are approved and verified.
-- A bounded Review Package candidate is available through a deliberate local import action.
-- Only behavior-affecting artifacts approved for the intended assessment roles may be used.
-
-The detailed means of satisfying these preconditions remain allocated to later workstreams.
+ROLE-01 and the acting decision roles are identified at least through laboratory actor identifiers; sealed use requires verified identity. The operating profile is known, input is deliberately selected locally, and data policy permits intake. Laboratory material must be public or synthetic. Only behavior artifacts approved for the intended review roles may be used. These runtime preconditions do not authorize implementation or establish protected-use readiness.
 
 ### 9.2 Trigger
 
-ROLE-01 deliberately submits a Review Package candidate and requests pre-review under an identified operating profile and assessment configuration.
+ROLE-01 deliberately submits a package candidate and requests pre-review under an identified profile and assessment configuration.
 
 ### 9.3 Nominal flow
 
@@ -244,30 +193,15 @@ flowchart TD
 
 ### 9.5 Nominal postconditions
 
-- The submitted source artifacts remain unchanged.
-- The exact package version and assessment run are identifiable.
-- The evaluated subset, omitted subset, limitations, and evidence are visible.
-- Every new finding has human disposition `PENDING` until ROLE-05 acts.
-- Any human disposition is attributable and remains separate from derivation, source editing, and approval.
-- A result containing no supported finding includes a scoped non-completeness statement.
-- A later content change can enter only as a distinct package version.
-- No unsubmitted evidence, unapproved service, or silent fallback has been used.
+Sources remain unchanged; package and run identities, evaluated and omitted scope, limitations and evidence remain visible. New items start `PENDING`; human dispositions are attributable and separate from derivation, editing and approval. Zero supported findings carries an explicit non-completeness statement. Changed content requires a new version. No unsubmitted evidence, unapproved service or silent fallback may be used.
 
 ### 9.6 Completion distinctions
 
-RA-02 requires at least these semantic milestones, although `RA-05` will define their final names and transitions:
-
-| Milestone | Meaning | Does not mean |
-| --- | --- | --- |
-| Intake recorded | Supplied content received and identified | Admissible, in scope, or safe to process substantively |
-| Qualification available | Scope and assessability outcome exists | Every item is supported or every rule is confirmed |
-| Assessment result available | Authorized TDG processing ended with a result or explicit limitation | A human accepted findings or repaired tests |
-| Human review recorded | Defined human disposition activity was captured | Formal testware approval or suite completeness |
-| Package superseded | A later package version replaced it for future review | Prior evidence or history may be overwritten |
+Intake does not establish admissibility or scope. Qualification does not mean every item is supported or every rule confirmed. An available assessment result does not mean human acceptance or repair. Recorded human review does not mean formal approval. A later package version does not permit erasing earlier evidence. [RA-05][ra05] defines the separate state and availability contracts.
 
 ## 10. Alternate, exception, and recovery flows
 
-The outcome labels in this section are semantic descriptions. `RA-03` through `RA-05` will define final status names, precedence, and persistence rules.
+The outcome column describes workflow meaning, not a competing status enum. Apply [RA-03][ra03] through [RA-05][ra05] for exact conditions, precedence and retained records. AF-RA02-016 now states RA-05's accepted terminal-run rule directly instead of leaving possible resumption unspecified.
 
 | Flow | Trigger or condition | Required TDG behavior | Human authority or action | Conceptual outcome |
 | --- | --- | --- | --- | --- |
@@ -286,7 +220,7 @@ The outcome labels in this section are semantic descriptions. `RA-03` through `R
 | AF-RA02-013 | Approved local inference path becomes unavailable | Fail closed for LLM-dependent sealed processing; never fall back to cloud | ROLE-07 may restore an approved path; ROLE-09 controls any policy change | Interrupted or partial assessment |
 | AF-RA02-014 | Confidential or possibly protected material is presented in laboratory profile | Stop before prohibited substantive processing and clearly state the profile restriction | ROLE-09 cannot waive laboratory restrictions ad hoc; later sealed prerequisites must be satisfied | Policy-blocked intake |
 | AF-RA02-015 | Supplied content changes after assessment begins | Continue only against the immutable submitted snapshot or cancel it; never merge changed content silently | ROLE-03/ROLE-02 submits a distinct version | Original run remains attributable; new cycle required |
-| AF-RA02-016 | User cancels or a technical failure interrupts processing | Preserve the original input; record interruption and any safely committed evidence; never present partial work as complete | ROLE-01 may initiate a new run or later resume if supported | Cancelled or failed run |
+| AF-RA02-016 | User cancels or a technical failure interrupts processing | Preserve the original input; record interruption and any safely committed evidence; never present partial work as complete | ROLE-01 may initiate a new run; a terminal run cannot resume, as defined in RA-05 Section 3.1 | Cancelled or failed run |
 | AF-RA02-017 | Unchanged package version is assessed again | Create a distinct run identity and record behavior/configuration identity; do not overwrite prior results | ROLE-01 requests rerun | Comparable assessment runs |
 | AF-RA02-018 | A new package version is submitted after external repair | Link lineage without treating prior findings as silently resolved; determine affected disposition handling later | ROLE-03 owns changes; ROLE-05 reconsiders affected findings | Versioned re-review |
 | AF-RA02-019 | No supported finding is detected | Report the evaluated scope and limitations with an explicit non-completeness statement | Human decides what to do next | Scoped no-supported-finding result |
@@ -294,144 +228,75 @@ The outcome labels in this section are semantic descriptions. `RA-03` through `R
 | AF-RA02-021 | Package spans multiple unrelated features or an oversized cross-process/E2E flow beyond the approved unit of review | Identify the boundary problem and do not silently aggregate it into one apparently complete assessment | ROLE-02 narrows and deliberately resubmits one or more bounded packages | Out-of-scope or scope-revision-required package |
 | AF-RA02-022 | Test cases are designed to evaluate an AI/LLM system or another deliberately excluded application domain | Identify the excluded target domain and abstain from the unsupported domain-specific review while preserving any independently valid intake evidence | Human removes, separates, or retains the items as explicitly unevaluated | Parked-extension or out-of-scope items |
 
-No alternate flow permits TDG to repair source testware, approve it, search outside the package, invent a rule, or conceal that an assessment was not performed.
+No alternate flow permits source repair, testware approval, external discovery, invented rules or concealed non-performance.
 
 ## 11. Core use-case specifications
 
-These use cases define required external behavior without prescribing interface or component design.
+These contracts describe observable behavior. Actors retain only their RA-01 authority; neither interface nor component design is selected here.
 
 ### UC-RA02-001 — Submit a bounded Review Package
 
-| Attribute | Specification |
-| --- | --- |
-| Primary actor | ROLE-01 Review Operator |
-| Supporting authority | ROLE-02 owns the declared boundary; ROLE-09 policy applies where relevant |
-| Trigger | ROLE-01 deliberately requests review of selected local input |
-| Preconditions | Operating profile and actor context are known; the source is deliberately selected; applicable data policy permits intake |
-| Minimum success guarantee | TDG creates an identifiable package snapshot or returns an attributable intake rejection; it does not modify the source |
-| Required visibility | Source identity, declared boundary, provenance available at intake, package-version identity, and any detected input limitation |
-| Alternate flows | AF-RA02-001, 002, 014, and 015 |
-| Authority boundary | Submission does not confirm source correctness, widen scope, or grant the operator another role |
+ROLE-01 deliberately selects local input and requests review under a known profile and actor context. Data policy must permit intake; ROLE-02 owns the declared boundary and ROLE-09 policy applies where relevant. TDG creates an identifiable package snapshot or attributable rejection without modifying sources. Show source identity, scope, available provenance, package-version identity and detected limitations. Submission neither confirms source correctness nor widens scope or grants another role.
+
+Alternate flows: AF-RA02-001, AF-RA02-002, AF-RA02-014 and AF-RA02-015.
 
 ### UC-RA02-002 — Validate intake and evidence sufficiency
 
-| Attribute | Specification |
-| --- | --- |
-| Primary actor | ROLE-01 Review Operator |
-| Supporting actors | ROLE-02 for scope; ROLE-04 for source interpretation; ROLE-07 for an approved capture/import-transformation issue |
-| Trigger | An identifiable package candidate exists |
-| Preconditions | TDG can examine the input through an authorized processing path |
-| Minimum success guarantee | Each detected deficiency states what is missing, invalid, conflicting, or unmapped and which processing is affected |
-| Required distinction | Minimum-admissibility failure, conditional evidence gap, source contradiction, format problem, and policy block are not collapsed into one generic error |
-| Alternate flows | AF-RA02-001 through 004, 010, and 014 |
-| Authority boundary | TDG may ask for human-supplied context but cannot retrieve or invent it |
+An identifiable candidate must be examinable through an authorized path. ROLE-01 sees what is missing, invalid, conflicting or unmapped and which processing is affected. ROLE-02 supports scope, ROLE-04 interpretation and ROLE-07 issues with approved capture or import. Distinguish missing minimum content, conditional gaps, contradictions, format problems and policy blocks. TDG may request human context but cannot retrieve or invent it.
+
+Alternate flows: AF-RA02-001 through AF-RA02-004, AF-RA02-010 and AF-RA02-014.
 
 ### UC-RA02-003 — Qualify scope and supported assessment subset
 
-| Attribute | Specification |
-| --- | --- |
-| Primary actor | ROLE-02 Review Scope Owner |
-| Typical performer | ROLE-01 operates TDG; ROLE-02 makes any boundary decision |
-| Trigger | Intake is sufficiently valid for qualification |
-| Preconditions | Declared scope, test-basis evidence, and associated test cases are identifiable at the level needed for qualification |
-| Minimum success guarantee | TDG exposes supported, unsupported, mixed, mismatched, and undetermined items or dimensions without forced classification |
-| Required distinction | Test level, test type, design basis, technique evidence, and execution mode remain independent |
-| Alternate flows | AF-RA02-003 and 005 through 009 |
-| Authority boundary | TDG can recommend narrowing but ROLE-02 owns deliberate scope change |
+After intake permits qualification, TDG needs identifiable scope, basis and associated cases sufficient for that classification. ROLE-01 operates; ROLE-02 owns boundary decisions. Expose supported, unsupported, mixed, mismatched and undetermined items and dimensions without forced classification. Keep level, type, design basis, technique evidence and execution mode separate. TDG may recommend narrowing; ROLE-02 decides scope changes.
+
+Alternate flows: AF-RA02-003 and AF-RA02-005 through AF-RA02-009.
 
 ### UC-RA02-004 — Confirm or clarify supplied test-basis interpretation
 
-| Attribute | Specification |
-| --- | --- |
-| Primary actor | ROLE-04 Test Basis Authority |
-| Trigger | A supported assessment depends on an interpretation that requires human authority |
-| Preconditions | Candidate interpretation is linked to supplied evidence and its source identity |
-| Minimum success guarantee | ROLE-04 can confirm, correct, reject, or leave the interpretation unknown; TDG records the human decision and acting role |
-| Required visibility | Supplied fact, TDG interpretation, source evidence, uncertainty, conflict, human response, and affected assessment |
-| Alternate flows | AF-RA02-004, 010, and 011 |
-| Authority boundary | Lack of a separate expert never authorizes LLM self-confirmation; rule confirmation does not disposition findings or approve testware |
+When an assessment needs human confirmation, present the candidate interpretation with its supplied evidence and source identity. ROLE-04 may confirm, correct, reject or leave it unknown; retain the decision and acting role. Distinguish facts, interpretation, evidence, uncertainty, conflicts, response and affected assessment. A missing expert never permits LLM self-confirmation; rule confirmation does not disposition findings or approve testware.
+
+Alternate flows: AF-RA02-004, AF-RA02-010 and AF-RA02-011.
 
 ### UC-RA02-005 — Run a bounded test-design review
 
-| Attribute | Specification |
-| --- | --- |
-| Primary actor | ROLE-01 Review Operator |
-| Supporting prerequisites | ROLE-08 qualification; ROLE-07 approved activation; ROLE-09 policy where applicable |
-| Trigger | ROLE-01 requests assessment of the exposed supported subset |
-| Preconditions | Exact package version, assessment scope, and applicable behavior artifacts are identifiable and authorized |
-| Minimum success guarantee | TDG produces a scoped result or explicit partial, ungradable, blocked, cancelled, or failed outcome |
-| Required behavior | Deterministic and LLM-assisted derivation remain distinguishable; only qualified roles run; silent substitution is prohibited |
-| Alternate flows | AF-RA02-003, 004, 006 through 016, and 019 |
-| Authority boundary | Every new item remains `PENDING`; TDG cannot accept, repair, approve, or claim completeness |
+ROLE-01 requests assessment of the exposed supported subset. The exact package, scope and behavior artifacts must be identifiable and authorized, including ROLE-08 qualification, ROLE-07 activation and applicable ROLE-09 policy. Produce a scoped result or an explicit partial, ungradable, blocked, cancelled or failed outcome under RA-05. Distinguish deterministic findings from qualified LLM suggestions; no silent substitution. New items remain `PENDING`; TDG cannot accept its findings, repair or approve testware, or claim completeness.
+
+Alternate flows: AF-RA02-003, AF-RA02-004, AF-RA02-006 through AF-RA02-016 and AF-RA02-019.
 
 ### UC-RA02-006 — Inspect result, evidence, and limitations
 
-| Attribute | Specification |
-| --- | --- |
-| Primary actor | ROLE-01 Review Operator |
-| Other eligible viewers | ROLE-02 through ROLE-05 according to assigned access and policy |
-| Trigger | A review result or explicit non-success outcome is available |
-| Preconditions | Viewer is permitted to access the applicable record |
-| Minimum success guarantee | The viewer can distinguish what was evaluated, not evaluated, or blocked and can inspect supporting evidence and behavior identity |
-| Required visibility | Package/run identity, supported scope, technique or review dimension, derivation, source evidence, inference and uncertainty, limitation, disposition, and relevant versions |
-| Alternate flows | Access denial under RA-01 authority; AF-RA02-019 |
-| Authority boundary | Viewing a result grants no disposition, editing, export, qualification, or approval right |
+When a result or explicit non-success outcome exists, ROLE-01 and other permitted viewers in ROLE-02 through ROLE-05 may inspect it under access policy. Show evaluated, unevaluated and blocked parts; package and run identity; review dimension; derivation; supporting source evidence; inference and uncertainty; limitations; disposition; and relevant behavior versions. Viewing grants no disposition, editing, export, qualification or approval right.
+
+Alternate flows: access denial under RA-01 and AF-RA02-019.
 
 ### UC-RA02-007 — Disposition an individual finding
 
-| Attribute | Specification |
-| --- | --- |
-| Primary actor | ROLE-05 Finding Disposition Authority |
-| Trigger | ROLE-05 chooses to judge a `PENDING` finding or reconsider an affected prior disposition |
-| Preconditions | Finding, evidence, package/run identity, and acting human role are available |
-| Minimum success guarantee | An allowed disposition and attributable rationale record are added without altering derivation or source testware |
-| Required behavior | Author disposition is marked as self-review; affected historical disposition can be reopened without erasure when version impact requires it |
-| Alternate flows | AF-RA02-010, 017, and 018 |
-| Authority boundary | Individual disposition does not establish completeness, readiness, formal approval, or ISTQB conformity |
+ROLE-05 chooses to judge a `PENDING` item or reconsider an affected decision. The finding, evidence, package and run identity and acting human role must be available. Add an allowed disposition and attributable rationale without changing derivation or source testware. Mark author review as self-review. Reopening preserves history and follows RA-05's human decision rules; version changes cannot reopen items automatically. A disposition establishes neither completeness, readiness, approval nor ISTQB conformity.
+
+Alternate flows: AF-RA02-010, AF-RA02-017 and AF-RA02-018.
 
 ### UC-RA02-008 — Revise externally and request re-review
 
-| Attribute | Specification |
-| --- | --- |
-| Primary actor | ROLE-03 Testware Owner and Editor |
-| Typical performer | ROLE-03 edits outside TDG; ROLE-01 may submit the result |
-| Supporting authority | ROLE-02 approves any change to the declared package boundary |
-| Trigger | A human decides to revise testware or supplied basis after considering review evidence |
-| Preconditions | The existing package and review history remain identifiable; the human controls the edited source |
-| Minimum success guarantee | Changed content enters TDG as a distinct package version linked to prior lineage; the earlier review remains intact |
-| Required distinction | New content version and unchanged-content reassessment are separate events |
-| Alternate flows | AF-RA02-015, 017, and 018 |
-| Authority boundary | TDG may describe a gap but cannot write, apply, or publish the source change |
+The human controls the edited source; the earlier package and review history remain identifiable. ROLE-03 owns testware changes, ROLE-02 approves scope changes and ROLE-01 may submit. Revised testware or supplied basis enters as a distinct package version with lineage; earlier review remains intact. Distinguish new content from another assessment of unchanged content. TDG may describe a gap but cannot write, apply or publish the source change.
+
+Alternate flows: AF-RA02-015, AF-RA02-017 and AF-RA02-018.
 
 ### UC-RA02-009 — Export a controlled review record
 
-| Attribute | Specification |
-| --- | --- |
-| Primary actor | ROLE-01 Review Operator |
-| Governing policy | Applicable data/export policy; ROLE-09 authority is required where protected data or organizational policy demands it; export content must preserve ROLE-05 decisions accurately |
-| Trigger | ROLE-01 explicitly requests export of an identified review record |
-| Preconditions | Export is authorized for the data, destination, operating profile, and actor; exact record identity is known |
-| Minimum success guarantee | TDG produces an attributable local export or a clear denial without modifying the canonical local record |
-| Required content boundary | Export distinguishes evidence, TDG output, human disposition, limitations, package/run versions, and non-approval statement |
-| Alternate flows | AF-RA02-020 |
-| Authority boundary | Export is not direct Jira/Xray/Zephyr write-back, source-testware modification, or formal approval |
+ROLE-01 explicitly requests an identified record export. Data, destination, profile and actor must be authorized; ROLE-09 authority is required where protected data or organizational policy demands it. Produce an attributable local export or clear denial without changing the canonical record. Keep evidence, TDG output, human dispositions, limitations and package/run versions distinguishable; reproduce ROLE-05 decisions accurately and include a non-approval statement. Export cannot edit testware, write back to Jira/Xray/Zephyr or issue formal approval.
+
+Alternate flow: AF-RA02-020.
 
 ### 11.1 Supporting use-case boundary
 
-UC-RA02-010 through UC-RA02-012 exist because the primary flow depends on approved operational artifacts, qualified behavior, and protected-use policy. RA-02 records their interaction points only. Their detailed conditions and acceptance rules belong to `RA-05`, `RA-07`, `RA-08`, `RA-09`, and `RA-10`.
+UC-RA02-010 through UC-RA02-012 supply approved artifacts, qualification and protected-use policy. Their detailed conditions are in [RA-05][ra05], [RA-07][ra07], [RA-08][ra08], [RA-09][ra09] and [RA-10][ra10].
 
 ## 12. Lifecycle separation and version semantics
 
 ### 12.1 Objects that must not be collapsed
 
-| Object | Identity changes when | History expectation | Authority |
-| --- | --- | --- | --- |
-| Review Package version | Supplied content, declared scope, or provenance-affecting content changes | Prior version remains identifiable and must not be overwritten | ROLE-02 owns scope; ROLE-03 owns testware changes |
-| Assessment run | TDG processing is requested again, even for an unchanged package | Each run remains comparable and tied to its behavior identity | ROLE-01 initiates; approved behavior constraints apply |
-| Finding or suggestion | A run produces a distinct reported item under later identity rules | Derivation and evidence remain attributable to the originating run | TDG derives; no human disposition implied |
-| Human disposition record | ROLE-05 makes or changes a judgment | Prior decision and reason remain available under later audit rules | ROLE-05 only |
-| Export instance | An authorized export is deliberately requested | Exact source record, time, policy, and content version remain attributable | ROLE-01 performs under ROLE-09 policy |
-| Formal testware approval | External organization makes its approval decision | Outside direct MVP record authority unless later imported as context | ROLE-06 outside TDG |
+Keep package versions, assessment runs, derived findings, human disposition events and export instances distinct. [RA-03][ra03] defines capture identity and [RA-05][ra05] defines assessment records. ROLE-02 owns scope; ROLE-03 owns edits; ROLE-01 requests runs and exports under applicable controls; ROLE-05 decides findings. Formal organizational approval remains a separate ROLE-06 decision outside direct MVP authority.
 
 ### 12.2 Required cross-object relationships
 
@@ -446,31 +311,19 @@ UC-RA02-010 through UC-RA02-012 exist because the primary flow depends on approv
 
 ### 12.3 Version-impact principle
 
-When package content or behavior-affecting artifacts change, TDG must make the impact visible. A changed capture/import transformation that recaptures a different logical projection creates a new package version. A changed assessment mapping or other behavior artifact against unchanged captured content creates a new assessment run only. `RA-05`, `RA-07`, and `RA-09` will decide exact reopening, invalidation, comparison, qualification, and physical import rules. RA-02 prohibits the unsafe alternatives: overwriting history, silently reusing an obsolete result, or presenting materially changed behavior as the same assessment.
+Make changes and their consequences visible. A capture/import transformation that recaptures a different logical projection creates a new package version. An assessment mapping or other behavior-artifact change against unchanged capture requires a new run. Never overwrite history, silently reuse obsolete results or present materially changed behavior as the same assessment.
+
+[RA-05][ra05] governs reopening and comparison; [RA-07][ra07] governs qualification; [RA-09][ra09] governs physical import. RA-05 also distinguishes first human confirmation within an eligible active run from replacing an already applied interpretation. It never permits resuming a terminal run or changing configured behavior in that run.
 
 ## 13. Workflow outcome classes
 
-The final state model is deferred, but later requirements must preserve at least these distinct meanings:
+Keep processing state, individual assessment outcome, result availability and human disposition separate. The definitive contracts are [RA-05 Sections 3 and 5][ra05]; the early conceptual outcome names are not additional product statuses.
 
-| Conceptual outcome | Meaning | Prohibited conflation |
-| --- | --- | --- |
-| Review result available | Authorized assessment produced a scoped result | Human acceptance or formal approval |
-| Partial review available | Independent supported dimensions completed while others were explicitly excluded or unassessable | Full-package review |
-| Review ungradable | Evidence was insufficient or contradictory for a defensible substantive result | No gaps detected |
-| Review blocked by policy or authority | Processing or action was prohibited because a required policy, control, or human authority was absent | Technical failure or quality verdict |
-| Review failed technically | Authorized processing did not complete because of a technical fault | Product-quality or test-design verdict |
-| Review cancelled | A human or approved operational condition ended processing deliberately | Successful completion |
-| No supported finding detected | Supported checks found no reportable item within their bounded evidence | Completeness, ISTQB conformity, or approval |
-| Human review activity recorded | One or more human decisions were captured | Every finding dispositioned or testware repaired |
-| Re-review requested | A new run was requested for the same or later package version | Erasure or automatic closure of earlier evidence |
-
-An overall package indicator may summarize these meanings only if it preserves item-level and assessment-level limitations and cannot hide `UNGRADABLE`, conflicting, unsupported, or policy-blocked areas.
+Missing or conflicting evidence differs from no findings; unavailable capability differs from a technical failure; policy or authority blocking differs from a quality judgment; cancellation differs from completion. A partial result must expose excluded or unassessable items and dimensions. Summaries cannot conceal ungradable, conflicting, unsupported or blocked parts. An available result or zero findings proves neither completeness nor approval. Recorded decisions do not prove repair, and requesting re-review does not close older evidence.
 
 ## 14. Accepted RA-02 requirements
 
-The Project Owner accepted all thirty-six requirements and their current `MUST` priority on 2026-09-09. The acceptance establishes the RA-02 workflow baseline; later controlled change may add requirements or revise priority without rewriting this decision history.
-
-The clarified wording in `RA02-REQ-005`, `RA02-REQ-020`, and `RA02-REQ-026` was accepted by the Project Owner and verified against `SR-RA02-F-002` and `SR-RA02-F-004`. The requirements below constitute the reviewed RA-02 v0.2 baseline. In this v0.3 candidate, only `RA02-REQ-018` receives the controlled terminology clarification accepted through `OD-RA03-001`; it remains an accepted requirement, but the amended wording requires focused delta verification.
+All thirty-six requirements retain their exact wording, `MUST` priorities, status and source traces below. The Owner accepted RA-02 on 2026-09-09, including the reviewed clarifications to REQ-005, REQ-020 and REQ-026 under `SR-RA02-F-002` and `SR-RA02-F-004`. The later `OD-RA03-001` terminology clarification to REQ-018 was reviewed and included in the v0.3 baseline designated on 2026-09-15.
 
 | ID | Requirement | Priority | Status | Primary source |
 | --- | --- | --- | --- | --- |
@@ -511,28 +364,28 @@ The clarified wording in `RA02-REQ-005`, `RA02-REQ-020`, and `RA02-REQ-026` was 
 | RA02-REQ-035 | TDG shall identify a package that exceeds the approved one-feature-or-small-process unit of review and shall require human narrowing rather than silently treating an oversized cross-process flow as one supported package | MUST | ACCEPTED | Charter Sections 6–8; AF-RA02-021 |
 | RA02-REQ-036 | TDG shall identify test cases designed for AI/LLM systems or another deliberately excluded target domain as unsupported by the MVP domain capability and shall not perform the parked domain-specific review | MUST | ACCEPTED | Charter Section 11; RA02-AC-008; AF-RA02-022 |
 
-Priority `MUST` currently means that removing the requirement would weaken an approved concept, authority boundary, or accepted workflow decision. It does not predetermine the implementation mechanism, authorize implementation, or prevent later controlled reprioritization supported by impact analysis.
+`MUST` preserves the accepted concept, authority and workflow. It neither selects implementation technology nor grants implementation permission. Later reprioritization requires controlled change and impact analysis.
 
 ## 15. Allocation to later Requirements Analysis workstreams
 
-RA-02 defines end-to-end behavior but deliberately does not complete every subordinate requirement. The following routing prevents deferral from becoming omission.
+These allocations now point to accepted requirements. They avoid repeating detailed rules here; acceptance does not establish implemented capability.
 
-| Later workstream | Inputs created by RA-02 | Required elaboration |
-| --- | --- | --- |
-| RA-03 — Review Package | Immutable package version, minimum versus conditional input, scope declaration, provenance, content lineage | Field model, cardinality, admissibility rules, conditional evidence, package validation, identifiers, and version semantics |
-| RA-04 — Scope qualification | Independent axes, item-level outcomes, mixed and ambiguous evidence, supported subset, scope mismatch | Classification taxonomy, evidence rules, precedence, uncertainty, borderline examples, and acceptance conditions |
-| RA-05 — Findings and persistence | Separate run/finding/disposition objects, outcome classes, audit history, reopening, result inspection | Definitive status model, transitions, evidence schema, local persistence, history, retention hooks, and comparison behavior |
-| RA-06 — Four techniques | Bounded assessment subset, confirmed structured evidence, partial assessability | Applicability criteria, EP/BVA/Decision Table/State Transition coverage rules, deterministic allocation, and finding evidence |
-| RA-07 — LLM roles | Qualified role invocation, no silent substitution, explicit limitation on unavailable capability | Permitted tasks, prompt/model identity, grounding, abstention, qualification, requalification, and change impact |
-| RA-08 — Security and privacy | Operating-profile check, protected-intake block, authorized processing and export paths | Data classification, trust boundary, identity, authorization, logging, temporary data, retention, deletion, threat inputs, and fail-closed controls |
-| RA-09 — Input and export | Local JSON/CSV intake, unknown/unmapped-field visibility, controlled local export | Canonical JSON schema, CSV profiles, validation errors, capture/import transformations, round-trip rules, export formats, and deferred adapter boundary |
-| RA-10 — Evaluation and acceptance | End-to-end paths, partial/ungradable outcomes, difficult mixed inputs, human effort points | Benchmark coverage, human oracle, success metrics, thresholds, usability, robustness, and acceptance constraints |
+| Source | Governing detail |
+| --- | --- |
+| [RA-03 — Review Package][ra03] | Minimum and conditional content, scope, provenance, capture, identifiers, immutability and lineage |
+| [RA-04 — Scope qualification][ra04] | Independent classification axes, criteria, uncertainty, mixed evidence, separability and supported subsets |
+| [RA-05 — Findings and persistence][ra05] | Run, finding and disposition identities; statuses, evidence, history, reopening, comparison and persistence |
+| [RA-06 — Four techniques][ra06] | Applicability, coverage rules, deterministic assessment and evidence for EP, BVA, decision tables and state transitions |
+| [RA-07 — LLM roles][ra07] | Permitted tasks, grounding, abstention, model and prompt identity, qualification, requalification and change impact |
+| [RA-08 — Security and privacy][ra08] | Classification, trust boundary, access, processing, logs, temporary data, retention, deletion, export and fail-closed controls |
+| [RA-09 — Input and export][ra09] | JSON and CSV contracts, transformations, errors, preservation, round-trip rules, export and deferred adapters |
+| [RA-10 — Evaluation and acceptance][ra10] | Dataset coverage, human oracle, thresholds, metrics, usability, effort, robustness and acceptance |
 
-No later workstream may reinterpret a routed item in a way that weakens RA-01 authority or RA-02 supplied-data and workflow boundaries without controlled change approval.
+Later detail must preserve RA-01 authority and RA-02 workflow and supplied-data boundaries unless an explicit approved change replaces them. The [requirements readiness record][readiness] records the completed acceptance baseline.
 
 ## 16. Downstream validation obligations
 
-These obligations are candidates for later test analysis and STLC planning. They are not executable test cases and do not assign a final test level prematurely.
+These twenty obligations guide test analysis; they are not executable cases or proof of passed tests. Their exact wording and traces are retained.
 
 | ID | Verification objective | Principal test-design direction | Primary trace |
 | --- | --- | --- | --- |
@@ -557,150 +410,76 @@ These obligations are candidates for later test analysis and STLC planning. They
 | RA02-VAL-019 | Verify rejection or human-directed partitioning of oversized multi-feature and cross-process/E2E packages without misleading aggregated review | Scope-boundary partitions and negative workflow tests | AF-RA02-021; RA02-REQ-001/035 |
 | RA02-VAL-020 | Verify that tests targeting AI/LLM systems and other parked domains are classified as unsupported without invoking domain-specific review | Negative target-domain qualification tests | AF-RA02-022; RA02-REQ-036 |
 
-The validation corpus must contain difficult and “floating” cases where labels and evidence point in different directions. Simple happy paths alone cannot validate RA-02.
+Include difficult cases whose labels and evidence disagree; nominal happy paths alone cannot validate the workflow.
 
 ## 17. Decision disposition record
 
-The Project Owner accepted all ten recommendations on 2026-09-09. No RA-02 workflow decision remains open.
-
-| Decision ID | Project Owner disposition | Decision date |
-| --- | --- | --- |
-| OD-RA02-001 | ACCEPTED as recommended | 2026-09-09 |
-| OD-RA02-002 | ACCEPTED as recommended | 2026-09-09 |
-| OD-RA02-003 | ACCEPTED as recommended | 2026-09-09 |
-| OD-RA02-004 | ACCEPTED as recommended | 2026-09-09 |
-| OD-RA02-005 | ACCEPTED as recommended | 2026-09-09 |
-| OD-RA02-006 | ACCEPTED as recommended | 2026-09-09 |
-| OD-RA02-007 | ACCEPTED as recommended | 2026-09-09 |
-| OD-RA02-008 | ACCEPTED as recommended | 2026-09-09 |
-| OD-RA02-009 | ACCEPTED as recommended | 2026-09-09 |
-| OD-RA02-010 | ACCEPTED as recommended | 2026-09-09 |
+The Owner accepted all ten decisions on 2026-09-09. No RA-02 workflow policy decision remains open.
 
 ### OD-RA02-001 — May a mixed package receive a partial review?
 
-Decision: **Yes, when a supported subset can be isolated without misleading aggregation.**
-
-Unsupported and unassessable items must remain visible and must not contribute to a full-package score or completeness impression. A non-separable minimum or policy failure still blocks the whole affected operation.
+**Yes, if a safe supported subset can be isolated.** Show unsupported or unassessable items; do not count them toward a full-package score or imply completeness. Non-separable minimum or policy failures block the affected whole operation.
 
 ### OD-RA02-002 — Should insufficient evidence be decided for the whole package or per assessment?
 
-Decision: **Use the narrowest defensible granularity.**
-
-Decide sufficiency per item and assessment dimension where possible. Use a package-wide ungradable outcome only when the missing condition affects minimum admissibility, trusted processing, or all meaningful assessments.
+**Use the narrowest defensible level.** Prefer item and dimension limits. Use a package-wide inability to review only when minimum admissibility, trusted processing or every meaningful assessment is affected.
 
 ### OD-RA02-003 — Must every extracted rule be human-confirmed before any TDG check runs?
 
-Decision: **No, but authority must match the claim.**
-
-Structural and other checks not dependent on disputed semantic rules may proceed. A deterministic coverage claim dependent on an extracted business rule requires sufficiently confirmed structured evidence. Unconfirmed semantic interpretation may produce only an evidence-grounded, uncertain suggestion or abstention and can never confirm itself.
+**No; authority must match the claim.** Structural and other checks independent of disputed rules may proceed. Deterministic coverage needs sufficiently confirmed, traceable structured rules. Unconfirmed interpretation supports only a grounded uncertain suggestion or abstention, never self-confirmation.
 
 ### OD-RA02-004 — Is a submitted package version immutable once an assessment begins?
 
-Decision: **Yes.**
-
-The source files remain human-owned, but the exact assessed snapshot must not change. Any relevant content or scope change creates a distinct package version and preserves lineage.
+**Yes.** Sources remain human-owned; relevant content or scope changes create another version with lineage. The assessed snapshot cannot change.
 
 ### OD-RA02-005 — Is a rerun of unchanged content a new assessment run?
 
-Decision: **Yes, always.**
-
-Package identity and assessment identity are different. Repeated processing creates a new run even when content is unchanged, allowing result comparison and accurate behavior-version traceability.
+**Yes, always.** Preserve earlier results and record behavior identity so runs can be compared.
 
 ### OD-RA02-006 — When is the pre-review “complete”?
 
-Decision: **Use separate completion concepts.**
-
-At minimum distinguish system assessment completion, availability of a result, recorded human disposition activity, external testware repair, and readiness for a later human workflow. Do not use one generic `COMPLETED` status to imply all of them. Exact closure rules belong to `RA-05`.
+**Keep milestones separate.** Processing completion, result availability, human decisions, external repair and readiness for later human review are different events. [RA-05][ra05] defines their states; `COMPLETED` cannot imply all of them.
 
 ### OD-RA02-007 — What happens when an LLM-dependent capability is unavailable?
 
-Decision: **Continue only independent supported assessments and mark the result partial; never fall back silently.**
-
-In the sealed profile, loss of the approved local inference path must fail closed for LLM-dependent processing. In the laboratory, switching to another model also requires an explicit identified configuration and a new run; it is not transparent fallback.
+**Continue only independent supported assessments with explicit partial-result limits.** Never switch silently. Sealed LLM-dependent work fails closed when approved local inference is lost. A laboratory model change also needs identified configuration and a new run.
 
 ### OD-RA02-008 — Is local review-record export part of the MVP?
 
-Decision: **Yes, as a controlled evidence export.**
-
-It must preserve scope, evidence, derivation, limitations, dispositions, and versions. It must not edit source testware, write back to Jira/Xray/Zephyr, or express formal approval. Exact formats and policy belong to `RA-08` and `RA-09`.
+**Yes, under policy.** Preserve scope, evidence, derivation, limitations, dispositions and versions. No source editing, test-management write-back or formal approval. [RA-08][ra08] and [RA-09][ra09] define policy and format.
 
 ### OD-RA02-009 — Must ROLE-02 reconfirm scope on every nominal submission?
 
-Decision: **No redundant confirmation when valid authority and an explicit boundary are already recorded.**
-
-If ROLE-01 also holds ROLE-02 and deliberately submits an explicit scope, the submission may record that decision. Separate explicit ROLE-02 confirmation is required when the operator lacks scope authority, scope is absent or ambiguous, or a proposed narrowing or change needs approval.
+**No, when the explicit boundary and valid authority are already recorded.** A submitting ROLE-01 who also holds ROLE-02 may record that decision with the submission. Separate confirmation is needed when scope authority is missing, scope is absent or ambiguous, or narrowing or a change needs approval.
 
 ### OD-RA02-010 — Must all findings be dispositioned before a revised package can be submitted?
 
-Decision: **No.**
-
-A human may submit a revised version while findings remain `PENDING` or `DEFERRED`. TDG must preserve the earlier state, link lineage, and make impact visible rather than silently treating every prior item as accepted, rejected, or resolved.
+**No.** Earlier items may remain `PENDING` or `DEFERRED`. Preserve their states and lineage, and expose impact without silently accepting, rejecting or resolving them.
 
 ## 18. Assumptions and constraints requiring preservation
 
-| ID | Assumption or constraint | Treatment |
+| ID | Constraint | Governing detail |
 | --- | --- | --- |
-| RA02-AC-001 | A Review Package remains bounded to one feature or small business process | Detail and examples routed to RA-03; no scope expansion in RA-02 |
-| RA02-AC-002 | Laboratory development uses only public or synthetic inputs | Mandatory until sealed controls are defined, approved, and verified |
-| RA02-AC-003 | Canonical JSON and defined CSV import remain the approved MVP direction | Schema and capture/import transformations routed to RA-09 |
-| RA02-AC-004 | Local persistence is required but database technology remains unselected | Data semantics routed to RA-05; technology to Solution Design |
-| RA02-AC-005 | A qualified LLM may support semantic review but is never the final authority or automatic fallback | Detailed roles and qualification routed to RA-07 |
-| RA02-AC-006 | Conceptual outcome labels are not yet the definitive status schema | Final vocabulary and state model routed to RA-05 |
-| RA02-AC-007 | Direct Jira/Xray/Zephyr integration and all write-back remain outside MVP | Future read-only adapter stays deferred |
-| RA02-AC-008 | Reviewing tests written for AI/LLM systems remains outside MVP | Parked product extension; no RA-02 scope expansion |
+| RA02-AC-001 | One feature or small business process per package | RA-03; no implicit scope expansion |
+| RA02-AC-002 | Laboratory data is public or synthetic | RA-08; protected use needs approved, verified sealed controls |
+| RA02-AC-003 | Canonical JSON and defined CSV are the MVP input direction | RA-09 schema and transformations |
+| RA02-AC-004 | Local persistence is required | RA-05 defines semantics; storage technology belongs to design, not RA-02 |
+| RA02-AC-005 | Qualified LLM assistance cannot be final authority or an automatic fallback | RA-07 roles and qualification |
+| RA02-AC-006 | Workflow descriptions are not the definitive status schema | RA-05 defines the accepted vocabulary and state model |
+| RA02-AC-007 | Direct Jira/Xray/Zephyr integration and all write-back are outside MVP | Future read-only adapter remains deferred |
+| RA02-AC-008 | Reviewing tests of AI/LLM systems remains outside MVP | Deferred product extension; no domain expansion |
 
 ## 19. Static quality check and review state
 
-| Check | Result |
-| --- | --- |
-| Approved RA-01 role and authority model preserved | PASS |
-| System boundary separated from implementation architecture | PASS |
-| Primary actor and supporting authorities identified | PASS |
-| Intake separated from scope qualification and substantive assessment | PASS |
-| Test level, test type, design basis, technique, and execution mode kept distinct | PASS |
-| Insufficient, contradictory, mixed, mismatched, and undetermined paths represented | PASS |
-| Oversized cross-process and parked AI/LLM target-domain paths represented | PASS — explicit negative flows |
-| Machine result separated from human disposition, repair, and approval | PASS |
-| Same-content rerun separated from changed-content re-review | PASS |
-| Source immutability and supplied-data-only boundary preserved | PASS |
-| Laboratory and sealed-profile consequences preserved | PASS |
-| Later-workstream detail routed rather than silently omitted | PASS |
-| Context participants identified | PASS — 9 entities or boundary participants |
-| Use-case inventory is structurally complete | PASS — 12 use cases; 9 core contracts |
-| Nominal and non-nominal behavior identified | PASS — 18 primary steps; 22 alternate flows |
-| Project Owner section review complete | PASS — Sections 1 through 22 accepted |
-| Review finding `RA02-REV-001` corrected | PASS — inherited role detail replaced by references and participation mapping |
-| Workflow policy decisions recorded | PASS — 10 of 10 accepted |
-| Requirements promoted without weakening accepted meaning | PASS — 36 of 36 accepted; three clarified wordings accepted and verified |
-| Downstream validation obligations identified | PASS — 20 obligations |
-| Capture/import transformation separated from assessment mapping | PASS AS CANDIDATE — `CR-RA03-003`; focused delta review pending |
-| Focused structured static review performed | COMPLETE — `SR-RA02-001` |
-| Static-review findings | 5 raised: 1 High, 3 Medium, 1 Low |
-| Finding state | 5 of 5 CLOSED AND VERIFIED |
-| Correction verification | PASS — Static Review Report v0.2 |
+The original RA-02 record reports `SR-RA02-001` closed with five corrected and verified findings: one High, three Medium and one Low. The corrections addressed duplicated RA-01 content (`RA02-REV-001`), qualification circularity, mixed project/runtime preconditions, laboratory-versus-sealed authority and overly broad export authority. The Owner accepted the corrective actions, including `SR-RA02-F-002` through `SR-RA02-F-005`, on 2026-09-09. The reviewer helped draft the document; this was not independent assurance.
 
-The focused review corrected unnecessary RA-01 repetition, a qualification circularity, a project/runtime precondition mix, ambiguous laboratory-versus-sealed authority wording, and overly broad export authority. The Project Owner accepted all corrective actions, and their implementation was verified for v0.2. The reviewer participated in drafting RA-02, so the review is not independent assurance. This v0.3 amendment candidate additionally requires a focused delta review of `CR-RA03-003`; the completed v0.2 review must not be represented as verification of that later wording.
+The later `SR-RA03-001` accepted `CR-RA03-003`, and [PG-RA03-001][baseline] designated v0.3. These are historical documentation results, not verification of implemented TDG behavior or a new review of this maintained text. Original evidence and hashes remain accessible through the linked snapshot.
 
 ## 20. RA-02 exit criteria
 
-RA-02 may close only when:
+Original exit required accepted context and boundaries, actor participation, nominal and alternate flows, use-case contracts, distinct lifecycles and outcomes, ten decisions, baselined requirements and traceable downstream allocations; completed static review; no unresolved Critical or High finding; and Owner GO to RA-03.
 
-- the TDG system context and logical boundary are accepted;
-- external entities and prohibited interactions are accepted;
-- actor participation remains consistent with RA-01 and is accepted;
-- the primary workflow and its preconditions, trigger, steps, and postconditions are accepted;
-- alternate, exception, cancellation, recovery, and re-review behavior is accepted;
-- the use-case inventory and core use-case contracts are accepted;
-- package, assessment, finding, disposition, export, and approval lifecycles remain sufficiently separated;
-- workflow outcome meanings are accepted or deliberately revised;
-- all ten decision records are accepted;
-- RA-02 requirements are accepted and baselined;
-- routed obligations to RA-03 through RA-10 remain traceable;
-- a focused structured static review is complete;
-- no unresolved Critical or High RA-02 finding remains;
-- the Project Owner explicitly authorizes transition to `RA-03`.
-
-All RA-02 phase-exit criteria were satisfied for v0.2, and `PG-RA02-001` authorized RA-03 on 2026-09-09. The v0.3 amendment does not reopen RA-02 or require a new phase gate, but it cannot replace v0.2 as the controlled baseline until its focused delta review is complete.
+The criteria were met for v0.2; `PG-RA02-001` authorized RA-03 on 2026-09-09. The reviewed v0.3 amendment became the replacement baseline on 2026-09-15 without reopening RA-02 or changing that earlier gate's scope.
 
 ## 21. Traceability summary
 
@@ -730,6 +509,19 @@ All RA-02 phase-exit criteria were satisfied for v0.2, and `PG-RA02-001` authori
 
 ## 22. Review state and next action
 
-Current state: `RA-02 CLOSED; RA-03 AUTHORIZED; v0.3 CONTROLLED AMENDMENT CANDIDATE AWAITS FOCUSED DELTA REVIEW`.
+RA-02 is closed; v0.3 is the accepted baseline following [PG-RA03-001][baseline]. No amendment review remains pending. Downstream work uses these workflows with the linked detailed contracts and its own applicable authorization. [README.md](../../README.md) records current capability, documentation cleanup and the development pause.
 
-The Project Owner accepted the complete RA-02 subject matter, all ten RA-02 decision recommendations, and all five static-review corrective actions. Revision 0.2 incorporates those dispositions, Static Review Report v0.2 verifies every correction, and `PG-RA02-001` authorized RA-03 on 2026-09-09. The later `OD-RA03-001` decision has been incorporated only as `CR-RA03-003` in this candidate. The next action for this document is focused delta review and correction verification; no new phase authorization is requested.
+[charter]: ../governance/test-design-gatekeeper-project-charter-v0.4.md
+[ra01]: test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md
+[baseline]: ../reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md
+[original]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/19948de4cb79b49904980ba335692752f291d3dd/docs/requirements-analysis/test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md
+[ra03]: ra-10/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.4.md
+[ra04]: test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md
+[ra05]: ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md
+[ra05review]: ra-05/test-design-gatekeeper-ra-05-focused-static-review-v0.2.md
+[ra06]: ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md
+[ra07]: ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.2.md
+[ra08]: ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md
+[ra09]: ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md
+[ra10]: ra-10/test-design-gatekeeper-ra-10-evaluation-acceptance-v0.2.md
+[readiness]: ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md
