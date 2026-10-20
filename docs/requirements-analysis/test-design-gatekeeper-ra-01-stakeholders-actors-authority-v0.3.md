@@ -4,77 +4,32 @@
 
 | Field | Value |
 | --- | --- |
-| Document version | 0.3 |
-| Document date | 2026-09-12 |
-| SDLC phase | Requirements Analysis |
-| Workstream | `RA-01` |
-| Status | CONTROLLED AMENDMENT CANDIDATE — RA-01 v0.2 and `PG-RA01-001` remain effective; focused delta review required |
+| Basis | Accepted RA-01 v0.3, originally dated 2026-09-12 |
+| Original acceptance and gate | Role model and five decisions accepted; GO to RA-02 under `PG-RA01-001`, 2026-09-09 |
+| Replacement baseline | v0.3 designated on 2026-09-15 in [PG-RA03-001][baseline] |
+| Text maintenance | Consolidated on 2026-10-20; section numbers and identifiers retained |
 | Decision authority | Project Owner |
-| Project Owner review | RA-01 and all five recommendations accepted on 2026-09-09 |
-| Phase-gate record | `PG-RA01-001` — `GO` to RA-02, 2026-09-09 |
-| Approved upstream baseline | Project Charter v0.3 |
-| Amendment source | `OD-RA03-004`, accepted by Project Owner on 2026-09-12; Charter v0.4 amendment candidate |
-| Implementation authorization | NOT GRANTED |
+| Upstream scope | [Project Charter v0.4][charter] |
 
-> **Document status notice:** The Project Owner accepted the RA-01 role model and all five recommended decisions on 2026-09-09, and `PG-RA01-001` subsequently authorized RA-02. RA-01 v0.2 remains the approved baseline and that historical gate remains effective. This v0.3 candidate applies only the human-accountability clarification accepted through `OD-RA03-004`. It requires focused delta review before replacing v0.2. No authentication, authorization, user-interface, database, or architecture design is selected here.
+This is the maintained role and authority model. The [original v0.3 text][original] remains in Git history; hashes and byte counts in earlier reviews and trace ledgers describe that historical snapshot. The later acceptance resolved its candidate labels. RA-01 defines responsibilities, not implementation permission. Current capability, authorization and the development pause are described in [README.md](../../README.md).
 
 ### v0.3 controlled amendment summary
 
-| Change | Source | Effect | Boundary preserved |
-| --- | --- | --- | --- |
-| `CR-RA03-001` | `OD-RA03-004` | ROLE-03 may own accountable human-authored or human-controlled AI-assisted testware; eligibility depends on explicit human accountability, not purity of authorship | TDG cannot infer origin or accountability, edit testware, or act as ROLE-03 |
+`CR-RA03-001`, based on the Owner's `OD-RA03-004` decision of 2026-09-12, clarified ROLE-03 accountability for human-authored or human-controlled AI-assisted testware. TDG cannot infer origin or accountability, edit testware or act as ROLE-03. The amendment was reviewed and v0.3 became the replacement baseline on 2026-09-15.
 
 ## 1. Purpose
 
-This document defines who is affected by Test Design Gatekeeper, who may interact with it, which human responsibilities must remain outside the system, and who may make each class of decision.
-
-Its purpose is to prevent four recurring authority errors:
-
-- treating a job title as automatic decision authority;
-- treating access to TDG as permission to approve every action;
-- treating an LLM or deterministic result as a human decision;
-- treating self-review as independent peer or organizational approval.
+Define who is affected by TDG, who may interact with it and who may decide. Keep job titles, application access, system output and self-review distinct from the human authority and independence each action requires.
 
 ## 2. Scope of RA-01
 
-RA-01 covers:
-
-- stakeholder groups;
-- human functional roles;
-- the relationship between organizational job titles and TDG roles;
-- responsibility and decision-authority boundaries;
-- permitted combinations of roles;
-- the distinction between laboratory and sealed organizational operation;
-- requirements derived from the accepted role model;
-- recorded Project Owner decisions.
-
-RA-01 does not define:
-
-- screens, navigation, or user-interface design;
-- authentication or role-based access-control technology;
-- database tables or implementation technology;
-- detailed Review Package fields;
-- detailed finding and status schemas;
-- the algorithms for EP, BVA, Decision Table, or State Transition assessment;
-- model selection, prompts, or deployment architecture;
-- organizational testware-approval workflow outside TDG.
+RA-01 covers stakeholders, functional roles, responsibilities, decision rights, role combinations, operating profiles and the requirements derived from them. It does not select screens, authentication or role-based access-control technology, database design, package or result schemas, assessment algorithms, models or deployment architecture. Organizational testware approval remains outside TDG's direct MVP authority.
 
 ## 3. Source baseline
 
-The analysis is constrained by:
+The accepted [Charter][charter] sets scope. The original analysis also drew on `SR-CHARTER-001` and its correction verification, the Requirements Analysis Entry Record v0.1, and inputs `RA-IN-001`, `RA-IN-002`, `RA-IN-004`, `RA-IN-005`, `RA-IN-006` and `RA-IN-008`: accountability, insufficient input, local history, supplied-data limits, protection and hybrid allocation and model variability.
 
-- Project Charter v0.3, the currently approved baseline;
-- Project Charter v0.4 controlled amendment candidate for the `OD-RA03-004` clarification only;
-- Static Review `SR-CHARTER-001` and its correction-verification record;
-- Requirements Analysis Entry Record v0.1;
-- `RA-IN-001` — eligible users, roles, and accountability;
-- `RA-IN-002` — insufficient, contradictory, or mismatched input;
-- `RA-IN-004` — local review history and version traceability;
-- `RA-IN-005` — supplied-data-only boundary;
-- `RA-IN-006` — security and privacy requirements;
-- `RA-IN-008` — model variability and hybrid allocation.
-
-If this document conflicts with an approved Charter boundary, the Charter takes precedence until the Project Owner approves an explicit change.
+[PG-RA03-001][baseline] records the reviewed accountability amendment and replacement baseline. If this model conflicts with an accepted Charter boundary, the Charter takes precedence until the Owner explicitly approves a change. Detailed result semantics, qualification and protection rules belong in [RA-05][ra05], [RA-07][ra07] and [RA-08][ra08].
 
 ## 4. Terminology
 
@@ -96,201 +51,93 @@ Internal deterministic controls, LLM components, local storage, and import adapt
 
 ### AP-01 — Human authority is explicit
 
-Every decision that changes scope, confirms a business rule, modifies testware, dispositions a finding, authorizes confidential data, qualifies a model, or opens an SDLC gate belongs to an identified human role.
+Scope changes, rule confirmation, testware edits, finding dispositions, confidential-data permission, model qualification and SDLC gates require an identified human authority.
 
 ### AP-02 — Job title and authority are separate
 
-A tester, test analyst, business analyst, test lead, coordinator, or domain expert may use TDG. Their job title alone does not determine which decisions they may make.
+Testers, analysts, leads, coordinators and experts may use TDG. Their titles do not determine decision rights.
 
 ### AP-03 — One person may hold several roles
 
-The product must support a solo laboratory workflow and smaller teams. A person may therefore hold multiple functional roles, but the acting role and any independence limitation must remain visible.
+Support solo and small-team work. Record the acting role and any independence limitation when one person holds several roles.
 
 ### AP-04 — Access does not imply approval rights
 
-The ability to import a package, view a result, or operate the application does not automatically grant authority to change scope, confirm a rule, accept a finding, approve testware, or authorize confidential data.
+Importing, viewing or operating TDG grants no automatic scope, rule-confirmation, disposition, editing, testware-approval or confidential-data authority.
 
 ### AP-05 — Finding disposition is not testware approval
 
-Accepting or rejecting an individual TDG finding records a human judgment about that finding. It does not prove test-suite completeness and does not approve the testware for execution, release, or organizational sign-off.
+Accepting or rejecting one finding neither proves completeness nor approves testware for execution, release or organizational sign-off.
 
 ### AP-06 — TDG never inherits human authority
 
-TDG may calculate, identify, suggest, explain, request clarification, abstain, and persist evidence. It may not assign its own human disposition, edit source test cases, approve testware, qualify itself, authorize data use, or make an SDLC gate decision.
+TDG may calculate, identify, suggest, explain, request clarification, abstain and retain evidence. Human decisions in the authority matrix remain human; TDG cannot edit source cases or qualify itself.
 
 ### AP-07 — The supplied-data boundary applies to every role
 
-No human role may instruct TDG to conceal unsupported inference as fact or to treat unsubmitted documentation as evaluated evidence. A human may add material by deliberately creating a new version of the Review Package.
+No role may present unsupported inference as fact or unsubmitted material as evaluated evidence. A human may deliberately add sources in a new package version.
 
 ## 6. Stakeholder groups
 
-| ID | Stakeholder group | Interest or concern | Typical examples | Direct TDG interaction |
+| ID | Stakeholder group | Main concern | Typical examples | Direct interaction |
 | --- | --- | --- | --- | --- |
-| STK-01 | Test design practitioners | Useful, accurate, evidence-based pre-review with low review burden | Tester, test analyst | Yes |
-| STK-02 | Test review and coordination | Visibility of gaps, unresolved questions, and human dispositions | Reviewer, test lead, test coordinator | Yes |
-| STK-03 | Test-basis and domain stakeholders | Correct interpretation of requirements, business rules, source precedence, and ambiguity | Business analyst, requirements owner, domain expert | Optional |
-| STK-04 | Testware approval stakeholders | Confidence that organizational approval remains human and outside unsupported TDG claims | Test manager, test lead, acceptance authority | Optional or indirect |
-| STK-05 | TDG operations | Stable local operation, configuration, import mappings, storage, audit, and recoverability | Local application administrator | Yes |
-| STK-06 | Evaluation and qualification | Defensible qualification of model, prompt, rule, control, and assessment versions | Evaluation lead, validation reviewer | Yes |
-| STK-07 | Data protection and security | Confidentiality, approved trust boundary, retention, access, logging, and export | Data owner, information-security representative | Yes or governance-only |
-| STK-08 | Product and project governance | Product scope, prioritization, risks, phase gates, and accepted residual risk | Project Owner | Yes or governance-only |
-| STK-09 | Future delivery and maintenance | Clear, testable, feasible requirements and controlled change | Future solution, development, and maintenance team | Not in RA-01 operation |
+| STK-01 | Test design practitioners | Useful, accurate review with manageable effort | Tester, test analyst | Yes |
+| STK-02 | Test review and coordination | Gaps, questions and human decisions | Reviewer, test lead, coordinator | Yes |
+| STK-03 | Test-basis and domain stakeholders | Rules, source precedence and ambiguity | Analyst, requirements owner, expert | Optional |
+| STK-04 | Testware approval stakeholders | Human organizational approval | Test manager, acceptance authority | Optional or indirect |
+| STK-05 | TDG operations | Configuration, mappings, storage, audit and recovery | Administrator | Yes |
+| STK-06 | Evaluation and qualification | Evidence for behavior-affecting versions | Evaluation lead, validation reviewer | Yes |
+| STK-07 | Data protection and security | Boundary, access, retention, logs and export | Data owner, security representative | Yes or governance-only |
+| STK-08 | Product and project governance | Scope, priorities, risks and gates | Project Owner | Yes or governance-only |
+| STK-09 | Future delivery and maintenance | Clear, testable, feasible requirements and controlled change | Design, development, maintenance team | Not in RA-01 operation |
 
-ISTQB is a reference source, not a stakeholder, certifier, approver, sponsor, or authority for this project.
+ISTQB is a reference source, not this project's stakeholder, sponsor, certifier or approval authority.
 
 ## 7. Functional role catalogue
 
-Functional roles describe responsibility. They are deliberately more precise than organizational job titles.
-
-The catalogue includes both direct system actors and governance roles. A governance role does not become a direct runtime actor merely because its authority affects TDG.
-
-| Role | Interaction classification | Explanation |
-| --- | --- | --- |
-| ROLE-01 | Direct operational actor | Operates TDG for the review workflow |
-| ROLE-02 | Direct or represented actor | May act directly or authorize ROLE-01 to submit the declared boundary |
-| ROLE-03 | Direct or adjacent actor | Reviews TDG output but performs the actual source-testware edit outside autonomous TDG control |
-| ROLE-04 | Direct or represented actor | May confirm rules directly or through an authorized operator interaction |
-| ROLE-05 | Direct decision actor | Assigns human disposition to individual findings |
-| ROLE-06 | External governance role | Formal organizational approval remains outside direct MVP authority |
-| ROLE-07 | Direct administrative actor | Performs approved operational and configuration actions |
-| ROLE-08 | Direct qualification actor | Records qualification decisions for identified behavior-affecting versions |
-| ROLE-09 | Governance and policy actor | May configure or approve policy, but need not participate in routine reviews |
-| ROLE-10 | Project governance role | Makes scope, requirements, change-control, and SDLC gate decisions |
+These are responsibilities, not ten mandatory people or software permission groups. Each role's interaction type is stated below; governance responsibility does not by itself make someone a runtime user.
 
 ### ROLE-01 — Review Operator
 
-Primary responsibilities:
-
-- interact with TDG;
-- import or assemble the submitted Review Package;
-- start an assessment under an allowed operating profile;
-- respond to validation and clarification requests when authorized;
-- view and, where policy permits, export review results.
-
-Authority boundary:
-
-- operation alone does not grant authority over scope, source-rule confirmation, finding disposition, test-case editing, or confidential-data approval.
+**Direct operational actor.** Assembles or imports packages, starts assessment under an allowed profile, answers validation or clarification requests when authorized, views results and exports them where policy permits. Operation alone grants none of the content, editing or protection decisions assigned to other roles.
 
 ### ROLE-02 — Review Scope Owner
 
-Primary responsibilities:
-
-- declare the bounded feature or small process under review;
-- decide which supplied test-basis elements and test cases intentionally belong to that boundary;
-- approve an explicit package-scope change;
-- acknowledge known scope limitations.
-
-Authority boundary:
-
-- owns the submitted boundary, not the completeness or correctness of the entire project documentation;
-- cannot authorize TDG to search outside the submitted Review Package.
+**Direct or represented actor.** Declares the feature or small process, selects the supplied basis and cases, approves explicit scope changes and acknowledges limitations. May authorize ROLE-01 to submit that boundary. Owns the submitted scope, not all project documentation or its correctness; cannot authorize external source discovery.
 
 ### ROLE-03 — Testware Owner and Editor
 
-Primary responsibilities:
+**Direct or adjacent actor.** Accepts explicit human accountability for the submitted human-authored or human-controlled AI-assisted cases. Reviews TDG output, decides changes, edits, adds, removes or retains source cases outside TDG's autonomous control and submits deliberately versioned revisions.
 
-- own or maintain the submitted test cases for which the identified human accepts ROLE-03 accountability, whether human-authored or human-controlled with AI assistance;
-- decide whether and how a finding results in a test-case change;
-- edit, add, remove, or retain test cases outside the autonomous control of TDG;
-- submit a deliberately versioned revision for re-review.
-
-Authority boundary:
-
-- editing testware does not automatically grant test-basis authority or formal approval authority;
-- an accountability declaration is an attributable human decision, not proof of authorship history or absence of AI assistance; TDG must not infer or upgrade origin or accountability from writing style.
+This grants neither basis authority nor formal approval. The attributable accountability declaration does not prove authorship history or absence of AI assistance. TDG cannot infer or upgrade origin or accountability from style.
 
 ### ROLE-04 — Test Basis Authority
 
-Primary responsibilities:
-
-- confirm, correct, reject, or mark as unknown a candidate rule extracted from supplied sources;
-- clarify source precedence and known contradictions;
-- distinguish documented fact from interpretation;
-- identify when the supplied basis is insufficient rather than inventing a missing rule.
-
-Authority boundary:
-
-- authority applies only to the assigned domain and submitted source set;
-- confirmation of a rule does not accept a TDG finding or approve testware.
+**Direct or represented actor.** Confirms, corrects, rejects or leaves candidate rules unknown; clarifies source precedence, contradictions and fact versus interpretation. May act through an authorized operator. Authority is limited to the assigned domain and supplied sources. Insufficient evidence must remain visible. Rule confirmation neither dispositions a finding nor approves testware.
 
 ### ROLE-05 — Finding Disposition Authority
 
-Primary responsibilities:
-
-- review evidence attached to individual findings and suggestions;
-- assign `ACCEPTED`, `REJECTED`, or `DEFERRED` to a previously `PENDING` item;
-- record or supply an appropriate rationale under later-defined rules;
-- reopen a disposition when its supporting package or assessment version changes.
-
-Authority boundary:
-
-- cannot convert unsupported output into evidence;
-- cannot turn an individual disposition into an overall completeness, ISTQB-conformity, or testware-approval decision.
+**Direct decision actor.** Reviews evidence, assigns `ACCEPTED`, `REJECTED` or `DEFERRED` to a `PENDING` item, records the required rationale and reopens a disposition when its supporting package or assessment version changes. The detailed lifecycle is in [RA-05][ra05]. A disposition cannot turn unsupported output into evidence or establish completeness, ISTQB conformity or testware approval.
 
 ### ROLE-06 — Testware Approval Authority
 
-Primary responsibilities:
-
-- make any organizational decision that testware is ready for a later workflow, execution, or formal approval state;
-- consider TDG output as one input among other project evidence.
-
-Authority boundary:
-
-- formal approval remains outside the direct MVP decision model;
-- TDG cannot perform this role or publish an approval on its behalf.
+**External governance role.** Makes organizational readiness or approval decisions using TDG output as one input. Formal approval is outside the direct MVP decision model; TDG cannot perform this role or publish approval on its behalf.
 
 ### ROLE-07 — TDG Administrator
 
-Primary responsibilities:
-
-- operate the approved local environment;
-- manage authorized configuration, import mappings, persistence, retention execution, backup, and recovery;
-- install or activate only approved behavior-affecting artifact versions;
-- maintain operational auditability.
-
-Authority boundary:
-
-- administrative access does not grant authority to confirm business rules, disposition content findings, approve testware, qualify a model, or authorize confidential data unless those roles are separately assigned.
+**Direct administrative actor.** Operates the approved local environment; manages authorized configuration, mappings, persistence, retention execution, backup and recovery; installs or activates only approved behavior-affecting versions; maintains auditability. Administrative access grants no basis, disposition, testware-approval, qualification or confidential-data authority without separate role assignment.
 
 ### ROLE-08 — Evaluation and Qualification Authority
 
-Primary responsibilities:
-
-- approve or reject identified model, prompt, deterministic-rule, control, and relevant configuration versions for defined assessment roles;
-- use qualification evidence separated from held-out acceptance evidence;
-- define or approve requalification after behavior-relevant change;
-- record limitations and prohibited roles.
-
-Authority boundary:
-
-- neither an LLM nor another evaluated component may exercise this authority over itself;
-- qualification for one role does not grant qualification for another.
+**Direct qualification actor.** Approves or rejects identified models, prompts, deterministic rules, controls and relevant configurations for defined roles, using qualification evidence separated from held-out acceptance evidence. Defines or approves requalification after behavior-relevant change and records limitations and prohibited roles. Evaluated components cannot qualify themselves; permission for one role does not extend to others.
 
 ### ROLE-09 — Data and Security Authority
 
-Primary responsibilities:
-
-- approve data classification and the organization-controlled trust boundary;
-- authorize or prohibit confidential-data use;
-- approve security, access, retention, deletion, logging, backup, telemetry, and export policy;
-- accept or reject relevant residual security risk under organizational governance.
-
-Authority boundary:
-
-- a Review Operator or TDG Administrator does not acquire this authority merely through access to data or infrastructure.
+**Governance and policy actor.** Approves data classification, the organization-controlled trust boundary and policies for security, access, retention, deletion, logging, backup, telemetry and export; authorizes or prohibits confidential use and decides relevant residual security risk within organizational governance. May configure or approve policy without joining routine reviews. Data or infrastructure access alone grants no such authority.
 
 ### ROLE-10 — Project Owner
 
-Primary responsibilities:
-
-- own product scope, priorities, requirements decisions, and change control;
-- accept, reject, or defer project-level findings and residual risks within their authority;
-- authorize entry into later SDLC phases;
-- prevent implementation from preceding approved requirements and design gates.
-
-Authority boundary:
-
-- project authority does not replace domain, security, or organizational testware-approval authority where those require separately accountable stakeholders.
+**Project governance role.** Owns scope, priorities, requirements and change control; accepts, rejects or defers project findings and residual risks within their authority; authorizes SDLC transitions and prevents implementation preceding applicable approved requirements and design gates. Ownership does not replace separately accountable domain, security or organizational testware-approval authority.
 
 ## 8. Indicative job-title-to-role mapping
 
@@ -331,79 +178,41 @@ This table is illustrative, not an authorization rule.
 
 ### 10.1 Generally compatible combinations
 
-- ROLE-01 + ROLE-02: the person operating TDG may own the bounded package scope.
-- ROLE-01 + ROLE-03: the testware author may submit their own cases.
-- ROLE-02 + ROLE-03: the testware owner may also own the review boundary.
-- ROLE-03 + ROLE-05: the author may disposition findings during assisted self-review, subject to an explicit self-review label.
-- ROLE-02 + ROLE-04: a sufficiently knowledgeable person may own scope and confirm the supplied basis.
+- ROLE-01 + ROLE-02: operate TDG and own package scope.
+- ROLE-01 + ROLE-03: submit one's own cases.
+- ROLE-02 + ROLE-03: own cases and their review boundary.
+- ROLE-03 + ROLE-05: disposition findings on one's own testware, explicitly marked as self-review.
+- ROLE-02 + ROLE-04: own scope and confirm the basis when sufficiently knowledgeable and authorized.
 
 ### 10.2 Conditional combinations requiring visible limitations
 
-- ROLE-03 + ROLE-05 must not be represented as independent peer review.
-- A person who created prompts, rules, mappings, or evaluation examples may also hold ROLE-08 in a solo laboratory profile, but the lack of independence must be recorded and success claims weakened accordingly.
-- ROLE-07 + ROLE-09 may be combined in a small local setup only when organizational policy permits; this does not remove the need for explicit confidential-data authorization.
-- ROLE-10 may hold other roles in the project laboratory, but must not use project ownership to conceal missing domain, security, or qualification competence.
+Self-review is not independent peer review. A creator of prompts, rules, mappings or evaluation examples may also qualify them as ROLE-08 in a solo laboratory, but must disclose the lack of independence and limit success claims. ROLE-07 + ROLE-09 is allowed only under organizational policy and still requires explicit confidential-data authorization. ROLE-10 may hold laboratory roles without concealing missing domain, security or qualification competence.
 
 ### 10.3 Semantically prohibited substitutions
 
-- TDG or an LLM cannot hold ROLE-02 through ROLE-10.
-- ROLE-01 does not automatically imply any decision authority.
-- ROLE-07 administrative privilege does not imply content-review authority.
-- ROLE-05 finding disposition does not imply ROLE-06 testware approval.
-- ROLE-08 qualification does not imply ROLE-09 confidential-data authorization.
-- A model cannot qualify itself, accept its own finding, or approve its own output.
+TDG and LLMs cannot hold ROLE-02 through ROLE-10, qualify themselves or decide on their own findings. Operator access does not confer decision authority; administration does not confer content-review authority; finding disposition does not confer testware approval; qualification does not confer confidential-data authorization.
 
 ## 11. TDG authority boundary
 
-| TDG action | Permitted? | Boundary |
-| --- | --- | --- |
-| Validate whether required package elements are present | Yes | Must report the evaluated package version |
-| Identify insufficient, contradictory, or mismatched input | Yes | Must narrow, stop, or mark affected assessment ungradable |
-| Request additional human-supplied context | Yes | Request is not autonomous discovery |
-| Search documentation outside the submitted package | No | New evidence requires a deliberate new package version |
-| Invent a missing business rule | No | May state a question or evidence gap only |
-| Produce a deterministic finding | Yes | Derivation remains separate from human disposition |
-| Produce an LLM-assisted suggestion | Yes, after qualification | Must carry evidence, uncertainty, and `PENDING` disposition |
-| Accept, reject, or defer its own output | No | ROLE-05 only |
-| Edit or overwrite a source test case | No | ROLE-03 only |
-| Declare a suite complete or ISTQB compliant | No | Prohibited product claim |
-| Approve testware | No | ROLE-06 only and outside direct MVP authority |
-| Qualify a model or control version | No | ROLE-08 only |
-| Authorize confidential-data use or export | No | ROLE-09 only |
-| Open an SDLC phase | No | ROLE-10 only |
+TDG may validate required package elements and must identify the evaluated version. Insufficient, contradictory or mismatched input requires narrowing, stopping or marking the affected assessment ungradable as applicable. It may request human-supplied context; new evidence requires a deliberate package version, not autonomous retrieval.
+
+Deterministic findings remain separate from human disposition. Qualified LLM suggestions require evidence, uncertainty and an initial `PENDING` disposition. TDG cannot invent missing rules, assign its own human decisions, edit source cases, approve testware, qualify itself, authorize protected-data use or export or open a phase. It cannot declare a suite complete or ISTQB compliant. The action-to-authority assignments are in Section 9; detailed result states are in [RA-05][ra05].
 
 ## 12. Operating-role profiles
 
 ### 12.1 Laboratory profile
 
-Purpose: product development, requirements examples, qualification, and evaluation using public or synthetic data only.
-
-Permitted role arrangement:
-
-- one person may hold ROLE-01 through ROLE-05, ROLE-07, ROLE-08, and ROLE-10;
-- each authority-bearing action must still identify the acting role;
-- self-review and non-independent qualification must be labeled;
-- the profile must not represent combined-role decisions as independent organizational assurance;
-- confidential project data remains prohibited regardless of combined roles.
+Use public or synthetic data only for development, requirements examples, qualification and evaluation. One person may hold ROLE-01 through ROLE-05, ROLE-07, ROLE-08 and ROLE-10, while recording the acting role for each authority-bearing action. Label self-review and non-independent qualification and never represent combined roles as independent organizational assurance. Confidential project data remains prohibited.
 
 ### 12.2 Sealed organizational profile
 
-Purpose: future operation with protected enterprise documentation inside an approved trust boundary.
+Future protected use requires verifiable identity and assigned authority, ROLE-09 authorization and verified controls. ROLE-07 applies behavior-affecting configurations only from versions approved by the applicable authority. Organizational policy determines role separation. Assignments, acting roles and authority-bearing actions must be auditable; missing authority blocks the affected action.
 
-Required direction:
-
-- human identity and assigned authority must be verifiable rather than merely asserted in free text;
-- ROLE-09 authorization and verified security controls are mandatory before confidential-data use;
-- behavior-affecting configuration must be applied by ROLE-07 only from versions approved under the applicable authority;
-- organization policy determines required separation among content, administration, qualification, and security roles;
-- role assignment, acting role, and authority-bearing actions must be auditable;
-- absence of an authorized role must fail closed for the affected action.
-
-The detailed authentication and authorization mechanism belongs to later requirements and design. RA-01 defines the authority semantics it must preserve.
+RA-01 does not select an authentication or authorization mechanism. [RA-08][ra08] and later design define protection details while preserving these responsibilities.
 
 ## 13. Accepted RA-01 requirements
 
-The Project Owner accepted all sixteen requirements on 2026-09-09 as part of the acceptance of RA-01 and the five recorded decisions. Later consolidation may normalize identifiers or wording, but it must not weaken the accepted authority boundary without controlled change approval.
+The Owner accepted these sixteen requirements on 2026-09-09. Their wording, priority, status and source traces are retained unchanged below.
 
 | ID | Requirement | Priority | Status | Source |
 | --- | --- | --- | --- | --- |
@@ -424,13 +233,11 @@ The Project Owner accepted all sixteen requirements on 2026-09-09 as part of the
 | RA01-REQ-015 | For every authority-bearing action recorded by TDG, TDG shall retain the human authority and applicable version evidence in the local review history | MUST | ACCEPTED | RA-IN-004 |
 | RA01-REQ-016 | The direct MVP shall not publish an organizational testware approval on behalf of ROLE-06 | MUST | ACCEPTED | Charter primary use case; ROLE-06 |
 
-Priority `MUST` means required for the approved concept to remain coherent. It does not predetermine the technical enforcement mechanism or imply that every mechanism must appear in the first executable increment. Allocation to MVP increments will be decided in later requirements prioritization and planning.
+`MUST` means required for the accepted concept. It does not prescribe enforcement technology or require every mechanism in the first executable increment; increment allocation belongs in approved planning.
 
 ## 14. Downstream validation obligations
 
-The role and authority model is testable. It will become a test basis during test analysis and STLC planning, not merely descriptive project documentation. The decision-authority matrix is a natural source for Decision Table Testing; negative tests and State Transition Testing will cover denied actions, disposition changes, and version-sensitive reopening behavior.
-
-The items below are validation obligations, not executable test cases and not a complete STLC test design.
+These ten obligations guide later test analysis; they are not executed tests or a complete test design. The authority matrix supports decision-table tests, while denied actions, dispositions and version-sensitive reopening also need negative and state-transition coverage.
 
 | ID | Future verification objective | Principal test-design direction | Primary trace |
 | --- | --- | --- | --- |
@@ -445,88 +252,41 @@ The items below are validation obligations, not executable test cases and not a 
 | RA01-VAL-009 | Verify that no role, including administrator or Project Owner, can bypass the supplied-data-only boundary | Negative scope and provenance tests | AP-07; RA01-REQ-012 |
 | RA01-VAL-010 | Verify disposition transitions, reopening after a relevant package or assessment-version change, and preservation of prior history | State-transition and audit-history tests | ROLE-05; RA01-REQ-007 and 015 |
 
-Detailed conditions, data, expected results, coverage targets, and test levels will be defined only after the relevant requirements and design baselines exist.
+Conditions, data, expected results, coverage targets and test levels belong in test design against the relevant accepted requirements and design.
 
 ## 15. Decision disposition record
 
-| Decision ID | Project Owner disposition | Decision date |
-| --- | --- | --- |
-| OD-RA01-001 | ACCEPTED as recommended | 2026-09-09 |
-| OD-RA01-002 | ACCEPTED as recommended | 2026-09-09 |
-| OD-RA01-003 | ACCEPTED as recommended | 2026-09-09 |
-| OD-RA01-004 | ACCEPTED as recommended | 2026-09-09 |
-| OD-RA01-005 | ACCEPTED as recommended | 2026-09-09 |
-
-No RA-01 policy decision remains open.
+All five decisions below were accepted as recommended on 2026-09-09. No RA-01 policy decision remains open.
 
 ### OD-RA01-001 — May the testware author disposition findings in pre-review?
 
-Decision: **Yes, with an explicit self-review label.**
-
-The primary use case is assistance before peer review. The author may accept, reject, or defer suggestions as ROLE-05, but the result must be marked as self-review and must not be represented as independent peer review or formal approval.
+**Yes, with explicit self-review labeling.** An author assigned ROLE-05 may accept, reject or defer findings. The result must not imply independent peer review or formal approval.
 
 ### OD-RA01-002 — Is a separate Test Basis Authority mandatory for every Review Package?
 
-Decision: **No for the laboratory and basic pre-review workflow.**
-
-The Review Scope Owner or Testware Owner may also hold ROLE-04 when that person has sufficient domain authority. The combined assignment and its limitation must be recorded. Where the basis is disputed or outside that person's competence, TDG must preserve `UNKNOWN`, a later-defined equivalent of `CONFLICTING_BASIS`, or escalation instead of forcing confirmation.
+**No for laboratory and basic pre-review.** ROLE-02 or ROLE-03 may also hold ROLE-04 with sufficient domain authority. Record the combined assignment and limitation. Disputed evidence or insufficient competence must preserve an unknown or conflicting state or escalation instead of forced confirmation; detailed states belong in [RA-05][ra05].
 
 ### OD-RA01-003 — Must the MVP implement authenticated role-based access control?
 
-Decision: **The requirement differs by operating profile.**
-
-- Laboratory MVP records logical role assignments and acting role; multi-user RBAC is not a prerequisite for proving review value.
-- The sealed organizational profile requires verifiable identity, authorization, audit, least privilege, and fail-closed enforcement before protected use.
-
-The specific authentication and authorization design remains deferred to later requirements and design work.
+**The profile determines the requirement.** Laboratory MVP records logical assignments and acting roles; multi-user RBAC is not a prerequisite for proving value. Sealed operation needs verifiable identity, authorization, audit, least privilege and fail-closed enforcement before protected use. Mechanism selection belongs in protection requirements and design.
 
 ### OD-RA01-004 — Should TDG perform formal testware approval in the MVP?
 
-Decision: **No.**
-
-TDG may provide an exportable review record and a human may decide that a package is ready for the next human workflow. Formal organizational approval remains outside the direct MVP authority.
+**No.** TDG may provide an exportable record and a human may decide readiness for a later human workflow. Organizational approval remains outside direct MVP authority.
 
 ### OD-RA01-005 — Who confirms extracted rules when no separate domain expert is available?
 
-Decision: **An explicitly assigned human may combine ROLE-02, ROLE-03, and ROLE-04, but uncertainty must remain expressible.**
-
-The absence of a separate expert never permits TDG or its LLM component to auto-confirm its own interpretation. The human may confirm only within their competence; otherwise the result remains unknown, conflicting, or escalated.
+**An explicitly assigned human may combine ROLE-02, ROLE-03 and ROLE-04 within their competence.** Otherwise retain unknown or conflicting evidence or escalate. Missing expertise never permits TDG or its LLM to confirm its own interpretation.
 
 ## 16. Static quality check
 
-| Check | Result |
-| --- | --- |
-| Organizational titles separated from functional authority | PASS |
-| Direct actors distinguished from adjacent and governance roles | PASS |
-| Human and TDG authority separated | PASS |
-| Finding disposition separated from testware approval | PASS |
-| Solo laboratory workflow remains possible | PASS |
-| Sealed-profile direction remains fail closed | PASS |
-| Supplied-data-only boundary preserved | PASS |
-| No authentication or architecture solution selected prematurely | PASS |
-| Project Owner decisions fully recorded | PASS — 5 of 5 accepted |
-| Requirements promoted without weakening the accepted boundaries | PASS — 16 of 16 accepted |
-| ROLE-03 wording reflects accountable human control without implying forensic authorship proof | PASS AS CANDIDATE — `CR-RA03-001`; focused delta review pending |
-
-Focused structured static review `SR-RA01-001` is complete for RA-01 v0.2, and the Project Owner subsequently authorized RA-02 through `PG-RA01-001`. The reviewer participated in producing RA-01, so the review does not constitute independent assurance. This v0.3 amendment candidate still requires a focused delta review of `CR-RA03-001`; the completed v0.2 review must not be presented as verification of the later wording.
+`SR-RA01-001` completed the v0.2 review with no open findings; its reviewer participated in producing the document, so this was not independent assurance. The later `SR-RA03-001` reviewed and accepted the v0.3 accountability amendment; [PG-RA03-001][baseline] records its completed baseline designation. Earlier review statements and hashes remain tied to their original snapshots, not this maintained text. These documentation reviews are not product test results.
 
 ## 17. RA-01 exit criteria
 
-RA-01 may close only when:
+The original exit required acceptance of stakeholders, roles, job-title distinctions, authority matrix, role combinations, operating profiles, five decisions and sixteen requirements; a completed static review; no unresolved Critical or High finding; and Owner GO to RA-02.
 
-- stakeholder groups are accepted;
-- functional role names and responsibilities are accepted;
-- the job-title-to-role distinction is accepted;
-- the decision-authority matrix is accepted;
-- permitted and conditional role combinations are accepted;
-- the laboratory and sealed-profile role directions are accepted;
-- all five decision records are accepted;
-- RA-01 requirements are accepted and baselined;
-- a structured static review is complete;
-- no unresolved Critical or High RA-01 finding remains;
-- the Project Owner authorizes transition to `RA-02`.
-
-All RA-01 phase-exit criteria were satisfied for v0.2, and `PG-RA01-001` authorized RA-02 on 2026-09-09. The v0.3 amendment does not reopen RA-01 or require a new phase gate, but it cannot replace v0.2 as the controlled baseline until its focused delta review is complete.
+Those criteria were met for v0.2 and `PG-RA01-001` authorized RA-02 on 2026-09-09. The later v0.3 amendment was reviewed and designated on 2026-09-15 without reopening that phase or changing the earlier gate's scope.
 
 ## 18. Traceability summary
 
@@ -548,6 +308,11 @@ All RA-01 phase-exit criteria were satisfied for v0.2, and `PG-RA01-001` authori
 
 ## 19. Review state and next action
 
-Current state: `RA-01 CLOSED; RA-02 AUTHORIZED; v0.3 CONTROLLED AMENDMENT CANDIDATE AWAITS FOCUSED DELTA REVIEW`.
+RA-01 is closed; v0.3 is its accepted baseline following [PG-RA03-001][baseline]. No amendment review remains pending. Use the responsibilities and authority matrix for downstream work within its own authorization. Current documentation cleanup and the development pause are described in [README.md](../../README.md).
 
-The Project Owner accepted the stakeholder catalogue, ten functional roles, authority matrix, role combinations, sixteen RA-01 requirements, and all five RA-01 decision recommendations. Focused static review `SR-RA01-001` is complete with zero open findings, and `PG-RA01-001` authorized RA-02 on 2026-09-09. The later `OD-RA03-004` decision has been incorporated only as `CR-RA03-001` in this candidate. The next action for this document is focused delta review and correction verification; no new phase authorization is requested.
+[charter]: ../governance/test-design-gatekeeper-project-charter-v0.4.md
+[baseline]: ../reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md
+[original]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/19948de4cb79b49904980ba335692752f291d3dd/docs/requirements-analysis/test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md
+[ra05]: ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md
+[ra07]: ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.2.md
+[ra08]: ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md
