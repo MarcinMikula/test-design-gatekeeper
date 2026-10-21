@@ -4,128 +4,49 @@
 
 | Field | Value |
 | --- | --- |
-| Document version | 0.4 |
-| Document date | 2026-09-21 |
-| SDLC phase | Requirements Analysis |
-| Workstream | `RA-03` |
-| Status | CONTROLLED AMENDMENT CANDIDATE — CR-RA10-001 and CR-RA10-002 verified; Owner endorsement pending |
+| Basis | Accepted RA-03 v0.4, originally dated 2026-09-21 |
+| Requirement acceptance | All 50 requirements accepted; v0.3 designated under [PG-RA03-001 v0.2][gate03-current], 2026-09-15 |
+| Current baseline | v0.4 and its two input-sufficiency corrections accepted on 2026-09-21; recorded in [SR-RA10-001 v0.2][review10-current] |
+| Text maintenance | Consolidated on 2026-10-21; numbered sections and requirement, validation, rule and decision identifiers retained |
 | Decision authority | Project Owner |
-| Entry authorization | `PG-RA02-001` — `GO`, 2026-09-09 |
-| Approved upstream baselines | Project Charter v0.4; RA-01 v0.3; RA-02 v0.3, designated by PG-RA03-001 v0.2 |
-| Controlled amendment scope | RA-03 §15.3 only: condition definitions, IS-10/IS-11 applicability and consequence clarification; no REQ or VAL statement changes |
-| Current content disposition | All 50 requirement statements and ten original policy decisions remain accepted; v0.3 remains the baseline until this amendment is endorsed |
-| Implementation authorization | NOT GRANTED |
-| Confidential-data use | NOT AUTHORIZED |
+| Upstream scope | [Charter v0.4][charter], [RA-01 v0.3][ra01] and [RA-02 v0.3][ra02] |
 
-> **Current status notice:** The Project Owner accepted all fifty RA-03 requirements, designated v0.3 and granted GO to RA-04 in [PG-RA03-001 v0.2][gate03-current]. Those decisions remain effective. This v0.4 candidate changes only the input-sufficiency clarification identified in Section 15.3 and the administrative explanation of its status. [SR-RA10-001 v0.1][review10-current] records the two findings, proposed controlled amendments and completed correction verification. Their endorsement and designation of this replacement wording remain pending. No earlier gate is reopened and no requirement is awaiting repeated acceptance.
+This document defines what a review package must contain, how TDG preserves the origin of its data, and how missing or conflicting information limits an assessment. The requirements are accepted; that does not mean the behavior is implemented or tested. Current capability and the development pause are described in [README.md](../../../README.md).
 
-### v0.4 controlled amendment summary
-
-| Change ID | Finding | Prepared change | Status |
-| --- | --- | --- | --- |
-| CR-RA10-001 | SR-RA10-F-001 | Define G as a relevant contradiction/coherence problem without presupposing global non-separability; X determines whether an independent supported subset exists | VERIFIED — OWNER ENDORSEMENT PENDING |
-| CR-RA10-002 | SR-RA10-F-002 | Make X irrelevant in conflict-free IS-10 and IS-11; distinguish missing conditional evidence with and without independent supported work, without undoing a satisfied package minimum | VERIFIED — OWNER ENDORSEMENT PENDING |
-
-All 50 requirement statements, all 32 validation-obligation rows, all ten original decisions, rule identifiers IS-01 through IS-11 and the original source examples are unchanged. The narrower corrections implement RA03-REQ-031/032/034/035/040/041/050 consistently with RA-05's later ledger and availability contract. No new capture permission, business rule, model task or runtime feature is introduced.
-
-**Reading preserved history:** Except for this notice, the Section 15.3 amendment and the updated Section 25, the following text preserves the v0.3 snapshot. Its older source-version labels, PROPOSED columns, pending upstream actions, author-check results, planned allocations and exit discussion describe the 2026-09-12 authoring state. Current acceptance and baseline authority are supplied by PG-RA03-001 v0.2 and subsequent slice closure records, not those historical notices. In particular, all fifty statements have current status ACCEPTED, RA03-UA-001/002 are closed, and RA-04 through RA-09 have since closed. Historical text is retained to keep this correction diff confined and inspectable.
-
-### v0.2 correction summary
-
-| Review input | Severity | Accepted correction | Verification state |
-| --- | --- | --- | --- |
-| `RA03-REV-001` | Medium | Define the relationship among normative `shall`, priority `MUST`, and requirement status `PROPOSED` or `ACCEPTED` | Incorporated in Section 17 |
-| `RA03-REV-002` | High | Make `OD-RA03-004` the priority origin decision and base positive eligibility on attributable human accountability rather than purity of authorship | Owner accepted on 2026-09-12; incorporated with upstream impact recorded as `RA03-UA-002` |
-| `RA03-REV-003` | Medium | Establish explicit downstream validation coverage for every proposed `MUST` requirement | Incorporated; deterministic reverse check reports 50/50 in Section 22 |
-| `RA03-REV-004` | Low | Clarify test-case cardinality, add origin/accountability dimensions, and point role identifiers to RA-01 | Incorporated in Sections 3, 7, and 11 |
-
-These findings originated in a Project Owner walkthrough supported by an additional model review. Their correction does not constitute independent assurance or replace the focused static review required by the RA-03 exit criteria.
-
-### v0.3 decision-consolidation summary
-
-| Change group | Accepted decisions | Consolidated effect |
-| --- | --- | --- |
-| Package and run identity | `OD-RA03-001`, `007`, `009`, `010` | Separate capture from assessment, keep inference run-scoped, allow single-predecessor branching, and prohibit fingerprint-only merging |
-| Test-case admissibility and basis | `OD-RA03-002`, `003`, `004` | Define recognizable behavioral content, make direct trace links optional, preserve explicit experience-based rationale, and use attributable human accountability for origin eligibility |
-| Identity, supplied-content boundary, and provenance | `OD-RA03-005`, `006`, `008` | Permit visible internal IDs, reject reference-only evidence, preserve authorized extraction uncertainty, and require attributable provenance without authenticity claims |
+The [original v0.4 text][original] remains in Git history. Hashes and byte counts in earlier reviews and trace ledgers identify that historical snapshot, not this maintained text. The accepted corrections are included below; Section 22 links to their review history.
 
 ## 1. Purpose
 
-RA-03 defines what TDG must receive, preserve, identify, relate, and validate before it can represent a Review Package as suitable for any supported assessment.
-
-The document prevents six recurring errors:
-
-- treating successful parsing or file import as proof that meaningful review can proceed;
-- treating every absent field as equally fatal, or every present field as sufficient;
-- treating a hyperlink, filename, or external identifier as if the referenced content had been supplied;
-- treating TDG-derived extraction, normalization, or inference as original source fact;
-- treating co-location of requirements and test cases as direct traceability;
-- allowing content, scope, or provenance changes to overwrite an already assessed package version.
-
-RA-03 makes missing and conflicting information testable without turning TDG into the author or repairer of the submitted testware.
+Define the input needed for a supported assessment. Import success alone does not establish that input is sufficient, a test is good, or a suite is complete. TDG must preserve missing and conflicting information, keep its own interpretations separate from supplied facts, and leave corrections to the responsible human.
 
 ## 2. Scope of RA-03
 
-RA-03 covers:
+RA-03 governs the logical package contents, minimum input, relationships, provenance, validation issues, immutable versions and lineage. Its model does not depend on a file format or implementation technology.
 
-- the serialization-neutral logical composition of one Review Package;
-- package, source, scope, test-basis, test-case, association, provenance, and lineage concepts;
-- core-minimum, conditionally required, supplementary, and system-recorded content;
-- logical cardinalities and referential-integrity rules;
-- minimum admissibility and assessment-specific sufficiency;
-- preservation of unknown, malformed, duplicate, contradictory, opaque, and unmapped content;
-- the boundary among supplied content, system observations, human declarations, and TDG-derived interpretations;
-- immutable package-version identity and human-controlled lineage;
-- validation-issue information and consequences;
-- requirements, decision points, and downstream validation obligations.
-
-RA-03 does not define:
-
-- final scope-classification taxonomy, evidence weighting, or black-box eligibility — `RA-04`;
-- final finding, disposition, status, persistence, retention, or audit data model — `RA-05`;
-- technique applicability or coverage algorithms for EP, BVA, Decision Tables, or State Transitions — `RA-06`;
-- permitted LLM roles, prompts, model identity, qualification, or requalification — `RA-07`;
-- detailed security, privacy, authentication, authorization, logging, retention, or threat controls — `RA-08`;
-- physical JSON Schema, CSV profiles, parser behavior, capture/import mapping profiles, or export serialization — `RA-09`;
-- benchmark composition, metrics, usability criteria, or product acceptance thresholds — `RA-10`;
-- solution architecture, implementation technology, repository structure, or executable tests.
-
-RA-03 may identify information that later workstreams require. It must not decide their detailed semantics prematurely.
+Related requirements govern scope qualification (RA-04), results and history (RA-05), the four supported techniques (RA-06), LLM roles (RA-07), security and privacy (RA-08), input/export formats (RA-09), and evaluation and acceptance (RA-10). Section 21.2 links to those sources. RA-03 supplies their input boundaries without duplicating their detailed contracts or defining architecture and executable tests.
 
 ## 3. Source baseline and precedence
 
-| Source | Binding contribution to RA-03 |
+| Source | Contribution to RA-03 |
 | --- | --- |
-| Project Charter v0.3, Sections 6–13 | Primary flow, minimum Review Package, scope, findings, input, and confidentiality boundaries |
-| Project Charter v0.3, Sections 15–17 | Synthetic reference package, evaluation evidence, and separation of model-derived behavior |
-| Requirements Analysis Entry Record v0.1 | `RA-IN-002` through `RA-IN-006` and `RA-IN-008` |
-| RA-01 v0.2 | Human authority, supplied-data boundary, combined roles, and laboratory/sealed distinction |
-| RA-02 v0.2 | Workflow, alternate paths, package/run separation, accepted requirements, and routed RA-03 obligations |
-| `PG-RA02-001` | Authorization and explicit boundary for RA-03 only |
-| Project Owner dispositions `OD-RA03-001` through `OD-RA03-010`, 2026-09-12 | Accepted RA-03 decision directions incorporated in this candidate and routed to controlled upstream amendments where required |
+| [Charter v0.4][charter], Sections 6–13 and 15–17 | Product scope, minimum package, supplied-data and confidentiality boundaries, synthetic example and evaluation evidence |
+| Requirements Analysis Entry Record v0.1 | Inputs `RA-IN-002` through `RA-IN-006` and `RA-IN-008` |
+| [RA-01 v0.3][ra01] | Human roles and authority, supplied-data boundary, combined roles and operating profiles |
+| [RA-02 v0.3][ra02] | Workflow, alternate paths, package/run separation and routed RA-03 obligations |
+| `PG-RA02-001` | Historical authorization to begin RA-03, granted on 2026-09-09 |
+| [PG-RA03-001 v0.2][gate03-current] | Requirement acceptance, upstream amendments, v0.3 baseline designation and historical GO to RA-04 |
+| [SR-RA10-001 v0.2][review10-current] | Accepted v0.4 input-sufficiency corrections and replacement baseline |
 
-Precedence is:
-
-1. the approved Charter governs the product and MVP boundary;
-2. RA-01 governs human authority;
-3. RA-02 governs workflow and package/run separation;
-4. `PG-RA02-001` limits current work to RA-03;
-5. a conflict requires controlled change rather than silent reinterpretation.
+The Charter governs product scope, RA-01 governs human authority, and RA-02 governs workflow. An unresolved conflict requires an explicit decision rather than a silent reinterpretation. Historical entry and exit decisions do not override the current development pause.
 
 ### 3.1 Upstream wording requiring clarification or correction
 
-`RA03-UA-001` records that RA-02 and `PG-RA02-001` use the general word “mapping” when stating that a behavior change against unchanged supplied content creates a new assessment run. RA-03 exposes two materially different cases:
+Both upstream actions are closed under [PG-RA03-001][gate03-current]:
 
-- an import or capture mapping helps establish which logical content belongs to the immutable package snapshot;
-- an assessment mapping interprets an already captured package for a particular review run.
+- `RA03-UA-001`: `OD-RA03-001` and `CR-RA03-003` distinguish capture/import mapping from assessment interpretation. RA-02 v0.3 records their different package-version and run consequences.
+- `RA03-UA-002`: `OD-RA03-004` and `CR-RA03-001` replace authorship purity with explicit ROLE-03 accountability for human-authored or human-controlled AI-assisted testware. The correction is in Charter v0.4, including `D-004`, and RA-01 v0.3. `CR-RA03-002` also preserves an attributable experience-based test basis in the Charter without adding another technique to the MVP.
 
-The Project Owner accepted through `OD-RA03-001` that recapture under a changed import transformation creates a new package version, while a changed assessment mapping creates only a new run against unchanged captured content. RA-02 v0.3 applies that distinction as controlled amendment `CR-RA03-003`. `RA03-UA-001` remains administratively open only until the RA-02 amendment passes focused delta review and replaces v0.2; the accepted meaning itself is no longer open.
-
-`RA03-UA-002` records that the approved Charter v0.3 repeatedly uses “human-authored” or “tester-authored” for the product vision, primary workflow, minimum Review Package, supported MVP scope, and decision `D-004`. RA-01 v0.2 Section 7 also assigns ROLE-03 ownership of “submitted human-authored test cases.” The Project Owner accepted on 2026-09-12 that eligibility should instead be governed by attributable human accountability rather than purity of authorship. RA-03 therefore treats both human-authored and human-controlled AI-assisted testware as positive origin classes only when an identified ROLE-03 accepts accountability. Generated testware without accountable human ownership, other origin, and unknown origin do not satisfy that positive rule by themselves.
-
-This decision does not authorize TDG to write test cases, infer authorship from style, review tests of AI/LLM systems as a target domain, or weaken human control. Charter v0.4 and RA-01 v0.3 apply the required controlled wording corrections as `CR-RA03-001`; the Charter also applies the accepted experience-basis clarification as `CR-RA03-002`. `RA03-UA-002` remains administratively open only until those amendment candidates pass focused delta review and replace their approved predecessors. RA-03 records the impact instead of silently rewriting historical baselines or gate records.
-
-Role identifiers `ROLE-01` through `ROLE-10` and their decision authorities are defined exclusively in the approved RA-01 v0.2 Sections 7 and 9; RA-01 v0.3 contains the controlled ROLE-03 wording candidate. RA-03 uses those identifiers by reference and does not redefine them.
+These decisions do not authorize test generation, autonomous repair, authorship inference or review of AI/LLM systems as a target domain. ROLE-01 through ROLE-10 and their authority are defined in [RA-01][ra01], not redefined here.
 
 ## 4. Terminology
 
@@ -155,10 +76,10 @@ Role identifiers `ROLE-01` through `ROLE-10` and their decision authorities are 
 | System-recorded metadata | Identity, time, integrity, or operational context recorded by TDG without being represented as a supplied business fact |
 | Internal identifier | TDG-controlled identity used to distinguish a package item even when its external source lacks a reliable identifier |
 | External identifier | Identifier declared by the supplied source, retained as source data and not assumed unique or correct without validation |
-| Minimum admissibility | The condition in which core-minimum content is identifiable and coherent enough to permit scope qualification and at least one potentially meaningful substantive assessment |
+| Minimum admissibility | The core input conditions for proceeding to qualification; a particular requested assessment may still lack necessary evidence, as specified in Section 15.3 |
 | Assessment-specific sufficiency | Availability of the particular evidence required for one requested review dimension or technique |
 
-The definitive persisted entity schema and cross-run status model remain allocated to later workstreams. These terms define semantic distinctions that those models must preserve.
+Detailed entity and lifecycle contracts are defined in [RA-05][ra05]; physical representations are defined in [RA-09][ra09].
 
 ## 5. Review Package principles
 
@@ -179,7 +100,7 @@ The definitive persisted entity schema and cross-run status model remain allocat
 
 ## 6. Three-layer intake model
 
-RA-03 separates three layers that must not be collapsed.
+Keep the submission operation, captured source and assessment interpretation separate.
 
 | Layer | Contains | May change when | Must not be represented as |
 | --- | --- | --- | --- |
@@ -196,14 +117,9 @@ flowchart TD
     H --> V2["Immutable package V2"]
 ```
 
-RA-03 distinguishes two mapping categories:
+A capture/import transformation establishes the logical projection of supplied content. Recapturing under a changed transformation creates a new package version. An assessment mapping interprets an existing package; changing it creates a new run. Human changes to scope, sources, testware, supplied associations or provenance declarations also create a new package version. Section 16 lists the triggers.
 
-- a **capture or import transformation** establishes the package's logical projection from exact supplied artifacts; recapture under a changed transformation creates a distinct package version and records both source identity and transformation identity;
-- an **assessment mapping or interpretation** operates on an already captured package; changing it against the same package version creates a new assessment run, not a package version.
-
-A human change to scope, source material, testware, supplied associations, or provenance-affecting declarations also creates a new package version.
-
-Snapshot creation and minimum admissibility are separate outcomes. When policy permits exact safe capture, TDG may preserve an immutable package version that later fails minimum-admissibility validation. When exact trustworthy capture itself is impossible, only an attributable submission rejection exists. Neither outcome may be presented as a completed substantive review.
+Safe, permitted capture may preserve a snapshot that later fails the package minimum. If exact trustworthy capture is impossible, TDG records only an attributable rejection. Neither outcome is a completed substantive review.
 
 ## 7. Logical content inventory
 
@@ -258,101 +174,66 @@ The logical relationships require that:
 - every basis element and test case has a scope-membership association;
 - a direct trace link may relate many test cases to many basis elements;
 - missing direct trace links remain visible and are never replaced by silent inferred links;
-- a package version may identify at most one direct predecessor in the proposed MVP lineage model, while one predecessor may have multiple later variants;
+- a package version may identify at most one direct predecessor in the accepted MVP lineage model, while one predecessor may have multiple later variants;
 - assessment runs, findings, human dispositions, and exports reference the package version but are not contained as supplied package content.
 
 ## 9. Scope declaration
 
 ### 9.1 Core-minimum scope semantics
 
-One scope declaration must identify:
-
-- a human-readable scope title;
-- the target business-system context or application context;
-- one feature or small business process to be reviewed;
-- a positive description of behavior included in the boundary;
-- the ROLE-02 authority or attributable combined-role decision responsible for the boundary.
-
-The declaration may additionally identify excluded behavior, business objective, user or business role, assumed dependencies, interfaces, environment, requested review dimensions, and known limitations.
+The declaration must identify a readable title, target business/application context, one feature or small process, included behavior, and the responsible ROLE-02 or attributable combined-role decision. Optional context includes exclusions, objectives, user roles, dependencies, interfaces, environment, requested review dimensions and known limitations.
 
 ### 9.2 Structural presence versus qualified boundary
 
-RA-03 validates whether a scope declaration is present, identifiable, non-empty, and connected to the submitted items. It does not decide the complete RA-04 taxonomy or prove that the declaration is genuinely small enough.
-
-An apparently cross-process, multi-feature, internally inconsistent, or content-mismatched boundary remains visible and is routed to scope qualification. TDG must not repair it by silently selecting a narrower scope.
+RA-03 checks that scope is identifiable, non-empty and connected to supplied items. RA-04 decides its qualification. A cross-process, multi-feature, inconsistent or mismatched boundary remains visible; TDG cannot silently narrow it to make the package pass.
 
 ### 9.3 Authority behavior
 
-A valid explicit scope already recorded by a person acting as ROLE-02 need not be reconfirmed on every run against the unchanged package version. Missing, ambiguous, changed, or TDG-proposed scope requires a new ROLE-02 decision. The LLM cannot be the source of the authoritative package boundary.
+A valid explicit ROLE-02 scope decision need not be repeated for every run against the unchanged package version. Missing, ambiguous, changed or TDG-proposed scope requires a new ROLE-02 decision. An LLM cannot establish authoritative scope.
 
 ## 10. Supplied artifacts and test-basis elements
 
 ### 10.1 Supplied artifact minimum
 
-Every supplied artifact must have:
+Each artifact needs an internal identifier, readable source label, exact retained content or an integrity-protected reference to content retained inside the snapshot, provenance and a package-version relationship. Record the content kind where declared or observed.
 
-- a package-local internal identifier;
-- a human-visible source label;
-- an exact retained content instance or an integrity-protected reference to content retained inside the package snapshot;
-- a declared or observed content kind where available;
-- a provenance record;
-- a relationship to the package version.
-
-An external path, URL, Jira key, document number, or filename may identify origin but does not replace the supplied content instance. TDG must not dereference it during review unless a human deliberately imports that content into a new package version through an authorized path.
+An external path, URL, issue key, document number or filename may identify an origin; it does not supply the content or permit retrieval. A human must deliberately import additional content through an authorized path into a new package version.
 
 ### 10.2 Test-basis element semantics
 
-A test-basis element may represent:
+An element can be a supplied requirement, story, use case, acceptance criterion, business rule, constraint, risk, prior defect, observed failure, heuristic or attributable experience-based rationale. It can also describe a process path, state, event, transition, guard, decision condition/action/rule, or an addressable excerpt, diagram fragment or table row. Other and unknown kinds remain allowed.
 
-- a requirement or functional requirement;
-- a user story or use case;
-- an acceptance criterion;
-- a business rule or constraint;
-- a risk statement;
-- a prior defect, observed failure, heuristic, or attributable experience-based rationale supplied by a human;
-- a process step or alternate path;
-- a state, event, transition, or guard description;
-- a decision condition, action, or rule;
-- a specification excerpt, diagram fragment, table row, or other addressable evidence;
-- another supplied item whose type is declared as other or unknown.
-
-Each element requires package-local identity, an anchor to one supplied artifact, a stable source locator or explicit whole-artifact marker, and substantive supplied content accessible within the snapshot.
-
-The declared kind may remain unknown or later be challenged. An incorrect or missing kind does not authorize TDG to rewrite the source; it may affect classification or assessment sufficiency.
+Each element needs internal identity, an anchor to one supplied artifact, a stable locator or explicit whole-artifact marker, and substantive content accessible inside the snapshot. A missing or disputed kind may limit classification or assessment; it never authorizes source rewriting.
 
 ### 10.3 Addressable versus opaque content
 
-An opaque artifact may be inventoried and preserved. It cannot by itself satisfy the minimum test-basis requirement unless the active authorized capability can expose its relevant content in an addressable, reviewable form or a human deliberately supplies an addressable excerpt or description. When an authorized OCR or equivalent extraction capability exposes content, the extracted material must retain its artifact locator, derivation, and uncertainty; mere extraction success does not prove semantic correctness.
+Preserve and inventory opaque artifacts, but do not count them as sufficient test-basis evidence unless an authorized capability exposes reviewable, addressable content or a human supplies an addressable excerpt or description. Authorized OCR or equivalent extraction must retain its artifact locator, derivation and uncertainty. Extraction success does not prove semantic correctness.
 
-The system must not imply that a diagram, scan, binary attachment, inaccessible reference, or unsupported format was evaluated merely because it was present in the package.
-
-A file using Jira-like fields, keys, or a customized Jira-shaped structure is evaluated according to its supplied content and the applicable declared import profile. TDG is not required to establish that the file was actually exported from Jira, and it must not represent the shape or metadata as proof of that origin.
+Presence alone does not establish that a diagram, scan, binary attachment, inaccessible reference or unsupported format was evaluated. A Jira-shaped file is assessed by supplied content and its declared import profile; its fields do not prove Jira produced it, and TDG need not authenticate that origin.
 
 ### 10.4 Supplied content versus extracted interpretation
 
-A rule, state, boundary, condition, or trace link extracted or inferred by TDG belongs to the derived assessment view. It must retain its source evidence, derivation, uncertainty, and behavior version.
+A TDG-extracted rule, state, boundary, condition or trace link belongs to the derived assessment view, with source evidence, derivation, uncertainty and behavior identity. It enters supplied package content only through deliberate human incorporation into a new version.
 
-It becomes supplied package content only when a human deliberately adds or confirms it as content in a new package version. Human confirmation recorded for an assessment may authorize an affected claim without silently rewriting the earlier package snapshot.
+Human confirmation may instead authorize a bounded interpretation for an assessment without editing the snapshot. [RA-05 §5.1][ra05] governs whether that decision can support an active run or requires a new run; a terminal run cannot resume.
 
 ## 11. Test-case logical representation
 
 ### 11.1 Representation-neutral test case
 
-RA-03 does not require one editorial template. A test case may be represented as classic fields, tabular steps, a narrative scenario, Given/When/Then, or another supported structure, provided its content remains addressable and its semantic parts can be preserved without invention.
+Classic fields, step tables, narrative scenarios, Given/When/Then and other supported forms are eligible when their semantics remain addressable and can be preserved without invention. RA-03 requires no single editorial template.
 
 ### 11.2 Accepted recognizable-case and positive-eligibility boundary
 
-Under `OD-RA03-002`, a supplied item counts as a recognizable test case only when it is:
+Under `OD-RA03-002`, a recognizable test case needs:
 
-- identifiable through a supplied identifier or a visible package-local internal identifier;
-- described by a non-empty title, summary, objective, or scenario description; and
-- supported by at least one deliberately supplied, non-title behavioral segment describing a test condition, input or test datum, action, event, expected behavior, outcome, or semantically equivalent test content.
+- a supplied identifier or visible package-local internal identifier;
+- a non-empty title, summary, objective or scenario description;
+- at least one deliberately supplied, non-title behavioral segment: a test condition, input/data, action, event, expected behavior, outcome or equivalent test content.
 
-An identifier, title, external link, or precondition alone is insufficient, including a combination of those elements that still contains no behavioral segment. The item remains preserved and its deficiency remains visible.
+An identifier, title, link or precondition alone is insufficient, even in combination without a behavioral segment. Preserve such an item and its deficiency. Recognizability is not completeness: a case with an action but no expected result remains recognizable, while the missing outcome is a material gap or assessment limitation. Preconditions are required when state, data, authority, environment or another prerequisite matters. Expected behavior may be per step or in an addressable narrative.
 
-Recognizability is not a completeness or quality verdict. A recognizable case may still omit material content. Missing expected behavior does not erase recognizability when another qualifying behavioral segment is present, but it is a material content gap or an assessment limitation. Preconditions are conditionally required whenever the case depends on state, data, authority, environment, or another prerequisite. Expected behavior may be recorded per step or in an addressable narrative description. Classic fields, step tables, and BDD-style forms remain eligible when they preserve equivalent semantics.
-
-For use inside a minimally admissible package, a recognizable case must also be anchored to supplied testware, associated with the declared scope, covered by identifiable provenance, and carry an explicit origin declaration attributable to the item or an unambiguous containing set. For the package to satisfy the accepted positive origin rule, at least one recognizable test case must be declared either human-authored or human-controlled with AI assistance and must have an identified ROLE-03 who accepts accountability for that supplied testware. Other recognizable cases may remain in the same package with generated, other, or unknown origin; they remain visible and do not become positively eligible merely because an accountable case is also present.
+To meet the package minimum, a recognizable case also needs supplied-testware anchoring, scope membership, identifiable provenance and an explicit origin declaration for the item or an unambiguous containing set. At least one case must be declared human-authored or human-controlled with AI assistance, with an identified ROLE-03 accepting accountability. Other cases remain visible and do not acquire eligibility from that case.
 
 ### 11.3 Test-case content dimensions
 
@@ -373,77 +254,43 @@ For use inside a minimally admissible package, a recognizable case must also be 
 | Priority, business risk, owner, lifecycle status, or environment | Supplementary or conditional | Limits only assessments that rely on that context |
 | Direct test-basis trace link | Conditional or supplementary | Absence may itself be reviewed as a traceability gap; it is not a minimum-intake failure |
 
-The package must preserve empty, missing, or ambiguous content as such. It must not generate a precondition, step, input, or expected result merely to make the test case appear complete.
+Preserve empty, missing and ambiguous fields. Do not generate a precondition, step, input or expected result to make a case appear complete.
 
 ### 11.4 Human accountability and origin
 
-TDG cannot prove authorship or the degree of AI assistance from writing style. RA-03 therefore requires an explicit supplied origin declaration and keeps it distinct from the accountable human role.
+Keep the supplied origin declaration distinct from human accountability. The origin meanings are human-authored; human-controlled with AI assistance; generated or supplied from another process without accountable human adoption; other; and unknown.
 
-Candidate origin meanings are:
+Under `OD-RA03-004`, the first two qualify only with explicit ROLE-03 accountability. Deliberate human adoption or correction can move generated content into the human-controlled class; recording that content or declaration change creates a new package version. Other origins remain preserved but cannot satisfy the positive minimum alone. RA-04 applies item-level consequences in mixed-origin packages.
 
-- human-authored;
-- human-controlled with AI assistance;
-- generated or supplied from another process without accountable human adoption;
-- other;
-- unknown.
-
-Under the Project Owner decision recorded in `OD-RA03-004`, both human-authored and human-controlled AI-assisted testware satisfy the positive origin rule when an identified ROLE-03 explicitly accepts accountability. Eligibility follows accountable human control, not a claim that no AI tool participated. A generated case may enter the human-controlled class only through a deliberate human adoption or correction recorded in supplied declarations; changing that declaration or adopting the content creates a new package version.
-
-Generated content without accountable human adoption, other origin, and unknown origin remain valid preserved inputs but do not satisfy the positive package minimum by themselves. In a mixed-origin package, RA-04 must qualify item-level consequences without allowing one eligible case to transfer eligibility to another. TDG must not infer, challenge, or upgrade origin solely from prose style, formatting, vocabulary, metadata patterns, or perceived LLM characteristics. Regardless of origin, ROLE-03 remains the only authority for changes to source testware.
+TDG cannot establish authorship history or AI involvement from style, formatting, vocabulary, metadata patterns or perceived LLM characteristics. It cannot infer, challenge or upgrade origin on that basis. ROLE-03 alone controls changes to source testware.
 
 ## 12. Associations and traceability
 
 ### 12.1 Scope membership
 
-Every test-basis element and test case must be explicitly submitted as a candidate member of the declared Review Package scope. Package assembly may establish this containment relationship.
-
-Scope membership means only:
-
-> “The responsible human supplied this item for consideration within this declared boundary.”
-
-It does not mean that the item truly belongs to the boundary, that it covers a requirement, or that TDG has validated it as in scope.
+Every basis element and case must be explicitly submitted as a candidate member of the declared scope; package assembly can record that association. Membership records human intent, not proof of scope eligibility or requirement coverage.
 
 ### 12.2 Direct trace links
 
-Direct links between test cases and test-basis elements are not proposed as core-minimum content. Requiring them at intake would prevent TDG from reviewing the common and important defect of missing traceability.
+Cases may have zero, one or multiple direct basis links. Missing links do not invalidate the package minimum: their absence may be the defect under review. Each supplied link must preserve its source and supplied/human-declared origin, addressable endpoints, any relationship type or rationale, and detected ambiguity, dangling references, duplicates or contradictions.
 
-When present, each direct link must identify:
-
-- its source and whether it was explicitly supplied or later declared by a human;
-- one or more addressable source and target items;
-- any supplied relationship type or rationale;
-- ambiguity, dangling references, duplicates, or contradictions.
-
-A test case may therefore have zero, one, or multiple direct test-basis links. It may also carry a human-supplied experience-based rationale such as an identified risk, prior defect, observed failure, or heuristic. TDG must preserve the rationale and its human attribution, but it must not invent hidden tester experience, transform that rationale into a nonexistent documented requirement, or claim documented-requirement coverage from it.
-
-Recognizing this basis does not add detailed assessment of experience-based techniques such as error guessing, exploratory testing, or checklist-based testing to the initial four-technique MVP. The information may support general review and later scope or roadmap decisions; EP, BVA, Decision Table Testing, and State Transition Testing remain the only techniques assessed in the initial technique set.
+A human-supplied risk, prior defect, observed failure, heuristic or experience rationale may explain a case without a requirement link. Preserve that attribution; do not invent hidden tester experience, a nonexistent requirement or documented-requirement coverage. Such a basis supports general review without adding error guessing, exploratory testing, checklist-based testing or another detailed technique assessment. The initial techniques remain EP, BVA, Decision Table Testing and State Transition Testing.
 
 ### 12.3 Inferred association
 
-An LLM-assisted or rule-derived candidate link is not a supplied trace link. It belongs to an identified assessment run, carries evidence and uncertainty, begins without human acceptance, and cannot silently satisfy a deterministic traceability requirement.
-
-If a human incorporates that link into the package, the change creates a new package version. Human acceptance of a review suggestion alone must remain distinguishable from editing the supplied testware or package metadata.
+A rule-derived or LLM-assisted candidate link belongs to an identified assessment run, with evidence, derivation and uncertainty. It starts without human acceptance and cannot silently satisfy deterministic traceability. Incorporating it into supplied package content creates a new version; accepting a suggestion alone is distinguishable from editing source or package metadata.
 
 ### 12.4 Orphans and mismatches
 
-Unlinked, multiply linked, dangling, or apparently mismatched items must remain visible. TDG may isolate unaffected items, but it must not silently delete an orphan, redirect a broken reference, or manufacture a relationship.
+Keep unlinked, multiply linked, dangling and mismatched items visible. Unaffected items may remain assessable, but TDG cannot silently delete an orphan, redirect a reference or manufacture a relationship.
 
 ## 13. Provenance model
 
 ### 13.1 Minimum provenance set
 
-For every supplied artifact and addressable basis or test-case item, provenance must provide enough information to:
+For each supplied artifact and addressable basis/case item, preserve exact content identity, a readable source label or key, its location inside the snapshot, package version, capture transformation and submission context identifying actor and time. Preserve supplied external IDs, versions, authors, timestamps, systems, export and revision metadata without claiming independent verification. Label declarations, observations and inferences distinctly.
 
-- distinguish the exact content instance inside the package;
-- identify a human-visible source label or source key;
-- locate the item within the supplied snapshot;
-- identify the package version in which it was captured;
-- identify the capture transformation used to establish its logical projection;
-- identify the submitting human or local actor identifier and submission time through the submission context;
-- preserve any supplied external identifier, source version, author, timestamp, system, export, or revision metadata without treating it as verified automatically;
-- distinguish supplied declarations from system observations and derived inferences.
-
-RA-03 does not require proof that the originating organization, author, external system, or document was authentic. It requires honest attribution and preservation of what was and was not established.
+This supports attribution and inspection; it does not authenticate the originating organization, person, system or document.
 
 ### 13.2 Provenance evidence classes
 
@@ -457,7 +304,7 @@ RA-03 does not require proof that the originating organization, author, external
 
 ### 13.3 Provenance sufficiency meanings
 
-RA-03 uses the following semantic conditions without finalizing RA-05 statuses:
+These are evidence conditions; [RA-05][ra05] governs result and lifecycle statuses.
 
 | Condition | Meaning | Default consequence |
 | --- | --- | --- |
@@ -466,15 +313,13 @@ RA-03 uses the following semantic conditions without finalizing RA-05 statuses:
 | Conflicting | Supplied origin, version, identity, or precedence information disagrees | Preserve conflict; block or narrow dependent claims |
 | Unavailable | Exact supporting content or its package-local source cannot be identified | Does not satisfy the affected minimum or conditional evidence need |
 
-A filesystem path is not required as minimum provenance and may itself be sensitive. A user-visible logical source label, package-local identity, source locator, and retained content identity are preferred. Detailed path handling and redaction belong to RA-08 and RA-09.
+Minimum provenance does not require an absolute workstation path. Prefer a readable logical label, internal identity, source locator and retained-content identity. [RA-08][ra08] and [RA-09][ra09] govern path handling and redaction.
 
 ### 13.4 Integrity identity
 
-TDG must be able to detect whether the content used by a run is the exact package snapshot identified in the result. The algorithm and storage form are design decisions.
+TDG must detect whether a run used the exact snapshot identified in its result. Algorithm and storage choices belong to design. A fingerprint is not proof of semantic equivalence, authenticity, ownership or permission, and identical bytes do not authorize automatic package merging.
 
-An integrity fingerprint must not be treated as proof of semantic equivalence, source authenticity, ownership, or permission. Identical bytes also do not authorize automatic merging of independently submitted packages.
-
-## 14. Conditional evidence by later assessment
+## 14. Conditional evidence by assessment
 
 The table identifies information categories that may become necessary. It does not define the later assessment algorithms.
 
@@ -492,7 +337,7 @@ The table identifies information categories that may become necessary. It does n
 | Deterministic coverage claim | Sufficiently confirmed structured rule plus traceable normalized input and identified control/mapping versions | Deterministic claim prohibited; another independent assessment may remain possible |
 | LLM-assisted semantic suggestion | Addressable source evidence, permitted role, qualified behavior, and enough context to ground the claim | LLM role must abstain, narrow, or remain unavailable; details belong to RA-07 |
 
-Conditional evidence may be present in prose, tables, diagrams, structured records, or another supported representation. Later workstreams decide whether the active capability can interpret it reliably.
+Conditional evidence may be present in prose, tables, diagrams, structured records, or another supported representation. The relevant requirements and capability qualification determine whether it can be interpreted reliably.
 
 ## 15. Validation and input-sufficiency behavior
 
@@ -509,7 +354,7 @@ Validation proceeds conceptually in this order:
 7. evaluate assessment-specific evidence sufficiency at the narrowest defensible granularity;
 8. expose package-wide, item-level, and assessment-level consequences before substantive results rely on affected content.
 
-Physical parsing and field mapping are specified in RA-09; policy authorization is specified in RA-08. RA-03 defines the logical consequences that those later controls must preserve.
+Physical parsing and field mapping are specified in RA-09; policy authorization is specified in RA-08. RA-03 defines the logical consequences that those controls must preserve.
 
 ### 15.2 Validation-issue information contract
 
@@ -560,7 +405,7 @@ Abbreviations:
 
 This decision table specifies input-sufficiency consequences, not a guarantee that a later qualified capability exists or that assessment has run. Missing conditional evidence does not retroactively erase satisfied core minima or the faithful permitted snapshot. Under accepted RA-05, an attempted dependent dimension is UNGRADABLE; before such work the input-sufficiency limitation is recorded without inventing a completed assessment. At termination, no safely completed substantive entry means availability NONE, while at least one supported entry with remaining limitations means PARTIAL. A supported basis-gap observation can itself be substantive work if actually performed under an applicable requested dimension; its availability must be derived from the recorded ledger, not presumed absent or present from D alone. No generic run state is inferred solely from G, D or X. Policy, domain qualification, capability and fault causes retain their separate later checks.
 
-**Amendment boundary examples.** With the first seven prerequisites satisfied: a local contradiction plus an independent unaffected assessment uses G=Y, X=Y and IS-09; a conflict affecting every meaningful assessment uses G=Y, X=N and IS-08. With G=N and D=N, both the supported-subset and no-supported-subset cases use IS-10; their later ledgers and availability differ. With G=N and D=Y, IS-11 requires no additional X precondition. These are static reasoning examples, not executed product tests or new business rules.
+**How to read the boundary.** With the first seven prerequisites satisfied: a local contradiction plus an independent unaffected assessment uses G=Y, X=Y and IS-09; a conflict affecting every meaningful assessment uses G=Y, X=N and IS-08. With G=N and D=N, both the supported-subset and no-supported-subset cases use IS-10; their later ledgers and availability differ. With G=N and D=Y, IS-11 requires no additional X precondition. These are static reasoning examples, not executed product tests or new business rules.
 
 ### 15.4 Duplicate and missing identifiers
 
@@ -604,80 +449,82 @@ An issue becomes package-wide only when it prevents trusted capture, removes a c
 | Same package version is assessed again | No | Create a distinct assessment run |
 | Package is viewed or exported without changing canonical content | No | Preserve package identity and record only applicable access/export evidence |
 
+A human interpretation decision does not alter the source snapshot. Whether it can support an active run or requires a new one follows [RA-05 §5.1][ra05]; the package-version column above does not answer that separate question.
+
 ### 16.3 Lineage behavior
 
-The accepted MVP model permits a package version to have zero or one direct predecessor and any number of later child versions. This supports an initial version, linear revision, and branching variants. Multi-parent merge semantics are outside the MVP.
-
-A lineage link records human-declared derivation and validated package existence. It does not mean that all earlier findings were fixed, that content changes are correct, or that the newer version supersedes the older version for every purpose.
+The accepted MVP allows zero or one direct predecessor and multiple child versions: initial, linear and branching histories. Multi-parent merges are outside the MVP. Validate the referenced package and preserve the human-declared derivation. A lineage link does not prove repair, correctness or universal replacement of an older version.
 
 ### 16.4 Identical content and deduplication
 
-An integrity fingerprint may detect byte or retained-content equality. TDG must not automatically merge package versions or lineages solely because fingerprints match. Two independently supplied packages may have different scope, authority, provenance, or purpose despite identical files.
+Matching fingerprints do not merge versions or lineages. Identical files can have different scope, authority, provenance or purpose. Deliberate selection of an existing immutable version reuses it for a new run; re-upload without that selection remains a separate attributable submission and package version.
 
-Deliberate human selection of an existing immutable package version reuses that version and creates a distinct assessment run. A re-upload of identical content without such selection remains a separately attributable submission and package version; TDG must not merge it automatically. A future controlled exact-identity rule may change this only through explicit change approval covering content, scope, provenance, authority, and lineage rather than fingerprint equality alone.
+Any future exact-identity rule requires explicit approval addressing content, scope, provenance, authority and lineage, not fingerprint equality alone.
 
-## 17. Candidate RA-03 requirements
+<a id="17-candidate-ra-03-requirements"></a>
 
-All requirements below are proposed for Project Owner review. In this section, `shall` expresses the intended mandatory behavior of a candidate requirement. While its status is `PROPOSED`, it is not a baselined obligation and must not be cited as accepted. It becomes binding for downstream work only after its status changes to `ACCEPTED` and the applicable review and baseline controls are complete. Priority `MUST` means that removing the requirement would weaken an approved upstream boundary or the minimum coherent RA-03 model; it does not select an implementation mechanism or override requirement status.
+## 17. Accepted RA-03 requirements
+
+All fifty requirements are MUST / ACCEPTED under [PG-RA03-001][gate03-current]. Their statements, priorities and traces are unchanged. `Shall` states required behavior; `MUST` identifies a requirement necessary to preserve an approved boundary or a coherent package model. Acceptance establishes an obligation, not implemented or verified behavior, and does not select an implementation mechanism.
 
 | ID | Requirement | Priority | Status | Primary trace |
 | --- | --- | --- | --- | --- |
-| RA03-REQ-001 | TDG shall represent Review Package content through a serialization-neutral logical model independent of JSON, CSV, Jira, Xray, Zephyr, document, database, or UI representation | MUST | PROPOSED | `PG-RA02-001`; RP-10 |
-| RA03-REQ-002 | TDG shall keep submission context, immutable package version, and derived assessment view as distinct semantic layers | MUST | PROPOSED | WP-06; Section 6 |
-| RA03-REQ-003 | An immutable package version shall contain exact supplied source content, attributable human declarations, an identified traceable logical projection, and system-recorded capture metadata, but shall not silently incorporate semantic TDG interpretations or assessment results | MUST | PROPOSED | RP-01; Sections 6 and 10.4 |
-| RA03-REQ-004 | TDG shall distinguish supplied declaration, supplied source metadata, system observation, human confirmation, and derived inference wherever their authority or evidentiary meaning differs | MUST | PROPOSED | WP-05; Section 13.2 |
-| RA03-REQ-005 | An external reference, path, URL, issue key, or document identifier shall not be treated as supplied substantive content or as authorization to retrieve that content; a Jira-shaped file shall be assessed by supplied content without authenticating that Jira produced it | MUST | PROPOSED | RA-IN-005; RP-08; `OD-RA03-006` |
-| RA03-REQ-006 | TDG shall preserve exact supplied source content separately from its identified capture projection and separately from any semantic mapping, extraction, or interpretation used by an assessment | MUST | PROPOSED | RA02-REQ-018; Section 6 |
-| RA03-REQ-007 | Every captured package version shall have one package-local version identity, one lineage identity, and one logical manifest identifying its source content, captured logical projection, and capture-transformation identity | MUST | PROPOSED | RA02-REQ-001/017/018/028 |
-| RA03-REQ-008 | A minimally admissible package shall contain exactly one attributable scope declaration identifying a target context, one feature or small process, included behavior, and the applicable ROLE-02 decision | MUST | PROPOSED | Charter Section 7; RA01-REQ-004; Section 9 |
-| RA03-REQ-009 | A minimally admissible package shall contain at least one supplied artifact whose exact content instance is captured or integrity-identifiable inside the package snapshot | MUST | PROPOSED | Charter Section 7; Section 10.1 |
-| RA03-REQ-010 | A minimally admissible package shall contain at least one substantive, addressable test-basis element anchored to a supplied artifact and source locator or whole-artifact marker | MUST | PROPOSED | Charter Section 7; Section 10.2 |
-| RA03-REQ-011 | A minimally admissible package shall contain at least one identifiable test case having a non-empty title, summary, objective, or scenario plus at least one non-title behavioral segment; that case shall be anchored to supplied testware, associated with the declared scope, declared either human-authored or human-controlled with AI assistance, and governed by an identified ROLE-03 who accepts accountability; other origin classes shall remain visible but shall not satisfy this minimum by themselves | MUST | PROPOSED | Charter Sections 6–8; Sections 11.2/11.4; `OD-RA03-002/004` |
-| RA03-REQ-012 | TDG shall preserve equivalent test-case semantics from classic fields, tabular steps, narrative scenarios, Given/When/Then, and other supported representations without requiring one editorial template | MUST | PROPOSED | RP-10; Section 11.1 |
-| RA03-REQ-013 | Every package, artifact, basis element, test case, association, and other addressable captured item shall have an unambiguous package-local internal identifier | MUST | PROPOSED | RP-02/RP-05; Section 16.1 |
-| RA03-REQ-014 | TDG shall preserve missing, duplicate, or conflicting external identifiers exactly and shall not represent an assigned internal identifier as a correction of the source | MUST | PROPOSED | RP-05/RP-11; Section 15.4 |
-| RA03-REQ-015 | Every test-basis element and test case shall have an explicit scope-membership association without that association being represented as direct coverage traceability | MUST | PROPOSED | RP-04; Section 12.1 |
-| RA03-REQ-016 | A test case shall be permitted to have zero, one, or multiple direct test-basis links, and absence of such links shall not by itself make an otherwise minimum-admissible package invalid; any supplied experience-based rationale shall remain attributable and distinct from documented requirement coverage | MUST | PROPOSED | Charter Section 8.3; Section 12.2; `OD-RA03-003` |
-| RA03-REQ-017 | Every supplied direct trace link shall preserve its source, endpoints, relationship meaning where supplied, and any detected dangling, duplicate, ambiguous, or contradictory reference | MUST | PROPOSED | RA02-REQ-010/015; Section 12.2 |
-| RA03-REQ-018 | TDG-derived candidate associations shall remain assessment artifacts with derivation, evidence, uncertainty, and behavior identity and shall not silently become supplied direct trace links | MUST | PROPOSED | Charter Section 10.2; Section 12.3 |
-| RA03-REQ-019 | An opaque or inaccessible artifact shall be inventoried visibly but shall not alone satisfy a substantive test-basis evidence requirement; content exposed by an authorized OCR or equivalent extraction shall retain its locator, derivation, and uncertainty before supporting an assessment | MUST | PROPOSED | RA02-REQ-010; Section 10.3; `OD-RA03-006` |
-| RA03-REQ-020 | Every addressable basis element and test case shall identify its supplied artifact and stable package-local source locator or explicit whole-artifact scope | MUST | PROPOSED | RA-IN-004/005; Sections 10–13 |
-| RA03-REQ-021 | TDG shall preserve an explicit supplied testware-origin declaration for every test case directly or through an unambiguous containing set, shall keep origin distinct from ROLE-03 accountability, and shall not infer or upgrade authorship, AI assistance, human adoption, or accountability solely from writing style or content patterns | MUST | PROPOSED | Charter Sections 6 and 8; Section 11.4; OD-RA03-004 |
-| RA03-REQ-022 | Missing or empty preconditions, steps, inputs, test data, expected results, postconditions, or contextual fields shall remain visible and shall not be filled through invention during package intake; a missing expected result shall be reported as a material gap or affected-assessment limitation without erasing recognizability when other qualifying behavioral content exists | MUST | PROPOSED | RA-IN-002/005; RP-11; `OD-RA03-002` |
-| RA03-REQ-023 | TDG shall preserve declared test level, test type, design basis, execution mode, target role, and environment as independent source declarations rather than treating their labels as classification verdicts | MUST | PROPOSED | RA-IN-003; WP-04; RA02-REQ-011/012 |
-| RA03-REQ-024 | When risks, prior defects, observed failures, heuristics, experience-based rationales, business objectives, constraints, exclusions, diagrams, matrices, notes, or other supplementary items are supplied, TDG shall retain their identities, human attribution, provenance, and relationships without treating absent optional items as universal package failure or inventing documented requirement coverage | MUST | PROPOSED | Charter Sections 7–8; WP-03; `OD-RA03-003` |
-| RA03-REQ-025 | TDG shall preserve unknown, malformed, opaque, or unmapped assessment-relevant content and shall make its effect visible rather than silently dropping it | MUST | PROPOSED | RA02-REQ-010; AF-RA02-001 |
-| RA03-REQ-026 | Every supplied artifact and addressable item shall have provenance sufficient to distinguish the exact content instance, source label, package-local location, package version, capture transformation, and applicable submission context | MUST | PROPOSED | Charter Section 7; RA-IN-004; Section 13.1 |
-| RA03-REQ-027 | TDG shall record whether each provenance claim is supplied, system-observed, human-confirmed, or derived when the distinction affects review authority or evidence | MUST | PROPOSED | WP-05; Section 13.2 |
-| RA03-REQ-028 | TDG shall not represent package provenance or an integrity identity as proof of source truth, authenticity, ownership, authorization, or semantic equivalence | MUST | PROPOSED | RP-09; Sections 13.1/13.4 |
-| RA03-REQ-029 | Partial or conflicting provenance shall block or limit only the items and claims that depend on the unavailable or conflicting information when a trustworthy independent subset remains identifiable | MUST | PROPOSED | WP-03; OD-RA02-002; Section 13.3 |
-| RA03-REQ-030 | Minimum provenance shall not require persistence of an absolute workstation path; environment-specific location data shall be minimized and handled under later security and import requirements | MUST | PROPOSED | RA-IN-006; Sections 13.1/13.3 |
-| RA03-REQ-031 | TDG shall complete applicable policy, capture, identity, core-minimum, referential-integrity, provenance, coherence, and assessment-sufficiency checks before presenting an affected substantive assessment as supported | MUST | PROPOSED | WP-02; RA02-REQ-007; Section 15.1 |
-| RA03-REQ-032 | Successful file parsing, field mapping, or snapshot capture shall not by itself be represented as minimum admissibility, assessment sufficiency, scope eligibility, or review success | MUST | PROPOSED | RA02 PWF-02 through PWF-09; Section 15 |
-| RA03-REQ-033 | When core-minimum content is absent, TDG shall identify each missing minimum, its affected package version or candidate, the package-wide consequence, and the human action needed before substantive review | MUST | PROPOSED | AF-RA02-002; RA02-REQ-008 |
-| RA03-REQ-034 | When conditional evidence is missing, TDG shall identify the dependent item or assessment and shall preserve independent supported assessments with explicit limitations where safe | MUST | PROPOSED | AF-RA02-003; RA02-REQ-009 |
-| RA03-REQ-035 | TDG shall preserve contradictory supplied evidence and source identity and shall not select precedence or confirm a business rule without an attributable ROLE-04 decision | MUST | PROPOSED | RA01-REQ-005; RA02-REQ-016 |
-| RA03-REQ-036 | TDG shall detect duplicate, dangling, ambiguous, or cross-version references and shall prevent them from silently satisfying required relationships | MUST | PROPOSED | RP-11; Sections 12 and 15.4 |
-| RA03-REQ-037 | Assignment of a package-local identifier shall permit safe reference to captured content while leaving every source-identity deficiency visible to humans and dependent assessments | MUST | PROPOSED | RP-05; Section 15.4 |
-| RA03-REQ-038 | Every intake or package-validation issue shall identify its category, affected location, evidence, consequence granularity, affected assessment where applicable, and possible human repair or clarification path | MUST | PROPOSED | RA-IN-002; Section 15.2 |
-| RA03-REQ-039 | A non-structural or probabilistic input observation shall identify derivation and uncertainty and shall not be represented as a deterministic validation fact | MUST | PROPOSED | Charter Section 10; Section 15.2 |
-| RA03-REQ-040 | TDG shall apply a package-wide blocking consequence only when trusted capture, applicable policy, a core-minimum element, or every meaningful assessment is affected | MUST | PROPOSED | OD-RA02-001/002; Section 15.5 |
-| RA03-REQ-041 | When invalid, unsupported, conflicting, or insufficient items can be isolated safely, TDG shall expose a supported subset and every exclusion without producing misleading package-wide coverage | MUST | PROPOSED | RA02-REQ-013/014; IS-09/10 |
-| RA03-REQ-042 | TDG shall identify the operating profile and shall prevent laboratory processing of confidential or possibly protected package content before prohibited substantive processing occurs | MUST | PROPOSED | RA01-REQ-011; AF-RA02-014 |
-| RA03-REQ-043 | Once captured for assessment, a Review Package version and every supplied content instance within it shall be immutable | MUST | PROPOSED | OD-RA02-004; RA02-REQ-001/028 |
-| RA03-REQ-044 | Any human change to supplied scope, source content, testware, supplied relationship, risk, context, or provenance-affecting declaration, and any recapture under a changed import transformation, shall create a distinct package version linked to preserved prior lineage where applicable | MUST | PROPOSED | WP-06/07; Section 16.2 |
-| RA03-REQ-045 | A behavior-affecting assessment mapping, semantic normalization, rule, control, prompt, model, configuration, or runtime change against an unchanged captured package shall create a distinct assessment run and shall not silently create or mutate a package version | MUST | PROPOSED | RA02-REQ-018/029; Section 16.2 |
-| RA03-REQ-046 | Reassessment of the same immutable package version shall create a distinct assessment-run identity while preserving the package-version identity | MUST | PROPOSED | OD-RA02-005; RA02-REQ-017/029 |
-| RA03-REQ-047 | A package version shall declare zero or one direct predecessor, may have multiple later child versions, shall expose an invalid or multiple-predecessor declaration, and shall not overwrite, delete, or silently resolve evidence associated with an earlier version | MUST | PROPOSED | RA02-REQ-028/030; Section 16.3; `OD-RA03-009` |
-| RA03-REQ-048 | Content-integrity equality shall not by itself merge package lineages or versions, establish semantic equivalence, or replace deliberate human selection of an existing version; re-uploaded identical content without such selection shall remain a separately attributable submission and package version | MUST | PROPOSED | RP-09; Section 16.4; `OD-RA03-010` |
-| RA03-REQ-049 | Assessment findings, human dispositions, exports, view activity, and formal approval records shall reference but shall not mutate supplied Review Package content | MUST | PROPOSED | RA01-REQ-006/008; RA02 Section 12 |
-| RA03-REQ-050 | Minimum admissibility, validation success, provenance sufficiency, or a complete logical package structure shall not produce a claim of test-suite completeness, testware approval, product quality, or official ISTQB conformity | MUST | PROPOSED | Charter Section 10.4; RA01-REQ-014 |
+| RA03-REQ-001 | TDG shall represent Review Package content through a serialization-neutral logical model independent of JSON, CSV, Jira, Xray, Zephyr, document, database, or UI representation | MUST | ACCEPTED | `PG-RA02-001`; RP-10 |
+| RA03-REQ-002 | TDG shall keep submission context, immutable package version, and derived assessment view as distinct semantic layers | MUST | ACCEPTED | WP-06; Section 6 |
+| RA03-REQ-003 | An immutable package version shall contain exact supplied source content, attributable human declarations, an identified traceable logical projection, and system-recorded capture metadata, but shall not silently incorporate semantic TDG interpretations or assessment results | MUST | ACCEPTED | RP-01; Sections 6 and 10.4 |
+| RA03-REQ-004 | TDG shall distinguish supplied declaration, supplied source metadata, system observation, human confirmation, and derived inference wherever their authority or evidentiary meaning differs | MUST | ACCEPTED | WP-05; Section 13.2 |
+| RA03-REQ-005 | An external reference, path, URL, issue key, or document identifier shall not be treated as supplied substantive content or as authorization to retrieve that content; a Jira-shaped file shall be assessed by supplied content without authenticating that Jira produced it | MUST | ACCEPTED | RA-IN-005; RP-08; `OD-RA03-006` |
+| RA03-REQ-006 | TDG shall preserve exact supplied source content separately from its identified capture projection and separately from any semantic mapping, extraction, or interpretation used by an assessment | MUST | ACCEPTED | RA02-REQ-018; Section 6 |
+| RA03-REQ-007 | Every captured package version shall have one package-local version identity, one lineage identity, and one logical manifest identifying its source content, captured logical projection, and capture-transformation identity | MUST | ACCEPTED | RA02-REQ-001/017/018/028 |
+| RA03-REQ-008 | A minimally admissible package shall contain exactly one attributable scope declaration identifying a target context, one feature or small process, included behavior, and the applicable ROLE-02 decision | MUST | ACCEPTED | Charter Section 7; RA01-REQ-004; Section 9 |
+| RA03-REQ-009 | A minimally admissible package shall contain at least one supplied artifact whose exact content instance is captured or integrity-identifiable inside the package snapshot | MUST | ACCEPTED | Charter Section 7; Section 10.1 |
+| RA03-REQ-010 | A minimally admissible package shall contain at least one substantive, addressable test-basis element anchored to a supplied artifact and source locator or whole-artifact marker | MUST | ACCEPTED | Charter Section 7; Section 10.2 |
+| RA03-REQ-011 | A minimally admissible package shall contain at least one identifiable test case having a non-empty title, summary, objective, or scenario plus at least one non-title behavioral segment; that case shall be anchored to supplied testware, associated with the declared scope, declared either human-authored or human-controlled with AI assistance, and governed by an identified ROLE-03 who accepts accountability; other origin classes shall remain visible but shall not satisfy this minimum by themselves | MUST | ACCEPTED | Charter Sections 6–8; Sections 11.2/11.4; `OD-RA03-002/004` |
+| RA03-REQ-012 | TDG shall preserve equivalent test-case semantics from classic fields, tabular steps, narrative scenarios, Given/When/Then, and other supported representations without requiring one editorial template | MUST | ACCEPTED | RP-10; Section 11.1 |
+| RA03-REQ-013 | Every package, artifact, basis element, test case, association, and other addressable captured item shall have an unambiguous package-local internal identifier | MUST | ACCEPTED | RP-02/RP-05; Section 16.1 |
+| RA03-REQ-014 | TDG shall preserve missing, duplicate, or conflicting external identifiers exactly and shall not represent an assigned internal identifier as a correction of the source | MUST | ACCEPTED | RP-05/RP-11; Section 15.4 |
+| RA03-REQ-015 | Every test-basis element and test case shall have an explicit scope-membership association without that association being represented as direct coverage traceability | MUST | ACCEPTED | RP-04; Section 12.1 |
+| RA03-REQ-016 | A test case shall be permitted to have zero, one, or multiple direct test-basis links, and absence of such links shall not by itself make an otherwise minimum-admissible package invalid; any supplied experience-based rationale shall remain attributable and distinct from documented requirement coverage | MUST | ACCEPTED | Charter Section 8.3; Section 12.2; `OD-RA03-003` |
+| RA03-REQ-017 | Every supplied direct trace link shall preserve its source, endpoints, relationship meaning where supplied, and any detected dangling, duplicate, ambiguous, or contradictory reference | MUST | ACCEPTED | RA02-REQ-010/015; Section 12.2 |
+| RA03-REQ-018 | TDG-derived candidate associations shall remain assessment artifacts with derivation, evidence, uncertainty, and behavior identity and shall not silently become supplied direct trace links | MUST | ACCEPTED | Charter Section 10.2; Section 12.3 |
+| RA03-REQ-019 | An opaque or inaccessible artifact shall be inventoried visibly but shall not alone satisfy a substantive test-basis evidence requirement; content exposed by an authorized OCR or equivalent extraction shall retain its locator, derivation, and uncertainty before supporting an assessment | MUST | ACCEPTED | RA02-REQ-010; Section 10.3; `OD-RA03-006` |
+| RA03-REQ-020 | Every addressable basis element and test case shall identify its supplied artifact and stable package-local source locator or explicit whole-artifact scope | MUST | ACCEPTED | RA-IN-004/005; Sections 10–13 |
+| RA03-REQ-021 | TDG shall preserve an explicit supplied testware-origin declaration for every test case directly or through an unambiguous containing set, shall keep origin distinct from ROLE-03 accountability, and shall not infer or upgrade authorship, AI assistance, human adoption, or accountability solely from writing style or content patterns | MUST | ACCEPTED | Charter Sections 6 and 8; Section 11.4; OD-RA03-004 |
+| RA03-REQ-022 | Missing or empty preconditions, steps, inputs, test data, expected results, postconditions, or contextual fields shall remain visible and shall not be filled through invention during package intake; a missing expected result shall be reported as a material gap or affected-assessment limitation without erasing recognizability when other qualifying behavioral content exists | MUST | ACCEPTED | RA-IN-002/005; RP-11; `OD-RA03-002` |
+| RA03-REQ-023 | TDG shall preserve declared test level, test type, design basis, execution mode, target role, and environment as independent source declarations rather than treating their labels as classification verdicts | MUST | ACCEPTED | RA-IN-003; WP-04; RA02-REQ-011/012 |
+| RA03-REQ-024 | When risks, prior defects, observed failures, heuristics, experience-based rationales, business objectives, constraints, exclusions, diagrams, matrices, notes, or other supplementary items are supplied, TDG shall retain their identities, human attribution, provenance, and relationships without treating absent optional items as universal package failure or inventing documented requirement coverage | MUST | ACCEPTED | Charter Sections 7–8; WP-03; `OD-RA03-003` |
+| RA03-REQ-025 | TDG shall preserve unknown, malformed, opaque, or unmapped assessment-relevant content and shall make its effect visible rather than silently dropping it | MUST | ACCEPTED | RA02-REQ-010; AF-RA02-001 |
+| RA03-REQ-026 | Every supplied artifact and addressable item shall have provenance sufficient to distinguish the exact content instance, source label, package-local location, package version, capture transformation, and applicable submission context | MUST | ACCEPTED | Charter Section 7; RA-IN-004; Section 13.1 |
+| RA03-REQ-027 | TDG shall record whether each provenance claim is supplied, system-observed, human-confirmed, or derived when the distinction affects review authority or evidence | MUST | ACCEPTED | WP-05; Section 13.2 |
+| RA03-REQ-028 | TDG shall not represent package provenance or an integrity identity as proof of source truth, authenticity, ownership, authorization, or semantic equivalence | MUST | ACCEPTED | RP-09; Sections 13.1/13.4 |
+| RA03-REQ-029 | Partial or conflicting provenance shall block or limit only the items and claims that depend on the unavailable or conflicting information when a trustworthy independent subset remains identifiable | MUST | ACCEPTED | WP-03; OD-RA02-002; Section 13.3 |
+| RA03-REQ-030 | Minimum provenance shall not require persistence of an absolute workstation path; environment-specific location data shall be minimized and handled under later security and import requirements | MUST | ACCEPTED | RA-IN-006; Sections 13.1/13.3 |
+| RA03-REQ-031 | TDG shall complete applicable policy, capture, identity, core-minimum, referential-integrity, provenance, coherence, and assessment-sufficiency checks before presenting an affected substantive assessment as supported | MUST | ACCEPTED | WP-02; RA02-REQ-007; Section 15.1 |
+| RA03-REQ-032 | Successful file parsing, field mapping, or snapshot capture shall not by itself be represented as minimum admissibility, assessment sufficiency, scope eligibility, or review success | MUST | ACCEPTED | RA02 PWF-02 through PWF-09; Section 15 |
+| RA03-REQ-033 | When core-minimum content is absent, TDG shall identify each missing minimum, its affected package version or candidate, the package-wide consequence, and the human action needed before substantive review | MUST | ACCEPTED | AF-RA02-002; RA02-REQ-008 |
+| RA03-REQ-034 | When conditional evidence is missing, TDG shall identify the dependent item or assessment and shall preserve independent supported assessments with explicit limitations where safe | MUST | ACCEPTED | AF-RA02-003; RA02-REQ-009 |
+| RA03-REQ-035 | TDG shall preserve contradictory supplied evidence and source identity and shall not select precedence or confirm a business rule without an attributable ROLE-04 decision | MUST | ACCEPTED | RA01-REQ-005; RA02-REQ-016 |
+| RA03-REQ-036 | TDG shall detect duplicate, dangling, ambiguous, or cross-version references and shall prevent them from silently satisfying required relationships | MUST | ACCEPTED | RP-11; Sections 12 and 15.4 |
+| RA03-REQ-037 | Assignment of a package-local identifier shall permit safe reference to captured content while leaving every source-identity deficiency visible to humans and dependent assessments | MUST | ACCEPTED | RP-05; Section 15.4 |
+| RA03-REQ-038 | Every intake or package-validation issue shall identify its category, affected location, evidence, consequence granularity, affected assessment where applicable, and possible human repair or clarification path | MUST | ACCEPTED | RA-IN-002; Section 15.2 |
+| RA03-REQ-039 | A non-structural or probabilistic input observation shall identify derivation and uncertainty and shall not be represented as a deterministic validation fact | MUST | ACCEPTED | Charter Section 10; Section 15.2 |
+| RA03-REQ-040 | TDG shall apply a package-wide blocking consequence only when trusted capture, applicable policy, a core-minimum element, or every meaningful assessment is affected | MUST | ACCEPTED | OD-RA02-001/002; Section 15.5 |
+| RA03-REQ-041 | When invalid, unsupported, conflicting, or insufficient items can be isolated safely, TDG shall expose a supported subset and every exclusion without producing misleading package-wide coverage | MUST | ACCEPTED | RA02-REQ-013/014; IS-09/10 |
+| RA03-REQ-042 | TDG shall identify the operating profile and shall prevent laboratory processing of confidential or possibly protected package content before prohibited substantive processing occurs | MUST | ACCEPTED | RA01-REQ-011; AF-RA02-014 |
+| RA03-REQ-043 | Once captured for assessment, a Review Package version and every supplied content instance within it shall be immutable | MUST | ACCEPTED | OD-RA02-004; RA02-REQ-001/028 |
+| RA03-REQ-044 | Any human change to supplied scope, source content, testware, supplied relationship, risk, context, or provenance-affecting declaration, and any recapture under a changed import transformation, shall create a distinct package version linked to preserved prior lineage where applicable | MUST | ACCEPTED | WP-06/07; Section 16.2 |
+| RA03-REQ-045 | A behavior-affecting assessment mapping, semantic normalization, rule, control, prompt, model, configuration, or runtime change against an unchanged captured package shall create a distinct assessment run and shall not silently create or mutate a package version | MUST | ACCEPTED | RA02-REQ-018/029; Section 16.2 |
+| RA03-REQ-046 | Reassessment of the same immutable package version shall create a distinct assessment-run identity while preserving the package-version identity | MUST | ACCEPTED | OD-RA02-005; RA02-REQ-017/029 |
+| RA03-REQ-047 | A package version shall declare zero or one direct predecessor, may have multiple later child versions, shall expose an invalid or multiple-predecessor declaration, and shall not overwrite, delete, or silently resolve evidence associated with an earlier version | MUST | ACCEPTED | RA02-REQ-028/030; Section 16.3; `OD-RA03-009` |
+| RA03-REQ-048 | Content-integrity equality shall not by itself merge package lineages or versions, establish semantic equivalence, or replace deliberate human selection of an existing version; re-uploaded identical content without such selection shall remain a separately attributable submission and package version | MUST | ACCEPTED | RP-09; Section 16.4; `OD-RA03-010` |
+| RA03-REQ-049 | Assessment findings, human dispositions, exports, view activity, and formal approval records shall reference but shall not mutate supplied Review Package content | MUST | ACCEPTED | RA01-REQ-006/008; RA02 Section 12 |
+| RA03-REQ-050 | Minimum admissibility, validation success, provenance sufficiency, or a complete logical package structure shall not produce a claim of test-suite completeness, testware approval, product quality, or official ISTQB conformity | MUST | ACCEPTED | Charter Section 10.4; RA01-REQ-014 |
 
-These requirements define observable information and behavior. They do not prescribe classes, database tables, API payloads, UI fields, or validation-library implementation.
+These requirements specify observable information and behavior, not classes, database tables, API payloads, UI fields or a validation library.
 
 ## 18. Downstream validation obligations
 
-These obligations will become test-analysis and STLC inputs after the relevant baselines exist. They are not executable test cases and do not yet assign final test levels.
+The 32 obligations below retain their accepted wording and traces. They guide test analysis and design; listing them does not establish executable test cases, final test levels or passing product behavior. RA03-VAL-014 uses the accepted IS-rule bridge in RA-10, as explained in Section 22.
 
 | ID | Future verification objective | Principal test-design direction | Primary trace |
 | --- | --- | --- | --- |
@@ -714,7 +561,7 @@ These obligations will become test-analysis and STLC inputs after the relevant b
 | RA03-VAL-031 | Verify validation-stage ordering and prove that successful parsing, field mapping, or snapshot capture never implies minimum admissibility, assessment sufficiency, scope eligibility, or review success | State-transition and prohibited-state tests | RA03-REQ-031/032 |
 | RA03-VAL-032 | Verify that findings, human dispositions, exports, view activity, and formal approval references cannot modify immutable supplied Review Package content | Immutability, authorization-boundary, and audit-history tests | RA03-REQ-049 |
 
-The future corpus must include packages where structural completeness and semantic sufficiency disagree. A perfectly structured but substantively weak package and a messy but partly assessable package are both required; otherwise the minimum-versus-quality boundary will not be tested honestly.
+The evaluation corpus must include both a structurally complete but substantively weak package and a messy but partly assessable package. Otherwise it cannot challenge the distinction between minimum input and test-design quality.
 
 ## 19. Synthetic reference example
 
@@ -756,11 +603,11 @@ The first example remains the synthetic customer-creation process approved in th
 | EX-17 | Supply an identifiable titled case with an action but no expected result | The case is recognizable, but the absent expected behavior is a material content gap and may make observability or dependent coverage assessment ungradable |
 | EX-18 | Supply a case with no direct requirement link and an attributable rationale that it targets a recurring defect observed by the tester | Preserve the experience-based basis and keep the package potentially admissible; do not invent a formal requirement link, claim documented-requirement coverage, or perform a fifth technique assessment |
 
-The example deliberately mixes structural, provenance, scope, technique-evidence, and security problems. Later workstreams will add the detailed verdicts appropriate to their own authority.
+The example deliberately mixes structural, provenance, scope, technique-evidence, and security problems. Detailed outcomes follow the related requirements in Section 21.2. These examples are not executed product tests.
 
 ## 20. Decision disposition record
 
-The Project Owner dispositioned all ten RA-03 decisions on 2026-09-12. No RA-03 decision remains open. These decisions establish the directions incorporated in this candidate; they do not automatically change the status of the fifty requirements from `PROPOSED` to `ACCEPTED` and do not replace the required static review.
+The Owner accepted all ten decisions on 2026-09-12. The [original decision record][decisions] preserves that approval; [PG-RA03-001][gate03-current] records the later acceptance of all fifty requirements and baseline designation. The table is an index of those decisions; their applicable rules are stated in Sections 6–16.
 
 | Decision | Accepted direction | Principal affected requirements | Status |
 | --- | --- | --- | --- |
@@ -775,160 +622,68 @@ The Project Owner dispositioned all ten RA-03 decisions on 2026-09-12. No RA-03 
 | OD-RA03-009 | Allow zero or one direct predecessor and branching; exclude multi-parent merge from MVP | RA03-REQ-047 | ACCEPTED as recommended — 2026-09-12 |
 | OD-RA03-010 | Prohibit fingerprint-only automatic deduplication | RA03-REQ-048 | ACCEPTED as recommended — 2026-09-12 |
 
-### OD-RA03-001 — Boundary among submission, package content, and derived interpretation
-
-Decision: **Adopt the three-layer model in Section 6.**
-
-Submission context records operation and authority. The immutable package version records exact supplied sources, human declarations, and an identified capture projection. The derived assessment view records semantic mapping, extraction, and interpretation. A changed capture/import transformation that changes captured logical content creates a new package version. A changed assessment mapping, semantic normalization, rule, prompt, model, control, or relevant configuration against unchanged captured content creates a new assessment run only. RA-02 v0.3 carries the corresponding controlled wording amendment.
-
-### OD-RA03-002 — Minimum recognizable test case
-
-Decision: **Require identity, a non-empty title or equivalent description, and at least one non-title behavioral segment, with the clarifications in Section 11.2.**
-
-An identifier, title, external link, or precondition alone is insufficient. Missing expected behavior does not erase recognizability when another qualifying behavioral segment exists, but it is a material gap or may limit the affected assessment. Preconditions are required when applicable, expected behavior may appear per step or in an addressable narrative, and semantically equivalent classic, narrative, or BDD forms remain eligible.
-
-### OD-RA03-003 — Direct trace links and experience-based basis
-
-Decision: **Require scope membership but permit zero, one, or multiple direct links; preserve an attributable experience-based rationale without inventing formal traceability.**
-
-A case may be based on a supplied risk, prior defect, observed failure, heuristic, or tester experience. TDG may use that declared basis for general review but cannot infer hidden experience, represent it as a documented requirement, or claim requirement coverage that was not supplied. This clarification does not add error guessing, exploratory testing, checklist-based testing, or another experience-based technique assessment to the initial four-technique MVP.
-
-### OD-RA03-004 — Human accountability and testware origin
-
-Decision: **Use explicit origin and attributable ROLE-03 accountability; eligibility follows human accountability, not purity of authorship.**
-
-Human-authored and human-controlled AI-assisted testware are positive origin classes only when an identified ROLE-03 explicitly accepts accountability. Generated content without accountable human adoption, other origin, and unknown origin remain visible but cannot satisfy the positive package minimum by themselves. TDG never infers or upgrades origin or accountability from writing style.
-
-This decision does not authorize test generation, autonomous repair, or review of AI/LLM systems as a target domain. Charter v0.4 and RA-01 v0.3 carry the corresponding controlled wording amendment. RA-04 must apply item-level eligibility to mixed-origin packages without allowing one qualifying case to transfer eligibility to another.
-
-### OD-RA03-005 — Missing or deficient source identifiers
-
-Decision: **Create visible package-local internal identifiers but never rewrite or conceal the source identifier state.**
-
-Internal IDs permit reliable evidence references and duplicate handling. Missing or duplicate external IDs remain preserved and visible. TDG cannot repair the source, write identifiers back, or automatically resolve an ambiguous relationship.
-
-### OD-RA03-006 — External references, Jira-shaped files, and opaque artifacts
-
-Decision: **A reference or opaque artifact cannot satisfy the substantive minimum by itself.**
-
-Substantive content must be deliberately supplied and addressable through an authorized capability. A URL, path, issue key, filename, scan, or unsupported binary may remain provenance or inventory evidence but cannot be counted silently as evaluated content. Authorized OCR or equivalent extraction may expose traceable content only with derivation and uncertainty. A file shaped like a customized Jira export is assessed by its supplied content; TDG neither needs to prove nor may claim that Jira actually produced it.
-
-### OD-RA03-007 — Extraction, confirmation, and package mutation
-
-Decision: **TDG extraction remains run-scoped; human confirmation may support the run but enters supplied package content only through a deliberate new version.**
-
-This preserves exact source history and keeps semantic decisions attributable. A human confirmation recorded for an unchanged run does not mutate the package; incorporating it into supplied scope, basis, testware, provenance, or associations creates a new package version.
-
-### OD-RA03-008 — Minimum provenance
-
-Decision: **Require package-local content identity, human-visible source label, source locator, package-version and capture-transformation references, and submission attribution; do not require external authenticity proof or an absolute workstation path.**
-
-Additional source version, author, system, timestamp, export, and revision metadata are preserved when supplied and labeled by evidence class. A fingerprint supports integrity checking but does not establish truth, origin, authorization, ownership, or semantic equivalence.
-
-### OD-RA03-009 — MVP lineage shape
-
-Decision: **Allow zero or one direct predecessor and multiple child versions; exclude multi-parent merge semantics from the MVP.**
-
-This supports initial, linear, and branched human revisions without premature merge logic. Invalid or multiple-predecessor declarations remain visible and cannot silently rewrite lineage.
-
-### OD-RA03-010 — Identical content and deduplication
-
-Decision: **Do not merge automatically on fingerprint equality.**
-
-Deliberate selection of an existing immutable package version reuses that version and creates a new run. Re-uploading identical content without that selection creates a separately attributable submission and package version. Any future exact-identity rule requires controlled approval and must consider scope, provenance, authority, and lineage rather than bytes alone.
-
 ## 21. Assumptions, constraints, and downstream allocation
 
 ### 21.1 Assumptions and constraints
 
 | ID | Assumption or constraint | Required treatment |
 | --- | --- | --- |
-| RA03-AC-001 | One Review Package remains bounded to one feature or small business process | Preserve as core scope rule; detailed boundary classification belongs to RA-04 |
-| RA03-AC-002 | Laboratory analysis uses only public or synthetic material | Mandatory until RA-08 controls are approved and verified |
-| RA03-AC-003 | Canonical JSON and defined CSV remain the approved MVP direction | RA-03 remains serialization neutral; physical contracts belong to RA-09 |
-| RA03-AC-004 | Source document and test-case formats are not yet fully selected | Logical semantics must survive later format choices; unsupported content remains visible |
-| RA03-AC-005 | A captured candidate snapshot may be preserved even when minimum inadmissible if policy permits exact safe capture | Snapshot existence must not be represented as substantive-review eligibility |
-| RA03-AC-006 | Integrity, identifier, and fingerprint algorithms are unselected | Require observable identity properties without choosing technology |
-| RA03-AC-007 | Capture transformations and assessment interpretations have different identity consequences | Version recapture as a package change; keep assessment interpretation run-scoped |
-| RA03-AC-008 | Final package, validation, finding, and lifecycle status names are unselected | Preserve semantic conditions and consequences; finalize vocabulary in RA-05/RA-09 |
-| RA03-AC-009 | Multi-parent lineage merge is outside the accepted MVP direction | Support initial, linear, and branched versions; revisit only through controlled change supported by evidence of need |
-| RA03-AC-010 | Testware-origin and ROLE-03-accountability declarations do not prove authorship history or the absence of AI assistance | Use as attributable qualification input, never as forensic certainty; do not infer or upgrade either value from style |
-| RA03-AC-011 | An attributable experience-based rationale may form part of the supplied test basis | Preserve it without inventing formal requirement coverage or expanding the initial technique set beyond EP, BVA, Decision Table, and State Transition assessment |
+| RA03-AC-001 | One Review Package covers one feature or small business process | Preserve the scope boundary; detailed qualification belongs to RA-04 |
+| RA03-AC-002 | Laboratory input is public or synthetic | RA-08 governs protection and any separately authorized confidential-data use; acceptance of requirements alone is not permission or verification |
+| RA03-AC-003 | Canonical JSON and defined CSV are the approved MVP direction | RA-03 remains format independent; RA-09 defines the physical contracts |
+| RA03-AC-004 | Format support is explicit and bounded | Use the accepted RA-09 native JSON and TC CSV contracts and identified mappings; unsupported content remains visible |
+| RA03-AC-005 | Safe permitted capture can preserve a package that fails the minimum | Snapshot existence does not imply substantive-review eligibility |
+| RA03-AC-006 | RA-03 specifies identity and integrity properties, not algorithms | Implementation choices must preserve those properties |
+| RA03-AC-007 | Capture changes and assessment changes have different identity effects | Changed recapture creates a package version; interpretation remains run-scoped |
+| RA03-AC-008 | Lifecycle and representation vocabulary has governing contracts | Use RA-05 for outcomes/history and RA-09 for capture/import meanings; do not infer a run state from input sufficiency alone |
+| RA03-AC-009 | Multi-parent lineage merge is outside the MVP | Support initial, linear and branched versions; revisit only through approved change supported by evidence of need |
+| RA03-AC-010 | Origin and accountability declarations are attributable claims, not authorship proof | Never infer or upgrade them from style or treat them as forensic certainty |
+| RA03-AC-011 | An attributable experience-based rationale can be supplied test basis | Preserve it without invented requirement coverage or expansion beyond the four initial technique assessments |
 
-### 21.2 Allocation to later workstreams
+### 21.2 Related requirements
 
-| Later workstream | RA-03 output supplied | Required later elaboration |
-| --- | --- | --- |
-| RA-04 — Scope qualification | Scope declaration, membership, declared axes, origin, supplied experience-based rationale, mismatches, opaque and mixed items | Classification taxonomy, evidence weighting, precedence, uncertainty, supported-subset rules, and difficult verdict examples |
-| RA-05 — Findings and persistence | Package/version/item identities, validation-issue contract, provenance classes, lineage, run separation | Definitive entities, statuses, transitions, findings, dispositions, history, persistence, comparison, retention hooks, and audit behavior |
-| RA-06 — Four techniques | Conditional evidence categories and addressable test-basis/test-case content | EP, BVA, Decision Table, and State Transition applicability and coverage requirements, deterministic controls, and evidence contracts; no silent addition of detailed experience-based technique assessment |
-| RA-07 — LLM roles | Derived-view boundary, inference provenance, uncertainty, no silent package mutation | Permitted roles, grounding, prompt/model identity, qualification, abstention, and requalification |
-| RA-08 — Security and privacy | Package content and provenance as assets, profile-aware intake, path minimization, protected-input block | Classification, trust boundary, identity, authorization, logs, temporary data, storage, retention, deletion, backup, export, and threat controls |
-| RA-09 — Input and export | Serialization-neutral objects, cardinalities, validation consequences, unknown-field and opaque-content behavior | Canonical JSON Schema, CSV profiles, parsers, capture/import transformations, validation codes/messages, round trip, and export formats |
-| RA-10 — Evaluation and acceptance | Minimum/conditional partitions, negative variants, issue-contract checks, version and lineage obligations | Dataset design, human oracle, sampling, metrics, thresholds, usability, robustness, and acceptance constraints |
+| Source | Governs details outside RA-03 |
+| --- | --- |
+| [RA-04 — Scope qualification][ra04] | Independent classification axes, eligibility, uncertainty, mixed input and supported subsets |
+| [RA-05 — Findings and persistence][ra05] | Entities, outcomes, run states, availability, human decisions, immutable history, persistence and comparison |
+| [RA-06 — Four techniques][ra06] | EP, BVA, Decision Table and State Transition applicability, coverage, deterministic controls and evidence |
+| [RA-07 — LLM roles][ra07] | Permitted tasks, grounding, prompt/model identity, qualification, abstention and requalification |
+| [RA-08 — Security and privacy][ra08] | Data classification, trust, authority, storage, logs, retention, deletion, backup and export protection |
+| [RA-09 — Input and export][ra09] | JSON/CSV contracts, capture profiles, parsing, validation messages, locators, round trips and export formats |
+| [RA-10 — Evaluation and acceptance][ra10] | Data selection, human oracle, metrics, thresholds, usability, robustness and acceptance evidence |
 
-No downstream workstream may collapse supplied content with inference, package membership with direct traceability, package version with assessment run, or minimum admissibility with test-design quality without controlled change approval.
+Read these sources with their accepted decisions, indexed in the [Requirements Analysis closure][phase]. Older candidate labels retained in some files do not reopen those decisions. No related contract may silently collapse supplied content with inference, membership with traceability, package version with run, or minimum input with design quality.
 
 ## 22. Authoring quality check
 
-This is an initial authoring self-check, not the focused static review required before the RA-04 gate.
+This section points to historical document checks; it does not report new product tests or independent assurance.
 
-| Check | Result |
+| Historical issue or check | Resolution and evidence |
 | --- | --- |
-| `PG-RA02-001` authorization boundary preserved | PASS |
-| Charter minimum Review Package elaborated without silent broadening | PASS AS CANDIDATE — Charter v0.4 applies `CR-RA03-001/002`; focused upstream delta review pending |
-| RA-01 human authority and supplied-data-only rules preserved | PASS |
-| RA-02 package/run, minimum/conditional, and supported-subset decisions preserved | PASS |
-| Ambiguous upstream use of “mapping” resolved by explicit controlled change | PASS AS CANDIDATE — `OD-RA03-001`; RA-02 v0.3 applies `CR-RA03-003`; delta review pending |
-| Accepted human-accountability direction reconciled with upstream “human-authored” wording | PASS AS CANDIDATE — `OD-RA03-004`; Charter v0.4 and RA-01 v0.3 apply `CR-RA03-001`; delta review pending |
-| Logical content separated from JSON/CSV and implementation design | PASS |
-| Submission context, immutable source snapshot, and derived assessment view separated | PASS |
-| Package membership separated from direct traceability | PASS |
-| Recognizable-case boundary reflects the accepted identity, description, behavioral-content, and missing-expected-result rules | PASS — `OD-RA03-002`; RA03-REQ-011/022; RA03-VAL-004 |
-| Experience-based rationale is preserved without invented requirement coverage or technique-set expansion | PASS — `OD-RA03-003`; RA03-REQ-016/024; RA03-VAL-008 |
-| Provenance separated from truth and authenticity claims | PASS |
-| Missing, opaque, duplicate, contradictory, and unmapped content represented | PASS |
-| Package-wide and narrow insufficiency consequences represented | PASS |
-| Human repair and package versioning preserved | PASS |
-| Confidential-data prohibition preserved | PASS |
-| Prohibited completeness, approval, and ISTQB-conformity claims preserved | PASS |
-| Normative `shall`, priority `MUST`, and proposal/acceptance status distinguished | PASS |
-| Candidate requirements identified | PASS — 50 proposed requirements |
-| Every proposed `MUST` requirement has at least one explicit downstream `VAL` reference | PASS — 50/50 by deterministic reverse trace check |
-| Downstream validation obligations identified | PASS — 32 obligations |
-| Decision disposition state identified | PASS — 10 of 10 accepted; 0 open |
-| Synthetic positive, negative, and equivalence examples identified | PASS — 1 positive shape and 18 controlled variants |
+| `RA03-REV-001` — Medium | Clarified `shall`, MUST and proposed/accepted status; the current dispositions are reflected in Section 17 |
+| `RA03-REV-002` — High | Replaced authorship purity with accountable human control under `OD-RA03-004`; upstream action `RA03-UA-002` subsequently closed |
+| `RA03-REV-003` — Medium | Added explicit validation references for all fifty requirements; the original author check reported 50/50 |
+| `RA03-REV-004` — Low | Clarified cardinality, origin/accountability dimensions and the RA-01 role reference |
+| Focused RA-03 review | [SR-RA03-001][review03] closed with observations; [PG-RA03-001][gate03-current] records requirement acceptance, upstream-action closure and GO to RA-04 |
+| `CR-RA10-001` / `SR-RA10-F-001` — Medium | Corrected G so it identifies a relevant conflict without assuming the conflict affects every assessment; X determines whether an independent subset exists |
+| `CR-RA10-002` / `SR-RA10-F-002` — Medium | Removed X as an extra condition in conflict-free IS-10/IS-11 and clarified missing conditional evidence without undoing the package minimum |
 
-The author-reviewer independence limitation from earlier workstreams remains relevant. A later focused static review must state explicitly that it is not independent assurance unless another qualified reviewer participates.
+The first four corrections followed an Owner walkthrough supported by an additional model. The focused reviews and correction checks remain document-level evidence, with their stated independence limits. The two verified input-table corrections were accepted on 2026-09-21, as recorded in [SR-RA10-001 v0.2][review10-current]. The original review did not identify them; this maintenance does not rewrite that earlier result.
+
+RA03-VAL-014 traces through IS-01–IS-11 using the controlled bridge in [RA-10 §8.1][ra10]. The same review records closure of the targeted `SR-RA03-OBS-001` action. The broader trace duty remains. `SR-RA03-OBS-002` / R-08 concerns disproportionate documentation and delayed empirical validation; the current cleanup addresses that risk, and the lesson is recorded in [LEARNINGS.md](../../../LEARNINGS.md).
 
 ## 23. RA-03 exit criteria
 
-RA-03 may close only when:
+The historical exit required Owner acceptance of the package model and all fifty requirements, closure of the two upstream wording actions, a focused static review, disposition of findings and an explicit GO to RA-04. In detail, that acceptance covered:
 
-- the three-layer intake model is accepted or deliberately revised;
-- logical package objects, relationships, and cardinalities are accepted;
-- the core-minimum package boundary is accepted;
-- conditional and supplementary evidence behavior is accepted;
-- scope declaration semantics and ROLE-02 authority are accepted;
-- supplied artifact, basis element, and test-case minimums are accepted;
-- scope membership and direct traceability remain correctly separated;
-- provenance minimum and evidence classes are accepted;
-- validation stages, issue information, and consequence granularity are accepted;
-- the input-sufficiency decision table is accepted or deliberately revised;
-- package identity, immutability, version triggers, lineage, and deduplication behavior are accepted;
-- all ten RA-03 decisions are dispositioned;
-- `RA03-UA-001` is closed through controlled correction and verification of the affected RA-02 wording;
-- `RA03-UA-002` is closed through controlled corrections of the affected Charter and RA-01 wording;
-- RA-03 requirements and current priorities are accepted or deliberately revised;
-- downstream validation obligations and allocations remain traceable;
-- a focused structured static review is complete;
-- no unresolved Critical or High RA-03 finding remains;
-- Medium findings are resolved or explicitly accepted or deferred;
-- the Project Owner explicitly authorizes transition to `RA-04`.
+- the three layers, objects, relationships and cardinalities;
+- the core minimum, conditional/supplementary evidence, scope authority and source/case minimums;
+- membership versus traceability, provenance classes and input-sufficiency consequences;
+- validation stages, issue information and consequence granularity;
+- identity, immutability, version triggers, lineage and deduplication;
+- all ten decisions, requirement priorities and traceable validation obligations and allocations.
 
-None of these acceptance or gate conditions is inferred from document generation. Project Owner review and the later static-review record remain required.
-
-At v0.3, all ten decision dispositions are complete and the four controlled amendment candidates have been prepared. The remaining exit work is: focused upstream delta review and correction verification; explicit Project Owner acceptance or revision of the fifty candidate requirements; focused RA-03 static review and correction verification; and a separate Project Owner gate decision for RA-04.
+Closure required no unresolved Critical or High finding; Medium findings had to be resolved or explicitly accepted or deferred. [PG-RA03-001][gate03-current] records the completed v0.3 exit, including `RA03-UA-001/002`, on 2026-09-15. [SR-RA10-001 v0.2][review10-current] records the later accepted v0.4 correction and replacement baseline. These decisions are complete; document generation or cleanup cannot substitute for a human gate decision or product acceptance.
 
 ## 24. Traceability summary
 
@@ -960,15 +715,23 @@ At v0.3, all ten decision dispositions are complete and the four controlled amen
 
 ## 25. Current amendment state and next action
 
-RA-03 v0.3 remains the accepted baseline under PG-RA03-001 v0.2. The original RA-03 review and GO to RA-04 remain closed; the two issues identified during the later RA-10 bridge review are newly recorded findings, not retroactive edits to that history.
+RA-03 v0.4 is the accepted logical input contract. Its requirement, validation and input-table rule identifiers remain stable. The accepted table corrections are already in Section 15.3; no repeated requirement acceptance or additional correction record is needed for this consolidation.
 
-The next decision is Owner endorsement of CR-RA10-001 and CR-RA10-002, their correction verification in SR-RA10-001, and this v0.4 replacement wording. The exact accepted REQ/VAL statements need no repeated item-by-item decision. RA-10 v0.2's controlled bridge and refined VAL-015 identify the changed source and validation consequence. The bridge observation can close only after the combined amendment and review disposition is accepted.
+Development and fixture preparation remain paused for documentation cleanup, and TC-I01-033 remains on hold. The Owner reviews each proposed file change before publication. [README.md](../../../README.md) carries current capability and work status. This cleanup does not establish implementation, product acceptance or permission to use confidential data.
 
-This amendment alone neither closes Requirements Analysis nor grants GO to Solution and Architecture Design, implementation, product acceptance or confidential-data use.
-
-| Version | Date | Change |
-| --- | --- | --- |
-| 0.4 | 2026-09-21 | Controlled §15.3 correction candidate under CR-RA10-001/002; accepted requirement and VAL wording retained; correction verification complete, endorsement pending |
-
-[gate03-current]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/be657405920aba0f2da2653f56266942a6ecc22e/docs/reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md
-[review10-current]: test-design-gatekeeper-ra-10-focused-static-review-v0.1.md
+[charter]: ../../governance/test-design-gatekeeper-project-charter-v0.4.md
+[ra01]: ../test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md
+[ra02]: ../test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md
+[gate03-current]: ../../reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md
+[review03]: ../../reviews/test-design-gatekeeper-ra-03-focused-static-review-v0.1.md
+[decisions]: ../test-design-gatekeeper-ra-03-decision-disposition-upstream-change-record-v0.1.md
+[review10-current]: test-design-gatekeeper-ra-10-focused-static-review-v0.2.md
+[phase]: test-design-gatekeeper-requirements-analysis-readiness-v0.2.md
+[ra04]: ../test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md
+[ra05]: ../ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md
+[ra06]: ../ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md
+[ra07]: ../ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.2.md
+[ra08]: ../ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md
+[ra09]: ../ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md
+[ra10]: test-design-gatekeeper-ra-10-evaluation-acceptance-v0.2.md
+[original]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/19948de4cb79b49904980ba335692752f291d3dd/docs/requirements-analysis/ra-10/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.4.md
