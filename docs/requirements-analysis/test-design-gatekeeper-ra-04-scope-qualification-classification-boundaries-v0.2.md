@@ -4,31 +4,26 @@
 
 | Field | Value |
 | --- | --- |
-| Document version and date | 0.2 — 2026-09-16 |
-| SDLC phase | Requirements Analysis |
-| Status | CORRECTED CANDIDATE — FINAL OWNER ENDORSEMENT PENDING |
-| Entry authorization | PG-RA03-001 v0.2 — GO to RA-04, 2026-09-15 |
-| Effective baseline | Charter v0.4; RA-01 v0.3; RA-02 v0.3; RA-03 v0.3 with the acceptance register in PG-RA03-001 v0.2 |
+| Basis | Accepted RA-04 v0.2, originally dated 2026-09-16 |
+| Acceptance and gate | All 15 requirements, three policy decisions and verified corrections accepted; v0.2 designated and GO to RA-05 recorded on 2026-09-17 in [SR-RA04-001 v0.2 / PG-RA04-001][review04] |
+| Text maintenance | Consolidated on 2026-10-21; section numbers and identifiers retained |
 | Decision authority | Project Owner |
-| Requirement state | All 15 v0.1 requirements accepted by the Project Owner; 14 wordings unchanged; REQ-004 editorial clarification awaits endorsement |
-| Policy decisions | OD-RA04-001 through OD-RA04-003 ACCEPTED; 0 open policy decisions |
-| Review and correction record | SR-RA04-001 v0.1; original v0.1 retained as the reviewed predecessor |
-| RA-05 gate | NOT GRANTED |
-| Implementation and confidential-data use | Not authorized |
+
+This is the maintained scope-qualification policy. The [original v0.2 text][original] remains in Git history; earlier review hashes and byte counts identify that snapshot. Current capability and the development pause are described in [README.md](../../README.md). Acceptance of these requirements is not evidence that qualification works in the product.
 
 ## 1. Purpose, sources, and boundaries
 
-RA-04 defines the evidence and consequences for deciding which supplied test cases or assessment dimensions fit the MVP. It preserves the distinction between an established exclusion and an inability to decide.
+RA-04 defines how to decide whether supplied test cases or assessment dimensions fit the MVP. Evidence that a test is outside scope is different from insufficient evidence to decide.
 
-The governing sources are [Charter Sections 6, 8 and 9][charter], [RA-01 authority rules][ra01], [RA-02 qualification workflow and accepted requirements][ra02], and [RA-03 input and identity requirements][ra03]. Their effective acceptance and baseline are recorded in [PG-RA03-001 v0.2][gate]. All repository references identify the published baseline commit `c428df6e80211c8415d4cd96a4f3707df8e080e3`; earlier status notices in the source files are historical.
+The [Charter][charter] sets product scope; [RA-01][ra01] sets human authority; [RA-02][ra02] defines the workflow; and [RA-03 v0.4][ra03] defines input, identity and sufficiency. The historical entry was authorized by [PG-RA03-001 v0.2][gate] on 2026-09-15. The accepted versions and their decisions are indexed in the [Requirements Analysis closure][phase].
 
-Terminology was checked against [ISTQB CTFL Syllabus v4.0.1, Sections 2.2 and 4.1][ctfl], accessed 2026-09-16. CTFL distinguishes test levels using context such as the test object and objectives. It discusses functional, non-functional, black-box and white-box testing as test types, and distinguishes black-box, white-box and experience-based technique families. TDG separates these considerations into operational dimensions to avoid treating them as mutually exclusive labels. Its admission rules and evidence thresholds below are TDG project policy, not ISTQB certification criteria. Credit for the referenced syllabus belongs to ISTQB and its authors; no syllabus text is reproduced.
+The original analysis checked terminology against [ISTQB CTFL v4.0.1, Sections 2.2 and 4.1][ctfl] on 2026-09-16. TDG uses separate operational dimensions for test level, objective, design basis, technique and execution mode. These are not mutually exclusive labels. Its admission rules and evidence thresholds are project policy, not ISTQB certification criteria.
 
-RA-04 adds qualification policy to the accepted model. Final result enums and persistence belong to RA-05; technique applicability and coverage to RA-06; LLM roles and qualification to RA-07; security controls to RA-08; supported import representations to RA-09; evaluation datasets and thresholds to RA-10. The examples below are synthetic classification fragments, not implemented checks, complete Review Packages, or a finalized benchmark.
+Detailed result meanings belong to [RA-05][ra05], techniques to [RA-06][ra06], LLM roles to [RA-07][ra07], security to [RA-08][ra08], input formats to [RA-09][ra09], and evaluation to [RA-10][ra10]. The examples below are synthetic fragments, not complete packages, implemented checks or an acceptance benchmark.
 
 ## 2. Separate the decisions
 
-Qualification is recorded per identifiable TC and, where defensible, per assessment dimension. A package is an inventory of these outcomes, not evidence that every contained TC is eligible.
+Record qualification per identifiable TC and, where justified, per assessment dimension. Package membership does not make every item eligible.
 
 | Decision | Question | Consequence |
 | --- | --- | --- |
@@ -38,9 +33,9 @@ Qualification is recorded per identifiable TC and, where defensible, per assessm
 | Capability availability | Can the authorized capability inspect the needed representation and perform this assessment? | Missing capability is reported separately from domain exclusion |
 | Assessment sufficiency | Is the evidence sufficient for the particular claim? | Limit that claim while retaining independent supported work |
 
-For example, an in-scope functional TC may lack data needed for BVA analysis. Qualification can be supported while BVA assessability remains unresolved. Missing expected results remain a quality gap under RA03-REQ-022, not an automatic change of test level or design basis.
+An in-scope functional case may lack the data needed for BVA. A missing expected result remains a quality gap under RA03-REQ-022; it does not automatically change test level or design basis.
 
-The descriptions in this document specify meanings, not final RA-05 status names or a software execution pipeline. Inspection needed to qualify material does not imply that substantive review has already been authorized or completed.
+These distinctions do not prescribe an execution pipeline. Inspection for qualification does not establish authorization or completion of substantive review. [RA-05 §3.2][ra05] defines the recorded statuses.
 
 ## 3. Independent dimensions and the MVP boundary
 
@@ -53,7 +48,7 @@ The descriptions in this document specify meanings, not final RA-05 status names
 | Technique evidence | Supplied rationale and demonstrable technique-related material | Naming EP, BVA, decision tables or state transitions is neither required nor sufficient; detailed assessment is RA-06 |
 | Execution and context | Manual/automated mode, representation, role and environment where relevant | Preserve independently; absence matters only where it prevents a particular decision |
 
-For a proposed qualification subject, all five conditions below need support for a positive domain conclusion. A subject is normally the whole TC; Section 5 governs narrower views.
+A positive domain conclusion requires support for all five criteria below. The subject is normally the whole TC; Section 5 governs narrower views.
 
 | Criterion | Required support for the MVP route |
 | --- | --- |
@@ -63,25 +58,25 @@ For a proposed qualification subject, all five conditions below need support for
 | RA04-C-04 | The proposed assessment has an external-behavior basis and does not depend on evaluating implementation-structure coverage |
 | RA04-C-05 | The assessed subject is ordinary business-system behavior, not evaluation of AI/LLM behavior as the parked target domain |
 
-The system boundary may include multiple deployable components. UI/API access, mocks, stubs, a database connection, or an E2E label do not establish a test level. Actual integration and acceptance objectives remain outside this MVP even when their tests are functional and specification-based. A deployment named UAT does not by itself establish an acceptance objective.
+A system boundary may include several deployable components. UI/API access, mocks, stubs, a database connection or an E2E label does not establish the test level. Integration and acceptance objectives remain outside this MVP even when functional and specification-based. A UAT environment name alone does not establish an acceptance objective.
 
-An attributable experience-based rationale may support general functional review within the existing Charter allowance. Preserve that rationale and technique family; do not relabel error guessing as a specification-based technique or add it to the four assessed techniques. Likewise, the presence of AI somewhere in a business application does not alone prove that a TC evaluates AI behavior; the supplied objective and relevant dependencies decide the boundary.
+An attributable experience-based rationale may support general functional review. Preserve its family and rationale; do not relabel error guessing as specification-based or add it to the four assessed techniques. Likewise, AI within an application does not by itself mean a case evaluates AI behavior: its supplied objective and relevant dependencies decide that boundary.
 
 ## 4. Evidence and qualification consequences
 
 ### 4.1 Evidence contract — accepted OD-RA04-001
 
-Use substantive TC content and attributable supplied context identifying the object, objective and basis relevant to the decision. Shared package context is usable when its application to the item is unambiguous. This adds no mandatory physical fields or one-TC-to-one-requirement link.
+Use substantive TC content and attributable supplied context identifying the object, objective and design basis. Shared package context is usable when it applies unambiguously to the item. No mandatory field template or direct requirement link is added.
 
-An operator's label, a title, a framework name or an LLM confidence score is insufficient alone. Absence of code in a submission is not proof of black-box design. Missing execution-mode metadata need not prevent qualification when it is irrelevant to the criteria.
+Labels, titles, tool names and model confidence are insufficient alone. Absence of code does not prove black-box design. Missing execution-mode metadata need not block qualification when irrelevant to the criteria.
 
-Preserve the declared labels separately from the evidence-supported interpretation. An isolated label discrepancy may be reported without defeating otherwise sufficient context. Contradictory substantive accounts of the object, purpose or basis remain unresolved until an attributable clarification or source-precedence decision exists. No rule silently makes the newest, longest or most formal-looking source authoritative.
+Keep declarations separate from evidence-supported interpretations. An isolated label discrepancy need not defeat otherwise sufficient context. Substantive contradictions about the object, purpose or basis require attributable clarification or a source-precedence decision. Do not automatically prefer the newest, longest or most formal-looking source.
 
-Qualified, authorized capabilities may assist interpretation under RA-07. Their output remains visibly derived, with evidence and uncertainty. If a decisive inference lacks sufficient support, retain an undetermined result and request the missing context. A model's confidence cannot upgrade missing evidence or record human confirmation. This document chooses no numerical threshold, classifier, prompt or implementation mechanism.
+Authorized, qualified RA-07 capabilities may assist interpretation, with visible derivation, evidence and uncertainty. Unsupported decisive inference leaves qualification undetermined and calls for the missing context. Model confidence cannot replace evidence or human confirmation. RA-04 selects no numerical threshold, classifier, prompt or implementation mechanism.
 
 ### 4.2 Consequence table
 
-Apply the first applicable row to the qualification subject after accounting for prerequisites and any permitted separation. Preserve additional known reasons and unresolved dimensions.
+Apply the first applicable row after prerequisites and permitted separation. Retain additional established reasons and unresolved dimensions.
 
 | Rule | Condition | Required meaning and action |
 | --- | --- | --- |
@@ -90,15 +85,17 @@ Apply the first applicable row to the qualification subject after accounting for
 | RA04-Q-03 | No established exclusion, but at least one decisive criterion lacks support or has an unresolved substantive conflict | Undetermined; identify the missing fact or conflict and the affected review limitation |
 | RA04-Q-04 | All five criteria are supported for the identified subject | Supported in scope; substantive review still depends on item eligibility, capability and assessment-specific evidence |
 
-A capability failure supplies no evidence of being outside scope. Retain any independent supported qualification evidence; otherwise qualification remains undetermined with the capability limitation visible. An excluded item may still receive attributable intake and scope diagnostics; it does not receive unsupported technique or coverage review.
+A capability failure is not evidence of domain exclusion. Retain independent supported qualification evidence and show the capability limitation. Under [RA-05 §3.2][ra05], qualification not attempted is `NOT_EVALUATED`; an attempted qualification without a supported conclusion is `UNDETERMINED`. These remain distinct from an established exclusion.
+
+An excluded item may receive attributable intake and scope diagnostics, but no unsupported technique or coverage review.
 
 ## 5. Technical detail, mixed cases, and human control
 
 ### 5.1 Technical detail is assessed by its role
 
-Distinguish setup, observation and the basis used to derive the test. SQL used to prepare a known starting condition can coexist with a functional system scenario. An internal observation needs enough supplied meaning to determine whether it merely observes a business outcome or makes the test dependent on implementation structure. A private branch flag or code-coverage target provides different evidence from an API response or a documented business state. Unexplained database fields or logs call for clarification; they do not justify guessing either black-box or white-box.
+Distinguish setup, observation and the basis used to derive the test. SQL preparing a known starting condition can coexist with a functional system scenario. For an internal observation, supplied context must explain whether it observes a business outcome or creates dependence on implementation structure. A private branch flag or code-coverage target differs from an API response or documented business state. Unexplained fields or logs need clarification, not a guessed black-box or white-box label.
 
-The label "gray-box" may be retained as supplied text. The conclusion describes the actual external, internal, mixed or unknown dependencies and their consequences, rather than issuing a definitive gray-box verdict.
+Preserve a supplied "gray-box" label as source text. Describe the actual external, internal, mixed or unknown dependencies and their consequences instead of issuing a definitive gray-box verdict.
 
 ### 5.2 Separability — accepted OD-RA04-002
 
@@ -113,20 +110,22 @@ This is an assessment view, not a new authored TC. If these conditions cannot be
 
 ### 5.3 Package reporting — accepted OD-RA04-003
 
-List each original TC once by its unambiguous RA-03 package-local identity, with its domain conclusion or mixed/partial explanation, item-eligibility and capability restrictions, and separately attributable dimensions where used. Duplicate external IDs and repeated text do not merge those identities. A partially reviewed TC must not be counted as a fully reviewed TC or as several new TCs. Show included and excluded identities and reasons; do not turn qualification counts into coverage percentages or a package-wide quality verdict. An empty supported subset means no substantive supported review is available.
+List each original TC once using its RA-03 internal identity. Show its domain conclusion or mixed/partial explanation, item-eligibility and capability restrictions, any separately assessed dimensions, and included/excluded identities with reasons. Duplicate external IDs or repeated text do not merge cases. A partial review cannot count as a complete review or several new TCs. Qualification counts are not coverage percentages or a package quality verdict. An empty supported subset means no supported substantive review is available.
 
-ROLE-02 owns scope decisions, ROLE-04 owns disputed test-basis interpretations and source precedence, and ROLE-03 owns source TC correction. New findings or suggestions retain the RA-02 human-disposition boundary. A human can clarify evidence but cannot make unsupported evidence true or expand the product MVP without Project Owner change control. Changes to supplied content create a new package version; reinterpretation or reassessment of unchanged content creates a new run, preserving both outcomes.
+ROLE-02 owns scope decisions, ROLE-04 disputed test-basis interpretations and source precedence, and ROLE-03 source correction. Findings and suggestions retain the RA-02 human-disposition boundary. Clarification cannot make unsupported evidence true or expand the MVP without Owner change approval.
+
+Package/run consequences follow [RA-03 §16][ra03] and [RA-05 §5.1][ra05]: supplied-content changes create a new package version; a first applicable ROLE-04 interpretation decision can support an unassessed entry in an active run under RA-05's conditions. Replacing an applied premise, changing a behavior artifact or reassessing a committed entry requires a new run. A terminal run cannot resume; earlier evidence and outcomes remain preserved.
 
 ## 6. Requirements and acceptance state
 
-`Shall` expresses mandatory behavior within an effective baseline. The Project Owner accepted all fifteen v0.1 requirements during the walkthrough. This candidate retains fourteen requirement wordings unchanged and clarifies the positive direction of REQ-004 under SR-RA04-F-001. The revised REQ-004 wording and designation of this candidate baseline await final endorsement; the earlier acceptance of its policy is retained. Binding baseline effect requires completion of the applicable review and baseline controls. `MUST` expresses priority, not an implementation choice.
+All fifteen requirements are MUST / ACCEPTED under [SR-RA04-001 v0.2][review04], including the clarified positive direction of REQ-004. `Shall` states mandatory behavior and `MUST` its priority; neither selects an implementation. Requirement statements, priorities and upstream traces remain unchanged from the accepted v0.2 wording.
 
 | ID | Requirement | Priority | Status | Upstream trace |
 | --- | --- | --- | --- | --- |
 | RA04-REQ-001 | TDG shall distinguish package prerequisites, item eligibility, domain qualification, capability availability and assessment-specific sufficiency before relying on an affected substantive result. | MUST | ACCEPTED | RA02-REQ-007; RA03-REQ-031; RA03-REQ-032 |
 | RA04-REQ-002 | TDG shall retain test level, functional objective, design basis, technique evidence, execution mode and relevant context as separate dimensions without deriving one solely from another. | MUST | ACCEPTED | RA02-REQ-011; RA03-REQ-023 |
 | RA04-REQ-003 | TDG shall ground qualification in addressable supplied content and applicable context; labels, titles, tool names, confidence scores and absence of implementation details shall not independently establish eligibility or exclusion. | MUST | ACCEPTED | RA02-REQ-012; RA03-REQ-020; RA03-REQ-039 |
-| RA04-REQ-004 | A positive in-scope domain conclusion shall satisfy RA04-C-01 through RA04-C-05 for the identified subject; integration, acceptance, structural-coverage and AI/LLM-evaluation objectives shall not be admitted through relabeling. | MUST | ACCEPTED POLICY / WORDING ENDORSEMENT PENDING | Charter Sections 8–9; RA02-REQ-015; RA02-REQ-035; RA02-REQ-036 |
+| RA04-REQ-004 | A positive in-scope domain conclusion shall satisfy RA04-C-01 through RA04-C-05 for the identified subject; integration, acceptance, structural-coverage and AI/LLM-evaluation objectives shall not be admitted through relabeling. | MUST | ACCEPTED | Charter Sections 8–9; RA02-REQ-015; RA02-REQ-035; RA02-REQ-036 |
 | RA04-REQ-005 | TDG shall apply RA04-Q-01 through RA04-Q-04, distinguishing evidence-supported exclusion from undetermined qualification and preserving additional established reasons and unresolved dimensions. | MUST | ACCEPTED | RA02-REQ-013; RA03-REQ-035; RA03-REQ-040 |
 | RA04-REQ-006 | TDG shall assess the role of technical setup, observations and implementation dependencies before classifying the design basis, preserving a supplied gray-box label without using it as a definitive verdict. | MUST | ACCEPTED | Charter Section 9; RA02-REQ-012; RA02-REQ-013 |
 | RA04-REQ-007 | An assessment view within a mixed TC shall meet all four separability conditions in Section 5.2, retain source references and necessary dependencies, and shall not rewrite the TC or imply whole-case qualification. | MUST | ACCEPTED | RA02-REQ-014; RA03-REQ-006; RA03-REQ-041 |
@@ -170,7 +169,7 @@ Unless changed in a row, assume a permitted synthetic package, accountable recog
 
 ## 8. Downstream validation obligations
 
-These are future validation conditions, not executed tests or implemented acceptance checks. Every obligation directly references RA-04 requirements; every requirement has at least one obligation.
+These are conditions for later test design, not executed tests. Each obligation directly references requirements, and every requirement has at least one obligation.
 
 | ID | Validation obligation | Primary trace |
 | --- | --- | --- |
@@ -190,11 +189,11 @@ These are future validation conditions, not executed tests or implemented accept
 | RA04-VAL-014 | Contrast ordinary functional behavior in a product that contains AI with an objective that evaluates model behavior; omit decisive context and require abstention rather than assumption. | RA04-REQ-004; RA04-REQ-005 |
 | RA04-VAL-015 | Check positive, excluded and empty-result reports for false defect, approval, completeness, product-quality or ISTQB-conformity implications. | RA04-REQ-008; RA04-REQ-015 |
 
-RA03-VAL-014 retains its separate carried trace action from SR-RA03-OBS-001. This direct RA-04 matrix does not close or replace that earlier action. Actual evaluation data must later contain independently adjudicated good, bad and borderline cases; the examples above alone do not demonstrate classifier effectiveness or provide a held-out acceptance set.
+The separate `SR-RA03-OBS-001` action for RA03-VAL-014 was subsequently closed through the accepted RA-10 bridge, as recorded in [SR-RA10-001 v0.2][review10]. RA04-VAL-014 is a different obligation. Evaluation still needs independently adjudicated good, bad and borderline cases; these illustrative examples alone do not establish classifier effectiveness or form a held-out acceptance set.
 
 ## 9. Policy decision disposition
 
-Inherited scope, roles, partial-review permission and version semantics are already accepted. The Project Owner accepted the three RA-04 recommendations below during the walkthrough, including an explicit acceptance of Section 9. No accepted upstream decision is reopened.
+The three decisions below are accepted in [SR-RA04-001 v0.2][review04]. Their applicable rules are in Sections 4–5.
 
 | Decision | Recommendation | Impact if revised | Status |
 | --- | --- | --- | --- |
@@ -204,25 +203,25 @@ Inherited scope, roles, partial-review permission and version semantics are alre
 
 ## 10. Author check, handoff, and exit
 
-The following table distinguishes original author checks from subsequent verification recorded in SR-RA04-001. The Project Owner completed the walkthrough of Sections 1–10. The same assistant authored and checked the source and corrections; this is not independent assurance.
+[SR-RA04-001 v0.2][review04] records the Owner's acceptance on 2026-09-17: all fifteen requirements, three policy decisions, the static review, three verified wording corrections, the v0.2 baseline and GO to RA-05. RA-04 is closed. `SR-RA04-F-001` clarified the positive direction of REQ-004 and the MVP exclusions in EX-11 and EX-20; those corrections are already included here.
 
-| Check | State |
-| --- | --- |
-| Source identity and entry authority | Verified against the five published baseline/gate file identities |
-| Upstream scope and role boundaries | Checked against Charter Sections 8–9, RA-01 authority and RA-02 partial-review/qualification rules |
-| Normative status | 15 MUST; all v0.1 requirements owner-accepted; REQ-004 wording clarification awaits endorsement |
-| Bidirectional REQ/VAL references | PASS — 15/15 REQ covered; 15/15 VAL directly reference existing REQ; no dangling upstream requirement references |
-| Boundary distinctions | Intake/domain/capability/sufficiency, outside/undetermined, declaration/inference, and whole-TC/view remain separate |
-| Focused static review and correction verification | COMPLETE — correction verification PASS; new finding disposition and candidate baseline endorsement PENDING |
-| RA-05 gate | NOT GRANTED |
+The original document checks found 15/15 requirements with direct validation links, 15/15 obligations with valid targets and 28 direct REQ–VAL links. The same assistant authored and checked the source; the Owner performed the walkthrough. These are historical document checks, not independent assurance, executed product tests or model-effectiveness evidence.
 
-RA-05 receives outcome meanings and reporting obligations; RA-06 receives only supported subjects with their evidence limits; RA-07 receives the qualification-role evidence and abstention contract; RA-08/09 receive existing policy/capability boundaries; RA-10 receives the validation obligations and difficult example families. Detailed algorithms and numeric confidence or quality thresholds remain with those later workstreams.
+Detailed outcomes, techniques, model roles, protection, formats and evaluation are governed by the related sources in Section 1. Historical GO to RA-05 does not override the current development pause. `SR-RA03-OBS-002` / R-08 remains relevant: additions need a distinct decision, risk or validation purpose, and documentation must not delay empirical evaluation. Current work is described in [README.md](../../README.md).
 
-RA-04 closes after disposition of the three recommendations and fifteen requirements, a focused static review, correction verification where needed, a verified baseline record, and an explicit Project Owner decision for RA-05. The human walkthrough is complete. The remaining owner decision concerns SR-RA04-F-001's three verified wording corrections, the review record, this candidate baseline and the RA-05 gate. It does not repeat acceptance of unchanged requirements or policy decisions. R-08 remains active: future additions need a distinct decision, risk or validation purpose.
-
-[charter]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/c428df6e80211c8415d4cd96a4f3707df8e080e3/docs/governance/test-design-gatekeeper-project-charter-v0.4.md
-[ra01]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/c428df6e80211c8415d4cd96a4f3707df8e080e3/docs/requirements-analysis/test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md
-[ra02]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/c428df6e80211c8415d4cd96a4f3707df8e080e3/docs/requirements-analysis/test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md
-[ra03]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/c428df6e80211c8415d4cd96a4f3707df8e080e3/docs/requirements-analysis/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.3.md
-[gate]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/c428df6e80211c8415d4cd96a4f3707df8e080e3/docs/reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md
+[charter]: ../governance/test-design-gatekeeper-project-charter-v0.4.md
+[ra01]: test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md
+[ra02]: test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md
+[ra03]: ra-10/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.4.md
+[gate]: ../reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md
+[review04]: ../reviews/test-design-gatekeeper-ra-04-focused-static-review-v0.2.md
+[phase]: ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md
+[ra05]: ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md
+[ra06]: ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md
+[ra07]: ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.2.md
+[ra08]: ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md
+[ra09]: ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md
+[ra10]: ra-10/test-design-gatekeeper-ra-10-evaluation-acceptance-v0.2.md
+[review10]: ra-10/test-design-gatekeeper-ra-10-focused-static-review-v0.2.md
 [ctfl]: https://istqb.org/?download_id=3345&sdm_process_download=1
+[original]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/ade85a1b39e145ed9409d94869c3041bbe7219b1/docs/requirements-analysis/test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md
