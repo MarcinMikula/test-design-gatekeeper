@@ -4,33 +4,26 @@
 
 | Field | Value |
 | --- | --- |
-| Document version and date | 0.2 — 2026-09-17 |
-| SDLC phase | Requirements Analysis |
-| Status | CORRECTED CANDIDATE — LOCAL CLARIFICATION AWAITS OWNER ENDORSEMENT |
-| Entry authorization | PG-RA04-001, consolidated in Section 7 of SR-RA04-001 v0.2 — GO to RA-05 |
-| Effective baseline | Charter v0.4; RA-01 v0.3; RA-02 v0.3; RA-03 v0.3 with PG-RA03-001 v0.2; RA-04 v0.2 with SR-RA04-001 v0.2 |
+| Basis | Accepted RA-05 v0.2, originally dated 2026-09-17 |
+| Acceptance and gate | All 22 requirements and four policy decisions accepted; the verified clarification, v0.2 baseline and GO to RA-06 endorsed on 2026-09-18 in [SR-RA05-001 v0.2 / PG-RA05-001][review05] |
+| Text maintenance | Consolidated on 2026-10-22; section numbers and identifiers retained |
 | Decision authority | Project Owner |
-| Requirement state | All 22 v0.1 requirements ACCEPTED by the Project Owner; all requirement statements and MUST priorities unchanged |
-| Policy decisions | OD-RA05-001 through OD-RA05-004 ACCEPTED as recommended; 0 open policy decisions |
-| Static review and acceptance record | SR-RA05-001 v0.1; one clarification prepared and verified, final endorsement pending |
-| RA-06 gate | NOT GRANTED |
-| Implementation and confidential-data use | Not authorized |
+
+This is the maintained contract for assessment results, human decisions and retained history. The [original v0.2 text][original] remains in Git history; earlier review hashes and byte counts identify that snapshot. Current capability and the development pause are described in [README.md](../../../README.md). Requirement acceptance does not establish implemented or tested behavior.
 
 ## 1. Purpose, sources, and boundaries
 
-RA-05 defines what TDG retains after a review: the bounded assessment result, its findings or suggestions, the evidence behind them, human decisions, and subsequent history. It distinguishes completion of analysis from the availability of a supported result, acceptance of a finding, external repair of a TC, and formal approval of testware.
+RA-05 defines what TDG records after a review and how a human can inspect the result, decide on a finding and follow later changes. Processing completion, available assessment results, human acceptance, source repair and formal testware approval have separate meanings.
 
-The governing sources are [Charter Sections 10 and 17][charter], [RA-01 authority rules][ra01], [RA-02 Sections 11–15][ra02], [RA-03 content and identity requirements][ra03], and [RA-04 qualification rules][ra04]. The effective acceptance records are [PG-RA03-001 v0.2][gate03] and [SR-RA04-001 v0.2, including PG-RA04-001][review04]. Repository links pin commit `7b5612b19525a97e7c43d2450b0e0e94dbbd7940`. Earlier candidate or pending notices in source documents are historical; the subsequent acceptance records govern.
+The [Charter][charter] sets product scope; [RA-01][ra01] defines authority; [RA-02][ra02] defines workflow; [RA-03 v0.4][ra03] governs supplied content and identity; and [RA-04][ra04] governs scope qualification. Historical entry to RA-05 was granted by `PG-RA04-001` in [SR-RA04-001 v0.2][review04]. The [Requirements Analysis closure][phase] indexes accepted versions and decisions.
 
-This is a logical information and behavior model. It selects no database engine, physical schema, API, UI, cryptographic mechanism, retention duration, or export format. It introduces no overall score for test quality or ISTQB conformity. The status vocabulary is TDG project policy, not an ISTQB-prescribed workflow.
+This document specifies logical records and behavior. Physical design, protection, retention periods and file formats belong to the sources in Section 12.2. The statuses are TDG policy, not an ISTQB workflow or an overall test-quality score. `Shall` states required behavior; `MUST` its priority.
 
-The Project Owner accepted RA-05 v0.1 in full, including all 22 MUST requirements and the four recommended decisions. **Shall** therefore expresses an accepted obligation for that reviewed wording. This v0.2 candidate preserves every requirement statement and records the acceptance; it also proposes a localized clarification in Sections 5.1 and 6 and corresponding refinements to VAL-006 and VAL-009. Those later edits are not retroactively covered by acceptance of v0.1. [SR-RA05-001 v0.1][review05] records the decision, the review, and the exact change boundary. Final endorsement of these edits and GO to RA-06 remain pending.
-
-The following inherited rules are not reopened: every new finding starts `PENDING`; finding dispositions are `PENDING`, `ACCEPTED`, `REJECTED`, and `DEFERRED`; TDG does not edit source TC or formally approve testware; confidential or possibly protected material is prohibited in the laboratory profile.
+Every new finding starts `PENDING`; only the four dispositions in Section 5.2 apply. TDG does not edit source test cases or formally approve testware. Laboratory work permits only public or synthetic data.
 
 ## 2. Logical records and identities
 
-An identity names a record; it does not prove that its contents are correct. Source identifiers, titles, repeated steps, and content hashes do not replace TDG's internal identities or establish equivalence across versions.
+Record identity does not establish correctness. Source IDs, titles, repeated steps and matching hashes do not replace internal identities or prove equivalence across versions.
 
 | Record | Required relationship and meaning |
 | --- | --- |
@@ -43,9 +36,9 @@ An identity names a record; it does not prove that its contents are correct. Sou
 | Impact or comparison record | A versioned observation about applicability or correspondence between identified records; cannot modify historical source or silently transfer decisions |
 | Export instance | An authorized snapshot of identified records and a defined history boundary; distinct from the canonical retained record |
 
-A subject can be a supplied source fragment, a TC, a justified within-TC view, or an explicitly bounded group of TC. A view retains its parent TC identity and original source locations; it is not a newly authored TC. Group findings name the affected members and scope instead of becoming an unsupported package-wide verdict.
+A subject may be a source fragment, TC, justified within-TC view or explicitly bounded group. Views retain parent identity and source locations without authoring a new TC. Group findings identify their affected members and boundary.
 
-Intake problems occurring before a trusted package version exists remain intake diagnostics. TDG must not fabricate a package or assessment run to attach them. Their safe recording follows the applicable profile and later RA-08 policy.
+Problems before trusted package capture remain intake diagnostics; do not fabricate a package or run to hold them. Record only what the operating profile and [RA-08][ra08] permit.
 
 ## 3. Run state, assessment ledger, and result availability
 
@@ -89,7 +82,7 @@ Each relevant entry preserves these separate questions:
 | `NOT_PERFORMED` | The dimension was not substantively reviewed for an explicit reason, such as exclusion, item ineligibility, unavailable capability, policy restriction, or not being requested |
 | `INCOMPLETE` | Work started but no safely completed conclusion for this entry is available |
 
-Operational diagnostics, intake checks, and scope classification are not counted as completed substantive review dimensions. A supported observation about a missing TC element can be an assessed quality dimension while a separate technique dimension is ungradable. Detailed technique applicability and coverage meanings remain allocated to RA-06.
+Operational diagnostics, intake checks, and scope classification are not counted as completed substantive review dimensions. A supported observation about a missing TC element can be an assessed quality dimension while a separate technique dimension is ungradable. Detailed technique applicability and coverage meanings are defined in [RA-06][ra06].
 
 Within-TC views must satisfy all RA-04 separability conditions. One supported view does not mark its entire parent TC as reviewed. All omitted assertions and their consequences remain visible.
 
@@ -116,7 +109,7 @@ Finding and disposition counts are separate. A supported zero-item result means 
 
 ## 4. Review-item and evidence contract
 
-Every reported finding or suggestion needs enough retained context for an authorized human to inspect the claim without guessing its subject or premises.
+Retain enough context for an authorized human to inspect a finding or suggestion and its premises.
 
 | Content | Required meaning |
 | --- | --- |
@@ -128,7 +121,7 @@ Every reported finding or suggestion needs enough retained context for an author
 | Review assistance | An actionable question or bounded recommendation; no invented business rule or replacement source TC |
 | Human history | Initial `PENDING` and subsequent attributable disposition events, separately from the original claim |
 
-A reported absence identifies the bounded material inspected and the missing element; it cannot assert absence from documentation that was not supplied. Unavailable evidence is recorded as unavailable, not reconstructed from a link. No mandatory severity score is introduced here; any later impact label must disclose its supporting context rather than manufacture business priority.
+A claimed absence must identify what supplied material was inspected and what is missing. It cannot extend to unsubmitted documentation. Record unavailable evidence explicitly; do not reconstruct it from a link. This contract requires no severity score. Any impact label must disclose its evidence rather than invent business priority.
 
 ### 4.1 Derivation remains independent of disposition
 
@@ -137,13 +130,13 @@ A reported absence identifies the bounded material inspected and the missing ele
 | `DETERMINISTIC_FINDING` | `DETERMINISTIC`: a reproducible control over identified normalized input and confirmed structured premises; retain control, mapping, rule, and configuration versions |
 | `REVIEW_SUGGESTION` | `LLM_ASSISTED`: a grounded, uncertain, rejectable interpretation; retain the relevant role, prompt, model, configuration, evidence, and qualification context |
 
-Reproducibility does not establish source truth. A deterministic script over an unconfirmed LLM interpretation does not establish a deterministic business or coverage conclusion. It may establish a narrower observable structural fact if that claim does not depend on the unconfirmed interpretation.
+Reproducibility does not prove source truth. A deterministic script using an unconfirmed LLM interpretation cannot establish a deterministic business or coverage conclusion. It may establish a narrower structural fact that does not depend on that interpretation.
 
-LLM wording added to explain a deterministic finding is identified as a separate explanatory contribution and cannot change the original claim, evidence, or derivation. A new semantic claim needs its own supported suggestion. A high-confidence assertion without the required evidence is withheld as an unsupported conclusion; TDG records the limitation or clarification need instead. Human acceptance cannot convert missing support into evidence or change an item's derivation.
+An LLM explanation is a separately identified contribution; it cannot change the original deterministic claim, evidence or derivation. A new semantic claim needs its own grounded suggestion. Withhold unsupported conclusions regardless of confidence and record the limitation or clarification need. Human acceptance cannot supply missing evidence or change derivation.
 
 ## 5. Human decisions and their history
 
-Role identifiers retain their definitions in [RA-01 Sections 7–9][ra01]. ROLE-04 is the Test Basis Authority; ROLE-05 is the Finding Disposition Authority; ROLE-03 owns source-testware editing. Acting in one role does not confer the authority of another. Laboratory role attribution is not a claim of enforced sealed-profile RBAC.
+[RA-01][ra01] defines the roles: ROLE-04 decides test-basis interpretations, ROLE-05 accepts, rejects, defers or reopens findings, and ROLE-03 edits source testware. One role does not confer another's authority. Laboratory attribution does not establish enforced sealed-profile access control.
 
 ### 5.1 Basis interpretation is a separate decision
 
@@ -176,13 +169,13 @@ A new attempt to select the already current state is not a state transition. A s
 
 ### 5.3 Event contract
 
-Each authority-bearing event retains its own identity; target record and assessment version; actor identity or local actor identifier; acting role; action; previous and resulting state where applicable; rationale and evidence references; recorded time; and an authoritative order within the target history. Supplied-source timestamps remain distinguishable from TDG record times. Clock equality or clock changes cannot silently reorder decisions.
+Each authority-bearing event retains its identity, target and assessment version, actor or local actor ID, acting role, action, previous/resulting state where relevant, rationale, evidence references, recorded time and authoritative order within the target history. Source timestamps remain distinct from TDG record times; equal or changed clocks cannot reorder decisions.
 
-Self-review is recorded when the acting reviewer authored or owns the affected testware under the applicable RA-01 rule. Role combinations remain visible. Unknown independence is not presented as independent review, and later role changes do not relabel past actions.
+Record self-review when the reviewer authored or owns the affected testware under RA-01. Keep combined roles visible. Unknown independence is not independent review, and later role changes do not relabel past actions.
 
-Disposition requires an identifiable retained item and access to the evidence needed for that judgment. Missing required evidence or an explicitly unconfirmed dependency prevents accepting a dependent claim as established. This is not a guarantee that TDG can determine the truth of every human judgment. ROLE-05 can accept a grounded recommendation to clarify an ambiguity, or a supported suggestion retaining its uncertainty, without confirming the unknown business rule. Reopening a retained historical item can cite an evidence-unavailability or impact record without pretending that the missing source was inspected.
+A disposition needs an identifiable retained item and the evidence required for that judgment. Missing evidence or an explicitly unconfirmed dependency prevents accepting a dependent claim as established. This does not guarantee TDG can determine every human judgment's truth. ROLE-05 may accept a grounded clarification request or a supported uncertain suggestion without confirming the underlying rule. Reopening an old item may cite evidence loss or an impact record without claiming the missing source was inspected.
 
-Two humans acting on the same prior decision must not silently overwrite each other. A stale action is exposed as a conflict requiring renewed human consideration; both the existing history and the attempted action's outcome remain attributable under policy.
+Concurrent decisions cannot silently overwrite each other. Expose a stale action as a conflict requiring renewed human consideration; retain both the existing history and the attempted action's outcome as policy permits.
 
 ## 6. Version impact and comparison — accepted OD-RA05-003
 
@@ -196,11 +189,11 @@ Two humans acting on the same prior decision must not silently overwrite each ot
 | Human dispositions an item | New event on that item; neither the source package nor the originating claim changes |
 | A newly created item resembles an earlier item | New item identity and `PENDING`; no automatic inheritance of human disposition |
 
-Earlier pending or deferred findings do not prevent submission of a new package or a new authorized assessment. A new version does not establish repair, close an earlier finding, or erase its rationale.
+Pending or deferred findings do not block a new package submission or authorized assessment. A new version neither proves repair nor closes earlier findings or erases their rationale.
 
 ### 6.1 Comparison observations
 
-An explicit, authorized comparison names the selected runs, package versions, subjects, relevant assessment dimensions, and behavior contexts. It states the evidence for correspondence and any uncertainty. Similar titles, generic steps, identical preconditions, or matching source IDs alone cannot establish that two records concern the same issue.
+An explicit authorized comparison identifies selected runs, package versions, subjects, relevant dimensions and behavior contexts, with evidence for correspondence and uncertainty. Similar titles, generic steps, identical preconditions or matching source IDs alone cannot establish the same issue.
 
 | Observation | Required evidence and limit |
 | --- | --- |
@@ -208,25 +201,25 @@ An explicit, authorized comparison names the selected runs, package versions, su
 | `NOT_REDETECTED_IN_COMPARABLE_REVIEW` | Supported corresponding subject and check, sufficient current evidence, compatible interpretation/behavior context, and a completed relevant assessment with no corresponding item; this is an observation, not verified repair |
 | `COMPARISON_UNDETERMINED` | Correspondence or comparability is unsupported, the relevant dimension was not assessed, or evidence is unavailable; retain the specific reason |
 
-No selected predecessor means no comparison, not a claim that an issue is new. Mere absence from a later item list cannot satisfy the second row. Failed or cancelled processing cannot support that row unless the relevant assessment entry independently completed, is safely retained, and meets every comparability condition. Overall run failure alone neither proves repair nor erases a supported repeated finding.
+Without a selected predecessor, there is no comparison and no basis for claiming an issue is new. Absence from a later item list does not establish non-redetection. A failed or cancelled run can support that observation only if the relevant entry independently completed, is safely retained and satisfies every comparability condition. Overall failure does not erase supported repeated findings or prove repair.
 
-Comparison assistance remains derived and carries its evidence, behavior identity, and uncertainty. It cannot change human decisions. RA-07 will allocate any permitted LLM role; no automatic semantic matcher is selected here.
+Comparison assistance remains derived, with evidence, behavior identity and uncertainty, and cannot change human decisions. [RA-07][ra07] governs any permitted LLM role; this contract selects no automatic semantic matcher.
 
 ### 6.2 Current-use limitations and source boundaries
 
-When TDG is given attributable evidence of a relevant change, it records an impact notice against the affected retained result. Examples include changed package context, withdrawn qualification of a used behavior version, a corrected premise, or loss of necessary evidence. The notice distinguishes the original historical result from its fitness for present reuse. Lack of impact evaluation means reuse applicability is undetermined, not automatically valid or invalid.
+When TDG receives attributable evidence of a relevant change, it records an impact notice on the affected retained result. Examples are changed package context, withdrawn qualification of a used behavior version, a corrected premise or lost evidence. Separate the historical result from its fitness for present reuse. Until impact is evaluated, reuse applicability is undetermined.
 
-The notice does not rewrite the original finding, change its historical derivation, or automatically replace its human disposition. ROLE-04 owns basis interpretation, ROLE-08 owns behavior qualification, and ROLE-05 may reconsider or reopen the finding. TDG does not invent these authority decisions.
+An impact notice cannot rewrite a finding, change its historical derivation or replace its disposition. ROLE-04 controls interpretation, ROLE-08 behavior qualification, and ROLE-05 reconsideration or reopening; TDG cannot invent their decisions.
 
-Authorized inspection and comparison of selected retained history do not add that history to a new package's test basis. TDG cannot search its database for unrelated documentation to fill gaps. If a human wants previous content to become supplied context for a new substantive review, it must enter through the controlled package boundary.
+Inspecting or comparing selected history does not add it to a new package's test basis. TDG cannot search unrelated stored documents to fill gaps. A human must deliberately supply earlier content through the controlled package boundary before it can support a new substantive review.
 
 ## 7. Local persistence, recovery, retention, and export
 
 ### 7.1 Retained logical content — accepted OD-RA05-004
 
-The approved direction is local, organization-controlled persistence. The retained record set must make package versions, TC identities and supplied names, runs, ledger outcomes, findings, evidence references, interpretation decisions, disposition histories, impact/comparison records, and exports distinguishable and linked. Capture transformations are identified separately from assessment rules, mappings, controls, prompts, model versions, configuration, and applicable qualification/policy records. Unused behavior artifacts are not reported as having contributed to the result.
+The accepted direction is local, organization-controlled persistence. Retain linked, distinguishable package versions, TC identities and supplied names, runs, ledger outcomes, findings, evidence, interpretation decisions, dispositions, impact/comparison records and exports. Capture transformations remain separate from assessment rules, mappings, controls, prompts, models, configuration and applicable qualification/policy records. Do not attribute a result to unused behavior artifacts.
 
-Evidence inspection needs resolvable retained references to the relevant authorized material or an explicit unavailability reason. It does not require copying whole source documents into every finding or exporting all source content. Minimize unnecessary content duplication and absolute workstation paths. Local storage alone does not demonstrate confidentiality, sealed-profile readiness, or recoverability.
+Evidence references must resolve to authorized retained material or give an explicit unavailability reason. A finding need not copy an entire source, and an export need not include all source bodies. Minimize duplication and absolute workstation paths. Local storage alone does not establish confidentiality, sealed-profile readiness or recoverability.
 
 ### 7.2 Save, concurrency, and retries
 
@@ -246,21 +239,21 @@ Neither source bytes nor old decisions are silently overwritten to make recovery
 
 ### 7.4 Retention and authorized deletion
 
-Immutability applies while records are retained; it is not a rule of indefinite retention. ROLE-09 approves the applicable retention, deletion, logging, backup, and export policy; ROLE-07 executes approved operations. Where required policy or authority is absent, TDG cannot invent a retention or deletion decision.
+Immutability applies while records are retained; it does not require indefinite retention. ROLE-09 approves retention, deletion, logging, backup and export policy; ROLE-07 executes authorized operations. Missing policy or authority cannot be replaced by a TDG decision.
 
-Authorized deletion must account for dependencies and prevent surviving records from appearing fully evidenced when their supporting content is gone. Retain a minimal attributable deletion or evidence-unavailability record only to the extent the governing policy permits. If policy requires its removal too, it must not be retained merely to preserve history.
+Deletion must account for dependencies so surviving results do not appear fully evidenced after their sources are removed. Keep a minimal attributable deletion or evidence-unavailability record only where policy permits. If policy requires removing that record too, history preservation does not override it.
 
-Do not restore deleted evidence by following external references or searching unsubmitted material. Deletion does not resolve a finding. A claim about erasure from backups or prior exports requires the scope and verification demanded by the applicable policy; deleting one active copy is insufficient evidence. Exact periods and mechanisms remain open work for RA-08.
+Do not retrieve deleted evidence from external references or unsubmitted sources. Deletion does not resolve a finding. Claims about erasure from backups or prior exports require the scope and verification set by policy; deleting an active copy is insufficient. Specific periods and mechanisms follow [RA-08][ra08] and the authorized operating policy.
 
 ### 7.5 Controlled export
 
-A deliberate authorized local export identifies its export instance, package version, run, selected content, applicable policy, and the exact disposition/history boundary used. It preserves run state, availability, scope, omissions, derivation, uncertainty, human decisions, and non-approval meaning. Later human decisions do not alter an earlier export's recorded contents; a new export has a new attributable instance.
+A deliberate authorized local export identifies its instance, package version, run, selected content, applicable policy and exact disposition/history boundary. Preserve run state, availability, scope, omissions, derivation, uncertainty, human decisions and non-approval meaning. Later decisions do not alter an earlier export; a new export has a new attributable instance.
 
-Export is separate from successful persistence and from the ability to view a record. A denied or failed export does not corrupt the canonical record. Export does not edit TC or publish directly to Jira, Xray, or Zephyr. RA-09 will define physical formats; RA-08 will define policy enforcement and protection requirements.
+Viewing, persistence and export are distinct operations. Export denial or failure must not corrupt the canonical record. Export neither edits test cases nor publishes directly to Jira, Xray or Zephyr. [RA-09][ra09] governs formats; [RA-08][ra08] governs policy enforcement and protection.
 
 ## 8. Synthetic boundary examples
 
-These fragments illustrate the proposed record behavior. They are not complete Review Packages, executed tests, evidence of model capability, or a finished benchmark. Assume lawful synthetic input and the stated prerequisite evidence; otherwise the relevant inherited gate applies.
+These fragments illustrate the accepted record behavior. They are not complete packages, executed tests, model-capability evidence or a finished benchmark. Assume permitted synthetic input and the stated prerequisite evidence. When those assumptions do not hold, apply the relevant input, policy and assessment rules.
 
 | ID | Situation | Expected record consequence |
 | --- | --- | --- |
@@ -282,9 +275,9 @@ These fragments illustrate the proposed record behavior. They are not complete R
 
 ## 9. Accepted requirements
 
-All 22 requirement statements below are unchanged from v0.1 and are MUST / ACCEPTED under the recorded Project Owner decision. Source traces are unchanged. Acceptance of those statements does not imply endorsement of the subsequent supporting-text clarification identified in Section 1.
+All 22 requirements remain MUST / ACCEPTED, with statements, priorities and traces unchanged. [SR-RA05-001 v0.2][review05] also records endorsement of the supporting clarification in Sections 5.1 and 6 and VAL-006/009.
 
-| ID | Proposed requirement | Priority | Status | Primary upstream trace |
+| ID | Requirement | Priority | Status | Primary upstream trace |
 | --- | --- | --- | --- | --- |
 | RA05-REQ-001 | TDG shall distinguish the records and identities in Section 2, bind every run to exactly one captured package version, and preserve valid subject, evidence, and history references without treating source labels or content equality as identity. | MUST | ACCEPTED | RA02-REQ-017; RA03-REQ-013, RA03-REQ-048, RA03-REQ-049 |
 | RA05-REQ-002 | TDG shall implement the run meanings and permitted transitions in Section 3.1, retain terminal reasons and human or system event origin with applicable authority for human actions, and prevent a terminal run from resuming assessment. | MUST | ACCEPTED | RA02-REQ-006, RA02-REQ-029, RA02-REQ-032, RA02-REQ-033 |
@@ -311,7 +304,7 @@ All 22 requirement statements below are unchanged from v0.1 and are MUST / ACCEP
 
 ## 10. Validation obligations and direct traceability
 
-These are obligations for later static review and test design, not executed TC or passing software tests. Every requirement has a direct VAL link, and every VAL names existing RA05 requirements. The mapping is many-to-many; a link alone does not prove that its future tests will be adequate.
+These obligations guide test analysis and design; they are not executed tests. Every requirement has at least one direct VAL link and every VAL references existing RA05 requirements. Those links do not by themselves establish adequate test coverage.
 
 | ID | Validation obligation | Direct requirement trace |
 | --- | --- | --- |
@@ -334,7 +327,7 @@ These are obligations for later static review and test design, not executed TC o
 
 ## 11. Accepted policy decisions
 
-All four recommendations below were accepted by the Project Owner with v0.1. Their acceptance does not reopen upstream policies or select an implementation technology. The localized v0.2 clarification is tracked separately and awaits endorsement; it does not create a fifth open policy decision.
+The Owner accepted all four decisions with v0.1 and subsequently endorsed the v0.2 clarification. [SR-RA05-001 v0.2][review05] preserves the sequence and scope of those decisions.
 
 | ID | Decision | Accepted recommendation | Status |
 | --- | --- | --- | --- |
@@ -347,48 +340,44 @@ All four recommendations below were accepted by the Project Owner with v0.1. The
 
 ### 12.1 Author check
 
-The checks below concern this candidate and its trace structure. The focused review and correction verification are recorded in SR-RA05-001 v0.1. They are not an independent expert review, a software test report, or evidence that a local model can satisfy the requirements.
+[SR-RA05-001 v0.2][review05] records the completed static review and the Owner's endorsement on 2026-09-18. `SR-RA05-F-001` is closed: Section 5.1 and the Section 6 table distinguish first confirmation in an active run from changing an applied interpretation or configured behavior artifact. VAL-006/009 cover that distinction. The correction did not change the 22 requirement statements or four policy decisions.
 
-| Check | Result and limit |
-| --- | --- |
-| Entry and effective baseline | PASS — RA-05 entry is granted by PG-RA04-001 in SR-RA04-001 v0.2; prior source-status notices are treated historically |
-| Requirement identity and status | PASS — 22 unique statements unchanged from v0.1; MUST / ACCEPTED through an explicit Owner decision |
-| Forward trace, REQ to VAL | PASS — 22/22 requirements directly referenced by at least one validation obligation |
-| Reverse trace, VAL to REQ | PASS — 16/16 validation obligations reference existing RA05 requirements; no orphan or nonexistent RA05 target |
-| Role and disposition continuity | PASS — four inherited dispositions retained; ROLE-04, ROLE-05, ROLE-07, ROLE-08, and ROLE-09 responsibilities remain separate |
-| Identity and supplied-data boundaries | PASS — source versions, runs, human events, and comparisons have separate consequences; retained history does not silently enrich a package |
-| Status-table consistency | PASS — proposed terminal-state and availability cases have explicit outcomes; no supported substantive entry means NONE even if diagnostics exist |
-| Scope of verification | NOT EXECUTED — no implementation, model evaluation, recovery test, security test, or executable TC has been produced by this slice |
-| Focused review and final endorsement | SR-RA05-001 v0.1 records one Medium clarification and its verified correction; acceptance of v0.1 is recorded, while endorsement of the correction and RA-06 gate remain pending |
+The original trace check found 22/22 requirements with direct validation links, 16/16 obligations with valid targets and 56 direct links. The same assistant authored and reviewed the source; the Owner performed the walkthrough. This is historical document evidence, not independent expert assurance, product testing or model evaluation.
 
 ### 12.2 Allocations and carried observations
 
-| Destination or record | Remaining responsibility |
+| Governing source or record | Responsibility or current disposition |
 | --- | --- |
-| RA-06 | EP, BVA, decision-table, and state-transition applicability and coverage; technique-specific finding evidence; no automatic requirement to apply every technique |
-| RA-07 | Permitted LLM roles, grounding, abstention, qualification/requalification, and behavior-change impact; any semantic comparison assistance must fit an authorized qualified role |
-| RA-08 | Data classification, sealed identity and authorization, logging, retention periods, deletion, backup/restore, storage and export protections, and concrete security validation |
-| RA-09 | Canonical input/export representations, schemas, capture/import transformations, and physical error/report formats |
-| RA-10 and subsequent test design | Challenging datasets, human oracle, thresholds, full TC derived from these obligations, and empirical feasibility on the intended local hardware |
-| Solution Design | Storage technology, transaction and retry mechanisms, physical data model, deployment, and interface choices |
-| SR-RA03-OBS-001 | Earlier indirect RA03-VAL-014 trace through IS-01–IS-11 still needs a verifiable chain to accepted requirements before executable test design; this document's direct trace does not close that observation |
-| SR-RA03-OBS-002 / R-08 | Retain the analysis-growth risk for the next Charter risk review; use this focused requirements document and a consolidated review/acceptance record, referencing earlier baselines; feasibility remains unproven |
+| [RA-06][ra06] | Four-technique applicability, coverage and evidence; no automatic requirement to apply every technique |
+| [RA-07][ra07] | Permitted LLM roles, grounding, abstention, qualification and change impact; comparison assistance needs an authorized qualified role |
+| [RA-08][ra08] | Classification, sealed identity/access, logs, retention, deletion, backup/restore, storage/export protection and security verification |
+| [RA-09][ra09] | Input/export contracts, schemas, capture transformations and physical error/report formats |
+| [RA-10][ra10] and test design | Challenging data, human oracle, thresholds, executable tests and empirical local-hardware feasibility |
+| [Solution Design][design] | Storage, transactions, retries, physical data model, deployment and interface decisions |
+| `SR-RA03-OBS-001` | The RA03-VAL-014 trace action was closed by the accepted RA-10 bridge; see [SR-RA10-001 v0.2][review10]. General trace obligations remain |
+| `SR-RA03-OBS-002` / R-08 | Keep documentation proportional to the decisions and risks it resolves; empirical product validation remains necessary |
 
-The Project Owner accepted v0.1 before the focused review record was issued; that actual sequence is preserved rather than backdated. The remaining decision is endorsement of the localized correction and its verification, closure of SR-RA05-001, and designation of the final RA-05 baseline with explicit GO to RA-06. This candidate records none of those remaining approvals.
+Read the related requirements with their accepted decisions, indexed in the [Requirements Analysis closure][phase]. These references replace the old pending-work descriptions; they do not establish that the product implements those contracts.
 
 ### 12.3 Version record
 
-| Version | Meaning |
-| --- | --- |
-| 0.1 | Original reviewed wording, accepted in full by the Project Owner; retained unchanged as the review input |
-| 0.2 | Acceptance/status update plus the SR-RA05-F-001 clarification in Sections 5.1 and 6 and VAL-006/009; all 22 requirement statements, priorities, identifiers, and 56 REQ–VAL links unchanged; final endorsement pending |
+The Owner accepted v0.1 before its focused review. The later 2026-09-18 decision endorsed the verified v0.2 clarification, accepted the review, designated the baseline, closed RA-05 and granted GO to RA-06. [SR-RA05-001 v0.2][review05] retains that chronology and the original file identities. No approval is awaiting repetition.
 
-[charter]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/7b5612b19525a97e7c43d2450b0e0e94dbbd7940/docs/governance/test-design-gatekeeper-project-charter-v0.4.md
-[ra01]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/7b5612b19525a97e7c43d2450b0e0e94dbbd7940/docs/requirements-analysis/test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md
-[ra02]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/7b5612b19525a97e7c43d2450b0e0e94dbbd7940/docs/requirements-analysis/test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md
-[ra03]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/7b5612b19525a97e7c43d2450b0e0e94dbbd7940/docs/requirements-analysis/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.3.md
-[gate03]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/7b5612b19525a97e7c43d2450b0e0e94dbbd7940/docs/reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md
-[ra04]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/7b5612b19525a97e7c43d2450b0e0e94dbbd7940/docs/requirements-analysis/test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md
-[review04]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/7b5612b19525a97e7c43d2450b0e0e94dbbd7940/docs/reviews/test-design-gatekeeper-ra-04-focused-static-review-v0.2.md
+This maintained text consolidates those decisions and references the current contracts. Historical GO to RA-06 does not override the development pause; [README.md](../../../README.md) carries current work status.
 
-[review05]: test-design-gatekeeper-ra-05-focused-static-review-v0.1.md
+[charter]: ../../governance/test-design-gatekeeper-project-charter-v0.4.md
+[ra01]: ../test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md
+[ra02]: ../test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md
+[ra03]: ../ra-10/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.4.md
+[ra04]: ../test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md
+[review04]: ../../reviews/test-design-gatekeeper-ra-04-focused-static-review-v0.2.md
+[review05]: test-design-gatekeeper-ra-05-focused-static-review-v0.2.md
+[phase]: ../ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md
+[ra06]: ../ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md
+[ra07]: ../ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.2.md
+[ra08]: ../ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md
+[ra09]: ../ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md
+[ra10]: ../ra-10/test-design-gatekeeper-ra-10-evaluation-acceptance-v0.2.md
+[review10]: ../ra-10/test-design-gatekeeper-ra-10-focused-static-review-v0.2.md
+[design]: ../../solution-design
+[original]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/469d9a6c5119b1b6eed8f8bd97a0ef5e5f254d28/docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md
