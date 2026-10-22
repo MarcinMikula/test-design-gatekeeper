@@ -4,34 +4,26 @@
 
 | Field | Value |
 | --- | --- |
-| Document version and date | 0.2 — 2026-09-18 |
-| SDLC phase | Requirements Analysis |
-| Status | CORRECTED CANDIDATE — OWNER ENDORSEMENT OF REVIEW CORRECTIONS PENDING |
-| Entry authorization | PG-RA05-001, consolidated in Section 7 of SR-RA05-001 v0.2 — GO to RA-06 |
-| Effective upstream baseline | Charter v0.4; RA-01 v0.3; RA-02 v0.3; RA-03 v0.3 with PG-RA03-001 v0.2; RA-04 v0.2 with SR-RA04-001 v0.2; RA-05 v0.2 with SR-RA05-001 v0.2 |
+| Basis | Accepted RA-06 v0.2, originally dated 2026-09-18 |
+| Acceptance and gate | All 20 requirements, 14 validation obligations and four policy decisions accepted; both verified corrections, v0.2 and GO to RA-07 endorsed on 2026-09-18 in [SR-RA06-001 v0.2 / PG-RA06-001][review06] |
+| Text maintenance | Consolidated on 2026-10-22; section numbers and identifiers retained |
 | Decision authority | Project Owner |
-| Requirements | All 20 original v0.1 requirements ACCEPTED; 19 statements unchanged; amended REQ-015 wording in this candidate awaits endorsement |
-| Validation conditions | All 14 original obligations ACCEPTED; localized amendments to VAL-003 and VAL-014 await endorsement; no product tests executed |
-| Policy decisions | OD-RA06-001 through OD-RA06-004 ACCEPTED as recommended; 0 open original policy decisions |
-| Static review | SR-RA06-001 v0.1 — two Medium corrections prepared and verified; closure pending |
-| RA-07 gate | NOT GRANTED |
-| Implementation and confidential-data use | Not authorized |
+
+This is the maintained contract for reviewing technique applicability and test-design coverage. The [original v0.2 text][original] remains in Git history; earlier review hashes and byte counts identify that snapshot. [README.md](../../../README.md) describes current capability and the development pause. Acceptance of this contract does not establish implemented or tested behavior.
 
 ## 1. Purpose, sources, and conventions
 
-RA-06 defines how TDG reviews a bounded set of existing TC for equivalence partitioning (EP), boundary value analysis (BVA), decision tables, and state transitions. It separates applicability, planned exercise of coverage items, alignment of expected results with supplied evidence, and uncertainty. It specifies observable product behavior without choosing algorithms, a model, a database, a UI, or an import schema.
+RA-06 defines how TDG reviews existing test cases (TC) using equivalence partitioning (EP), boundary value analysis (BVA), decision tables and state transitions. The review determines whether a technique applies, what the TC plan to exercise, and whether their expected results agree with the supplied basis. Each conclusion retains its evidence and uncertainty.
 
-The [Charter, Sections 8.2–8.4][charter], establishes these four techniques and prohibits penalties for missing technique labels when equivalent coverage is present. [RA-01][ra01] governs authority; [RA-02][ra02] governs workflow; [RA-03][ra03] governs supplied evidence and package identity; [RA-04][ra04] governs qualification; [RA-05][ra05] governs assessment records, findings, and human dispositions. Their acceptance records are [PG-RA03-001 v0.2][gate03], [SR-RA04-001 v0.2][review04], and [SR-RA05-001 v0.2][review05]. Repository references pin commit `bbd222927233095142208e9051979ea3beae1864`. Historical pending notices in preserved upstream snapshots are superseded by those acceptance records.
+The [Charter, Sections 8.2–8.4][charter] selects these four techniques and prohibits penalties for missing technique labels when equivalent coverage exists. [RA-01][ra01] defines authority, [RA-02][ra02] workflow, [RA-03 v0.4][ra03] supplied evidence and package identity, [RA-04][ra04] scope qualification, and [RA-05][ra05] results, findings and human decisions. Entry to RA-06 was granted by `PG-RA05-001` in [SR-RA05-001 v0.2][review05]. The [Requirements Analysis closure][phase] indexes accepted versions and decisions.
 
-Methodological references are the official [ISTQB CTFL syllabus v4.0.1, Sections 4.2.1–4.2.4][ctfl], and its [Sample Exam B answers v1.7, Question 21][exam-b] for the BVA boundary convention. The versions and availability were checked on 2026-09-18. The status vocabulary, metric safeguards, acceptance policies, and original examples below are TDG project rules and illustrations, not an ISTQB certification scheme or requirements imposed by ISTQB. No official conformity claim is introduced.
+The accepted baseline uses the official [ISTQB CTFL syllabus v4.0.1, Sections 4.2.1–4.2.4][ctfl], and [Sample Exam B answers v1.7, Question 21][exam-b] for the BVA boundary convention. [SR-RA06-001][review06] records their verification on 2026-09-18. The statuses, metric safeguards, acceptance policies and original examples are TDG project rules, not an ISTQB certification scheme. `Shall` states required behavior; `MUST` its priority. Implementation choices belong to Solution Design.
 
-The Project Owner accepted RA-06 v0.1 in full on 2026-09-18, including its 20 MUST requirements, 14 validation obligations, and four recommended decisions. **Shall** expresses an accepted obligation for that original wording. Nineteen requirement statements remain unchanged in this candidate. The amended RA06-REQ-015 statement, the two localized clarifications in Section 9.1, and corresponding edits to VAL-003/014 remain proposed until separately endorsed. [SR-RA06-001 v0.1][review06] records the original acceptance, findings, exact change boundary, and correction verification. Neither acceptance of v0.1 nor verification of this candidate grants GO to RA-07 or demonstrates product behavior.
-
-The review concerns **test design**. A TC that describes an exercise has not thereby executed it; neither its stated expected result nor a coverage percentage proves correct system behavior. General experience-based review remains available under the upstream rules, without adding a fifth formal technique.
+This is a review of **test design**: a described exercise has not thereby been executed, and neither an expected result nor a coverage percentage proves correct system behavior. General experience-based review remains available under the upstream rules without adding a fifth formal technique.
 
 ## 2. Assessment unit and evidence contract
 
-A technique assessment identifies one captured package version, assessment run, original TC or justified within-TC views, relevant business property or behavior, requested review dimensions, and a chosen criterion where quantitative coverage is requested. A group assessment names its members. Views retain the original TC identities and satisfy RA-04's independence and context-preservation conditions.
+Each assessment identifies one captured package version, its run, TC or justified within-TC views, business property or behavior, requested dimensions and any selected quantitative criterion. Group assessments name their members. Views keep their parent TC identity and satisfy RA-04's independence and context-preservation conditions.
 
 | Record element | Required meaning |
 | --- | --- |
@@ -43,11 +35,11 @@ A technique assessment identifies one captured package version, assessment run, 
 | Interpretation provenance | Supplied statements, derived candidates, applicable human decisions, and qualified control versions kept distinct |
 | Result and limits | Applicability, coverage observations, expected-result observations, ledger outcome, and any bounded metric |
 
-A model may be explicitly supplied or derived from supplied prose. A derived model remains an assessment artifact, never a replacement source. LLM-proposed semantics are not automatically confirmed business rules. Existing applicable human decisions can be reused under RA-05; repeated confirmation of the same unchanged interpretation is not mandatory.
+A technique model may be supplied directly or derived from supplied prose. A derived model is an assessment artifact, not a replacement source. An LLM proposal does not confirm a business rule. Applicable human decisions can be reused under RA-05 without repeated confirmation of the same unchanged interpretation.
 
-Role identifiers refer to [RA-01's role and authority definitions][ra01]. ROLE-02 controls the package boundary; ROLE-04 resolves business interpretations; ROLE-05 dispositions findings; ROLE-03 repairs source TC. Control-policy and control-qualification responsibilities remain those assigned in RA-01. Recording an assessment criterion does not grant its requester authority to invent business behavior.
+[RA-01][ra01] defines the roles: ROLE-02 controls package scope, ROLE-04 resolves business interpretations, ROLE-05 accepts, rejects, defers or reopens findings, and ROLE-03 repairs source TC. Control policy and qualification retain their RA-01 authorities. Selecting a criterion does not authorize inventing business behavior.
 
-Only the supplied package and explicitly authorized decision context may support assessment. Links, previous packages, similar TC titles, domain familiarity, and prior run history are not permission to retrieve or import additional rules. Unsupported dimensions remain visible while independent supported dimensions may proceed.
+Use only the supplied package and explicitly authorized decision context. Links, earlier packages, similar titles, domain familiarity and prior runs do not authorize additional rules or retrieval. Keep unsupported dimensions visible while independent supported work proceeds.
 
 ## 3. Applicability and the RA-05 ledger
 
@@ -193,7 +185,7 @@ Changing an applied interpretation, criterion, control, prompt, model, or other 
 
 ## 10. Requirements, dispositions, and traceability
 
-Every row has priority **MUST**. The 19 unchanged requirement statements are **ACCEPTED**. The amended **RA06-REQ-015** wording below is **PROPOSED AMENDMENT — ENDORSEMENT PENDING**; its original v0.1 wording remains recorded as accepted in SR-RA06-001. References to RA-03, RA-04, and RA-05 identify accepted upstream requirements. Every listed VAL has its full definition in Section 11. Requirement identifiers, priorities, upstream traces, and direct validation links are unchanged.
+All 20 requirements are **MUST / ACCEPTED**, including the amended RA06-REQ-015 endorsed in [SR-RA06-001 v0.2][review06]. Statements, identifiers, priorities, upstream traces and direct validation links are unchanged from that accepted v0.2 baseline. Section 11 defines every listed VAL.
 
 | ID | Requirement statement | Primary upstream trace | Direct validation |
 | --- | --- | --- | --- |
@@ -220,7 +212,7 @@ Every row has priority **MUST**. The 19 unchanged requirement statements are **A
 
 ## 11. Validation conditions
 
-Identifiers below expand to `RA06-VAL-001` through `RA06-VAL-014`; Section 10 uses their shorter suffixes for readability. The Owner accepted all 14 original validation obligations; amendments to VAL-003 and VAL-014 in this candidate await endorsement with the two review corrections. These remain planned obligations: they define expected observations without selecting a framework, creating an executable suite, or claiming successful product execution. All fixtures must be synthetic or otherwise permitted by the laboratory profile.
+Identifiers expand to `RA06-VAL-001` through `RA06-VAL-014`; Section 10 uses their shorter suffixes. All 14 obligations are accepted, including the VAL-003/014 corrections recorded in [SR-RA06-001 v0.2][review06]. They specify observations for later verification; they are not executable tests or passing product results. Fixtures must be synthetic or otherwise permitted by the laboratory profile.
 
 | ID | Condition and observable acceptance evidence | Direct REQ links |
 | --- | --- | --- |
@@ -243,56 +235,47 @@ Identifiers below expand to `RA06-VAL-001` through `RA06-VAL-014`; Section 10 us
 
 ### 12.1 Accepted Owner decisions
 
-| ID | Recommendation | Consequence if accepted |
+The Owner accepted all four recommendations below with v0.1. Their original wording and identifiers are retained. The subsequent v0.2 decision endorsed the review corrections without reopening these policies.
+
+| ID | Accepted recommendation | Effect |
 | --- | --- | --- |
 | OD-RA06-001 | Accept Section 3's applicability model and the standard conditional request: applicability first, then coverage where established. | Evidence-supported negative applicability is distinct from unknown or unavailable assessment; RA-05 accounting remains authoritative. |
 | OD-RA06-002 | Accept separate planned-exercise and expected-result observations, with quantitative reporting only under Section 4.2's conditions. | A percentage cannot hide an incomplete model or imply sound expected results; uncertainty can legitimately prevent a percentage. |
 | OD-RA06-003 | Require an explicit request or approved policy to select the coverage criterion; support both BVA variants and the named state criteria without forcing the strongest criterion. | Missing selection permits qualitative review but no claim against an unselected quantitative target. No fixed universal default or threshold is introduced here. |
 | OD-RA06-004 | Accept bounded structured controls and provenance-preserving LLM assistance, with grounded recommendations that may reference TC but do not rewrite them. | No exhaustive solver, automatic test generation, source repair, or execution is added to the MVP. |
 
-All four recommendations are **ACCEPTED as written in v0.1** by the Owner's acceptance of that document in full. Their identifiers and recommendation text are retained above as the decision record. They do not reopen previously accepted scope, privacy, authority, or human-accountability decisions. The later corrections in this candidate are separately pending; no repeat of these four policy decisions is requested.
-
 ### 12.2 Document verification scope
 
-The v0.1 author check was followed by the focused static review in SR-RA06-001. Verification of this v0.2 candidate on 2026-09-18 covers identifiers, both directions of direct traceability, retained examples, the localized differences, authority and version boundaries, and the correction scenarios recorded in the review. The same assistant authored and reviewed the document; this is not an independent expert review. The results below concern document verification and do not close the review or certify future product behavior.
+[SR-RA06-001 v0.2][review06] records the static review, verified corrections and Owner endorsement. `SR-RA06-F-001` and `SR-RA06-F-002` are closed. Section 9.1, REQ-015 and VAL-003/014 contain the accepted rules: a missing expectation does not erase supported planned exercise, and selection guarantees are assessed at the relevant coverage level rather than rejected because selection involves randomness.
 
-| Check | Result |
-| --- | --- |
-| Every MUST requirement has at least one directly linked VAL | PASS — 20/20 requirements |
-| Every VAL links only to existing RA-06 requirements; forward/reverse edges agree | PASS — 14/14 VAL; 46 identical direct edges in both directions |
-| Requirement/VAL/decision counts, identities, and dispositions are consistent | PASS — 20 unique REQ, 14 unique VAL, 4 accepted original decisions; amended REQ-015, Section 9.1 and VAL-003/014 remain pending |
-| BVA, decision-rule, state, and discount example calculations | PASS — 4/8 BVA targets; 2/4 rules; 3/3 states and 2/3 valid transitions; 190 PLN total |
-| Upstream identities and accepted authority/version rules | PASS — cited REQ identifiers exist; accepted RA-05 correction and closure govern; prior source wording preserved |
-| Markdown structure and reference definitions | PASS — consistent table columns; all named references defined; repository links use the recorded commit |
+The historical trace check found 20/20 requirements with direct validation links, 14/14 obligations with valid targets and 46 matching links in both directions. The Owner performed the human review; the same assistant authored and reviewed the document. These are document checks, not independent expert assurance, product tests or evidence of local-model feasibility. The existing review retains the scenarios, calculations and original file identities.
 
-The carried observation `SR-RA03-OBS-001` about the older indirect RA03-VAL-014 trace remains open: this slice's direct links do not close that separate obligation. `SR-RA03-OBS-002 / R-08` also remains open. This slice therefore uses one review document, reuses upstream lifecycle and authority definitions, and leaves implementation, benchmark construction, and detailed security to their planned work.
+The RA03-VAL-014 trace action, `SR-RA03-OBS-001`, was later closed by the accepted RA-10 bridge; see [SR-RA10-001 v0.2][review10]. General trace obligations remain. `SR-RA03-OBS-002` / R-08 remains active: documentation must stay proportional to the decisions and risks it resolves, and product usefulness still needs empirical evidence.
 
 ### 12.3 Exit and next work
 
-The Owner's acceptance of v0.1 and the focused review execution are recorded in [SR-RA06-001 v0.1][review06]. The remaining exit decision is endorsement of the two verified corrections, including amended REQ-015 and VAL-003/014, acceptance and closure of the review record, designation of this v0.2 as the final phase baseline, and explicit GO to RA-07. None is inferred from acceptance of the earlier v0.1 wording. PG-RA06-001 is consolidated in the review record; no separate gate document is required.
+`PG-RA06-001` in [SR-RA06-001 v0.2][review06] records the completed RA-06 gate and GO to RA-07. That historical decision does not override the development pause in [README.md](../../../README.md).
 
-The next planned slice is RA-07, concerning the division of deterministic and LLM responsibilities and the limits of model-assisted conclusions. Detailed security belongs to RA-08; concrete input and output representations to RA-09; benchmark material and empirical success verification to RA-10 and the subsequent test work. These allocations do not authorize those phases or establish technical feasibility.
-
-The controlled repository baseline remains the published RA-05 closure. The original RA-06 v0.1 acceptance is retained, while this corrected candidate awaits the exit decision above. No repository publication instruction or implementation authorization is inferred.
+[RA-07][ra07] governs permitted LLM roles and qualification, [RA-08][ra08] security, [RA-09][ra09] input/output contracts, and [RA-10][ra10] evaluation and acceptance. Read these with their accepted decisions in the [phase closure][phase]. The references identify governing requirements; they do not establish implementation, feasibility or permission to process protected data.
 
 ## 13. Version record
 
-| Version | Controlled treatment |
-| --- | --- |
-| 0.1 | Exact accepted review input retained unchanged: 41809 bytes; SHA-256 `8050f25446601afd34cadb783d21f4b56c3c2ddcb57c1f97d4df5c1e7d6662fc` |
-| 0.2 | Records the acceptance and proposes two localized Section 9.1 corrections, one amended requirement statement (REQ-015), and two amended validation conditions (VAL-003/014); all identifiers and trace links retained |
+[SR-RA06-001 v0.2][review06] preserves the original v0.1 acceptance, both verified corrections and their separate endorsement on 2026-09-18. It records the original file identities and the accepted v0.2 baseline. This maintained text consolidates those decisions and updates the governing references without adding a technique or changing assessment criteria.
 
-The proposed changes address SR-RA06-F-001 and SR-RA06-F-002. They introduce no additional technique, execution capability, automatic TC editing, or business-source retrieval. Their verified differences and pending endorsement are recorded in SR-RA06-001.
-
-[charter]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/bbd222927233095142208e9051979ea3beae1864/docs/governance/test-design-gatekeeper-project-charter-v0.4.md
-[ra01]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/bbd222927233095142208e9051979ea3beae1864/docs/requirements-analysis/test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md
-[ra02]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/bbd222927233095142208e9051979ea3beae1864/docs/requirements-analysis/test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md
-[ra03]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/bbd222927233095142208e9051979ea3beae1864/docs/requirements-analysis/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.3.md
-[gate03]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/bbd222927233095142208e9051979ea3beae1864/docs/reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md
-[ra04]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/bbd222927233095142208e9051979ea3beae1864/docs/requirements-analysis/test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md
-[review04]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/bbd222927233095142208e9051979ea3beae1864/docs/reviews/test-design-gatekeeper-ra-04-focused-static-review-v0.2.md
-[ra05]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/bbd222927233095142208e9051979ea3beae1864/docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md
-[review05]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/bbd222927233095142208e9051979ea3beae1864/docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-focused-static-review-v0.2.md
+[charter]: ../../governance/test-design-gatekeeper-project-charter-v0.4.md
+[ra01]: ../test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md
+[ra02]: ../test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md
+[ra03]: ../ra-10/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.4.md
+[ra04]: ../test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md
+[ra05]: ../ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md
+[review05]: ../ra-05/test-design-gatekeeper-ra-05-focused-static-review-v0.2.md
+[review06]: test-design-gatekeeper-ra-06-focused-static-review-v0.2.md
+[phase]: ../ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md
+[ra07]: ../ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.2.md
+[ra08]: ../ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md
+[ra09]: ../ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md
+[ra10]: ../ra-10/test-design-gatekeeper-ra-10-evaluation-acceptance-v0.2.md
+[review10]: ../ra-10/test-design-gatekeeper-ra-10-focused-static-review-v0.2.md
 [ctfl]: https://istqb.org/?download_id=3345&sdm_process_download=1
 [exam-b]: https://istqb.org/?download_id=3365&sdm_process_download=1
-[review06]: test-design-gatekeeper-ra-06-focused-static-review-v0.1.md
+[original]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/b39287b610878bfca4a48dd2d1466cb67d05d61d/docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md
