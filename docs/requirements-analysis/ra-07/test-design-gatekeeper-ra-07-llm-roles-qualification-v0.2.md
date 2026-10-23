@@ -4,27 +4,20 @@
 
 | Field | Value |
 | --- | --- |
-| Document version and date | 0.2 — 2026-09-19 |
-| SDLC phase | Requirements Analysis |
-| Status | CORRECTED CANDIDATE — REVIEW CLARIFICATION AWAITS OWNER ENDORSEMENT |
-| Entry authorization | PG-RA06-001, consolidated in SR-RA06-001 v0.2 — GO to RA-07 |
-| Effective upstream baseline | Charter v0.4; RA-01 v0.3; RA-02 v0.3; RA-03 v0.3; RA-04 v0.2; RA-05 v0.2; RA-06 v0.2, read with their acceptance and closure records |
-| Decision authority | Project Owner for this requirements baseline; ROLE-08 for later capability qualification |
-| Requirements | All 20 MUST statements ACCEPTED in v0.1; statements unchanged |
-| Validation obligations | All 14 original obligations ACCEPTED; localized VAL-008 clarification awaits endorsement; no product or model tests executed |
-| Policy decisions | OD-RA07-001 through OD-RA07-004 ACCEPTED as recommended; 0 open original decisions |
-| Formal static review | SR-RA07-001 v0.1 — one Medium finding; correction prepared and verified; closure pending |
-| RA-08 gate | NOT GRANTED |
+| Basis | Accepted RA-07 v0.2, originally dated 2026-09-19 |
+| Acceptance and gate | All 20 requirements, 14 validation obligations and four policy decisions accepted; the verified clarification, v0.2 baseline and GO to RA-08 endorsed on 2026-09-20 in [SR-RA07-001 v0.2 / PG-RA07-001][review07] |
+| Text maintenance | Consolidated on 2026-10-22; section numbers and identifiers retained |
+| Decision authority | Project Owner for this requirements baseline; ROLE-08 for capability qualification |
+
+This is the maintained contract for permitted LLM contributions and the evidence needed to authorize them. The [original v0.2 text][original] remains in Git history; earlier review hashes and byte counts identify that snapshot. [README.md](../../../README.md) describes current capability and the development pause. Accepting these requirements does not qualify a model or establish implemented behavior.
 
 ## 1. Purpose and reference baseline
 
-RA-07 defines what an LLM may contribute to TDG, what evidence accompanies that contribution, and what must be demonstrated before an identified configuration may perform a particular task. It also defines abstention, degraded operation, and the consequences of behavior changes. It selects no model, runtime, prompt, database, interface, or numerical performance threshold.
+RA-07 defines the tasks an LLM may perform, the evidence each contribution needs, and the evaluation required before a particular configuration can perform a task in operational review. It also covers withheld conclusions, limited operation and behavior changes. Model, runtime, prompt, interface and numerical threshold choices belong to the sources in Section 12.2.
 
-The governing sources are [Charter Sections 10, 13, 16–18][charter], [RA-01 Sections 7–9][ra01], and the accepted workflow, package, qualification, persistence, and technique contracts in [RA-02][ra02], [RA-03][ra03], [RA-04][ra04], [RA-05][ra05], and [RA-06][ra06]. Acceptance is established by [PG-RA03-001 v0.2][gate03], [SR-RA04-001 v0.2][gate04], [SR-RA05-001 v0.2][gate05], and [SR-RA06-001 v0.2 / PG-RA06-001][gate06]. Links pin repository commit `2b21be5294eb28f1918ff37feb7789132e85a4a5`; historical pending notices in preserved source snapshots are superseded by those records.
+The [Charter][charter] sets scope and evaluation principles; [RA-01][ra01] defines authority. [RA-02][ra02] governs workflow, [RA-03 v0.4][ra03] supplied content and identity, [RA-04][ra04] scope qualification, [RA-05][ra05] results and human decisions, and [RA-06][ra06] technique assessment. Entry to RA-07 was granted by `PG-RA06-001` in [SR-RA06-001 v0.2][gate06]. The [Requirements Analysis closure][phase] indexes accepted versions and decisions.
 
-The methodological baseline remains CTFL v4.0.1, CT-GenAI v1.1, and CT-AI v2.0. CT-GenAI addresses using GenAI in testing, including evaluation and privacy/security risks; CT-AI addresses testing AI systems, including statistical assessment, oracle limitations, and metamorphic testing. Official reference availability was checked on 2026-09-19. The controls and decisions below are TDG project definitions, not ISTQB certification criteria. [CT-GenAI][genai] [CT-AI syllabus, Sections 4.1–4.2 and 6.1][ctai]
-
-The Project Owner accepted RA-07 v0.1 in full on 2026-09-19, including all 20 MUST requirements, 14 validation obligations and four recommended decisions. **Shall** therefore expresses an accepted obligation for that original wording. Every requirement statement remains unchanged in this candidate. A localized clarification of configured prompt changes versus predeclared retry variants in Sections 4.3, 7.2 and 8, and the matching refinement to VAL-008, remain subject to endorsement. [SR-RA07-001 v0.1][review07] records the acceptance, finding and correction verification. The validation obligations identify future evidence to obtain; neither acceptance nor this review demonstrates product behavior or grants GO to RA-08.
+The methodological references recorded for the accepted baseline are CTFL v4.0.1, [CT-GenAI v1.1][genai] on using GenAI in testing, and [CT-AI v2.0, Sections 4.1–4.2 and 6.1][ctai] on evaluating AI systems. The original document records reference availability checked on 2026-09-19. The controls below are TDG project requirements, not ISTQB certification criteria. `Shall` states required behavior; `MUST` its priority.
 
 ## 2. Terms and authority
 
@@ -38,15 +31,15 @@ The Project Owner accepted RA-07 v0.1 in full on 2026-09-19, including all 20 MU
 | Grounded suggestion | A bounded, uncertain interpretation linked to actually supplied evidence. A real citation alone does not establish that the interpretation is correct. |
 | Abstention | Withholding an unsupported conclusion and explaining the affected question and reason; the corresponding ledger outcome depends on the cause. |
 
-Human roles retain [RA-01's definitions][ra01]: ROLE-02 controls the package boundary, ROLE-03 repairs TC, ROLE-04 decides business interpretations, ROLE-05 dispositions findings, ROLE-07 administers TDG, ROLE-08 qualifies capabilities, ROLE-09 authorizes data/security policy, and ROLE-10 is the Project Owner. Role combinations remain possible, with attribution and independence limitations recorded. Project ownership or administrative access does not implicitly confer the other authorities.
+[RA-01][ra01] assigns human authority: ROLE-02 controls package scope, ROLE-03 repairs TC, ROLE-04 decides business interpretations, ROLE-05 accepts, rejects, defers or reopens findings, ROLE-07 administers TDG, ROLE-08 qualifies capabilities, ROLE-09 authorizes data/security policy, and ROLE-10 is the Project Owner. Combined roles require attribution and disclosure of independence limits. Ownership or administrator access does not confer the other authorities.
 
-Three decisions remain separate: **may this configuration perform this task; does this supplied evidence support this interpretation; does a human accept this finding?** Success at one is not approval of the others. Model qualification never authorizes confidential-data use, source TC modification, or formal testware approval.
+Capability qualification, confirmation of a business interpretation and acceptance of a finding are separate decisions. One does not approve the others. Qualification does not authorize confidential-data use, TC modification or formal testware approval.
 
 ## 3. Permitted contributions and responsibility boundaries
 
 ### 3.1 Accepted LLM task catalogue
 
-The catalogue bounds possible contributions; it does not require every task to use an LLM or every candidate model to qualify for all tasks. Grants can be narrower than a row, for example EP suggestions in Polish prose without permission for state-transition analysis.
+For operational review, an LLM may perform a task only within its qualification. No task must use an LLM, and no model must qualify for the whole catalogue. A grant may cover part of a row, such as EP suggestions in Polish prose without state-transition analysis.
 
 | Task | Permitted contribution, subject to qualification | Required boundary |
 | --- | --- | --- |
@@ -56,7 +49,7 @@ The catalogue bounds possible contributions; it does not require every task to u
 | LLM-04 — Technique and semantic review assistance | Propose applicability, grounded design-gap observations, inconsistencies, or questions under RA-06's four techniques. | Keep applicability, planned exercise, and expected-result alignment separate; do not fabricate a missing business outcome or coverage denominator. |
 | LLM-05 — Explanation assistance | Explain an existing finding or supported observation in accessible language, using its recorded evidence and limitations. | Preserve the original finding. Additional semantic claims need their own supported suggestion under an appropriate task; fluent wording cannot increase certainty. |
 
-Human-readable questions and bounded coverage suggestions are permitted. Complete replacement TC, autonomous repair of steps, autonomous discovery of documentation, and review of tests for AI systems remain outside the approved MVP. An existing direct requirement link is useful but not mandatory; experience-based TC remain subject to the accepted package and evidence rules.
+Human-readable questions and bounded coverage suggestions are permitted. Complete replacement TC, autonomous step repair, autonomous discovery of documentation and review of tests for AI systems remain outside the MVP. Direct requirement links are useful but optional; experience-based TC still follow the package and evidence rules.
 
 ### 3.2 Division of responsibilities
 
@@ -69,7 +62,7 @@ Human-readable questions and bounded coverage suggestions are permitted. Complet
 | Count supported coverage items or calculate values | Qualified deterministic controls over appropriately established structured premises. LLM-derived premises do not become confirmed through arithmetic. |
 | Disposition findings, repair TC, qualify capabilities, authorize protected data | The respective human authority; none can be delegated to the evaluated LLM. |
 
-No requirement to encode all business semantics in scripts is introduced. If neither an applicable qualified control nor supported interpretation is available, the limitation remains visible.
+TDG need not encode all business semantics in scripts. If no applicable qualified control or supported interpretation is available, retain the limitation.
 
 ## 4. Bounded input and output contract
 
@@ -204,7 +197,7 @@ These original, synthetic examples are walkthrough material and future test-anal
 
 ## 9. Accepted requirements
 
-All 20 statements are unchanged from v0.1 and are **MUST / ACCEPTED** by the Project Owner's 2026-09-19 decision. `VAL-xxx` in this table means `RA07-VAL-xxx`. Sections referenced by a statement supply its detailed conditions; the localized review clarification and VAL-008 refinement remain pending under [SR-RA07-001 v0.1][review07], rather than being silently included in the earlier acceptance.
+All 20 statements remain **MUST / ACCEPTED**, unchanged from the Owner's 2026-09-19 acceptance. The supporting clarification and VAL-008 refinement were separately endorsed on 2026-09-20 in [SR-RA07-001 v0.2][review07]. `VAL-xxx` means `RA07-VAL-xxx`; referenced sections supply each requirement's detailed conditions. Upstream references and direct validation links are unchanged.
 
 | ID | Requirement | Primary upstream basis | Direct validation |
 | --- | --- | --- | --- |
@@ -231,7 +224,7 @@ All 20 statements are unchanged from v0.1 and are **MUST / ACCEPTED** by the Pro
 
 ## 10. Validation obligations and reverse trace
 
-These obligations combine static contract inspection, later integration/system checks, and empirical qualification work. They do not prescribe implementation tests for every sentence. `REQ-xxx` below means `RA07-REQ-xxx`; the table supplies the reverse of Section 9's direct links.
+All 14 obligations are accepted, including the VAL-008 clarification recorded in [SR-RA07-001 v0.2][review07]. They combine document inspection, later integration/system checks and empirical qualification work; they do not prescribe a separate implementation test for every sentence or report passing product tests. `REQ-xxx` means `RA07-REQ-xxx`. The table mirrors Section 9's direct links.
 
 | ID | Required validation evidence | Direct requirements |
 | --- | --- | --- |
@@ -252,7 +245,7 @@ These obligations combine static contract inspection, later integration/system c
 
 ## 11. Accepted policy decisions
 
-All four original recommendations below were **ACCEPTED** by the Project Owner on 2026-09-19. Their wording is preserved. No original policy decision remains open; endorsement of the subsequent review clarification is a separate closure action.
+The Owner accepted all four recommendations on 2026-09-19. Their wording is preserved. [SR-RA07-001 v0.2][review07] records the later clarification and completed closure.
 
 | ID | Decision | Recommendation and consequence |
 | --- | --- | --- |
@@ -265,43 +258,44 @@ All four original recommendations below were **ACCEPTED** by the Project Owner o
 
 ### 12.1 Author check
 
-| Check | Result and limitation |
-| --- | --- |
-| Entry and upstream authority | PASS — RA-07 is authorized by the published PG-RA06-001; source links pin the effective repository snapshot. |
-| Requirement identities and status | PASS — 20 unique MUST / ACCEPTED statements, each identical to the accepted v0.1 wording. |
-| Forward trace | PASS — 20/20 requirements have at least one direct validation obligation. |
-| Reverse trace | PASS — 14/14 validation obligations reference existing requirements; all 42 direct edges match in both directions. |
-| Semantic continuity | Focused static review completed in SR-RA07-001 v0.1; one retry/configuration wording ambiguity corrected and verified. Owner endorsement and review closure remain open. |
-| Deliverable boundary | One corrected candidate and one consolidated review/acceptance record; no model selected or evaluated, no executable TC produced, and no product behavior demonstrated. |
+[SR-RA07-001 v0.2][review07] records the completed static review and Owner endorsement. `SR-RA07-F-001` is closed: Sections 4.3, 7.2 and 8 distinguish executing a predeclared retry variant under an unchanged qualified policy from editing a prompt template or behavior policy. VAL-008 checks both paths, the retry budget and the active-run restrictions.
 
-The human walkthrough and acceptance of v0.1 are complete. [SR-RA07-001 v0.1][review07] contains the focused review, the one finding and its verified correction. The same assistant authored and reviewed the document; this is not independent expert assurance. The checks above do not grant the remaining gate.
+The historical trace check found 20/20 requirements with direct validation links, 14/14 obligations with valid targets and 42 matching links in both directions. The Owner performed the human walkthrough; the same assistant authored and reviewed the document. These checks are document evidence, not independent expert assurance, product tests or model qualification. The existing review retains the scenarios, verification results and original file identities.
 
 ### 12.2 Remaining allocations
 
-| Destination | Work intentionally left there |
+| Governing source or record | Responsibility or current disposition |
 | --- | --- |
-| RA-08 | Concrete confidentiality, isolation, identity, access, storage, logs, retention, telemetry, export and fail-closed requirements. Qualification never replaces ROLE-09 authorization and verified protections. |
-| RA-09 | Canonical request/result representations, field schemas and import/export error formats. RA-07 defines logical contracts only. |
-| RA-10 and later STLC work | Qualification/acceptance datasets, protocol detail, numerical thresholds and repeat budgets, adjudication procedure, reviewer-effort measurement, full test cases and empirical hardware feasibility. |
-| Solution Design | Model/runtime choice, context handling and isolation mechanisms, physical record design, retry implementation, interfaces and operational budgets. |
-| SR-RA03-OBS-001 | Complete the earlier indirect `RA03-VAL-014` downstream trace before executable test design. RA-07's own direct trace does not close it. |
-| SR-RA03-OBS-002 / R-08 | Keep documentation growth visible; reuse upstream contracts and one consolidated review/gate record rather than duplicating them. |
+| [RA-08][ra08] | Confidentiality, isolation, identity, access, storage, logs, retention, telemetry, export and fail-closed rules. Qualification cannot replace ROLE-09 authorization and verified protections. |
+| [RA-09][ra09] | Request/result representations, field schemas and import/export error formats. RA-07 defines logical contracts. |
+| [RA-10][ra10] and test work | Evaluation datasets, protocols, thresholds and repeat budgets, human adjudication, reviewer effort, executable tests and empirical hardware feasibility. |
+| [Solution Design][design] | Model/runtime choice, context and isolation mechanisms, physical records, retry implementation, interfaces and operational budgets. |
+| `SR-RA03-OBS-001` | The RA03-VAL-014 trace action was closed by the accepted RA-10 bridge; see [SR-RA10-001 v0.2][review10]. General trace obligations remain. |
+| `SR-RA03-OBS-002` / R-08 | Keep documentation proportional to the decisions and risks it resolves. More documentation does not establish product usefulness. |
+
+Read the related requirements with their accepted decisions, indexed in the [Requirements Analysis closure][phase]. These references replace the old pending-work descriptions; they do not establish implemented or verified capability.
 
 ### 12.3 Exit condition
 
-The Project Owner has already accepted all 20 requirement statements, all 14 original validation obligations and all four recommendations; those decisions do not need repetition. The remaining exit decision is endorsement of the localized retry/configuration clarification and VAL-008 refinement, acceptance and closure of [SR-RA07-001 v0.1][review07], designation of this v0.2 as the final RA-07 baseline, and explicit **GO to RA-08**. PG-RA07-001 is consolidated in Section 7 of that review record. No such exit decision is recorded here.
+The Owner accepted v0.1 on 2026-09-19. The separate 2026-09-20 decision endorsed the clarification and VAL-008, closed the review, designated v0.2 and granted GO to RA-08. [SR-RA07-001 v0.2 / PG-RA07-001][review07] preserves that sequence and decision scope.
 
-[charter]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/2b21be5294eb28f1918ff37feb7789132e85a4a5/docs/governance/test-design-gatekeeper-project-charter-v0.4.md
-[ra01]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/2b21be5294eb28f1918ff37feb7789132e85a4a5/docs/requirements-analysis/test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md
-[ra02]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/2b21be5294eb28f1918ff37feb7789132e85a4a5/docs/requirements-analysis/test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md
-[ra03]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/2b21be5294eb28f1918ff37feb7789132e85a4a5/docs/requirements-analysis/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.3.md
-[ra04]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/2b21be5294eb28f1918ff37feb7789132e85a4a5/docs/requirements-analysis/test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md
-[ra05]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/2b21be5294eb28f1918ff37feb7789132e85a4a5/docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md
-[ra06]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/2b21be5294eb28f1918ff37feb7789132e85a4a5/docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md
-[gate03]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/2b21be5294eb28f1918ff37feb7789132e85a4a5/docs/reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md
-[gate04]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/2b21be5294eb28f1918ff37feb7789132e85a4a5/docs/reviews/test-design-gatekeeper-ra-04-focused-static-review-v0.2.md
-[gate05]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/2b21be5294eb28f1918ff37feb7789132e85a4a5/docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-focused-static-review-v0.2.md
-[gate06]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/2b21be5294eb28f1918ff37feb7789132e85a4a5/docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-focused-static-review-v0.2.md
-[review07]: test-design-gatekeeper-ra-07-focused-static-review-v0.1.md
+This maintained text consolidates those accepted decisions and current references. Historical GO to RA-08 does not override the development pause in [README.md](../../../README.md).
+
+[charter]: ../../governance/test-design-gatekeeper-project-charter-v0.4.md
+[ra01]: ../test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md
+[ra02]: ../test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md
+[ra03]: ../ra-10/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.4.md
+[ra04]: ../test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md
+[ra05]: ../ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md
+[ra06]: ../ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md
+[gate06]: ../ra-06/test-design-gatekeeper-ra-06-focused-static-review-v0.2.md
+[review07]: test-design-gatekeeper-ra-07-focused-static-review-v0.2.md
+[phase]: ../ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md
+[ra08]: ../ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md
+[ra09]: ../ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md
+[ra10]: ../ra-10/test-design-gatekeeper-ra-10-evaluation-acceptance-v0.2.md
+[review10]: ../ra-10/test-design-gatekeeper-ra-10-focused-static-review-v0.2.md
+[design]: ../../solution-design
 [genai]: https://istqb.org/certifications/gen-ai/
 [ctai]: https://istqb.org/?download_id=9558&sdm_process_download=1
+[original]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/004a1a0e3340bfcde5cd0231b02af1e4a7ccfda6/docs/requirements-analysis/ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.2.md
