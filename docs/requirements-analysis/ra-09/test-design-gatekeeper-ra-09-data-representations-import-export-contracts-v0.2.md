@@ -4,31 +4,22 @@
 
 | Field | Value |
 | --- | --- |
-| Document version and date | 0.2 — 2026-09-20 |
-| SDLC phase | Requirements Analysis |
-| Status | V0.1 ACCEPTED — TWO REVIEW CLARIFICATIONS PREPARED; FINAL ENDORSEMENT PENDING |
-| Entry authorization | PG-RA08-001, recorded in SR-RA08-001 v0.2 — GO to RA-09 |
-| Effective upstream baseline | Charter v0.4; RA-01 v0.3; RA-02 v0.3; RA-03 v0.3; RA-04 v0.2; RA-05 v0.2; RA-06 v0.2; RA-07 v0.2; RA-08 v0.2, read with their acceptance and closure records |
-| Decision authority | Project Owner for requirements, open decisions, and the SDLC gate; existing operational authorities remain unchanged |
-| Requirements | All 24 original MUST statements ACCEPTED; exact statements unchanged |
-| Validation obligations | All 16 original obligations ACCEPTED; refinements to VAL-002 and VAL-010 prepared for Owner endorsement; no product tests executed |
-| Policy decisions | OD-RA09-001 through OD-RA09-004 ACCEPTED as recommended; 0 open original decisions |
-| Static-review state | SR-RA09-001 v0.1 — review complete; two Medium findings with prepared and verified corrections; closure pending |
-| RA-10 gate | NOT GRANTED |
+| Basis | Accepted RA-09 v0.2, originally dated 2026-09-20 |
+| Acceptance and gate | All 24 requirements, 16 validation obligations and four policy decisions accepted; both verified clarifications, v0.2 baseline and GO to RA-10 endorsed on 2026-09-21 in [SR-RA09-001 v0.2 / PG-RA09-001][review09] |
+| Text maintenance | Consolidated on 2026-10-24; section numbers and identifiers retained |
+| Decision authority | Project Owner for requirements and the SDLC gate; existing operational authorities remain unchanged |
+
+This is the maintained contract for importing supplied material and exporting retained results. The [original v0.2 text][original] remains in Git history; earlier review hashes and byte counts identify that snapshot. [README.md](../../../README.md) describes current capability and the development pause. Accepting these contracts does not establish implemented or tested import/export behavior.
 
 ## 1. Purpose, baseline, and conventions
 
-RA-09 specifies how supplied material becomes an identifiable Review Package and how retained review results can be exported without losing their evidence, limitations, or human decision history. It separates readable file syntax, trustworthy capture, minimum package admissibility, and substantive assessment. A file can be syntactically correct while containing a deficient TC; a successfully captured package can still be inadmissible for review.
+RA-09 defines how supplied files become an identifiable Review Package and how results can be exported with their evidence, limitations and human decision history. File syntax, faithful capture, minimum admissibility and substantive assessment are separate checks. A readable file can contain an incomplete TC; a faithfully captured package can still lack the minimum content needed for review.
 
-The governing sources are the [Charter][charter] and [RA-01][ra01] through [RA-08][ra08], including [RA-02][ra02], [RA-03][ra03], [RA-04][ra04], [RA-05][ra05], [RA-06][ra06], and [RA-07][ra07]. Their accepted status is established through [PG-RA03-001][gate03] and the closure records for [RA-04][gate04], [RA-05][gate05], [RA-06][gate06], [RA-07][gate07], and [RA-08 / PG-RA08-001][gate08]. Repository references pin commit `ff1cd6379717d59da09087120609d41fc7309668`. Historical pending labels in preserved wording snapshots do not override the subsequent closure records.
+The [Charter][charter] selects vendor-independent JSON, a defined CSV format and explicit local field mapping. [RA-01][ra01] defines authority; related contracts govern [workflow][ra02], [supplied content and identity][ra03], [scope qualification][ra04], [results and history][ra05], [technique assessment][ra06], [LLM qualification][ra07] and [data protection][ra08]. Entry to RA-09 was granted by `PG-RA08-001` in [SR-RA08-001 v0.2][gate08]. The [Requirements Analysis closure][phase] indexes accepted versions and decisions.
 
-The Project Owner accepted RA-09 v0.1 in full on 2026-09-20, including all 24 MUST requirements, 16 validation obligations, and four recommended decisions. **Shall** now expresses an accepted obligation for the original requirement wording; **MUST** remains its priority. The exact requirement statements are unchanged. Sections 2–8 elaborate those contracts; examples are not additional business rules or executed product tests.
+`Shall` states required behavior; `MUST` its priority. Sections 2–8 define the detailed contracts and examples. The two clarifications are part of the accepted text: Section 2.2 defines the JSON control envelope, and Section 5.2 defines the boundary between capture mapping and permitted LLM tasks. Their separate endorsement is recorded in [SR-RA09-001 v0.2][review09]. Examples are illustrative inputs, not additional business rules or product-test results.
 
-This v0.2 candidate records that acceptance and prepares the two clarifications identified in [SR-RA09-001 v0.1][review09]. The envelope rule marked F-001, the LLM capture-mapping boundary marked F-002, their consequential examples, and the refinements to VAL-002/VAL-010 await Owner endorsement. They are not backdated as part of the earlier acceptance. The original v0.1 remains preserved; this candidate is not yet the final phase baseline.
-
-The Charter already selects a vendor-independent JSON representation, a defined CSV import format, and explicit local field mapping. RA-09 makes those choices concrete at the requirements level. It does not select a database, programming language, parser library, CLI, or UI. Executable schemas and implementation artifacts will realize the accepted contracts during Solution Design and implementation. Any design change to their accepted meaning requires change control.
-
-The scope remains pre-review of system-level, functional, black-box TC, using EP, BVA, decision tables, and state transitions where evidence supports them. This document adds no live Jira connection, external source retrieval, automatic TC repair, formal testware approval, or claim of official ISTQB conformity.
+Executable schemas and implementation choices belong to Solution Design and implementation under their applicable authorization. They must preserve these accepted meanings; a substantive change requires change control. The scope remains pre-review of system-level functional black-box TC using the four selected techniques where supported. This contract adds no live Jira connection, external retrieval, automatic TC repair, testware approval or ISTQB-conformity claim.
 
 ## 2. Supported boundaries and document kinds
 
@@ -51,7 +42,7 @@ A Jira-shaped file is assessed by its supplied content and explicit mapping. TDG
 
 Each JSON contract has a top-level object with `document_type`, `contract_version`, and `content`. The initial data-contract version is the string `"1.0"`, independent of this requirements document's version.
 
-**Prepared clarification F-001 — Owner endorsement pending.** For contract version `"1.0"`, the control envelope contains exactly those three members. `document_type` and `contract_version` are strings whose values must be supported for the selected operation; `content` is a JSON object. Missing, additional, or incorrectly typed envelope members reject the primary native import path without creating a package snapshot. Any permitted raw retention remains an intake record. Generated documents must satisfy the same envelope contract before being reported as valid output.
+**Envelope rule (F-001).** For contract version `"1.0"`, the control envelope contains exactly those three members. `document_type` and `contract_version` are strings whose values must be supported for the selected operation; `content` is a JSON object. Missing, additional, or incorrectly typed envelope members reject the primary native import path without creating a package snapshot. Any permitted raw retention remains an intake record. Generated documents must satisfy the same envelope contract before being reported as valid output.
 
 Unknown fields inside `content` follow the preservation and bounded-issue rules in Sections 3 and 6; they cannot become operational instructions. An empty `content` object is a valid envelope payload and proceeds to permitted capture and core-minimum checks, where missing substantive elements are reported. It is not an envelope error. Thus an unknown `comment` member at the root is rejected, while `content.comment` is preserved as unmapped supplied content.
 
@@ -117,7 +108,7 @@ Explicit null is preserved as null in any content field, with its deficiency ass
 
 ### 3.3 Source fidelity, presence, and mapping state
 
-Exact supplied bytes are retained separately from the capture projection, within the permitted security and retention policy. JSON objects use the syntax defined by [RFC 8259][rfc8259]. TDG's proposed native profile requires UTF-8 without a leading BOM, rejects duplicate object member names before any last-value-wins materialization, and rejects non-JSON constructs such as comments, trailing commas, or non-finite number tokens. Rejecting duplicate names is a stricter TDG interoperability rule, not a claim that the RFC mandates rejection.
+Exact supplied bytes are retained separately from the capture projection, within the permitted security and retention policy. JSON objects use the syntax defined by [RFC 8259][rfc8259]. TDG's native profile requires UTF-8 without a leading BOM, rejects duplicate object member names before any last-value-wins materialization, and rejects non-JSON constructs such as comments, trailing commas, or non-finite number tokens. Rejecting duplicate names is a stricter TDG interoperability rule, not a claim that the RFC mandates rejection.
 
 For every assessment-relevant projected field, capture must preserve its source locator, raw value/reference, capture mapping identity, and a distinguishable presence condition:
 
@@ -212,7 +203,7 @@ An approved capture mapping identifies its version, supported source layout, sou
 
 Mapping is a mechanical capture transformation.
 
-**Prepared clarification F-002 — Owner endorsement pending.** The accepted RA-07 catalogue authorizes no runtime LLM task within TDG for proposing or generating source-field/capture mappings. LLM-03 concerns TC-to-basis, TC-to-coverage-item, and explicitly authorized comparison relationships; it does not cover CSV-column or source-field mapper configuration. MVP intake uses explicitly selected, identified capture mappings through the approved human configuration process. Human approval of a mapper does not itself extend the runtime LLM task catalogue. Adding such an LLM capability would require separate scope/task change control and applicable qualification; this document does not add it.
+**Capture-mapping boundary (F-002).** The accepted RA-07 catalogue authorizes no runtime LLM task within TDG for proposing or generating source-field/capture mappings. LLM-03 concerns TC-to-basis, TC-to-coverage-item, and explicitly authorized comparison relationships; it does not cover CSV-column or source-field mapper configuration. MVP intake uses explicitly selected, identified capture mappings through the approved human configuration process. Human approval of a mapper does not itself extend the runtime LLM task catalogue. Adding such an LLM capability would require separate scope/task change control and applicable qualification; this document does not add it.
 
 Capture mapping changes followed by recapture create a new package version. Changes to semantic mapping used only in assessment create a new run on the same captured package. The two operations must remain distinguishable.
 
@@ -397,7 +388,7 @@ These are review examples and future test-design seeds. Product behavior has not
 
 ## 9. Accepted requirements and direct traceability
 
-All 24 original requirement statements below have **Priority = MUST** and **Status = ACCEPTED**, by the Owner's full v0.1 acceptance; their exact wording is unchanged. Local `VAL-nnn` references mean `RA09-VAL-nnn`. F-001/F-002 supporting clarifications remain separately pending as stated in Section 1. The only upstream-trace addition is RA07-REQ-001 for REQ-011, exposing the applicable task boundary. Every requirement has an explicit validation edge; Section 10 supplies the reverse edges.
+All 24 requirements are **MUST / ACCEPTED**. Their statements, upstream references and direct validation links are unchanged from the accepted v0.2 baseline. This includes RA07-REQ-001 in REQ-011's trace, endorsed with the F-002 clarification. Local `VAL-nnn` references mean `RA09-VAL-nnn`; Section 10 gives the reverse links.
 
 | ID | Accepted requirement statement | Principal upstream basis | Validation |
 | --- | --- | --- | --- |
@@ -428,7 +419,7 @@ All 24 original requirement statements below have **Priority = MUST** and **Stat
 
 ## 10. Validation obligations and reverse trace
 
-The Owner accepted all 16 original obligations for later STLC design. The prepared refinements to VAL-002 and VAL-010 below explicitly cover F-001 and F-002 and await endorsement; the other 14 narratives are unchanged. These obligations are not executed TC or evidence that the product works. Both directions of REQ ↔ VAL are explicit. Each row must later gain representative inputs, preconditions, controlled expected observations and retained evidence.
+All 16 obligations are accepted, including the VAL-002/VAL-010 refinements endorsed on 2026-09-21 in [SR-RA09-001 v0.2][review09]. Later test work must supply representative inputs, preconditions, controlled expected observations and retained evidence. These obligations are not executed TC or evidence that the product works.
 
 | ID | Validation condition and required oracle | Direct RA09 requirements |
 | --- | --- | --- |
@@ -449,9 +440,11 @@ The Owner accepted all 16 original obligations for later STLC design. The prepar
 | RA09-VAL-015 | Export selected results/history as JSON and Markdown under allowed, denied and revoked access. Compare claims, source/premise references, human event order and cutoff, self-review context, limitations and evidence omissions; unsupported conclusions and imported authority do not appear. Verify destination protection, inert rendering and no remote-resource fetch. | REQ-018, REQ-019, REQ-020, REQ-023, REQ-024 |
 | RA09-VAL-016 | Round-trip supported representations and compare explicitly equivalent logical inputs, including unknown content, presence/order and selected human history. Separate logical equality from byte identity and independent submissions. Exercise renderer-only changes and unsupported versions; report omission is explicit and re-import does not restore trusted history or trigger an assessment. | REQ-020, REQ-021, REQ-022 |
 
-Trace coverage here means every accepted requirement has at least one explicit validation obligation and every obligation references existing requirements. It does not establish test adequacy, executed test coverage, or product acceptance.
+Each requirement has a direct validation link and each obligation references existing requirements. Those links alone do not establish test adequacy, executed coverage or product acceptance.
 
 ## 11. Accepted Owner decisions
+
+The Owner accepted all four recommendations on 2026-09-20. The later F-001/F-002 endorsement is recorded separately in [SR-RA09-001 v0.2][review09]. The original decision wording is preserved below; no original policy decision remains open.
 
 | ID | Decision scope | Accepted recommendation and consequence |
 | --- | --- | --- |
@@ -460,70 +453,54 @@ Trace coverage here means every accepted requirement has at least one explicit v
 | OD-RA09-003 | Confirm capture and error semantics | Accept Section 6: preserve trustworthy permitted candidates and visible content gaps; separate durable capture from minimum admissibility, with bounded consequences and atomic success. Reject unsafe/unrouteable capture rather than guessing content |
 | OD-RA09-004 | Confirm output formats and the fidelity promise | Accept Section 7: JSON result export plus a faithful Markdown projection, exact selection/history boundaries and explicit omissions. General backup restoration, trusted history import and CSV authoring round trips remain outside MVP |
 
-All four original recommendations were ACCEPTED through the Owner's full RA-09 v0.1 acceptance on 2026-09-20; no original decision remains open. F-001/F-002 are subsequent review clarifications, not retroactively accepted additions to those decisions. No acceptance here authorizes confidential-data operation, new model tasks, or changes to the TC-review scope.
-
 ## 12. Verification, remaining allocation, and exit
 
 ### 12.1 Document verification scope
 
-The original author checks were reproduced during [SR-RA09-001][review09]. The same assistant conducted the focused static review and prepared and checked the corrections; no independent-review or product-validation claim is made. The review record preserves the two findings, their exact changes, and the pending Owner disposition.
+[SR-RA09-001 v0.2][review09] records the completed review and Owner endorsement on 2026-09-21. `SR-RA09-F-001` and `SR-RA09-F-002` are closed. The first defines the three-member JSON envelope and its rejection rules; unknown fields inside `content` remain supplied content. The second confirms that the existing RA-07 catalogue does not authorize runtime LLM generation of capture mappings. VAL-002/010 cover these distinctions.
 
-| Check | Result and boundary |
-| --- | --- |
-| Entry baseline | PASS — referenced accepted source snapshots and RA-08 closure match the pinned repository state; GO to RA-09 is recorded |
-| Unique requirement and obligation identities | PASS — 24 unique accepted original requirements and 16 obligations; exact requirement statements unchanged |
-| REQ → VAL | PASS — 24/24 accepted MUST requirements have at least one explicit obligation |
-| VAL → REQ | PASS — 16/16 obligations point to existing RA09 requirements; all 49 direct edges agree in both directions and are unchanged |
-| Upstream references and authority | PASS for the prepared candidate — referenced identifiers exist; F-002 explicitly preserves the accepted RA-07 task boundary |
-| JSON/CSV illustrations | PASS — JSON syntax and sample field/reference paths checked; CSV illustration decodes to one data record with nine columns, including multiline steps and a JSON-array basis reference. This is document-fixture verification only |
-| Failure and deficient-content distinctions | PASS — incomplete TC, unknown origin, duplicate source IDs, duplicate JSON members, ambiguous CSV framing and unavailable evidence have distinct documented consequences |
-| Document growth and scope | PASS — one focused draft; upstream business and security rules are referenced rather than replaced by new frameworks; no extra implementation or review artifacts are required to read it |
-| Formal static review | COMPLETE — two Medium findings; prepared F-001/F-002 corrections verified at document level; Owner endorsement and review closure pending |
-| Implemented behavior / RA-10 gate | NOT ESTABLISHED — no product tests executed; GO to RA-10 not granted |
+The historical trace check found 24/24 requirements with direct validation links, 16/16 obligations with valid targets and 49 matching links in both directions. The Owner performed the walkthrough; the same assistant authored and reviewed the document. The existing review retains its scenarios, example-syntax checks, source identities and correction verification. This is document evidence, not independent expert assurance or executed importer/exporter testing.
 
 ### 12.2 Carried observations and downstream work
 
-| Item | Allocation / retained status |
+| Governing source or record | Responsibility or current disposition |
 | --- | --- |
-| Executable schemas and parser/export implementation | Solution Design produces the machine-readable forms, complete versioned issue-code catalog and concrete mapping/locator structures from accepted RA-09 meaning; implementation follows its own gate |
-| Concrete resource limits and storage/transaction mechanisms | Design selects measured bounds, enforcement points, persistence and cleanup mechanisms; evidence is required before the relevant profile is enabled |
-| Detailed tests and acceptance evidence | Later STLC expands the validation obligations into fixtures and TC, including malformed, mixed, adversarial and cross-representation cases; human-reviewed expected observations must not be generated solely by the component under test |
-| RA-10 | Consolidate evaluation/acceptance criteria, measurement and requirements-to-validation traceability before closing Requirements Analysis; no gate granted here |
-| `SR-RA03-OBS-001` | OPEN / CARRIED — make the RA03-VAL-014 path through IS-01–IS-11 explicitly traceable to accepted requirements before executable test design. RA09-VAL-011 adds an obligation to exercise those rules; it does not retroactively close the inherited trace observation |
-| `SR-RA03-OBS-002` / R-08 | CARRIED — monitor scope/documentation growth. Avoid duplicate schema catalogs, status documents or speculative adapters; add artifacts only for a concrete review/design/validation need |
+| [Solution Design][design] and authorized implementation | Executable schemas, parser/export behavior, issue-code catalogue, mapping/locator structures, measured resource limits, persistence and cleanup; evidence before enabling the relevant path |
+| Test planning/design and STLC under [RA-10][ra10] | Malformed, mixed, adversarial and cross-representation cases derived from these obligations; human-reviewed expectations that are not generated solely by the component under test |
+| [RA-10][ra10] and [Requirements Analysis closure][phase] | Accepted evaluation/acceptance requirements and consolidated traceability; these records do not establish empirical product results |
+| `SR-RA03-OBS-001` | The RA03-VAL-014 trace action was closed by the accepted RA-10 bridge; see [SR-RA10-001 v0.2][review10]. RA09-VAL-011 still requires tests of IS-01–IS-11, and general trace obligations remain |
+| `SR-RA03-OBS-002` / R-08 | Active documentation-growth risk: avoid duplicate schema catalogues, status documents and speculative adapters; add an artifact only for a concrete design or validation need |
 
-### 12.3 Pending phase exit decision
+Read these sources with their accepted decisions in the [phase closure][phase]. Implementation, model use and protected-data operation retain their separate authorization and evidence requirements.
 
-The original full-document acceptance, 24 requirement acceptances, and four original decision dispositions are complete. [SR-RA09-001 v0.1][review09] records the formal review and document-level verification of the two prepared corrections. The remaining decision is to endorse F-001/F-002 and the corresponding VAL-002/VAL-010 refinements, accept and close the review record, designate this v0.2 candidate as the final RA-09 baseline, and explicitly grant **GO to RA-10 — Evaluation and Acceptance**.
+### 12.3 Recorded phase exit decision
 
-This combined decision is proposed as PG-RA09-001 in the review record; it has not been granted. Section 12.3's explicit Owner gate is the reason this candidate stops at a reviewable phase-exit proposal. It does not reopen the already accepted unchanged requirements. Repository publication remains a subsequent authorized documentation action; no commit, implementation, confidential-data use, or RA-10 work is authorized by this record itself.
+The Owner accepted v0.1 on 2026-09-20. The separate 2026-09-21 decision endorsed both clarifications, VAL-002/010 and the added upstream trace, closed the review, designated v0.2 and granted GO to RA-10. [SR-RA09-001 v0.2 / PG-RA09-001][review09] preserves that sequence and scope.
+
+Historical GO to RA-10 does not override the development pause in [README.md](../../../README.md).
 
 ## 13. Version record
 
-| Version | Date | Change |
-| --- | --- | --- |
-| 0.1 | 2026-09-20 | Initial RA-09 draft following accepted RA-08 closure and GO: proposed local JSON/CSV input contracts, capture/issue semantics, result/export fidelity, 24 requirements, 16 validation obligations, and four open decisions |
-| 0.2 | 2026-09-20 | Records full v0.1 acceptance, prepares F-001 envelope and F-002 LLM-task clarifications, refines VAL-002/VAL-010, and adds the applicable REQ-011 upstream task trace; 24 exact requirement statements and 49 local edges unchanged; final endorsement pending |
+The original v0.1 review input and v0.2 corrected baseline remain in Git history. [SR-RA09-001 v0.2][review09] records their identities, the verified differences and the separate Owner decisions. This maintained text consolidates those decisions and current references; contract version `"1.0"`, CSV profile version `1` and their behavior remain unchanged.
 
-[charter]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/ff1cd6379717d59da09087120609d41fc7309668/docs/governance/test-design-gatekeeper-project-charter-v0.4.md
-[ra01]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/ff1cd6379717d59da09087120609d41fc7309668/docs/requirements-analysis/test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md
-[ra02]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/ff1cd6379717d59da09087120609d41fc7309668/docs/requirements-analysis/test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md
-[ra03]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/ff1cd6379717d59da09087120609d41fc7309668/docs/requirements-analysis/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.3.md
-[ra04]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/ff1cd6379717d59da09087120609d41fc7309668/docs/requirements-analysis/test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md
-[ra05]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/ff1cd6379717d59da09087120609d41fc7309668/docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md
-[ra06]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/ff1cd6379717d59da09087120609d41fc7309668/docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md
-[ra07]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/ff1cd6379717d59da09087120609d41fc7309668/docs/requirements-analysis/ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.2.md
-[ra08]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/ff1cd6379717d59da09087120609d41fc7309668/docs/requirements-analysis/ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md
-[gate03]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/ff1cd6379717d59da09087120609d41fc7309668/docs/reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md
-[gate04]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/ff1cd6379717d59da09087120609d41fc7309668/docs/reviews/test-design-gatekeeper-ra-04-focused-static-review-v0.2.md
-[gate05]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/ff1cd6379717d59da09087120609d41fc7309668/docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-focused-static-review-v0.2.md
-[gate06]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/ff1cd6379717d59da09087120609d41fc7309668/docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-focused-static-review-v0.2.md
-[gate07]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/ff1cd6379717d59da09087120609d41fc7309668/docs/requirements-analysis/ra-07/test-design-gatekeeper-ra-07-focused-static-review-v0.2.md
-[gate08]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/ff1cd6379717d59da09087120609d41fc7309668/docs/requirements-analysis/ra-08/test-design-gatekeeper-ra-08-focused-static-review-v0.2.md
+[charter]: ../../governance/test-design-gatekeeper-project-charter-v0.4.md
+[ra01]: ../test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md
+[ra02]: ../test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md
+[ra03]: ../ra-10/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.4.md
+[ra04]: ../test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md
+[ra05]: ../ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md
+[ra06]: ../ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md
+[ra07]: ../ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.2.md
+[ra08]: ../ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md
+[gate08]: ../ra-08/test-design-gatekeeper-ra-08-focused-static-review-v0.2.md
+[review09]: test-design-gatekeeper-ra-09-focused-static-review-v0.2.md
+[phase]: ../ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md
+[ra10]: ../ra-10/test-design-gatekeeper-ra-10-evaluation-acceptance-v0.2.md
+[review10]: ../ra-10/test-design-gatekeeper-ra-10-focused-static-review-v0.2.md
+[design]: ../../solution-design
 [rfc8259]: https://www.rfc-editor.org/rfc/rfc8259
 [rfc4180]: https://www.rfc-editor.org/rfc/rfc4180
 [rfc6901]: https://www.rfc-editor.org/rfc/rfc6901
 [schema-core]: https://json-schema.org/draft/2020-12/json-schema-core
 [schema-validation]: https://json-schema.org/draft/2020-12/json-schema-validation
-
-[review09]: test-design-gatekeeper-ra-09-focused-static-review-v0.1.md
+[original]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/848055675ab82b9347e47ee88e53920dae9fcb61/docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md
