@@ -4,32 +4,24 @@
 
 | Field | Value |
 | --- | --- |
-| Document version and date | 0.2 — 2026-09-20 |
-| SDLC phase | Requirements Analysis |
-| Status | ACCEPTED CONTENT — REVIEW COMPLETE; PHASE EXIT AWAITS OWNER DECISION |
-| Entry authorization | PG-RA07-001, consolidated in SR-RA07-001 v0.2 — GO to RA-08 |
-| Effective upstream baseline | Charter v0.4; RA-01 v0.3; RA-02 v0.3; RA-03 v0.3; RA-04 v0.2; RA-05 v0.2; RA-06 v0.2; RA-07 v0.2, read with their acceptance and closure records |
-| Decision authority | Project Owner for requirements and the SDLC gate; ROLE-09 for later data/security authorization |
-| Requirements | All 24 MUST statements ACCEPTED in v0.1; statements unchanged |
-| Validation obligations | All 16 obligations ACCEPTED and unchanged; no product, deployment, or security tests executed |
-| Policy decisions | OD-RA08-001 through OD-RA08-004 ACCEPTED as recommended; 0 open original decisions |
-| Formal static review | SR-RA08-001 v0.1 — COMPLETE / PASS; 0 findings; Owner endorsement of the record pending |
-| Confidential-data use | NOT AUTHORIZED by this document or by GO to RA-08 |
-| RA-09 gate | NOT GRANTED |
+| Basis | Accepted RA-08 v0.2, originally dated 2026-09-20 |
+| Acceptance and gate | All 24 requirements, 16 validation obligations and four policy decisions accepted; the completed review, v0.2 baseline and GO to RA-09 endorsed on 2026-09-20 in [SR-RA08-001 v0.2 / PG-RA08-001][review08] |
+| Text maintenance | Consolidated on 2026-10-23; section numbers and identifiers retained |
+| Decision authority | Project Owner for requirements and the SDLC gate; ROLE-09 for data/security authorization |
+
+This is the maintained contract for handling and protecting TDG data. The [original v0.2 text][original] remains in Git history; earlier review hashes and byte counts identify that snapshot. [README.md](../../../README.md) describes current capability and the development pause. Accepting these requirements does not authorize confidential-data use or establish verified protection.
 
 ## 1. Purpose, baseline, and conventions
 
-RA-08 turns the accepted confidentiality boundary into testable requirements for admission, identity, access, isolation, storage, diagnostics, retention, export, and safe failure. It covers the whole approved TDG processing path, including its model service and supporting host services. A local model alone does not establish that path's safety.
+RA-08 defines controls for data admission, identity, access, isolation, storage, diagnostics, retention, export and safe failure. They cover the complete TDG processing path, including the model service and supporting host services. Running a model locally does not establish that the whole path is safe.
 
-The governing sources are [Charter §13][charter], [RA-01 authority and profile rules][ra01], and the accepted contracts in [RA-02][ra02], [RA-03][ra03], [RA-04][ra04], [RA-05][ra05], [RA-06][ra06], and [RA-07][ra07]. Acceptance is established by [PG-RA03-001][gate03] and the closure records for [RA-04][gate04], [RA-05][gate05], [RA-06][gate06], and [RA-07 / PG-RA07-001][gate07]. Repository references pin commit `bb1cf6e5d3dff6fa41bf69915a9d747745744077`. Historical pending notices in preserved source snapshots do not override those closure records.
+The [Charter, Section 13][charter] defines the confidentiality boundary and [RA-01][ra01] assigns authority. Related contracts cover [workflow][ra02], [supplied content and identity][ra03], [scope qualification][ra04], [results and history][ra05], [technique assessment][ra06] and [LLM qualification][ra07]. Entry to RA-08 was granted by `PG-RA07-001` in [SR-RA07-001 v0.2][gate07]. The [Requirements Analysis closure][phase] indexes accepted versions and decisions.
 
-The Project Owner accepted RA-08 v0.1 in full on 2026-09-20, including all 24 MUST requirements, 16 validation obligations, and the four recommended policy decisions. **Shall** now expresses an accepted obligation for that original wording; **MUST** remains its priority. Sections 2–8 retain their accepted substantive meaning and boundaries. A conditional requirement applies when its stated profile or feature exists; it does not require confidential-data operation in the laboratory. This v0.2 edition records the acceptance and completed static review through status and lifecycle updates only. No requirement statement, validation obligation, policy recommendation, or substantive control rule has changed. [SR-RA08-001 v0.1][review08] records the PASS result and the outstanding explicit phase exit decision.
+`Shall` states required behavior; `MUST` its priority. A conditional control applies when its stated profile or feature exists. The controls for a sealed deployment must be verified before confidential use; laboratory work does not itself require enabling that profile. The two profiles and their data limits are defined in Section 2.1.
 
-Requirements may be fulfilled by application controls, deployment controls, or an explicitly assigned organizational process. Later design must allocate each control and identify its verification evidence. Calling something an organizational responsibility cannot substitute for the technical enforcement that the Charter requires.
+Design must allocate each control to the application, deployment or an identified organizational process and specify its verification evidence. An organizational responsibility cannot replace required technical enforcement. Technology choices belong to Solution Design. This contract adds no automatic redaction, data-loss-prevention product, penetration-testing service or TC-review technique.
 
-This slice chooses no database, interface, identity provider, model, cryptographic algorithm, or network product. It does not add automatic redaction, a data-loss-prevention product, a penetration-testing service, or new TC-review techniques. The methodological baseline remains CTFL v4.0.1, CT-GenAI v1.1, and CT-AI v2.0 as recorded in RA-07. These are TDG project requirements, not an ISTQB-conformity or security-certification claim.
-
-Official OWASP material was consulted on 2026-09-20 for three limited reference points: instructions embedded in supplied documents can influence an LLM; access decisions need enforcement beyond an interface; and diagnostics can become a disclosure path. Project-specific controls below derive from TDG's accepted boundary and the requirements-stage threat analysis, rather than wholesale adoption of a security checklist. [Prompt injection][owasp-injection] [Authorization][owasp-auth] [Logging][owasp-logging]
+The methodological references remain those recorded in [RA-07][ra07]. The original RA-08 baseline records consultation of OWASP guidance on 2026-09-20 for [instructions embedded in documents][owasp-injection], [access enforcement][owasp-auth] and [diagnostic disclosure][owasp-logging]. The requirements derive from TDG's accepted scope and threat analysis; these references do not establish security certification or ISTQB conformity.
 
 ## 2. Profiles, classification, and authority
 
@@ -242,7 +234,7 @@ These are review examples and future test conditions, not executed TC or busines
 
 ## 9. Accepted requirements and direct trace
 
-All 24 statements below have priority **MUST** and status **ACCEPTED**, through the Owner's acceptance of v0.1 on 2026-09-20. Every statement, upstream trace, and direct VAL edge is unchanged. Section references retain their accepted substantive meaning. `VAL-xxx` denotes `RA08-VAL-xxx`; a trace link does not imply executed validation.
+All 24 requirements are **MUST / ACCEPTED** under the Owner's 2026-09-20 decision, recorded in [SR-RA08-001 v0.2][review08]. Statements, upstream references and direct validation links are unchanged. Referenced sections supply their detailed conditions. `VAL-xxx` means `RA08-VAL-xxx`; a link does not establish executed validation.
 
 | ID | Requirement statement | Upstream basis | Direct VAL |
 | --- | --- | --- | --- |
@@ -273,7 +265,7 @@ All 24 statements below have priority **MUST** and status **ACCEPTED**, through 
 
 ## 10. Validation obligations and reverse trace
 
-These obligations define evidence to obtain during later design verification and STLC. They combine document/control inspection with executable tests where applicable; none is a completed test, a chosen tool, or a promise of exhaustive attack coverage. Security fixtures remain public/synthetic. `REQ-xxx` denotes `RA08-REQ-xxx`.
+These 16 accepted obligations specify evidence for design verification and subsequent test work: document/control inspection and executable tests where applicable. They are not completed tests, tool selections or a promise of exhaustive attack coverage. Security fixtures remain public/synthetic. `REQ-xxx` means `RA08-REQ-xxx`.
 
 | ID | Validation obligation | Direct REQ |
 | --- | --- | --- |
@@ -296,7 +288,7 @@ These obligations define evidence to obtain during later design verification and
 
 ## 11. Accepted policy decisions
 
-The Owner accepted all four recommendations through the full v0.1 acceptance on 2026-09-20. Their wording remains unchanged below, preserving the original decision questions and trade-offs. They do not reopen the prohibition on confidential laboratory processing, external protected-data use, or automatic business-rule invention. The recorded dispositions are in [SR-RA08-001 v0.1][review08]; there are no open original policy decisions.
+The Owner accepted all four recommendations on 2026-09-20. Their original wording and trade-offs are preserved. [SR-RA08-001 v0.2][review08] records acceptance and closure; no original policy decision remains open.
 
 | ID | Decision | Recommendation | Consequence and trade-off |
 | --- | --- | --- | --- |
@@ -309,61 +301,46 @@ The Owner accepted all four recommendations through the full v0.1 acceptance on 
 
 ### 12.1 Recorded checks and review status
 
-The same assistant that authored v0.1 completed the documented focused static review in [SR-RA08-001 v0.1][review08] after the Owner walkthrough and acceptance. The result is PASS with zero findings requiring a content change. This is not independent expert assurance or an executed security-control test. The checks below summarize that record; Owner endorsement of the review record and the explicit phase exit remain pending.
+[SR-RA08-001 v0.2][review08] records the completed static review, PASS with no findings requiring a content change, and Owner endorsement on 2026-09-20. The original v0.2 edition changed acceptance and review status without changing substantive controls. The existing review retains the boundary walkthroughs, verification results and original file identities.
 
-| Check | Result |
-| --- | --- |
-| Correct entry gate and current upstream source identity | PASS — PG-RA07-001 grants RA-08; all eight wording baselines and the RA-07 closure record matched their repository blobs at the pinned commit |
-| Acceptance and normative convention | PASS — all 24 MUST requirements are ACCEPTED through v0.1; exact statements unchanged and authority recorded |
-| Each accepted requirement has at least one direct validation obligation | PASS — 24/24 |
-| Each validation obligation references existing requirements | PASS — 16/16; no orphan or undefined direct reference |
-| REQ → VAL and VAL → REQ agree | PASS — 46 identical direct edges in both directions |
-| Accepted scope and authority preserved | PASS — functional black-box TC review remains the product scope; security testing here concerns TDG itself; no new AI-test-review feature or automatic human authority |
-| Profiles and readiness not conflated | PASS — laboratory external evaluation remains eligible-data-only; sealed authorization and LLM qualification remain separate |
-| Lifecycle conflicts addressed | PASS — retained history, deletion, backup restoration, audit failure, temporary copies, and affected-work failure are explicitly distinguished |
-| Security evidence claims bounded | PASS — no perfect classification detector, complete erasure, or universal protection inferred from missing observations |
-| Owner content acceptance and focused static review | COMPLETE — v0.1 accepted; SR-RA08-001 v0.1 records PASS with 0 findings and no substantive correction |
-| Review-record endorsement, final baseline designation, and GO to RA-09 | PENDING — explicit Owner exit decision required |
-| Confidential-data authorization | NOT ESTABLISHED — no deployment or security-control evidence is supplied by this requirements acceptance |
+The historical trace check found 24/24 requirements with direct validation links, 16/16 obligations with valid targets and 46 matching links in both directions. The Owner performed the human walkthrough; the same assistant authored and reviewed the document. This is document evidence, not independent expert security assurance, executed control tests or deployment readiness. Security tests specified here concern TDG itself; they do not add a product feature for reviewing AI-system tests.
 
 ### 12.2 Remaining allocations and carried observations
 
-| Allocation | Next owner or phase | Boundary retained here |
+| Allocation | Governing source or authority | Required boundary |
 | --- | --- | --- |
-| Canonical request/result representations, supported imports, metadata and policy fields, and import/export diagnostics | RA-09 representation/schema contract and subsequent design | No all-format support, automatic source retrieval, or silent classification default |
-| Concrete deployment diagram, inventory, identity mechanism, storage/key arrangement, network isolation, and host controls | Architecture/design, with ROLE-09 approval | Required before confidential use; local inference alone is insufficient |
-| Actual data classifications, role assignments, destinations, retention schedules, and incident authority | ROLE-09 and approved organizational policy | Values must exist and be verified before the corresponding sealed path is enabled |
-| Executable security cases, fixtures, observation plan, fault injection, and test evidence | Later test planning/design and STLC | Public/synthetic fixtures first; two-way REQ/VAL links remain traceable |
-| Risk prioritization, release evidence, and conditional laboratory/sealed delivery planning | Remaining Requirements Analysis and later gates | Sealed protection is a prerequisite to confidential use, not an assumption that every control already exists |
-| SR-RA03-OBS-001 — explicit downstream accepted-REQ trace for RA03-VAL-014 | Consolidated traceability work before executable test design | OPEN / CARRIED — RA-08's internal trace checks do not close this upstream observation |
-| SR-RA03-OBS-002 / R-08 — document and scope growth | Every remaining slice and gate | CARRIED — reuse accepted contracts; one focused document now and a consolidated review/gate record later; no separate duplicate framework checklist |
+| Request/result representations, supported imports, metadata/policy fields and import/export diagnostics | [RA-09][ra09] and design | No all-format support, automatic source retrieval or silent classification default |
+| Deployment diagram, inventory, identity, storage/keys, network isolation and host controls | [Solution Design][design], with ROLE-09 approval | Verified before confidential use; local inference alone is insufficient |
+| Data classifications, role assignments, destinations, retention schedules and incident authority | ROLE-09 and approved organizational policy | Actual values must exist and be verified before the corresponding sealed path is enabled |
+| Security cases, fixtures, observation plans, fault injection and execution evidence | Test planning/design and STLC under [RA-10][ra10] | Public/synthetic fixtures first; preserve requirement-to-validation traceability |
+| Risk priorities, release evidence and laboratory/sealed delivery scope | [RA-10][ra10], design and applicable release decisions | Sealed controls remain prerequisites to confidential use; their implementation must be demonstrated |
+| `SR-RA03-OBS-001` — RA03-VAL-014 trace action | Accepted RA-10 bridge; [SR-RA10-001 v0.2][review10] | CLOSED; general trace obligations remain |
+| `SR-RA03-OBS-002` / R-08 — documentation and scope growth | Ongoing planning and review | Keep documentation proportional to the decisions and risks it resolves; reuse governing contracts |
+
+Read the related requirements with their accepted decisions in the [phase closure][phase]. The allocations identify governing contracts and work that needs its own evidence; they do not establish that all controls already exist.
 
 ### 12.3 Exit condition
 
-The Owner walkthrough and acceptance of all v0.1 content are complete. The focused static review is complete with PASS, zero findings, and no substantive corrections; all 24 requirements, 16 validation obligations, four policy recommendations, and 46 direct trace edges remain unchanged. Those accepted contents do not require another item-by-item decision.
+The Owner accepted v0.1 in full, then endorsed the completed review, designated v0.2 and granted GO to RA-09 on 2026-09-20. [SR-RA08-001 v0.2 / PG-RA08-001][review08] preserves that sequence. RA-08 is closed with no substantive corrections or repeated acceptance needed.
 
-The remaining exit decision is to endorse and close [SR-RA08-001 v0.1][review08], designate this administrative v0.2 edition as the final RA-08 baseline, and explicitly grant **GO to RA-09 — canonical request/result representations and import/export contracts**. PG-RA08-001 is proposed in the review record; no GO is recorded yet. This phase exit does not authorize implementation, a deployment, or confidential-data use, which retain their applicable later evidence and authority.
+This maintained text consolidates those decisions and current references. Historical GO to RA-09 does not override the development pause in [README.md](../../../README.md). Protected-data use still requires the deployment evidence and ROLE-09 authorization in Section 7.3.
 
-| Version | Date | Change |
-| --- | --- | --- |
-| 0.1 | 2026-09-20 | Initial proposed slice; subsequently accepted in full by the Owner on the same date; original snapshot preserved unchanged |
-| 0.2 | 2026-09-20 | Administrative acceptance/review edition: all original statements, VAL wording, policy recommendations, and trace edges unchanged; SR-RA08-001 v0.1 PASS; final phase exit pending |
-
-[charter]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/bb1cf6e5d3dff6fa41bf69915a9d747745744077/docs/governance/test-design-gatekeeper-project-charter-v0.4.md
-[ra01]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/bb1cf6e5d3dff6fa41bf69915a9d747745744077/docs/requirements-analysis/test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md
-[ra02]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/bb1cf6e5d3dff6fa41bf69915a9d747745744077/docs/requirements-analysis/test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md
-[ra03]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/bb1cf6e5d3dff6fa41bf69915a9d747745744077/docs/requirements-analysis/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.3.md
-[ra04]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/bb1cf6e5d3dff6fa41bf69915a9d747745744077/docs/requirements-analysis/test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md
-[ra05]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/bb1cf6e5d3dff6fa41bf69915a9d747745744077/docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md
-[ra06]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/bb1cf6e5d3dff6fa41bf69915a9d747745744077/docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md
-[ra07]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/bb1cf6e5d3dff6fa41bf69915a9d747745744077/docs/requirements-analysis/ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.2.md
-[gate03]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/bb1cf6e5d3dff6fa41bf69915a9d747745744077/docs/reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md
-[gate04]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/bb1cf6e5d3dff6fa41bf69915a9d747745744077/docs/reviews/test-design-gatekeeper-ra-04-focused-static-review-v0.2.md
-[gate05]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/bb1cf6e5d3dff6fa41bf69915a9d747745744077/docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-focused-static-review-v0.2.md
-[gate06]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/bb1cf6e5d3dff6fa41bf69915a9d747745744077/docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-focused-static-review-v0.2.md
-[gate07]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/bb1cf6e5d3dff6fa41bf69915a9d747745744077/docs/requirements-analysis/ra-07/test-design-gatekeeper-ra-07-focused-static-review-v0.2.md
+[charter]: ../../governance/test-design-gatekeeper-project-charter-v0.4.md
+[ra01]: ../test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md
+[ra02]: ../test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md
+[ra03]: ../ra-10/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.4.md
+[ra04]: ../test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md
+[ra05]: ../ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md
+[ra06]: ../ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md
+[ra07]: ../ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.2.md
+[gate07]: ../ra-07/test-design-gatekeeper-ra-07-focused-static-review-v0.2.md
+[review08]: test-design-gatekeeper-ra-08-focused-static-review-v0.2.md
+[phase]: ../ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md
+[ra09]: ../ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md
+[ra10]: ../ra-10/test-design-gatekeeper-ra-10-evaluation-acceptance-v0.2.md
+[review10]: ../ra-10/test-design-gatekeeper-ra-10-focused-static-review-v0.2.md
+[design]: ../../solution-design
 [owasp-injection]: https://genai.owasp.org/llmrisk/llm01-prompt-injection/
 [owasp-auth]: https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html
 [owasp-logging]: https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html
-
-[review08]: test-design-gatekeeper-ra-08-focused-static-review-v0.1.md
+[original]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/0dbb5e4f72587d7b97812540b9003876052ec442/docs/requirements-analysis/ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md
