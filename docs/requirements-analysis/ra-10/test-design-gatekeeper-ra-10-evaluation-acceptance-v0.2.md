@@ -4,30 +4,23 @@
 
 | Field | Value |
 | --- | --- |
-| Document version and date | 0.2 — 2026-09-21 |
-| SDLC phase | Requirements Analysis |
-| Status | ACCEPTANCE RECORDED; CORRECTED CANDIDATE — FINAL ENDORSEMENT PENDING |
-| Entry authorization | PG-RA09-001, recorded in SR-RA09-001 v0.2 — GO to RA-10 |
-| Effective source baseline | Charter v0.4; RA-01, RA-02 and RA-03 v0.3; RA-04 through RA-09 v0.2, together with their acceptance and closure records |
-| Requirements | All 22 MUST statements ACCEPTED in v0.1; exact statements unchanged |
-| Validation obligations | All 16 original obligations ACCEPTED; localized VAL-015 refinement awaits endorsement; no product, model or user study executed |
-| Policy decisions | OD-RA10-001 through OD-RA10-004 ACCEPTED as recommended; 0 original decisions open |
-| Static review | SR-RA10-001 v0.1 — two Medium upstream table findings; corrections verified; closure pending |
-| Phase authorization | Requirements Analysis remains open; GO to Solution and Architecture Design not granted |
+| Basis | Accepted RA-10 v0.2, originally dated 2026-09-21 |
+| Acceptance and closure | All 22 requirements, 16 validation obligations and four policy decisions accepted; both source-table corrections, VAL-015 refinement, final baselines and RA-10 closure endorsed on 2026-09-21 in [SR-RA10-001 v0.2][review10] |
+| Phase decision | Requirements Analysis closed and GO to Solution and Architecture Design granted on 2026-09-22 in [SR-RA-001 v0.2][phase]; current work remains subject to the development pause |
+| Text maintenance | Consolidated on 2026-10-24; section numbers and identifiers retained |
+| Decision authority | Project Owner for requirements and project gates; existing evaluation, operational and protection authorities remain unchanged |
+
+This is the maintained evaluation and acceptance contract. The [original v0.2 text][original] remains in Git history; earlier review hashes and byte counts identify that snapshot. [README.md](../../../README.md) describes current capability and the development pause. Requirements acceptance defines how the product must be evaluated; it does not demonstrate its usefulness.
 
 ## 1. Purpose, baseline, and scope
 
-RA-10 defines how to determine whether TDG finds useful, supported problems in existing test designs, respects uncertainty and scope, and helps a human reviewer at an acceptable cost. It establishes the evaluation contract: reference evidence, measurement units, comparisons, decision rules, and the evidence needed for later acceptance. It does not claim that the product or a particular local model already meets these conditions.
+RA-10 defines how to check whether TDG finds useful, evidence-backed problems in existing test designs and helps a human reviewer at an acceptable cost. It specifies reference evidence, measurements, comparisons and decision rules. The central question is whether the hybrid improves review over simpler alternatives without an unacceptable burden of false findings and verification work. A persuasive explanation, frequent acceptance of suggestions or agreement with another LLM cannot answer that question alone. [Charter §§4, 16–18][charter]
 
-The central hypothesis remains that the hybrid can improve bounded pre-review over simpler alternatives without imposing an unacceptable burden of false findings and verification work. An attractive explanation, a high suggestion-acceptance rate, or agreement with a powerful LLM is insufficient evidence. [Charter §§4, 16–18][charter]
+The accepted scope and related contracts are in the [Charter][charter] and [RA-01][ra01], [RA-02][ra02], [RA-03][ra03], [RA-04][ra04], [RA-05][ra05], [RA-06][ra06], [RA-07][ra07], [RA-08][ra08] and [RA-09][ra09]. The [Requirements Analysis closure][phase] indexes their effective versions and decisions. Entry to RA-10 was granted by `PG-RA09-001` in [SR-RA09-001 v0.2][gate09]. RA-03 v0.4 includes the accepted input-sufficiency corrections used in Section 8.1. RA-09 retains its explicit native envelope and prohibition on unauthorized runtime LLM capture-field mapping.
 
-The source snapshot is repository commit `be657405920aba0f2da2653f56266942a6ecc22e`. The accepted content is [Charter][charter], [RA-01][ra01], [RA-02][ra02], [RA-03][ra03], [RA-04][ra04], [RA-05][ra05], [RA-06][ra06], [RA-07][ra07], [RA-08][ra08], and [RA-09][ra09]. Their current authority is established by [PG-RA03-001][gate03] and the closure records for [RA-04][gate04], [RA-05][gate05], [RA-06][gate06], [RA-07][gate07], [RA-08][gate08], and [RA-09][gate09]. Historical PROPOSED or pending notices in preserved upstream snapshots are read with those subsequent records. RA-09's two endorsed clarifications remain binding: the native root envelope is explicit, and runtime LLM capture-field mapping is not an authorized MVP task.
+The methodological references remain CTFL v4.0.1, CT-GenAI v1.1 and CT-AI v2.0 as recorded upstream. These are TDG project policies, with no claim of official ISTQB conformity, certification or endorsement. `Shall` states accepted obligations; evaluation-process requirements may be fulfilled through controlled human work and later tooling without automatically adding runtime features.
 
-The methodological baseline remains CTFL v4.0.1, CT-GenAI v1.1, and CT-AI v2.0 as recorded upstream. The policies in this document are TDG project choices. They do not define official ISTQB conformity, certification, or endorsement.
-
-The Project Owner accepted RA-10 v0.1 in full on 2026-09-21, including all 22 MUST requirements, 16 original validation obligations and four recommended decisions. **Shall** therefore expresses accepted obligations for the original wording. All requirement statements and original policy recommendations remain unchanged. The two later review corrections are confined to the RA-03 input-sufficiency table dependency, this document's Section 8.1 source/bridge explanation and the matching refinement to VAL-015. Their endorsement and final baseline designation remain pending in [SR-RA10-001 v0.1][review10]. Requirements addressed to the evaluation process may be fulfilled through controlled human work and later evaluation tooling; they do not automatically require new runtime features in TDG.
-
-The following remain unchanged: one supplied, bounded Review Package; system-level functional black-box review; EP, BVA, decision tables and state transitions; independent classification axes; human interpretation and repair authority; no automatic source retrieval, TC execution or repair; and no review domain for AI/LLM-system tests. Evaluating TDG's own AI component is a separate product-validation activity.
+The scope remains one supplied, bounded Review Package; system-level functional black-box review; EP, BVA, decision tables and state transitions where supported; independent classification axes; and human interpretation and repair authority. Automatic source retrieval, TC execution or repair and review of AI/LLM-system testware remain outside this scope. Evaluating TDG's own AI component is a separate product-validation activity.
 
 ## 2. What is evaluated, and who decides
 
@@ -194,7 +187,7 @@ For the discount example, “the supplied basis does not decide equal-price orde
 
 ### 5.4 Sample adequacy and uncertainty
 
-Before decision-bearing execution, approve required category counts, independent family coverage, repeated-run count, participant/session coverage, uncertainty method and stopping rule. Choose them using the risk, intended claim, exploratory variability and available effort; this draft does not invent a universally sufficient sample size.
+Before decision-bearing execution, approve required category counts, independent family coverage, repeated-run count, participant/session coverage, uncertainty method and stopping rule. Choose them using the risk, intended claim, exploratory variability and available effort; this document does not invent a universally sufficient sample size.
 
 Show uncertainty suitable for the actual sampling unit and dependence. Repeating one package twenty times measures variation on that package, not twenty independent business examples. A binomial proportion interval is appropriate only when its event/unit assumptions are justified; NIST describes Wilson and exact binomial intervals and cautions about small-sample approximations. The campaign must justify its chosen method rather than mechanically applying one to correlated claims. [NIST, confidence intervals for proportions][nist-proportions]
 
@@ -296,7 +289,7 @@ After inspecting held-out results, a revised prompt, mapper, rule, model, output
 
 ### 8.1 Controlled bridge for RA03-VAL-014
 
-`SR-RA03-OBS-001` asks for a direct accepted-REQ reference or verifiable controlled chain before VAL obligations become executable tests. The Owner accepted the following bridge content in RA-10 v0.1. Each row links the existing VAL through an existing decision rule to accepted requirements. Formal review found two source-table problems, so semantic closure additionally depends on the explicitly proposed controlled amendment described below; identifier existence alone did not establish a sound table.
+The table links RA03-VAL-014 through each existing input-sufficiency rule to its supporting accepted requirements. It addresses `SR-RA03-OBS-001`, which required a direct requirement reference or an inspected chain before validation obligations become executable tests. The Owner accepted the bridge and, separately, the two source-table corrections and VAL-015 refinement on 2026-09-21; [SR-RA10-001 v0.2][review10] records that sequence and closes the targeted observation.
 
 | Existing obligation | Controlled intermediate rule | Accepted RA-03 requirements supporting the rule's consequence |
 | --- | --- | --- |
@@ -312,17 +305,17 @@ After inspecting held-out results, a revised prompt, mapper, rule, model, output
 | RA03-VAL-014 | IS-10 — missing conditional evidence | RA03-REQ-031, RA03-REQ-034, RA03-REQ-038, RA03-REQ-041 |
 | RA03-VAL-014 | IS-11 — minimum and conditional evidence permit bounded assessment | RA03-REQ-031, RA03-REQ-032, RA03-REQ-041, RA03-REQ-050 |
 
-The bridge's 41 rule/requirement edges and all 23 accepted target requirements remain unchanged. SR-RA10-001 identified G's presupposition of a global non-separable conflict despite IS-09 permitting a supported subset, and the absent G=N, X=N combinations in IS-10/IS-11. [RA-03 v0.4][ra03-candidate] prepares CR-RA10-001 and CR-RA10-002: G identifies a relevant conflict while X determines separability; X is not an additional precondition for conflict-free IS-10/IS-11. Missing conditional evidence restricts dependent assessments even when no independent substantive work remains, without erasing satisfied package minima. RA-05 still determines actual ledger outcomes, terminal availability and run state.
+The bridge retains 41 rule/requirement links to 23 accepted RA-03 requirements. In [RA-03 v0.4 §15.3][ra03], CR-RA10-001 makes G identify a relevant conflict while X distinguishes whether an unaffected supported subset exists. CR-RA10-002 removes X as an additional precondition for conflict-free IS-10/IS-11. Missing conditional evidence limits dependent assessments without erasing satisfied package minima, including when no independent substantive work remains. RA-05 determines actual ledger outcomes, terminal availability and run state.
 
-Correction verification covers all rule IDs and accepted targets in both directions, the source-table condition combinations, and the bounded consequences recorded in SR-RA10-001. VAL-015 now explicitly requires those distinctions. References and Boolean coverage alone are not proof of adequate executable cases or implemented behavior. OBS-001 remains OPEN / CORRECTION VERIFIED until the Owner endorses the two upstream corrections, this refinement and the formal review disposition. RA-03 v0.3 remains the effective baseline until that decision; the v0.4 candidate is not silently cited as already accepted. The older snapshot is preserved and is not retrospectively claimed to have 32 direct REQ traces.
+VAL-015 requires these distinctions to be challenged. The existing review retains the source comparison, counterexamples, table-logic check and inverse bridge. These are document-level checks; links and Boolean coverage alone do not establish adequate executable tests or implemented behavior. The targeted observation is closed, while the general trace obligation remains. The earlier RA-03 v0.3 history is preserved and is not retrospectively claimed to have direct requirement links for all 32 validation obligations.
 
 ### 8.2 Phase-wide readiness and proportionality
 
-The current source inventory contains 227 requirement rows and 153 validation-obligation rows across RA-01 through RA-09. This is an inventory count, not a statement that all relations, implementations or tests are complete. The Owner has accepted RA-10's further 22 requirements and 16 original obligations. The complete content inventory is therefore 249 requirements and 169 original validation obligations; the new VAL-015 clarification and upstream table amendment still await separate endorsement. Earlier slices use direct references and controlled intermediate objects, so an aggregate direct-coverage percentage would be misleading without inspecting those chains.
+The [consolidated Requirements Analysis record][phase] contains the accepted inventory of 249 requirements and 169 validation obligations, the phase-wide trace review, remaining allocations and resource-risk assessment. The Owner accepted that review and closed the phase on 2026-09-22. Inventory and trace counts describe the requirements documents; they do not establish implementation or executed coverage.
 
-Before closing Requirements Analysis, the consolidated static review must check both directions: every accepted requirement has a justified validation route; every validation obligation points to existing accepted requirements directly or through inspected controlled intermediates. Preserve source versions and dispositions, inspect known gaps and contradictory allocations, and assign unresolved design/STLC work to an owner and prerequisite milestone. Do not manufacture missing links simply to reach 100%.
+The continuing trace rule is to inspect both directions: every accepted requirement needs a justified validation route, and every validation obligation must reach existing accepted requirements directly or through inspected intermediates. Preserve the relevant source versions and decisions, inspect gaps and conflicting allocations, and assign unresolved design/test work to an owner and prerequisite milestone. Do not invent links to reach a coverage percentage.
 
-`SR-RA03-OBS-002 / R-08` remains active. Keep this slice to one draft and later one consolidated review/gate record. Reuse the approved requirements and validation obligations rather than reproducing their full TC specifications. At phase exit, record the remaining benchmark, adjudication, design and implementation effort with available project capacity. Detailed scheduling belongs to subsequent planning, but “all MUST” must not stand in for an estimable, sequenced MVP backlog or a realistic resource assessment.
+`SR-RA03-OBS-002` / R-08 remains active. Maintain these rules and the existing review records instead of producing parallel status documents or copying complete test specifications. Planning must account for benchmark construction, human adjudication, implementation and verification against available capacity. Accepted requirements alone do not establish an estimable backlog or a realistic schedule. The current cleanup and pause are described in [README.md](../../../README.md).
 
 ### 8.3 Allocation to later work
 
@@ -337,11 +330,11 @@ Before closing Requirements Analysis, the consolidated static review must check 
 | Sealed readiness and protected-data authorization | RA-08 verification on eligible fixtures and explicit ROLE-09 decision before the first confidential input |
 | Product acceptance and pilot decision | Consolidated STLC completion evidence and explicit applicable human gates; no inference from requirements acceptance |
 
-Thus approving RA-10 establishes the measurement and decision contract, not the truth of the product hypothesis. Numerical criteria remain tracked acceptance prerequisites because no empirical baseline exists yet; their absence is not hidden behind this draft's author checks.
+These allocations retain their applicable evidence and authorization prerequisites; the historical design-entry decision is recorded in [SR-RA-001 v0.2][phase]. Actual numerical criteria must follow exploratory measurements and precede the corresponding decision-bearing campaigns. Acceptance of this evaluation contract supplies neither those measurements nor confirmation of the product hypothesis.
 
 ## 9. Accepted requirements and forward trace
 
-All 22 statement cells are unchanged from v0.1 and **MUST / ACCEPTED** by the Owner's 2026-09-21 decision. `VAL-xxx` denotes `RA10-VAL-xxx` in Section 10. Supporting sections supply the detailed conditions; no new automatic evaluator, model judge, dashboard or database is required merely by this register.
+All 22 requirements are **MUST / ACCEPTED** by the Owner's 2026-09-21 decision. Their statements, upstream references and direct validation links remain unchanged. `VAL-xxx` means `RA10-VAL-xxx` in Section 10. Supporting sections define the conditions; this register does not itself require an automatic evaluator, model judge, dashboard or database. The bridge called “proposed” in the retained REQ-020 wording is now accepted as recorded in Section 8.1.
 
 | ID | Requirement statement | Primary upstream basis | Direct validation |
 | --- | --- | --- | --- |
@@ -370,7 +363,7 @@ All 22 statement cells are unchanged from v0.1 and **MUST / ACCEPTED** by the Ow
 
 ## 10. Validation obligations and reverse trace
 
-The Owner accepted all 16 original evidence obligations for static review, later test design and empirical work. Only the localized VAL-015 refinement below awaits separate endorsement with the upstream correction; identifiers and direct target lists are unchanged. These are not executed tests, a claim of independence, or one required executable test per requirement. `REQ-xxx` denotes `RA10-REQ-xxx`.
+All 16 obligations are accepted, including the VAL-015 refinement separately endorsed on 2026-09-21 in [SR-RA10-001 v0.2][review10]. The rows and direct targets below are unchanged from that accepted baseline. They guide static review, later test design and empirical work; they are not executed tests or a requirement for one executable test per requirement. `REQ-xxx` means `RA10-REQ-xxx`.
 
 | ID | Required validation evidence | Direct requirements |
 | --- | --- | --- |
@@ -393,7 +386,7 @@ The Owner accepted all 16 original evidence obligations for static review, later
 
 ## 11. Accepted policy decisions
 
-The Owner accepted all four original recommendations through whole-document acceptance on 2026-09-21. Their exact wording remains below; there are no open original policy decisions. They establish policies, not measured performance, selected numeric thresholds or new runtime capabilities. The later source-table corrections require their own endorsement.
+The Owner accepted all four recommendations on 2026-09-21. Their original wording is preserved below; no original policy decision remains open. They define evaluation policy, not measured performance, numerical thresholds or new runtime capabilities.
 
 | ID | Decision | Recommendation and consequence |
 | --- | --- | --- |
@@ -402,61 +395,45 @@ The Owner accepted all four original recommendations through whole-document acce
 | OD-RA10-003 | What should constitute useful assistance? | Prefer a predeclared quality-improvement hypothesis with an acceptable burden limit. Measure human review as well as machine output, and include the deterministic-assistance comparison when claiming incremental human benefit from the LLM. Set actual margins after exploration, before decision-bearing evaluation. |
 | OD-RA10-004 | Does finishing the final RA slice automatically open design? | No. Close RA-10 through the established focused review, then consolidate phase-wide readiness, traceability, remaining allocations and resource/scope risks in one review/gate record. Obtain explicit GO to Solution and Architecture Design; retain later implementation, acceptance and sealed-use gates. |
 
-These decisions refine the existing evaluation plan. They do not reopen the accepted supplied-data boundary, human accountability, sealed egress invariant, task catalogue or MVP non-goals.
+These decisions retain the supplied-data boundary, human accountability, sealed egress rule, authorized task catalogue and MVP exclusions.
 
 ## 12. Review verification, remaining prerequisites, and exit
 
 ### 12.1 Recorded review and correction checks
 
-The same assistant that authored v0.1 performed the focused formal review recorded in SR-RA10-001 after Owner content acceptance. Two Medium source-dependency findings were identified and their corrections verified. The checks below concern documents and table logic, not independent assurance or executed product/model tests. Owner endorsement and closure remain pending.
+[SR-RA10-001 v0.2][review10] records the completed focused review and separately endorsed corrections. `SR-RA10-F-001` and `SR-RA10-F-002` are closed. Their counterexamples and verification explain the corrected input-sufficiency rules in Section 8.1; the review also retains the original source identities, arithmetic and reference checks.
 
-| Check | Result and limitation |
-| --- | --- |
-| Entry and source identity | PASS — RA-09 closure records GO to RA-10; ten local wording baselines match the blobs in the pinned repository tree |
-| Local requirement identity | PASS — 22 unique MUST / ACCEPTED statements, byte-for-byte unchanged from accepted v0.1 |
-| Forward and reverse trace | PASS — 22/22 requirements have direct VAL links; 16/16 VAL reference existing local requirements; all 47 edges agree in both directions |
-| Controlled inherited bridge | CORRECTION VERIFIED — all 11 rules, 41 rule/requirement edges and 23 target requirements retained; SR-RA10-001 verifies the two source-table amendments and limits. OBS-001 closure awaits endorsement. |
-| Metric examples and source references | PASS for author check — illustrative arithmetic checked; all explicitly cited upstream REQ/VAL IDs exist; 17 pinned repository paths resolve in the verified tree; two methodological sources inspected; table widths and reference labels consistent |
-| Authority and scope | PASS in focused review — no new runtime feature, task permission or automatic approval; source corrections and phase gates remain explicitly pending |
-| Empirical evidence and thresholds | NOT ESTABLISHED — no benchmark, model qualification, user study or numerical acceptance decision has been performed |
-| Overall Requirements Analysis exit | NOT COMPLETE — focused corrections await endorsement; consolidated phase-wide trace, remaining allocations and scope/capacity evidence are still required |
+The historical local trace check found 22/22 requirements with direct validation links, 16/16 obligations with valid targets and 47 matching links in both directions. The inherited bridge retains 11 rules, 41 links and 23 target requirements. The Owner completed the walkthrough; the same assistant authored the documents and later performed the focused review. These are document checks, with no independent expert review or product/model experiment claimed. The later [phase review][phase] records the broader trace and readiness inspection separately.
 
 ### 12.2 Mandatory open prerequisites
 
-The corpus and oracle do not yet exist as an approved executable campaign. Their actual family counts, partition custody, reviewer availability, target hardware/configuration, measurement tools, protocol repetitions, uncertainty method and numerical criteria require later controlled completion. The accountable authorities and gate dependencies are allocated in Section 8.3. Concrete names and values must be recorded before their applicable decision-bearing work; document acceptance cannot substitute for them.
+Before a decision-bearing campaign, its approved corpus and oracle, family counts and partitions, reviewer availability, target configuration, measurement tools, repetitions, uncertainty method and numerical criteria must be specified and evidenced. Section 8.3 assigns the responsible authorities and prerequisite milestones. Requirements acceptance cannot supply missing people, values, executable tests or empirical results.
 
-The RA03-VAL-014 bridge has completed focused verification with the proposed source-table corrections; its closure awaits Owner endorsement. The documentation-growth risk remains active. Phase-wide trace readiness, cross-slice consistency and an estimable scope/capacity view are required before a broad Requirements Analysis closure claim. Detailed executable test design and evidence remain STLC work; their absence at requirements review is not a fabricated PASS or an instruction to start implementation.
+The targeted RA03-VAL-014 bridge action and Requirements Analysis review are closed. General trace duties and the documentation-growth risk remain. Subsequent test design, execution, model qualification, protected-use verification and product acceptance require their own evidence and applicable decisions. [README.md](../../../README.md) distinguishes the available foundation and prepared test data from the still-unproven product usefulness.
 
 ### 12.3 Exit and next action
 
-The Owner walkthrough and original content acceptance are complete. SR-RA10-001 records two Medium findings, CR-RA10-001/002, their prepared source correction in RA-03 v0.4 and verified RA-10 VAL-015 refinement. The next decision is to endorse these changes and the review record, designate RA-10 v0.2 and the corrected RA-03 v0.4 wording, close RA-10 and disposition OBS-001. No repeated acceptance of the unchanged requirement statements is needed.
+The Owner accepted RA-10 v0.1 on 2026-09-21. A separate decision that day endorsed CR-RA10-001/002, the VAL-015 refinement and review, designated RA-10 v0.2 and corrected RA-03 v0.4, and closed RA-10 and the targeted `SR-RA03-OBS-001` action. [SR-RA10-001 v0.2][review10], dated 2026-09-22, records those decisions.
 
-RA-10 can close when its content and decisions are dispositioned, the focused review and correction verification are complete, no unresolved blocking finding remains, and the Owner explicitly endorses the baseline and closure. Requirements Analysis as a whole additionally needs the consolidated readiness evidence in Section 8.2 and explicit disposition of remaining risks/allocations. Any final request for **GO to Solution and Architecture Design** must present that concrete evidence. Neither this draft nor a later RA-10 content acceptance authorizes implementation, confirms product feasibility, or permits confidential input.
+On 2026-09-22 the Owner separately accepted consolidated traceability, downstream allocations and the design-entry resource/risk assessment, closed Requirements Analysis and granted GO to Solution and Architecture Design in [SR-RA-001 v0.2][phase]. These historical decisions need no repeated approval. Neither requirements acceptance nor that design gate authorized product implementation, operational model reliance or confidential input. Product feasibility, model qualification and product acceptance require their own evidence and decisions.
 
-| Version | Date | Change |
-| --- | --- | --- |
-| 0.1 | 2026-09-21 | Initial RA-10 draft: evaluation units, corpus/oracle, metrics, comparisons, criteria governance, controlled inherited trace bridge and proposed phase-exit conditions |
-| 0.2 | 2026-09-21 | Original acceptance recorded; two upstream table corrections verified; bridge status and VAL-015 refined; final endorsement and Requirements Analysis phase exit pending |
+Development is currently paused for the documentation cleanup described in [README.md](../../../README.md). The historical design GO does not override that pause; resuming development requires the Owner's explicit decision.
 
-[charter]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/be657405920aba0f2da2653f56266942a6ecc22e/docs/governance/test-design-gatekeeper-project-charter-v0.4.md
-[ra01]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/be657405920aba0f2da2653f56266942a6ecc22e/docs/requirements-analysis/test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md
-[ra02]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/be657405920aba0f2da2653f56266942a6ecc22e/docs/requirements-analysis/test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md
-[ra03]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/be657405920aba0f2da2653f56266942a6ecc22e/docs/requirements-analysis/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.3.md
-[ra04]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/be657405920aba0f2da2653f56266942a6ecc22e/docs/requirements-analysis/test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md
-[ra05]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/be657405920aba0f2da2653f56266942a6ecc22e/docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md
-[ra06]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/be657405920aba0f2da2653f56266942a6ecc22e/docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md
-[ra07]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/be657405920aba0f2da2653f56266942a6ecc22e/docs/requirements-analysis/ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.2.md
-[ra08]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/be657405920aba0f2da2653f56266942a6ecc22e/docs/requirements-analysis/ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md
-[ra09]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/be657405920aba0f2da2653f56266942a6ecc22e/docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md
-[gate03]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/be657405920aba0f2da2653f56266942a6ecc22e/docs/reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md
-[gate04]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/be657405920aba0f2da2653f56266942a6ecc22e/docs/reviews/test-design-gatekeeper-ra-04-focused-static-review-v0.2.md
-[gate05]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/be657405920aba0f2da2653f56266942a6ecc22e/docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-focused-static-review-v0.2.md
-[gate06]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/be657405920aba0f2da2653f56266942a6ecc22e/docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-focused-static-review-v0.2.md
-[gate07]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/be657405920aba0f2da2653f56266942a6ecc22e/docs/requirements-analysis/ra-07/test-design-gatekeeper-ra-07-focused-static-review-v0.2.md
-[gate08]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/be657405920aba0f2da2653f56266942a6ecc22e/docs/requirements-analysis/ra-08/test-design-gatekeeper-ra-08-focused-static-review-v0.2.md
-[gate09]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/be657405920aba0f2da2653f56266942a6ecc22e/docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-focused-static-review-v0.2.md
+The original v0.1 review input and v0.2 corrected baseline remain in Git history. The existing [focused review][review10] and [phase record][phase] retain their identities, verified differences and separate Owner decisions. This maintained text incorporates those decisions without creating another document version or changing the accepted evaluation contract.
+
+[charter]: ../../governance/test-design-gatekeeper-project-charter-v0.4.md
+[ra01]: ../test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md
+[ra02]: ../test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md
+[ra03]: test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.4.md
+[ra04]: ../test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md
+[ra05]: ../ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md
+[ra06]: ../ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md
+[ra07]: ../ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.2.md
+[ra08]: ../ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md
+[ra09]: ../ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md
+[gate09]: ../ra-09/test-design-gatekeeper-ra-09-focused-static-review-v0.2.md
+[review10]: test-design-gatekeeper-ra-10-focused-static-review-v0.2.md
+[phase]: test-design-gatekeeper-requirements-analysis-readiness-v0.2.md
 [ir-metrics]: https://nlp.stanford.edu/IR-book/html/htmledition/evaluation-of-unranked-retrieval-sets-1.html
 [nist-proportions]: https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm
-
-[review10]: test-design-gatekeeper-ra-10-focused-static-review-v0.1.md
-[ra03-candidate]: test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.4.md
+[original]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/1969b646753696111a71032c88f46790c62f4b4e/docs/requirements-analysis/ra-10/test-design-gatekeeper-ra-10-evaluation-acceptance-v0.2.md
