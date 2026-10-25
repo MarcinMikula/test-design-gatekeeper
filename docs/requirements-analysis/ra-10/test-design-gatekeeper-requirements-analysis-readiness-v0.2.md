@@ -4,47 +4,42 @@
 
 | Field | State |
 | --- | --- |
-| Version / date | 0.2 — 2026-09-22; administrative closure of the accepted v0.1 review |
-| Purpose | Record the accepted consolidated review, Requirements Analysis closure and explicit design-phase GO |
-| Requirements content | 249 accepted requirements; no new product requirements or priority changes in this record |
-| Trace review | PASS / ACCEPTED within the boundary in Section 2: every requirement and validation obligation has an inspected route |
-| Cross-slice inspection | No additional blocking inconsistency identified in the scenarios in Section 3 |
-| Design-entry resource evidence | ACCEPTED — flexible capacity, preliminary effort estimate and carried resource risks endorsed |
-| Full-delivery feasibility | UNESTABLISHED — no total implementation estimate, fixed weekly commitment or delivery date |
-| Phase decision | Requirements Analysis CLOSED; GO to Solution and Architecture Design GRANTED by the Owner on 2026-09-22 |
-| Owner acceptance of this record | ACCEPTED — explicit combined review, risk and phase-gate decision recorded in Section 7 |
-| Independence | Same AI assistant as document author; no independent expert review claimed |
+| Basis | Accepted SR-RA-001 v0.2, originally dated 2026-09-22 |
+| Recorded decision | Requirements Analysis closed and GO to Solution and Architecture Design granted by the Owner on 2026-09-22; Section 7 preserves the decision and its scope |
+| Review boundary | Requirements documents, their validation links and readiness for design; no product-test or independent expert assurance claim |
+| Planning evidence | Flexible capacity, preliminary design effort and resource risks accepted for design entry; full-delivery feasibility and a completion date were not established |
+| Text maintenance | Consolidated on 2026-10-24; section numbers, decisions and historical evidence retained |
 
-RA-10 is closed. The Owner's combined approval is recorded in [SR-RA10-001 v0.2][sr10], including both verified corrections, the RA10-VAL-015 refinement, the exact RA-03 v0.4 and RA-10 v0.2 baselines, and closure of the targeted `SR-RA03-OBS-001` action. These decisions are not pending again. This record closes the phase-wide review required by RA10-REQ-020/021 and RA-10 §8.2. Section 7 records the later Owner decision; it does not backdate that decision into RA-10 closure.
+This record explains why the requirements phase was closed and design was authorized. It also indexes the accepted requirements. The [original v0.2 record][original] remains in Git history. The counts, work sequence and estimates below describe the September review and planning decision; they are not a current progress report or a new authorization.
 
-The result concerns requirements documentation. It does not establish implemented behavior, executed test coverage, model quality, 8 GB hardware feasibility, product acceptance or permission to process confidential material.
+**Development is paused for documentation cleanup.** [README.md](../../../README.md) describes current capability and the next agreed work. The historical design GO does not override that pause. Requirements acceptance and document traceability do not establish product usefulness, model quality, hardware feasibility or permission to process confidential material.
 
 ## 1. Effective source inventory
 
-The wording sources below are read with their accepted gate and correction records. Historical `PROPOSED` or `ENDORSEMENT PENDING` text inside a retained snapshot does not override a later explicit acceptance. RA-03's fifty accepted requirements remain governed by PG-RA03-001 v0.2, with the narrow later source-table correction accepted through SR-RA10-001 v0.2. RA-04 through RA-09 likewise retain their applicable closed review records.
+The links below lead to the maintained requirements. Their accepted versions are read with the decision records they cite. RA-03 v0.4 includes the source-table corrections accepted through [SR-RA10-001 v0.2][sr10]; that record also closes RA-10 and the targeted `SR-RA03-OBS-001` action. Earlier pending labels do not reopen those decisions.
 
-| Source | Effective wording | Requirements | Validation obligations | REQ with a route | VAL with a route |
-| --- | --- | ---: | ---: | ---: | ---: |
-| Project Charter | v0.4 | — | — | — | — |
-| RA-01 | v0.3 | 16 | 10 | 16 | 10 |
-| RA-02 | v0.3 | 36 | 20 | 36 | 20 |
-| RA-03 | v0.4 | 50 | 32 | 50 | 32 |
-| RA-04 | v0.2 | 15 | 15 | 15 | 15 |
-| RA-05 | v0.2 | 22 | 16 | 22 | 16 |
-| RA-06 | v0.2 | 20 | 14 | 20 | 14 |
-| RA-07 | v0.2 | 20 | 14 | 20 | 14 |
-| RA-08 | v0.2 | 24 | 16 | 24 | 16 |
-| RA-09 | v0.2 | 24 | 16 | 24 | 16 |
-| RA-10 | v0.2 | 22 | 16 | 22 | 16 |
-| Total | | 249 | 169 | 249 | 169 |
+| Source | Accepted version | Requirements | Validation obligations |
+| --- | --- | ---: | ---: |
+| [Project Charter][charter] | v0.4 | — | — |
+| [RA-01][ra01] | v0.3 | 16 | 10 |
+| [RA-02][ra02] | v0.3 | 36 | 20 |
+| [RA-03][ra03] | v0.4 | 50 | 32 |
+| [RA-04][ra04] | v0.2 | 15 | 15 |
+| [RA-05][ra05] | v0.2 | 22 | 16 |
+| [RA-06][ra06] | v0.2 | 20 | 14 |
+| [RA-07][ra07] | v0.2 | 20 | 14 |
+| [RA-08][ra08] | v0.2 | 24 | 16 |
+| [RA-09][ra09] | v0.2 | 24 | 16 |
+| [RA-10][ra10] | v0.2 | 22 | 16 |
+| Total |  | 249 | 169 |
 
-The [trace evidence ledger][trace] records each source filename, byte count and SHA-256. The eight unchanged RA-01/02/04–09 wording files match their blobs at repository commit `be657405920aba0f2da2653f56266942a6ecc22e`. RA-03 v0.4 and RA-10 v0.2 match the exact newly accepted hashes in SR-RA10-001 v0.2. The Charter remains v0.4. The trace inventory remains pinned to that inspected repository baseline. The Owner subsequently authorized documentation publication with the phase-exit decision in Section 7; the resulting repository commit records publication separately from requirements acceptance.
+The [trace ledger][trace] identifies the exact filenames, byte counts and SHA-256 values inspected on 2026-09-22. RA-01/02/04–09 were checked at commit `be657405920aba0f2da2653f56266942a6ecc22e`; RA-03 v0.4 and RA-10 v0.2 were the accepted snapshots identified in [SR-RA10-001 v0.2][sr10]. The hashes describe those inspected snapshots, not later editorial maintenance. Acceptance and repository publication remain separate events.
 
 ## 2. Bidirectional trace review
 
 ### 2.1 Method and result
 
-The inspection expanded the actual direct trace fields, including their shorthand lists and ranges, compared the published forward and reverse tables where both exist, checked endpoint existence, and inspected requirement statements against the stated validation purpose. Controlled intermediates were read in their effective sources. Explicit downstream refinement chains were used only where their validation purpose supports the older requirement; sharing an upstream reference alone was not treated as sufficient.
+The September review expanded the recorded requirement-to-validation links, including shorthand and ranges, compared forward and reverse tables where both existed, and checked endpoint existence and whether the validation purpose supported the accepted requirement. Intermediate workflow, authority and decision-table links were inspected. A downstream requirement was used only when its validation purpose supported the earlier requirement; a shared reference alone was insufficient.
 
 | Check | Result | Meaning |
 | --- | --- | --- |
@@ -58,13 +53,13 @@ The inspection expanded the actual direct trace fields, including their shorthan
 | Dangling endpoints or duplicate recorded paths | 0 / 0 | Within the inspected ledger |
 | Full executable and clause-level test coverage | NOT ESTABLISHED | This belongs to later test analysis, design and execution |
 
-The ledger contains 530 distinct paths: 424 direct, 41 through the already approved RA-03 IS bridge, 52 through the explicitly inspected authority/workflow correspondences, and 13 through existing requirement-refinement chains. Its two indices are derived from the same path set. It preserves both directions without copying the complete requirement prose into another specification.
+The ledger retains 530 distinct paths: 424 direct, 41 through the accepted RA-03 IS bridge, 52 through inspected authority/workflow links and 13 through existing requirement-refinement chains. Both indices derive from that same set.
 
-**Interpretation of PASS:** the trace requirement is met at requirements-document level. A VAL may require several future test conditions and cases. One meaningful route does not prove that every clause, entry point or negative condition has sufficient executable tests. No product TC has been run by this audit. The Owner has now accepted the consolidated review, including the disclosed correspondence evidence; this supplies review acceptance, not implemented or executed-test coverage.
+**Meaning of PASS:** every requirement and validation obligation had an inspected route at document level. This does not prove complete clause-level or executable coverage. One obligation can require several test conditions and cases. No product test was run by this audit; the Owner accepted the disclosed review evidence and its limits.
 
 ### 2.2 Ten requirements without local direct VAL references
 
-The paths below make existing controls and refinements inspectable. They do not insert new behavior into the accepted source documents. Additional supporting paths are retained in the evidence ledger.
+These inspected paths connect existing controls and refinements. They add no behavior to the accepted requirements. Further supporting paths remain in the ledger.
 
 | Accepted requirement | Inspected route to validation | Why the route is relevant |
 | --- | --- | --- |
@@ -79,7 +74,7 @@ The paths below make existing controls and refinements inspectable. They do not 
 | RA02-REQ-022 | PWF-13/14 → RA02-VAL-001; RA05-REQ-006 → RA05-VAL-005 | Result context is exercised in the workflow and challenged through the later claim/evidence contract |
 | RA02-REQ-025 | PWF-14/15 → RA02-VAL-001; RA05-REQ-014 → RA05-VAL-013 | Inspectable context and viewing authority are exercised without granting disposition authority |
 
-AUTH identifiers above belong to RA-01; PWF and AF identifiers belong to RA-02. The positive AUTH test concerns the contribution or human action that the authority table actually permits. It must not be implemented as permission for TDG to edit testware, approve testware or make an SDLC gate decision.
+AUTH identifiers belong to RA-01; PWF and AF identifiers belong to RA-02. An authority check covers the human action actually permitted. It must not be turned into permission for TDG to edit or approve testware or make a phase-gate decision.
 
 ### 2.3 Four obligations using controlled intermediates
 
@@ -90,11 +85,11 @@ AUTH identifiers above belong to RA-01; PWF and AF identifiers belong to RA-02. 
 | RA02-VAL-010 | AF-RA02-011 and UC-RA02-004 | REQ-016/026 preserve ROLE-04 authority, UNKNOWN and escalation when no separate expert is available |
 | RA03-VAL-014 | IS-01 through IS-11 in corrected RA-03 v0.4 | The accepted RA-10 §8.1 bridge provides 41 edges to 23 RA-03 requirements; SR-RA10-001 v0.2 records correction verification and closure |
 
-REQ shorthand in the two middle rows means RA02-REQ. The RA-03 bridge is reused rather than duplicated or widened here. The general phase-wide trace duty remains applicable even though the targeted historical observation is closed.
+REQ shorthand in the two middle rows means RA02-REQ. The accepted RA-03 bridge is reused without expansion. Closing its targeted observation leaves the general trace duty in force.
 
 ## 3. Cross-slice consistency inspection
 
-These document-level challenges inspect the interfaces between accepted slices. “Consistent” means the cited contracts support the stated consequence; it is not an observed runtime result or exhaustive proof of all combinations.
+The following are the September review's document-level challenges and supported consequences. They are retained as review evidence, not observed runtime behavior or an exhaustive proof of every combination.
 
 | Challenged boundary | Supported consequence | Principal evidence |
 | --- | --- | --- |
@@ -115,13 +110,13 @@ These document-level challenges inspect the interfaces between accepted slices. 
 | Public development examples or repeated favorable runs are used to claim independent acceptance | Exposure, family partitions, complete attempt cost and predeclared selection rules govern the strength of the claim | RA07-REQ-011/014; RA10-REQ-002/013/019/022 |
 | Every requirement is accepted and has a VAL route | The product hypothesis and resource feasibility remain untested; a design gate depends on its separately recorded readiness evidence and Owner decision | RA10-REQ-015/020/021; Charter §18.6 |
 
-No additional blocking contradiction was identified in these inspected boundaries. Detailed test conditions must still include adverse combinations, all supported entry points and invalid transitions. In particular, the broad RA-02 nominal-flow obligation cannot substitute for later negative and fault tests.
+The review identified no additional blocking contradiction in these boundaries. Later test design must still cover adverse combinations, all supported entry points and invalid transitions. The broad RA-02 nominal workflow check cannot replace negative and fault tests.
 
 ## 4. Sequenced delivery work packages
 
-This is the accepted delivery breakdown for further estimation, not a new product scope, committed schedule or implementation permission. All accepted MUST requirements retain their status. Work packages group related requirements; they are not one task per requirement. Their narrower first increments must not be presented as the complete MVP.
+This is the work-package breakdown accepted for design entry on 2026-09-22. It groups related requirements for further estimation; all accepted MUST requirements remain in scope. A limited first demonstration cannot be called the full MVP. The table preserves the original outputs, dependencies and uncertainties, rather than reporting their present completion.
 
-The first usable demonstration should use eligible laboratory data. Security architecture is considered from the start; sealed verification and authorization remain mandatory before any confidential input. The order below permits early evaluation of the product hypothesis without pretending that a laboratory demonstration satisfies sealed requirements.
+The first usable demonstration was to use eligible laboratory data, with security considered from the start. Sealed verification and authorization remain mandatory before confidential input.
 
 | Work package | Concrete output and completion evidence | Dependencies / earliest authorized stage | Main effort and uncertainty |
 | --- | --- | --- | --- |
@@ -136,13 +131,13 @@ The first usable demonstration should use eligible laboratory data. Security arc
 | B-09 — Sealed readiness | Actual deployment inventory and threat model, enforced identity/permissions, protected copies/keys/audit, retention/deletion/restore, valid egress observation and ROLE-09 readiness decision | Security design begins in B-01; implemented applicable paths; eligible synthetic verification before protected use | Deployment-specific controls and security expertise; dependency and copy-path coverage; cannot be waived by a successful lab benchmark |
 | B-10 — Integrated verification and release decision | Completed applicable component, integration, workflow, fault, security and regression evidence; defect dispositions; STLC completion report and explicit product/pilot decision | Verification grows with every increment; final report after the evidence required for the claimed release envelope | Regression across histories and failure states; incomplete evidence and residual risks; no automatic acceptance from green checks |
 
-RA-03/09 principally drive B-03; RA-01/02/04/05 drive B-04/07; RA-06 drives B-05; RA-07 drives B-06; RA-08 drives B-01/03/06/07/09; RA-10 drives B-02/08/10. These are planning allocations, not replacement trace links. The detailed REQ↔VAL ledger remains authoritative for the trace inspection.
+RA-03/09 principally drive B-03; RA-01/02/04/05 drive B-04/07; RA-06 drives B-05; RA-07 drives B-06; RA-08 drives B-01/03/06/07/09; RA-10 drives B-02/08/10. These are planning allocations; the REQ–VAL ledger records the inspected validation links.
 
-At B-01, each work package must be decomposed into bounded deliverables that can be estimated against the selected design. Before implementation authorization, owners, estimates and capacity must be reconciled into an executable increment plan. Section 5 records the Owner's flexible capacity and the now endorsed preliminary B-01 effort range and relative workload/risk view for the remaining packages. It does not establish full-delivery feasibility or a committed schedule.
+The accepted next planning step was to break these packages into bounded deliverables against the selected design, then reconcile responsibilities, estimates and capacity before implementation authorization. Section 5 preserves the input used for design entry. Current work is described in [README.md](../../../README.md).
 
 ## 5. Remaining work and prerequisite milestones
 
-Functional role ownership below follows the accepted authority model. It does not appoint additional people or infer that an administrator is the architect, developer, domain expert or security approver. ROLE-10 assigns actual contributors; permitted combined roles retain visible independence limitations.
+The table records the allocations at design entry. Roles follow the accepted authority model; they do not appoint extra people or make an administrator the architect, developer or security approver. ROLE-10 assigns contributors, and combined roles retain their independence limitations.
 
 | Allocation | Accountable decision or work owner | Required before |
 | --- | --- | --- |
@@ -154,17 +149,17 @@ Functional role ownership below follows the accepted authority model. It does no
 | A-06 — Protected-copy policy, enforced controls, current deployment verification and explicit sealed permission | ROLE-09, with assigned engineering support | First confidential input or affected changed protected use |
 | A-07 — Executable test conditions/cases, environment/data readiness, execution, defect handling, regression and completion report | ROLE-10 assigns test work; ROLE-08 governs qualification evidence | Applicable increment completion, reliance and product/pilot gates |
 
-A-02–A-07 remain allocated downstream prerequisites. Their present lack of implementation or measurements is not a new defect in the requirements baseline. A-01 has now received separate Owner acceptance of the planning assessment and carried risks. The earlier capacity answer supplied input; the later explicit decision in Section 7 accepts the record and grants the phase transition.
+A-01 was accepted as sufficient for design entry. A-02–A-07 were allocated to later milestones. These entries preserve the decision and dependencies; they are not a current completion tracker.
 
 ### 5.1 Recorded capacity and working model
 
-On 2026-09-22 the Owner described TDG as a side project pursued in free time, gave **approximately 5 hours per week** as a flexible planning reference, and confirmed **independent work with AI assistance**. The suggested one hour on five days illustrates a possible rhythm; it is not a required attendance pattern. Lower, higher and zero-hour weeks are compatible with this model, without a catch-up obligation or an established completion date.
+On 2026-09-22 the Owner described a spare-time project with **approximately 5 flexible hours per week**, working alone with AI assistance. One hour on five days was an illustration, not a required rhythm. Lower, higher and zero-hour weeks carry no catch-up obligation or completion-date commitment.
 
-This is the capacity of one human. It includes reading, understanding, decisions, design, implementation oversight, verification, learning, adjudication and fixes. AI assistance is not counted as a second human contributor or an assumed productivity multiplier. Existing acting-role, self-review, qualification and protected-use rules remain applicable; the declaration neither grants every role automatically nor supplies independent assurance.
+This is one human's capacity, including understanding, decisions, design, implementation oversight, verification, learning, adjudication and fixes. AI is neither a second human contributor nor an assumed productivity multiplier. Combined roles still require appropriate authority and competence, and self-review remains non-independent.
 
 ### 5.2 Initial effort assessment for the design gate
 
-The following is an **Owner-endorsed, low-confidence planning estimate proposed by the assistant**, based on four bounded B-01 design activities. It concerns active human effort with AI assistance, including reading and corrections. It is not measured TDG productivity, a hard timebox or an Owner commitment.
+The Owner endorsed this **low-confidence estimate proposed by the assistant on 2026-09-22**. It covers active human effort with AI assistance, including reading and corrections. It is a historical planning estimate, not measured productivity, a timebox or a commitment.
 
 | B-01 design activity | Initial active-human effort | Required output |
 | --- | ---: | --- |
@@ -174,11 +169,9 @@ The following is an **Owner-endorsed, low-confidence planning estimate proposed 
 | Static design review and next-increment planning | 4–8 hours | Reviewed decisions, resolved blocking defects, refined implementation work and STLC allocations |
 | Initial B-01 total | 16–32 hours | Reviewed design package within the stated boundary |
 
-The estimate excludes product implementation, executable benchmark construction/campaigns and sealed-control verification. Review the range after the first completed design activity using actual human effort and remaining scope. New complexity may increase it; do not hide incomplete design to fit a number. No calendar deadline follows from the illustrative weekly capacity.
+The estimate excludes product implementation, executable benchmark construction/campaigns and sealed-control verification. It was to be reviewed after the first design activity using actual effort and remaining scope; increased complexity could increase the estimate. Incomplete design must not be hidden to fit the range. This record contains no measured actual effort or calendar deadline.
 
-The initial workload view for the remaining B-02–B-10 packages is the output/dependency/uncertainty breakdown in Section 4. The largest uncertainty is concentrated in human corpus/oracle work and evaluation (B-02/B-08), four technique models and their mapping (B-05), actual local-model capability (B-06), and deployment-specific sealed controls (B-09). Capture, histories and integrated verification also require failure and authority evidence, beyond a successful nominal demonstration. B-07 can reuse the record model, although interaction and safe export still need design.
-
-A reliable numeric total for the full MVP is not established. Design must refine estimates for the chosen implementation increments, including their benchmark and verification work, before implementation authorization. All accepted requirements remain in scope; a limited demonstration cannot be labelled a completed full MVP.
+Section 4 retains the workload and uncertainty for B-02–B-10. The main uncertainties were human corpus/oracle work and evaluation, technique models and mapping, local-model capability and deployment-specific protection. A reliable numeric estimate for the full MVP was not established. The design-entry decision required later increment estimates, including benchmark and verification work, before implementation authorization.
 
 ### 5.3 Resource risks and accepted disposition
 
@@ -189,22 +182,17 @@ A reliable numeric total for the full MVP is not established. Design must refine
 | AI output needs human verification; total engineering/evaluation effort is uncertain | Include understanding and rework in estimates; revise them from completed work before committing to another increment |
 | Local-model feasibility and sealed readiness are unproven | Obtain the applicable measurements and protection evidence at their allocated milestones; no resource estimate grants protected-data permission |
 
-**Accepted disposition:** the Owner accepted the declared capacity, initial assessment and carried uncertainties as sufficient for entry to the bounded design phase. Full-delivery feasibility remains unestablished and R-08 remains active. Requirements Analysis is closed and design GO is granted by the explicit decision in Section 7. Implementation authority remains separate.
+The Owner accepted the capacity, preliminary estimate and carried risks as sufficient to begin bounded design. Full-delivery feasibility was not established. R-08 remains active; the current cleanup addresses that risk. Section 7 records the phase decision.
 
 ## 6. Observations, proportionality and gate state
 
-| Item | State | Disposition / next action |
-| --- | --- | --- |
-| SR-RA10-F-001 and F-002 | CLOSED | Verified corrections already accepted; no repeated decision requested |
-| SR-RA03-OBS-001 | CLOSED | Specific RA03-VAL-014 bridge action complete; retain general bidirectional trace obligation |
-| SR-RA03-OBS-002 / Charter R-08 | ACTIVE | Use this consolidated record, one evidence ledger and the bounded work-package list; avoid duplicating complete slice prose or turning every requirement into a separate document |
-| Consolidated trace | PASS / ACCEPTED | Both directions and the disclosed intermediate paths accepted; retain the evidence for downstream test analysis |
-| Delivery capacity and effort | A-01 COMPLETE FOR DESIGN ENTRY | Flexible approximately 5 hours per week, solo AI-assisted work, the preliminary B-01 estimate and remaining workload/risks ACCEPTED; refine estimates during design |
-| Requirements Analysis closure | CLOSED — 2026-09-22 | Consolidated trace, allocations and resource-risk assessment accepted through the explicit Owner decision |
-| GO to Solution and Architecture Design | GRANTED — 2026-09-22 | Explicit ROLE-10 decision under RA-10 §12.3; estimates remain revisable and later permissions remain separate |
-| Implementation, model reliance, protected use and product acceptance | NOT AUTHORIZED BY THIS RECORD | Retain their separate applicable prerequisites and decision authorities |
+| Item | Recorded disposition and continuing duty |
+| --- | --- |
+| `SR-RA10-F-001` / `SR-RA10-F-002` | Closed after verified corrections; [SR-RA10-001 v0.2][sr10] retains the findings and acceptance |
+| `SR-RA03-OBS-001` | The RA03-VAL-014 bridge action is closed; general bidirectional trace duties remain |
+| `SR-RA03-OBS-002` / R-08 | Active: reuse the requirements and existing evidence, avoid parallel status documents and review documentation effort against the project's capacity |
 
-No acceptance remains pending for this consolidated review or the design-entry decision. The later explicit Owner approval is recorded below. Detailed scheduling, revised estimates, implementation authorization and subsequent evidence-based gates remain later work.
+The consolidated review, design-entry resource assessment and phase decision were accepted on 2026-09-22; Section 7 records their scope. Implementation, operational model reliance, protected use and product acceptance were not authorized by this record. Their separate prerequisites remain applicable.
 
 ## 7. Recorded Owner acceptance and phase gate
 
@@ -227,15 +215,15 @@ The Owner answered:
 | Documentation publication | AUTHORIZED — align the repository with these accepted artifacts and decisions |
 | R-08, independence and resource uncertainties | CARRIED as stated; no claim of full-delivery feasibility or independent expert assurance |
 
-The authorized next work is Solution and Architecture Design: component boundaries and one bounded review flow, the data/identity/contract design, model and protection interfaces, followed by static design review and refined implementation/STLC planning. This gate does not authorize product implementation, operational LLM reliance, confidential input or product acceptance; their existing prerequisites and decision authorities remain in force.
+The authorized work at that time was Solution and Architecture Design: component boundaries and a bounded review flow; data, identity and contracts; model and protection interfaces; then static review and refined implementation/test planning. That gate did not authorize product implementation, operational LLM reliance, confidential input or product acceptance. It does not override the current development pause.
 
 ### 7.1 Administrative change verification
 
-The accepted [v0.1 review input][accepted-review] is retained exactly: 32,071 bytes, SHA-256 `4c32c1638d0817ba7f09abe4e1cfbbc7bd7adf82ac8acfbfa7dba98694bb798d`. Version 0.2 records the subsequent approval and changes current status wording only. Requirement and VAL statements, source inventory and numerical trace results, inspected paths, work-package outputs, the 4–8-hour component estimates and 16–32-hour total, capacity flexibility and downstream restrictions are unchanged.
+The accepted [v0.1 review input][accepted-review] is retained: 32,071 bytes, SHA-256 `4c32c1638d0817ba7f09abe4e1cfbbc7bd7adf82ac8acfbfa7dba98694bb798d`. The original v0.2 update recorded the subsequent approval without changing the requirements, validation statements, trace evidence, work-package outputs, estimates, capacity flexibility or downstream restrictions.
 
-The [trace evidence ledger][trace] is retained exactly with SHA-256 `82e7b2bcc59183532ad5edb1673555f38a777d547d24637dbc7362509dbe96ed`. Its pre-acceptance status label is historical. This record provides the later acceptance without rewriting the evidence. The same rule applies to earlier source and review snapshots that state a then-pending phase gate. Current phase authority is this Section 7; historical notices do not reopen a closed phase.
+The [trace ledger][trace] remains unchanged, with SHA-256 `82e7b2bcc59183532ad5edb1673555f38a777d547d24637dbc7362509dbe96ed`. Its pre-acceptance status describes when it was prepared; Section 7 supplies the later acceptance. That historical label does not reopen the phase. The current editorial cleanup changes neither that ledger nor the Owner's decision.
 
-No new product requirement, scope expansion, model selection or security exception is introduced by this administrative closure. The original author/reviewer independence limitation remains visible.
+The same assistant authored and reviewed the material; no independent expert assurance is claimed. No product requirement, scope expansion, model selection or security exception follows from maintaining this record.
 
 ## Appendix A. Nominal workflow correspondence
 
@@ -270,7 +258,20 @@ This is the explicit semantic mapping used for the previously indirect RA02-VAL-
 | 0.1 — working update | 2026-09-22 | Owner's flexible approximately 5-hour weekly capacity and solo AI-assisted working model recorded; initial design-effort estimate, remaining workload and resource-risk response added; consolidated acceptance and design GO remain pending |
 | 0.2 | 2026-09-22 | Later explicit Owner acceptance, risk disposition, Requirements Analysis closure, design GO and documentation-publication authorization recorded; accepted substantive content and evidence retained |
 
+The original records remain in Git history. Editorial maintenance uses this file and the existing evidence; it does not create another review or document version.
+
+[charter]: ../../governance/test-design-gatekeeper-project-charter-v0.4.md
+[ra01]: ../test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md
+[ra02]: ../test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md
+[ra03]: test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.4.md
+[ra04]: ../test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md
+[ra05]: ../ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md
+[ra06]: ../ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md
+[ra07]: ../ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.2.md
+[ra08]: ../ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md
+[ra09]: ../ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md
+[ra10]: test-design-gatekeeper-ra-10-evaluation-acceptance-v0.2.md
 [sr10]: test-design-gatekeeper-ra-10-focused-static-review-v0.2.md
 [trace]: test-design-gatekeeper-requirements-analysis-traceability-audit-v0.1.json
-
 [accepted-review]: test-design-gatekeeper-requirements-analysis-readiness-v0.1.md
+[original]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/4e9ddf926c1863c4de71067c8e29c55a3372c895/docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md
