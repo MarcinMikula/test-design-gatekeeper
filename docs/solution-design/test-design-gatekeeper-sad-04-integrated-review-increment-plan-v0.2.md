@@ -1,60 +1,55 @@
 # Test Design Gatekeeper
 
-## SAD-04 — Integrated Design Review and Next-Increment Planning
+## SAD-04 — Consolidated Solution Design and I-01 Delivery Boundary
 
 | Field | State |
 | --- | --- |
-| Version / date | 0.2 — 2026-09-28 (Europe/Warsaw); corrected baseline candidate |
-| Status | BASELINE CANDIDATE — Sections 3–12 accepted within their recorded boundaries; Section 13 accepted with effort-estimate reservation; final Owner acceptance and implementation GO pending |
-| Entry authority | SR-SAD03-001 v0.2: accepted SAD-03 v0.3, closed third B-01 activity and explicit GO to SAD-04 |
-| Inspected baseline | `583356e148378c0669cee5baa9bc4cdbd2cc3182` on main; SAD-01/02 accepted, SAD-03 v0.3 accepted |
-| Work allocation | Fourth and final planned B-01 activity: integrated review, blocking design choices, first-increment plan and STLC allocation |
-| Implementation boundary — scope accepted, GO pending | I-01 — local laboratory native-JSON capture and inspection; a foundation increment, not the complete MVP |
-| Authority retained | 249 accepted requirements and 169 validation obligations under SR-RA-001 v0.2 |
-| Review evidence | [SR-SAD04-001 v0.1][review04] records the correction verification and final decision request; same AI-assisted author, no independent review or executed product tests claimed |
-| Retained review history | [SAD-04 v0.1][history04] and its [allocation index v0.1][allocation01] remain unchanged |
+| Basis | Accepted SAD-01/02, corrected SAD-03 v0.3 and SAD-04 v0.2, with the accepted numeric-token clarification |
+| Design and implementation decision | SAD-04 and its allocation index accepted on 2026-09-28; both SAD-04 findings closed, B-01 closed for the selected I-01 boundary and GO to I-01 granted in [SR-SAD04-001 v0.2][review04] |
+| Current work | Development paused for documentation cleanup; TC-I01-033 remains on hold. [README.md](../../README.md) describes implemented capability and current evidence |
+| Text maintenance | Consolidated on 2026-10-25 in the existing SAD-04 file; decision IDs and Section 4–14 contract locations retained |
+| Evidence boundary | Accepted design and historical document reviews; the design itself supplies no runtime, model-quality or sealed-readiness evidence |
+
+This is the main description of the accepted solution. It brings the component, data and model boundaries into one place and incorporates the accepted corrections directly. The earlier SAD files and review records preserve the original wording, examples, decisions and checks; their preparation-time pending notices are historical. The original SAD-04 snapshot remains in [Git history][original]. Its recorded hashes identify that snapshot, not this maintained text.
 
 ## 1. Purpose and decision convention
 
-SAD-04 connects the component design, data contracts and model/protection design to a bounded implementation proposal. It must make the next coding task understandable, testable and small enough for a solo side project. It does not reproduce the requirements catalogue or add another analysis phase.
+TDG is designed as one local application that helps a human review deliberately supplied system-level functional black-box test cases. It preserves the supplied evidence, separates findings from human decisions and keeps unsupported conclusions visible. It can advise on gaps and possible improvements; it cannot approve, directly edit or repair testware, retrieve unsubmitted business material or make project-gate decisions.
 
-The Owner has authorized this design activity. **All six SAD-D-016–021 choices are ACCEPTED as design decisions.** On 2026-09-27, the Owner accepted both Section 3 corrective dispositions and Sections 4–12: scope, implementation choices, interchange/status contracts, persistence/identity/failure behavior, the terminal contract, laboratory/resource policy, the disposition of inherited open decisions, requirement allocation/evidence accounting, and the STLC plan with all 16 I-01 test conditions. Section 13 is accepted with an explicit reservation about the very uncertain effort estimate and possible testing effort of comparable size to the initial total. The corrections are applied and their documentary verification is recorded in SR-SAD04-001 v0.1. Owner acceptance of that record, finding closure, the complete corrected baseline (including Sections 1–2 and 14) and implementation GO remain pending. Normative wording in unaccepted proposals states the intended design contract, not a permission already granted. Accepted upstream requirements remain authoritative throughout.
+The accepted full design and the first delivery increment have different boundaries. Sections 4.1–4.2, 7.4–7.5 and 15 describe responsibilities needed for later review. **I-01 enables only native-JSON capture and inspection**, as specified in Sections 4 and 6–9. CSV, substantive review, model invocation, result export and sealed processing remain outside I-01. A design permission does not establish implementation or successful verification.
 
-Closing this document may authorize implementation of I-01 only, through the explicit gate in Section 14. Later increments retain all outstanding requirements and their own applicable readiness checks. Completing I-01 cannot be described as completion of TDG, model qualification, sealed readiness or official ISTQB conformity.
+The [Requirements Analysis closure][gate] indexes the 249 accepted requirements and 169 validation obligations. Their governing meanings remain authoritative. This consolidation adds no product requirement, implementation permission, model selection or acceptance threshold. A change to required behavior needs an explicit decision; an unresolved choice is not a default.
 
 ## 2. Sources and review method
 
-| Source | Role in this review |
+| Governing source or retained record | Purpose |
 | --- | --- |
-| [SR-RA-001 v0.2][gate] | Accepted phase authority, B-01–B-10 work allocation, flexible five-hour weekly capacity and R-08 |
-| [SAD-01][sad01] | Seven logical components, controlled flow, operating entry points and commit effects |
-| [SAD-02][sad02] | Record ownership, immutable identity, operation retry semantics and unresolved physical choices |
-| [SAD-03 v0.3][sad03] and [SR-SAD03-001 v0.2][review03] | Model purposes, qualification, protection, cause/stage outcomes and entry GO |
-| [RA-03 v0.4][ra03], [RA-05 v0.2][ra05], [RA-08 v0.2][ra08], [RA-09 v0.2][ra09] | Capture, minimum checks, lifecycle, laboratory controls and exact interchange contract |
-| [Accepted REQ–VAL ledger][trace] | Existing requirement inventory and validation routes; unchanged by this document |
-| [SAD-04 allocation index][allocation] | Compact routing of all 249 requirement IDs to design/work owners; no implementation or full clause-coverage claim |
-| [SR-SAD04-001 v0.1][review04] | Documentary correction verification, retained risks and prepared final Owner decision |
+| [Requirements Analysis closure][gate] | Accepted requirements, evaluation duties, capacity and active documentation-growth risk R-08 |
+| [RA-03][ra03], [RA-04][ra04], [RA-05][ra05], [RA-06][ra06] | Package content, scope qualification, records, authority and technique semantics |
+| [RA-07][ra07], [RA-08][ra08], [RA-09][ra09], [RA-10][ra10] | Model permission, protection, interchange and evaluation contracts |
+| [SAD-01 historical source][sad01-history] | Component/flow decisions SAD-D-001–003 and the 2026-09-22 walkthrough |
+| [SAD-02 historical source][sad02-history] | Logical data decisions SAD-D-004–008 and the 2026-09-23 walkthrough; its superseded status table and JSON example are not implementation contracts |
+| [SAD-03 historical source][sad03-history] and [SR-SAD03-001 v0.2][review03] | SAD-D-009–015, accepted evaluation and failure corrections, closure on 2026-09-27 |
+| [SR-SAD04-001 v0.1][verification04] and [v0.2 decision][review04] | Integrated review, correction verification and 2026-09-28 implementation gate |
+| [SAD04-I01-NUM-001][numeric] | Numeric-token outcome accepted on 2026-10-03, now included in Section 6.1 |
+| [REQ–VAL ledger][trace] and [design allocation index][allocation] | Retained requirements/validation routes and design-work allocation; not executed coverage |
 
-The author compared the three SAD documents at their shared interfaces: input envelope, identity, capture commit, assessment/run status, model permission, protection failure and history. The focused I-01 checks then traced capture/inspection behavior to applicable requirements and future test conditions. Source examples remain versioned examples: the age ranges 18–75 in SAD-01 and 18–120 in RA-09 are different supplied fixture rules, not interchangeable business defaults.
+The original integrated review compared the SAD interfaces: input envelope, identity, capture commit, assessment/run status, model permission, protection failure and history. Its findings and checks remain in the existing records. Source examples are versioned development inputs: SAD-01's age range 18–75 and RA-09's 18–120 are different supplied rules, not application defaults.
 
-Historical pending notices in retained RA snapshots are read with their accepted closure records. The two findings below concern design wording; they do not reopen the accepted requirements baseline.
+The allocation index is a historical design snapshot. Its source hashes and older section references identify the inspected versions; it is not a live implementation tracker. The current layout below preserves the accepted responsibilities and points to current requirements without rewriting the historical evidence.
 
 ## 3. Integrated review findings and corrections
 
-| Finding | Evidence and impact | Disposition accepted on 2026-09-27 | Documentary verification and retained runtime work |
-| --- | --- | --- | --- |
-| SR-SAD04-F-001 — Ledger vocabulary mixes processing and assessment | SAD-02 Section 7.1 lists COMPLETED and BLOCKED as ledger outcomes. RA-05 Section 3.2, RA-09 Section 7.1 and SAD-03 Section 6.3 distinguish assessment outcomes from run state. Implementing the illustrative table literally would create incompatible records. | Use exactly ASSESSED, UNGRADABLE, NOT_PERFORMED and INCOMPLETE for substantive ledger outcomes. Keep any internal pending/in-progress marker separate. BLOCKED and COMPLETED remain run states. Availability is an independent derived axis, not a lifecycle with NONE as a universally non-terminal state. | Compared the governing RA-05/RA-09/SAD-03 clauses, Section 6.2 and the correction notice at SAD-02 Section 7.1. Original table retained as historical. Serializer/enum execution remains future implementation verification. |
-| SR-SAD04-F-002 — Illustrative JSON shape conflicts with the accepted wire envelope | SAD-02 Section 8.1 shows package/submission at the root and a different version string. RA-09 Sections 2.2–3 require document_type, contract_version and content only, with version "1.0". The example is explicitly illustrative, but is unsafe as an implementation template. | Adopt RA-09's exact three-member control envelope. Put supplied scope, basis and TC inside content; trusted operation context and generated TDG identities stay outside supplied authority. Unknown content fields remain preservable. | Compared the exact envelope and positive/negative cases in Section 6.1 with RA-09 Sections 2.2–3 and the correction notice at SAD-02 Section 8.1. Product parser execution remains future TCND-I01-04/06/08 verification. |
+| Accepted correction | Current rule and recorded disposition |
+| --- | --- |
+| SR-SAD03-F-001 | Operational review needs current task/configuration qualification. ROLE-08-authorized public/synthetic candidate evaluation uses its own identities and the same gateway controls, without a fictional operational run. Accepted and closed on 2026-09-27; Section 15.1 |
+| SR-SAD03-F-002 | Genuine missing business evidence, unsupported capacity before work and failed execution after work begins have different consequences. Keep assessment outcome, run state and availability separate; accepted and closed on 2026-09-27; Section 15.4 |
+| SR-SAD04-F-001 — Medium | Substantive ledger outcomes are ASSESSED, UNGRADABLE, NOT_PERFORMED and INCOMPLETE. COMPLETED/BLOCKED are run states; availability is a separate derived axis. Disposition accepted on 2026-09-27, correction verification and closure accepted on 2026-09-28; Section 6.2 |
+| SR-SAD04-F-002 — High for I-01 readiness | The native wire envelope contains exactly document_type, contract_version and content, with version "1.0". The old package/submission-root illustration is superseded. Disposition accepted on 2026-09-27, verification and closure accepted on 2026-09-28; Section 6.1 |
 
-Both findings are **CORRECTION APPLIED — DOCUMENTARY VERIFICATION RECORDED; OWNER CLOSURE PENDING**. On 2026-09-27 (Europe/Warsaw), the Project Owner accepted the Section 3 dispositions in the walkthrough: "tak, akceptuje ustalenia z paragrafu 3". On 2026-09-28 the accepted correction notices were added to SAD-02 without replacing its historical table or example. SR-SAD04-001 v0.1 records the documentary verification. Owner acceptance of that record and finding closure is part of the final decision; no runtime enum, parser or persistence test is claimed. No additional substantive contradiction was identified in the inspected interfaces; this is not a claim of exhaustive defect absence.
-
-F-001 is Medium for design consistency and must be corrected before a ledger implementation. F-002 is High for I-01 readiness because it determines the primary importer contract. Acceptance of these dispositions does not accept the remaining SAD-04 proposals or grant implementation GO.
-
-Existing SAD-D-001–015 remain accepted. SAD-03's two closed findings stay closed: candidate evaluation does not require fictional operational ledger records, and a model failure cannot become evidence of a TC or business-rule defect.
+The [SAD-03 review][review03] and [SAD-04 verification][verification04] preserve the counterexamples, source comparisons and limits of those checks. They are document evidence from the AI-assisted author/review path, not independent technical assurance or runtime tests. The accepted numeric-token decision is included in Section 6.1; it does not assign outcomes to unrelated resource faults.
 
 ## 4. First increment and retained product scope
-
-**Scope accepted on 2026-09-27 (Europe/Warsaw).** In response to the walkthrough question covering the I-01 boundary and the division of later work, the Project Owner stated: "tak akceptuje zaproponowany zakres". That decision accepted the scope and delivery split below without granting implementation GO. The subsequent, separate acceptance of the technical choices is recorded in Section 5.
 
 **I-01: deliberately submit one eligible local JSON file, preserve a coherent immutable snapshot, receive an honest import receipt, and inspect the retained source/projection after restart.** This is the first usable persistence/intake path on which review can later rely.
 
@@ -71,7 +66,7 @@ I-01 deliberately ends **before the RA-03 core-minimum check**. Its receipt alwa
 
 The CLI capability manifest must visibly list unavailable functions. CSV parsing, attachments/extraction, semantic minimum checks, classification, assessment, human finding dispositions, result export, model invocation and sealed processing remain disabled in I-01. JSON claims about additional sources are preserved as unresolved references; the application does not discover or open them. No unsupported source is silently counted as captured.
 
-| Later delivery slice | Retained work and enabling condition |
+| Later delivery slice — accepted sequence before the pause | Retained work and enabling condition |
 | --- | --- |
 | I-02 — Package readiness and review records | Defined CSV/explicit source bindings, core minimums, criterion-level qualification, run/ledger/history and inspection/export; concrete contracts and tests before enabling each path |
 | I-03 — Functional test-design review | EP, BVA, decision tables and state transitions in bounded subincrements, with supplied/confirmed premises and human interpretation/disposition; no requirement that all four techniques apply to every TC |
@@ -80,7 +75,70 @@ The CLI capability manifest must visibly list unavailable functions. CSV parsing
 
 These are delivery slices within the accepted work packages, not additional SAD documents or promises of fixed dates. GUI and reviewing tests of AI/LLM systems remain parked.
 
+### 4.1 Application responsibilities
+
+The full design uses seven logical components, not seven services. The application core runs in one local process; a controlled parser worker or later inference runtime can be a separate process. Every exposed operation uses trusted actor/profile context and rechecks affected authority before privileged commit or disclosure. Typed laboratory roles provide attribution only.
+
+| Component | Responsibility and owned output | Allowed boundary |
+| --- | --- | --- |
+| CMP-01 — Application coordinator | Accept identified human operations; apply action/profile policy; invoke capture, review, decision and export services; coordinate run state. | Receives CLI actions and trusted configuration. No command gains scope, qualification or protected-data permission from supplied content. |
+| CMP-02 — Intake and capture | Check supported contracts and selected bindings; preserve originals and identified mechanical projections; produce coherent package snapshots and import receipts. | Reads only explicitly selected sources through approved paths. No LLM capture mapping, code execution, URL following or automatic directory search. |
+| CMP-03 — Review planner | Account for the original inventory; check minimums, item eligibility, criterion-level qualification and per-dimension prerequisites; prepare the requested-work ledger. | Reads the identified snapshot and applicable decision/configuration context. Semantic assistance goes through CMP-05; no blanket verdict from labels. |
+| CMP-04 — Assessment services | Assess requested quality/technique dimensions; preserve models, mappings, premise status and derivation; propose evidence-bearing outcomes and review items. | Deterministic controls receive established structured premises. Semantic model contributions use CMP-05. Neither path repairs source TC or confirms its own business interpretation. |
+| CMP-05 — LLM gateway | Check task/envelope permission, construct bounded context, invoke the configured local runtime, validate response structure/references and retain permitted attempt evidence. | Receives only selected package/run evidence. The runtime receives no record-store access, filesystem discovery, arbitrary command, policy-change or network-retrieval capability. |
+| CMP-06 — Record and history store | Preserve coherent snapshots, runs, ledger entries, evidence, interpretation/disposition events, operation outcomes and exports; expose controlled reads. | Writes pass through invariant-preserving application operations. Failed writes cannot be reported as success; imported statuses are data rather than trusted history. I-01 storage is specified in Section 7. |
+| CMP-07 — Inspection and export | Present authorized selected records; prepare coherent JSON/Markdown export with source limits and a fixed human-history boundary. | Uses retained records and current permission. Presentation adds no semantic findings, executes no supplied content and loads no remote rendering resources. |
+
+CMP-01 coordinates work; only CMP-06 writes the store through invariant-preserving operations. CMP-03/CMP-04 request model assistance through CMP-05. Responses return as data for validation, never as commands or direct writes. CMP-07 reads retained records; it does not ask a model to reconstruct history.
+
+### 4.2 Review flow after capture-only I-01
+
+This is the accepted target review flow. The review steps remain disabled in I-01. Each FLOW identifier retains its SAD-01 meaning.
+
+| Step | Operation and responsible component | Inspectable consequence |
+| --- | --- | --- |
+| FLOW-01 — Admit | CMP-01 checks the selected operation, actor/role, profile, declared classification, purpose and policy before prohibited processing. | A refused path returns only permitted intake information. No automatic profile switch or external classification call. |
+| FLOW-02 — Capture | CMP-02 validates the supported input contract and explicit source bindings, inventories exact sources and applies the identified mechanical mapping. | CMP-06 exposes `CAPTURED` only after a coherent durable snapshot and receipt linkage exist. Rejected/failed capture has no committed package reference. |
+| FLOW-03 — Check minimums | CMP-02/CMP-03 apply the RA-03 sequence to the captured candidate, preserving origin, accountability, gaps, provenance and conflicts. | Receipt minimum is `MET`, `NOT_MET` or `NOT_EVALUATED`. An unresolved free-text origin is preserved, not inferred from writing style. |
+| FLOW-04 — Request review | CMP-01 records one deliberate request against one immutable package version, with the authorized dimensions and actual behavior context. | A unique `REQUESTED` run exists. Retrying the same identified request does not create another run; a new deliberate request does. |
+| FLOW-05 — Plan bounded work | CMP-01 checks start prerequisites and records `RUNNING` before authorized qualification/assessment activity begins. CMP-03 applies RA-04 and accounts for all supplied TC/candidates, exclusions and requested dimensions. | A whole-run impediment can lead from `REQUESTED` or `RUNNING` to `BLOCKED`, as applicable. Each entry retains eligibility, domain, capability and evidence separately. No domain exclusion is invented from a capability failure. |
+| FLOW-06 — Establish premises | CMP-03/CMP-04 inspect supported evidence, reuse applicable recorded decisions and expose unresolved interpretations. | Candidate models and mappings remain derived. A qualified LLM may assist; ROLE-04 owns interpretation confirmation. Unsupported dependent claims remain ungradable or unperformed according to their actual cause. |
+| FLOW-07 — Assess | CMP-04 applies available qualified controls and, where permitted, CMP-05 assistance within the unchanged requested boundary. | Applicability is separate from conditional coverage, planned exercise from expected-result alignment. Every completed conclusion retains evidence and derivation; new review items start `PENDING`. |
+| FLOW-08 — Commit and finalize | CMP-01/CMP-06 commit coherent entry outcomes and related items, then finalize state with an explicit outcome for every requested entry. | Run state and availability derive from actual retained work. No empty model response, successful parser or finding count establishes completion or `AVAILABLE`. |
+| FLOW-09 — Human review | CMP-01/CMP-07 expose evidence and record authorized interpretation/disposition operations with their distinct effects. | ROLE-05 disposition is attributable; self-review is visible. ROLE-03 repairs the TC externally. Earlier findings can remain pending while a revised package is submitted. |
+| FLOW-10 — Export or revisit | CMP-07 exports a deliberate selection/history cutoff after current permission checks; CMP-01 accepts a separate re-review or explicit comparison request. | Export failure leaves canonical records intact. Re-review has its own run; revised supplied content has a new package version; comparison history cannot silently enrich its basis. |
+
+A captured snapshot can fail the package minimum. A rejected capture creates no fictional package or run. Review qualification accounts for the original inventory and preserves excluded or unassessable items. Applicable technique coverage is conditional on established applicability; an explicitly requested dimension cannot be removed afterwards to improve availability. Independently supported deterministic work may proceed without a model, but it needs established premises and all shared controls.
+
+Safely committed interim results retain availability NOT_FINAL. Unsaved previews are labelled as such and cannot support a finding disposition. At finalization, diagnostics alone supply no substantive assessment and imply availability NONE. Zero findings can coexist with AVAILABLE only when RA-05's requested-work conditions are met. Invalid or ambiguous terminal input grants no human decision; the active operation reports the error and reprompts under its bounded interaction policy.
+
+The [original synthetic walkthrough][sad01-history] retains CUST-01–03, the explicit integer-age rule and its BVA example. It is exposed design material, not a benchmark or runtime result.
+
 ## 5. Implementation decisions
+
+### 5.1 Accepted architecture decisions
+
+| ID | Accepted meaning and current boundary |
+| --- | --- |
+| SAD-D-001 | One local application with distinct logical modules; process/module separation alone is not a security boundary |
+| SAD-D-002 | Terminal interface first; all actions use application services. A later GUI must reuse the authority and lifecycle rules |
+| SAD-D-003 | One active foreground review run, bounded waiting/cancellation and explicit ledger/finalization. Terminal runs cannot resume; sequential operation still needs stale-write and retry protection |
+| SAD-D-004 | Keep captured content, derived review/history and trusted operational context distinguishable; shared physical storage is allowed only with enforceable ownership and write rules |
+| SAD-D-005 | TDG identities and immutable package lineage preserve supplied IDs; equal content or hashes cannot merge independent submissions |
+| SAD-D-006 | Versioned native JSON, the defined CSV TC adapter and faithful JSON/Markdown export; the exact RA-09 envelope and manifest contract govern |
+| SAD-D-007 | Operation identities/fingerprints protect retries; human updates use an expected record version. Changed requests and stale writes cannot silently overwrite history |
+| SAD-D-008 | Preserve separate missing, unperformed, ungradable, incomplete, blocked and partial meanings on their governing axes; Section 6.2 contains the corrected vocabulary |
+| SAD-D-009 | All operational and candidate-evaluation model calls pass through CMP-05 with purpose-specific permission, context, limits and validation |
+| SAD-D-010 | Qualification applies to the exact model/runtime, task, behavior, profile and contract/resource envelope; there is no generic trusted-model flag |
+| SAD-D-011 | Build minimal allowlisted context from retained evidence; no arbitrary store read, source discovery or automatic expansion |
+| SAD-D-012 | Each attempt has fixed limits, identity and cancellation behavior. Pre-start unsupported work is NOT_PERFORMED; unfinished work after invocation is INCOMPLETE; run state remains separate |
+| SAD-D-013 | Model output is data subject to validation; it cannot invoke tools, change scope/policy, write records or repair TC |
+| SAD-D-014 | Mandatory admission, identity, storage, egress, audit or policy failure stops every dependent path, including shared-boundary deterministic work; optional diagnostics have a narrower effect |
+| SAD-D-015 | Laboratory and sealed profiles have distinct admission, identity, protection and verification evidence; changing a label cannot grant sealed use |
+
+SAD-D-001–003 were accepted on 2026-09-22, SAD-D-004–008 on 2026-09-23, and the corrected SAD-D-009–015 baseline on 2026-09-27. The source records in Section 2 retain the individual acceptance boundaries.
+
+### 5.2 Accepted I-01 implementation choices
 
 | ID | Decision accepted on 2026-09-27 | Reason and scope |
 | --- | --- | --- |
@@ -91,13 +149,9 @@ These are delivery slices within the accepted work packages, not additional SAD 
 | SAD-D-020 — Strict control, tolerant supplied content | Implement RA-09's version 1.0 envelope; a local schema registry with remote retrieval denied; preserve all content values and deficiencies without coercion. | Rejects malformed control input without discarding capturable incomplete TC. Full schema/profile IDs are separate from package and behavior versions. |
 | SAD-D-021 — Laboratory limits and unavailable-path enforcement | Apply Section 9's versioned limits, bounded parser worker, data/copy policy and explicit disabled capabilities. | No LLM endpoint, credentials, browser, renderer or network client is part of the I-01 processing path. Locality alone is not a confidentiality claim. |
 
-All six decisions are **ACCEPTED**. On 2026-09-27 (Europe/Warsaw), the Project Owner accepted Section 5 in full: "tak, akceptuje paragraf 5 w całości". This accepts the design choices, including the technology selection; implementation GO remains subject to Section 14. The detailed contracts and controls in Sections 6–9 were subsequently accepted in separate walkthrough decisions. The accepted numeric limits are engineering containment settings, not statistical product-acceptance thresholds or claims of performance on an 8 GB GPU.
-
-The official Python lifecycle, sqlite3 transaction documentation, jsonschema reference policy and Windows Job Objects documentation were consulted for these choices; see technical references below. The sources describe available mechanisms. Their correct integration remains implementation and test work.
+SAD-D-016–021 and the detailed I-01 contracts were accepted on 2026-09-27; the complete baseline and implementation gate followed on 2026-09-28. The resource settings are engineering containment limits, not statistical acceptance thresholds or measured hardware performance. Current development remains paused.
 
 ## 6. Interchange and status contracts
-
-**Accepted without changes on 2026-09-27 (Europe/Warsaw).** The Project Owner stated: "ok, akceptuje paragraf 6 bez uwag". This accepts Sections 6.1 and 6.2, including the input-preservation rules and the separate status axes; it does not grant implementation GO.
 
 ### 6.1 Native input and mechanical projection
 
@@ -126,6 +180,10 @@ The mechanical mapping follows RA-09 Sections 3.1–4.2: scope; ordered basis_el
 
 Numeric source lexemes are retained without conversion through binary floating point. Raw bytes are authoritative; projections may reference a numeric source location/lexeme rather than manufacture a rounded JSON value. Unsupported representation or configured size limits produce an explicit rejection/limitation, never a changed source number. Ordinary safe display is escaped and bounded; it need not reproduce source bytes visually.
 
+**Numeric-token outcome — SAD04-I01-NUM-001, accepted 2026-10-03.** For otherwise valid input, a numeric token longer than 128 characters detected during the bounded check stops capture before commit: capture outcome REJECTED, CLI exit 2, no new package version/reference and minimum NOT_EVALUATED. The diagnostic identifies the limit and safe affected location without raw numeric payload or unnecessary host path. If a rejection receipt cannot be persisted, expose that separate failure; do not fabricate durable history.
+
+Tokens of 127 or 128 characters pass this length check only and still undergo the other checks. Do not round, truncate or coerce a number to fit. An in-bound exact-representation limitation remains a source-fidelity/projection concern. This decision is specific to numeric-token length; other limits, timeouts, containment and persistence faults retain their own cause/stage outcomes.
+
 The future CSV route is **the already-defined RA-09 native JSON manifest plus explicit tc_sources bindings to tdg-tc-csv version 1**. It is not a new CSV dialect choice. Comma/quote, UTF-8/BOM, logical multiline row, ragged-row, absent/empty and literal Boolean rules remain RA-09 Section 5.1. I-01 does not implement or silently approximate that route.
 
 ### 6.2 Status vocabulary and I-01 boundaries
@@ -143,8 +201,6 @@ The future CSV route is **the already-defined RA-09 native JSON manifest plus ex
 Receipt and snapshot representations retain RA-09 document kinds and envelope version. Receipt content includes operation identity, actor/time and profile/mapping versions, capture outcome, package reference only after commit, actual input inventory, issues and the explicit minimum-check limitation. Issues retain code, stage, affected location/boundary, observed problem, provenance, consequence and bounded human action. No single valid/pass flag replaces these meanings.
 
 ## 7. Physical records, identity and failure effects
-
-**Accepted without changes on 2026-09-27 (Europe/Warsaw).** The Project Owner stated: "ok, tu też nie mam uwag, akceptuję paragraf w całości" in response to the Section 7 walkthrough. This accepts Sections 7.1–7.3, including the transaction/retry boundary, explicit lineage, store compatibility and data location; implementation GO remains pending.
 
 ### 7.1 Minimal store and owned writes
 
@@ -183,11 +239,80 @@ I-01 opens only store schema version 1. A newer/unknown database version is refu
 
 Use a dedicated local, non-synchronized data directory, with the accepted default `%LOCALAPPDATA%\TDG\lab\<workspace-id>`. The repository may remain in the user's existing project directory; the operational database and journals should not be placed in OneDrive, a network share or the repository. Path selection is explicit at initialization and verified before writes. Existing stores are never overwritten by init. An integrity failure blocks writes and preserves the original database for deliberate diagnosis; it is not repaired by an LLM or by silent rebuild.
 
+### 7.4 Logical records and independent versions
+
+These full-review responsibilities refine the three information domains. They do not require separate tables or placeholder records in I-01. Normalization, embedding or splitting is permitted only while identities, lineage and ownership remain intact.
+
+| Logical record | Owning responsibility | Minimum meaning and invariant |
+| --- | --- | --- |
+| `OperationContext` | CMP-01 | Trusted actor/action/profile context, operation identity, request fingerprint and policy decision. Submitted content cannot populate its authority fields. |
+| `SourceArtifact` | CMP-02 | The deliberately selected source or opaque attachment, its source locator, media/profile declaration, receipt identity, hash where available and capture outcome. The original is distinguished from projections. |
+| `PackageVersion` | CMP-02/CMP-06 | One coherent retained snapshot of scope, test basis, test cases, provenance declarations, gaps, conflicts and source lineage. It is immutable after capture commit. |
+| `TestCaseRecord` | CMP-02 | One recognizable supplied TC item with TDG identity, preserved source identity, supplied fields, unknown/unmapped content and package-version lineage. It is not silently repaired. |
+| `ReviewRequest` | CMP-01/CMP-06 | The deliberate request for one package version, requested dimensions, behavior/configuration references and operation identity. A retry is not automatically a second request. |
+| `ReviewRun` | CMP-01/CMP-06 | The retained lifecycle and terminal state for one review request, including start/finalization effects and availability consequences. |
+| `LedgerEntry` | CMP-03/CMP-04/CMP-06 | The requested assessment boundary for one recognizable item and dimension, with eligibility, prerequisites, attempt state, evidence references and cause-specific outcome. |
+| `AssessmentResult` | CMP-04/CMP-06 | A conclusion or limitation with derivation, evidence and premise status. It cannot be written directly by raw model text. |
+| `EvidenceItem` | CMP-04/CMP-06 | A source locator, deterministic check, model attempt reference, interpretation reference or other inspectable basis. Evidence does not become an authority grant. |
+| `InterpretationEvent` | CMP-01/CMP-06 | An attributable human interpretation or clarification, including its input basis, version and impact on later work. It does not rewrite earlier results. |
+| `Finding` | CMP-04/CMP-06 | A claim about the supplied testware or review basis with severity/status, evidence and derivation. Findings remain distinct from dispositions. |
+| `DispositionEvent` | CMP-01/CMP-06 | An attributable accept/reject/defer/reopen decision over a finding. It records human handling; it does not prove business-rule correctness or TC repair. |
+| `ExportArtifact` | CMP-07/CMP-06 | A deliberate projection of selected committed records, history cutoff, format/schema version, export identity and failure/outcome. It is never the canonical source of history. |
+| `Policy/QualificationContext` | CMP-01/CMP-05/CMP-06 | The effective profile, permitted task, model/configuration qualification and policy versions used for a relevant operation. It is referenced, not inferred from the package. |
+
+Original bytes, supplied field presence, declared provenance, opaque content and gaps remain the captured basis. Mechanical projections cannot replace originals. Classification, model output, technique assessment and human interpretation are derived/history records with explicit source links. Unknown content stays inspectable; an absent field is not an unreadable source.
+
+TDG-generated identity scopes are retained below. I-01 uses UUIDv4 under SAD-D-019; no identity embeds a status, role or guessed origin. Details for later identities remain subject to OD-SAD02-002 before the corresponding capability is enabled.
+
+| Identifier | Scope | Must remain stable across |
+| --- | --- | --- |
+| `package_id` | Logical package lineage | New review runs and exports of the same lineage |
+| `package_version_id` | One immutable captured snapshot | All derived runs, entries, findings and exports based on that snapshot |
+| `source_artifact_id` | One retained source or opaque attachment | Mechanical projections and re-reading within the same snapshot |
+| `test_case_id` | One recognizable TC within a package version | Assessment entries and human history for that item |
+| `review_request_id` | One deliberate request | Identical authorized retry of that request |
+| `run_id` | One assessment lifecycle | Entries, terminal result and export references |
+| `ledger_entry_id` | One item/dimension assessment boundary | Attempts, outcomes and later explanatory evidence |
+| `event_id` | One interpretation/disposition/operation event | Audit and conflict handling |
+| `export_id` | One export attempt/projection | Export receipt, failure or delivered artifact |
+
+Keep source-system IDs/versions, names and bounded locators, origin/authority declarations, observed hashes and capture times where available. Missing or malformed source IDs remain attributable issues. A TDG ID cannot be represented as a source-system ID.
+
+| Version dimension | Meaning | Change consequence |
+| --- | --- | --- |
+| Contract/schema version | Shape and interpretation of an interchange or retained record | Adapter or migration decision; historical records remain attributable |
+| Package version | Captured supplied content and substantive basis | New package lineage snapshot; later review uses a new version |
+| Source version | Version declared by the submitting system/document | Preserved provenance; not treated as TDG approval |
+| Review-run version/configuration | Behavior, thresholds, technique request and policy context used by a run | New run when a behavior-affecting artifact changes |
+| Model/qualification version | Qualified model/runtime/task envelope | New or limited run according to RA-07; no silent fallback |
+| Export version | Format and projection rules used for delivery | New export artifact; canonical history is unchanged |
+
+Historical records must remain readable through a supported contract or explicit versioned adapter. Before future migration, specify compatibility, rollback, integrity checks, interrupted-operation reconciliation, unsupported-version behavior and backup/export separation. Migration cannot rewrite earlier source meaning. I-01's refusal of unknown stores and absence of migration remain governed by Section 7.3.
+
+### 7.5 Review commits, human history and version consequences
+
+Beyond capture, the full workflow has separate durable commits for the review request; each ledger outcome with its evidence/items; reconciled run finalization; human interpretation/disposition events; and export outcome with a fixed history cutoff. A committed record must survive restart. Failure of later work preserves safely committed earlier work; unsaved output or failed finalization cannot be reported as success.
+
+Human writes use an expected record version or equivalent compare-and-append check. Stale writes produce a visible conflict. Identical authorized retries reconcile existing effects; an in-progress operation is reported without duplication. Recovery never silently reassesses, rereads input or resumes a terminal run.
+
+| Human action | Effect in this design |
+| --- | --- |
+| ROLE-02 changes supplied scope, or ROLE-03 supplies corrected TC/origin/accountability | Capture a new package version with lineage; preserve the old snapshot. |
+| ROLE-04 makes the first applicable interpretation decision about already supplied evidence during an active run | It may support an entry not yet assessed only if no applied premise is replaced and no configured behavior artifact changes. Retain the exact decision version. |
+| ROLE-04 replaces an interpretation already used, or an assessment behavior artifact changes | New run for subsequent assessment; retain earlier conclusions. A behavior change requires a new run even before the first substantive entry commits. |
+| A human supplies a genuinely new business rule or clarification document | New package version, even if supplied during an interpretation discussion. |
+| ROLE-05 accepts, rejects, defers or reopens a finding | Append a disposition event; preserve the claim and its derivation. Acceptance neither confirms a business rule nor verifies TC repair. |
+| A role grant, qualification or required protection becomes invalid | Recheck before affected invocation, result promotion, authority-bearing write and disclosure; stop affected work and retain safe history under policy. |
+
+After a terminal run, a new interpretation can be recorded for later use, but assessment belongs to a new run. Disposition acceptance does not confirm a business rule or verify repair. The human edits source testware externally; a revised package can be submitted while old findings remain pending.
+
+Exports select committed package/run records, a history cutoff, schema/projection version, included interim/partial/failed records and visible omissions. Export has its own identity and delivery outcome; denial or failure releases no unsafe partial artifact and leaves canonical history unchanged. Markdown is a readable projection, not an authority-bearing restore format. Rendering remains inert and performs no external fetch.
+
+Diagnostics correlate their identity with stage, subject scope, category, safe retry advice, actual durable effect and a bounded next action. For multi-entry operations, partial durable progress must be distinguished from an atomic capture commit. Diagnostic text must not expose raw model instructions, secrets or unapproved source content, and cannot misstate a successful commit.
+
 ## 8. Terminal contract for the increment
 
-**Accepted without changes on 2026-09-27 (Europe/Warsaw).** The Project Owner stated: "tak, nic tu lepszego nie wymyśle więc akceptuje w całości" in response to the Section 8 walkthrough. This accepts the command families, operator context, process exit codes and output conventions; implementation GO remains pending.
-
-The accepted executable name is `tdg`, with `python -m tdg` as the equivalent development entry. The CLI is a thin adapter over CMP-01 services; tests can call the same services without subprocess-only coupling.
+This is the accepted I-01 target contract; current availability is reported by the capability manifest and README. The accepted executable name is `tdg`, with `python -m tdg` as the equivalent development entry. The CLI is a thin adapter over CMP-01 services; tests can call the same services without subprocess-only coupling.
 
 | Command family | Required behavior |
 | --- | --- |
@@ -203,8 +328,6 @@ Accepted process exit codes: 0 for a successfully delivered command result (incl
 
 ## 9. Laboratory protection and resource policy
 
-**Accepted without changes on 2026-09-27 (Europe/Warsaw).** The Project Owner stated: "tak, akceptuję" in response to the Section 9 walkthrough question covering the laboratory rules and numeric resource limits. This accepts the admission, containment, copy/log/retention rules and the proposed limit values as design settings. Runtime verification and implementation GO remain pending; acceptance does not establish measured performance or sealed readiness.
-
 Admission requires an explicit public/synthetic classification and lab-development purpose from the operator context. Missing/unknown/confidential classification is refused before prohibited content processing. A discovered contradiction stops the affected path with a safe diagnostic. This does not claim a reliable automatic detector of confidential text; eligibility of the supplied development corpus remains human-controlled.
 
 | Resource | Accepted I-01 bound / enforcement |
@@ -212,7 +335,7 @@ Admission requires an explicit public/synthetic classification and lab-developme
 | Selected inputs | One native JSON file per import; regular local file only, no directory traversal/search, archive expansion, URL, UNC/network source or automatic link following |
 | Raw input | 1 MiB; bounded read stops at limit plus one byte, before accepting a complete parse |
 | JSON depth / node count | Maximum 32 nested containers, with the root object at depth 1; at most 20,000 JSON values, counting each container/scalar once and excluding object member names. Preflight and decoded inventory enforce the bounds without silently skipping a remainder |
-| Individual text / numeric token | 64 KiB UTF-8 per decoded text value or member name; 128 characters per numeric token; exceedance is an explicit representation/limit failure |
+| Individual text / numeric token | 64 KiB UTF-8 per decoded text value or member name; 128 characters per numeric token; longer numeric tokens are REJECTED with CLI exit 2 under Section 6.1; text exceedance remains an explicit representation/limit failure |
 | Candidate inventory | At most 200 native TC array entries and 200 basis array entries, counting deficient/malformed members too; these are capacity bounds, not business-scope or quality rules |
 | Parse worker | One worker; 5 seconds wall time and 512 MiB committed memory. Windows Job Object limits are applied before releasing input to the worker; if required containment cannot be established, refuse processing |
 | Controlled worker output | At most 8 MiB of framed projection data; parent validates shape, operation identity and size before persistence |
@@ -227,15 +350,13 @@ These accepted limits must be implemented as a versioned policy and tested at be
 
 ## 10. Disposition of inherited open decisions
 
-**Accepted without changes on 2026-09-27 (Europe/Warsaw).** The Project Owner replied: "Tak, akceptuję." to the walkthrough question about the Section 10 dispositions and deferral of the remaining decision scope. This accepts the I-01 treatment and the retained enabling conditions for later capabilities. Deferred parts remain open, the Section 3 correction closures remain pending, and no implementation GO is granted by this decision.
-
 There are eight named decisions in SAD-02 and ten in SAD-03. Several overlap. The table records their accepted treatment for I-01 and the remaining scope that must be resolved before the corresponding later capability is enabled.
 
 | Existing ID | Accepted I-01 disposition | Remainder / before which capability |
 | --- | --- | --- |
 | OD-SAD02-001 | SQLite and atomic BLOB/projection capture, Sections 5 and 7 | Later review/history/export transactions before I-02 |
 | OD-SAD02-002 | UUIDv4, SHA-256 and source locators, Sections 5–7 | Additional model/event identities when introduced |
-| OD-SAD02-003 | RA-09 envelope and local schema policy, Section 6 | Full review-export schemas before enabling export; F-002 must close |
+| OD-SAD02-003 | RA-09 envelope and local schema policy, Section 6 | Full review-export schemas before enabling export; F-002 is closed |
 | OD-SAD02-004 | JSON manifest plus explicit CSV bindings as required by RA-09 | CSV implementation and parser limits before I-02 CSV enablement |
 | OD-SAD02-005 | Concrete native-JSON/worker/store limits, Section 9 | Measure them during I-01; CSV/model limits before those paths |
 | OD-SAD02-006 | Local managed laboratory directory/copy policy, Sections 7 and 9 | Backup/restore, fine-grained retention and all sealed mechanisms remain gated |
@@ -256,31 +377,29 @@ Partially resolved decisions retain their remaining scope. A later implementatio
 
 ## 11. Requirement allocation and evidence accounting
 
-**Accepted without changes on 2026-09-27 (Europe/Warsaw).** The Project Owner stated: "ok, akceptuje bez zmian" in response to the Section 11 walkthrough. This accepts the allocation of all 249 requirements and the distinction between partial and full evidence. The companion index records the same allocation decision and the subsequent, separate acceptance of Section 12's condition definitions. No requirement is thereby marked implemented or validated, and implementation GO remains pending.
+The accepted [allocation index][allocation] retains all 249 requirement IDs, source identities, design/work owners and the 40 planned partial I-01 contributions; 209 requirements were allocated to later evidence. It reuses the accepted REQ–VAL routes rather than copying requirement text or creating one test per requirement. Its preparation-time pending label is superseded by the [2026-09-28 acceptance][review04].
 
-The companion [allocation index][allocation] lists all 249 requirement IDs from the accepted trace ledger, their source documents, design-route group, work packages and whether an I-01 clause-level contribution is planned. It reuses existing REQ–VAL routes rather than duplicating the requirement text or generating 249 new tests.
-
-| Requirement slice | Count | Primary design/work routing |
+| Requirement slice | Count | Current design/work location |
 | --- | ---: | --- |
-| RA-01 | 16 | SAD-01 authority boundaries; SAD-02 Section 9; SAD-04 Sections 8–9; B-01/B-04/B-07/B-09 |
-| RA-02 | 36 | SAD-01 workflow; SAD-02 lifecycle; SAD-04 Sections 4 and 6–9; B-03–B-07 |
-| RA-03 | 50 | SAD-02 source/identity; SAD-04 Sections 6–7; B-03/B-04 |
-| RA-04 | 15 | SAD-01 planner; SAD-03 classification contributions; B-04; substantive classification deferred from I-01 |
-| RA-05 | 22 | SAD-01 commit effects; SAD-02 records; SAD-03/SAD-04 corrected status axes; B-03/B-04/B-07 |
-| RA-06 | 20 | SAD-01 assessment service and SAD-03 contribution boundary; B-02/B-05; detailed technique algorithms still required |
-| RA-07 | 20 | SAD-03 gateway, qualification and evaluation separation; B-06/B-08; model invocation disabled in I-01 |
-| RA-08 | 24 | SAD-03 protection; SAD-04 laboratory controls; B-01/B-03/B-06/B-07/B-09 |
-| RA-09 | 24 | SAD-02 contracts corrected by Section 6; native intake in I-01, CSV/export later; B-03/B-07 |
-| RA-10 | 22 | SAD-03 evaluation independence; SAD-04 Sections 12–14; B-02/B-08/B-10 |
-| Total | 249 | Routing inventory, not implemented or fully detailed coverage |
+| RA-01 | 16 | Authority in Sections 4, 7.5, 8–9 and 15; B-01/B-04/B-07/B-09 |
+| RA-02 | 36 | Flow in Section 4.2; records and lifecycle in Sections 6–8; B-03–B-07 |
+| RA-03 | 50 | Source, identity and lineage in Sections 6–7; B-03/B-04 |
+| RA-04 | 15 | CMP-03 and bounded qualification in Sections 4.1–4.2 and 15; B-04; not enabled in I-01 |
+| RA-05 | 22 | Status axes and durable/human history in Sections 6.2, 7 and 15.4; B-03/B-04/B-07 |
+| RA-06 | 20 | CMP-04, supported premises and contribution boundaries in Sections 4.2, 7.5 and 15; B-02/B-05; detailed technique algorithms remain later work |
+| RA-07 | 20 | Gateway, qualification and evaluation separation in Section 15; B-06/B-08; no I-01 model invocation |
+| RA-08 | 24 | Laboratory controls in Section 9 and model/sealed boundaries in Section 15; B-01/B-03/B-06/B-07/B-09 |
+| RA-09 | 24 | Interchange, capture and export boundaries in Sections 6–8; B-03/B-07; CSV/export remain later work |
+| RA-10 | 22 | Evaluation separation in Section 15 and verification/completion in Sections 12–14; B-02/B-08/B-10 |
+| Total | 249 | Design routing, not implemented or fully tested coverage |
 
-Every I-01 selection in that index means **partial contribution only**. For example, implementing source retention does not satisfy an entire requirement that also constrains future review/export behavior. Requirements about unimplemented review/model paths remain allocated, not passed. All 169 VAL remain authoritative; their future evidence may span multiple increments. A numeric 249/249 routing result does not establish clause-level architecture completeness, product quality or 249 implemented requirements.
+An I-01 contribution is partial. Source retention alone cannot satisfy a requirement that also constrains later review/export behavior. All 169 validation obligations remain authoritative and may require evidence from several increments. Neither the allocation count nor this consolidation establishes clause-level design completeness or product quality.
 
 ## 12. STLC allocation and first-increment test conditions
 
-**Accepted without changes on 2026-09-27 (Europe/Warsaw).** The Project Owner stated: "ok, akceptuje bez uwag" in response to the Section 12 walkthrough. This accepts the STLC allocation and all 16 conditions, TCND-I01-01–16, as the test plan for I-01. Detailed executable tests, execution evidence and implementation GO remain pending; condition acceptance does not mark any requirement implemented or validated.
+The Owner accepted the following allocation and all 16 TCND-I01 conditions on 2026-09-27. The implementation gate followed on 2026-09-28. The tables are the retained plan, not execution results. Current implementation and test-preparation evidence is linked from [README.md](../../README.md).
 
-Static testing continues during design and implementation. The selected contracts/limits and test conditions are accepted. The two findings have applied, documentarily checked corrections; Owner acceptance of their closure and implementation GO precedes writing product tests. Fixtures are synthetic customer-creation development material, with one explicit rule/version per family. The previously discussed discount example is exposed development material; it cannot later be described as unseen acceptance evidence.
+Fixtures use explicit, versioned synthetic rules. The discussed discount example and publicly exposed customer-creation families are development material, not fresh held-out acceptance evidence. Expected observations derive from accepted contracts before implementation results are inspected.
 
 | STLC activity | I-01 output / responsibility |
 | --- | --- |
@@ -310,13 +429,15 @@ Static testing continues during design and implementation. The selected contract
 | TCND-I01-15 | Every captured result visibly says minimum NOT_EVALUATED and review not performed; no run/findings/availability fabricated; unsupported commands do not activate a model/export/sealed path | RA03-REQ-032/050; RA09-REQ-013/015/017; RA07-REQ-010 |
 | TCND-I01-16 | Explicit source selection remains bounded under source changes or path redirection; capture never opens undeclared input or combines multiple content instances | RA03-REQ-005/006; RA09-REQ-005/014 |
 
-Expected outcomes are defined from these contracts before observing implementation results. Use meaningful unit tests for syntax/projection/identity decisions, integration tests with a real temporary SQLite store and injected commit faults, and a small CLI smoke path on the supported Windows host. Code-level/integration tests of TDG are separate from the system-level black-box TC that TDG will eventually review. No line-coverage percentage alone is an acceptance gate.
+Use meaningful unit checks for syntax/projection/identity, integration checks with a real temporary SQLite store and controlled commit faults, and a small CLI path on the supported Windows host. Testing TDG at code/integration level is separate from the system-level black-box testware it will review. A fake model can test gateway handling, but cannot qualify a real model or establish semantic accuracy. Coverage percentages alone are not acceptance gates.
+
+Later verification retains the [SAD-01 flow challenges][sad01-history], [SAD-02 identity/history challenges][sad02-history] and [SAD-03 gateway challenge matrix][sad03-history]. It must exercise denial before capture, deficient capture, partial supported review, first interpretation versus changed premises, stale human writes, model/capacity faults, lost commits, failed export and shared protection loss. These historical matrices allocate future tests; they are not successful executions.
 
 ## 13. Executable work breakdown and resource estimate
 
 **Accepted with an effort-estimate reservation on 2026-09-27 (Europe/Warsaw).** The Project Owner stated: "akceptuje paragraf 13 z zastrzezeniem ze nakład prac szacowany na 40-60 godzin uważam za mocno szacunkowy, podejrzewam ze same testy tyle zajmą." The work breakdown is accepted. The original 40–62-hour total and its component estimates remain very uncertain, unvalidated planning hypotheses, not an approved budget, effort ceiling or delivery commitment. The Owner's concern that testing alone could require comparable effort is retained as an underestimation risk, not adopted as a new testing estimate or added mechanically to the original total.
 
-All tasks below await implementation GO. The sole human is accountable for understanding changes, decisions and evidence; AI assistance may draft code/tests but is not an independent reviewer or extra staffing capacity. Role-specific authority remains explicit when a later task needs it.
+The table preserves the accepted W01–W07 sequence and original estimates. Current status and the later provisional test-work forecast are linked from [README.md](../../README.md); this is not a live progress table. Development and further fixture preparation are paused pending documentation cleanup and an agreed revised implementation plan. The sole human remains accountable for understanding changes and evidence; AI assistance is not independent review or additional staffing.
 
 | Work item | Bounded output | Dependency | Original indicative human effort — unvalidated |
 | --- | --- | --- | ---: |
@@ -331,31 +452,25 @@ All tasks below await implementation GO. The sole human is accountable for under
 | Original provisional contingency | Resource containment, persistence fault behavior and learning/rework; adequacy unverified | Reassess during W02 and after W03/W04 | 8–12 h |
 | Initial total estimate | Retained with Owner reservation; actual total may be substantially higher | No approved effort ceiling or calendar commitment | 40–62 h |
 
-Re-estimate during W02 using the detailed test inventory and update after W03/W04 using observed work. Identify effort for fixture/oracle preparation, test implementation and fault injection, execution/diagnosis, defect correction, retest/regression and completion evidence. Testing is already included across the original work items; separate it transparently when revising the forecast to avoid double counting. The 16 accepted conditions can expand into many concrete tests, and a condition count alone is not an effort estimate. No replacement total is asserted before that breakdown and evidence exist.
+The accepted re-estimation rule was to use W02's detailed inventory, then observed W03/W04 work. Account for fixture/oracle preparation, test implementation and fault injection, execution/diagnosis, fixes, retest/regression and completion evidence without double counting. The original total already included testing. A condition count is not an effort estimate, and required verification cannot be reduced to fit the original range.
 
-The reference remains approximately five flexible hours per week. It does not establish a fixed schedule. Completing the agreed scope and required evidence governs increment acceptance; reaching the original hour range does not justify reducing tests or relaxing criteria. Expose deviations and revise the forecast as evidence develops. The earlier 16–32-hour estimate concerned B-01 design, not this coding increment; actual past human effort is not known and is not reconstructed from chat timestamps.
+Approximately five hours per week remains a flexible capacity reference. The earlier 16–32-hour estimate concerned B-01 design, not implementation; actual past effort cannot be reconstructed from chat timestamps. Current forecasts remain provisional. Setup/package installation is separate from Review Package processing. I-01 needs no model, inference hardware, cloud subscription or external-model account; record the actual supported host environment without inferring performance from GPU size.
 
-Development-time package installation and tooling setup are explicit setup operations, separate from processing Review Packages. No inference hardware, cloud subscription or external model is required for I-01. Actual host resources and permissions are recorded during setup; no performance result is inferred from GPU memory size.
-
-## 14. Author check, walkthrough and proposed implementation gate
+## 14. Review evidence, acceptance and implementation boundary
 
 ### 14.1 Preparation evidence
 
-The author checked local source references, requirement IDs in the I-01 conditions, the complete 249-ID allocation inventory, unchanged requirement-source hashes, table consistency, numeric effort totals and the two applied cross-contract corrections. SR-SAD04-001 v0.1 records the outcomes and artifact identities. These are document checks. Runtime containment, fidelity, durability and usability remain unexecuted obligations.
+[SR-SAD04-001 v0.1][verification04] preserves the original source/ID checks, allocation inventory, arithmetic, applied corrections and artifact identities. [SR-SAD04-001 v0.2][review04] records acceptance of that evidence. These were document checks by the same AI-assisted authoring path, not independent assurance or runtime containment, fidelity or durability results.
 
-The walkthrough followed Sections 3–13, with their individual decisions retained above. The final Owner decision is requested on the complete corrected baseline and review record, including context Sections 1–2 and the gate in Section 14. Earlier section acceptances have not been turned into an implementation permission.
+The SAD-01/02 walkthroughs and SAD-03 correction record remain linked in Section 2. Their historical examples, individual replies and earlier failures are retained without repeating the full acceptance history in the design text.
 
-Decision state on 2026-09-28: Section 3's dispositions and Sections 4–12 are accepted; Section 13 is accepted with its effort-estimate reservation. The correction package and SR-SAD04-001 v0.1 are prepared for final review. Acceptance of the complete baseline, the review record and finding closures, B-01 closure for the selected I-01 boundary, and implementation GO remain PENDING.
+### 14.2 Recorded implementation GO
 
-### 14.2 Evidence required before a coding GO
+On 2026-09-28 the Owner accepted the complete corrected SAD-04 v0.2, allocation index v0.2 and SR-SAD04-001 v0.1; closed both SAD-04 findings and B-01 for the I-01 boundary; and granted GO to I-01. The reply, preserved in [SR-SAD04-001 v0.2][review04], was:
 
-- Owner accepts the I-01 scope, SAD-D-016–021, concrete limits, work breakdown and flexible resource assumption, with Section 13's explicit underestimation risk and re-estimation approach retained. The original 40–62 hours is not an approved budget or acceptance ceiling.
-- Both SR-SAD04 findings are dispositioned and their corrections verified. Accepted correction notices identify the governing SAD-04 clauses in the historical SAD-02 document before closure publication.
-- Each enabled I-01 operation has a defined input, trusted context, durable effect, failure outcome and test condition; no unresolved safety/contract blocker remains for those operations.
-- The allocation index retains every accepted requirement and identifies partial/deferred delivery; no requirement is marked fulfilled merely because its ID is routed.
-- Owner accepts the static-review record and the specific permission boundary: implementation of I-01 with synthetic/public development material only.
+> Tak zatwierdzam i udzielam GO
 
-The proposed final question is: **Accept the corrected SAD-04 baseline and review record, retaining Section 13's effort-estimate reservation, close B-01 for the selected implementation boundary, and grant GO to implement I-01?** No such decision has been made by this v0.2 candidate. A rejection or requested correction is recorded and resolved; it does not silently turn into permission.
+That permission covered W01 and the remaining accepted increment work without another invented starting gate. It retained public/synthetic laboratory admission, all required tests, the effort reservation and later model/sealed/product gates. The subsequent development pause governs current work; this cleanup does not resume implementation.
 
 ### 14.3 I-01 completion and subsequent gates
 
@@ -363,36 +478,170 @@ Completion requires demonstrated source/identity/commit invariants, honest recei
 
 The Owner then decides increment acceptance and the next bounded implementation scope. Human oracle/protocol/criteria approvals precede decision-bearing model qualification or product acceptance; explicit ROLE-09 readiness precedes confidential use. These are retained SDLC/STLC gates, not a requirement to invent a new SAD document for each coding task.
 
-### 14.4 Candidate version record
+### 14.4 Document history
 
-| Version | Recorded change | Authority boundary |
+The [original SAD-04 v0.1][history04], [v0.2 snapshot][original], allocation versions and existing reviews preserve their identities and decisions. This file incorporates the accepted architecture and corrections without adding another document version. SAD04-I01-NUM-001 remains the separate dated authority for the Section 6.1 clarification. Historic GO and accepted design do not imply I-01 completion, usefulness or sealed readiness.
+
+## 15. Model contribution and future protection design
+
+This section consolidates the accepted logical SAD-03 design. **No model path is enabled in I-01.** Runtime selection, exact response enums/schemas, numeric inference limits, retention and enforcement mechanisms remain subject to the open decisions in Section 10. Logical component/process boundaries do not establish operating-system isolation.
+
+### 15.1 Invocation purpose and permission
+
+Every call uses CMP-05 and exactly one declared purpose/task. Purpose is distinct from the laboratory/sealed profile; public data alone does not authorize evaluation.
+
+| Boundary | Operational review | Candidate evaluation |
 | --- | --- | --- |
-| v0.1 — retained | Walkthrough decisions for Sections 3–12 and conditional acceptance of Section 13 | Historical input; no implementation GO |
-| v0.2 — candidate | SAD-02 correction notices, documentary verification references and explicit final decision request; accepted scope, limits and test conditions preserved | Full baseline and review-record acceptance, finding/activity closure and GO pending |
+| Permission | Current qualification for the exact task/configuration/profile tuple and authorized review operation | Explicit ROLE-08 authorization of a separate laboratory evaluation context; an unqualified candidate may be invoked, with the absence of qualification recorded |
+| Identity and inputs | Active review request, run, ledger boundary and selected immutable package version | Identified evaluation run/item, versioned input manifest and effective configuration; applicable protocol, oracle and evaluation-set references; no fictional operational ledger entry |
+| Admissible profile/data | The authorized operational profile and its input policy; the immediate project target remains public/synthetic laboratory material | Public or synthetic laboratory material only; no confidential input or reuse of operational content outside the declared evaluation boundary |
+| Output authority | Validated candidate contribution, subject to the existing evidence and human-interpretation rules | Visibly evaluative evidence, unqualified where applicable; no automatic operational supported result, finding disposition or qualification grant |
 
-The original hour ranges remain visibly challenged under Section 13. This candidate introduces no replacement total, new product feature or reduction of test obligations.
+CMP-01 supplies trusted actor/action/profile context; CMP-03/CMP-04 request bounded evidence; CMP-05 enforces authorization, projection, invocation and response checks; CMP-06 retains permitted history. Only operational contributions can be mapped by CMP-04 to their requested ledger boundary. Evaluation has its own run/item/input identities and cannot gain operational authority by passing validation, being recorded or receiving human analysis.
+
+Both purposes keep the applicable admission, resource, cancellation, protection and audit controls. Invalid attempts may be retained under policy for evaluation, with their invalidity preserved. ROLE-08 qualification is a separate attributable decision. Development, qualification and held-out evidence, protocol timing, human oracle and exposure follow [RA-07][ra07] and [RA-10][ra10]; the model is never its sole judge.
+
+Only the RA-07 task catalogue is authorized. LLM-03 assists assessment relationships, not source-field/capture mapping. Check qualification and data permission before invocation and again before affected result promotion/delivery; revoked or stale permission prevents that effect while preserving safe committed history.
+
+### 15.2 Task envelope and minimal context
+
+| Field group | Minimum meaning |
+| --- | --- |
+| Invocation purpose | Explicit operational review or candidate evaluation, selected through trusted authorization outside supplied content; independent of the laboratory/sealed protection profile |
+| Operation identity | `operation_id`, attempt number and retry parent where applicable; operational review additionally references `review_request_id`, `run_id` and `ledger_entry_id`; evaluation instead references its own evaluation run and item identities |
+| Subject identity | Operational package version, recognizable TC identity and requested review dimension; or versioned evaluation input manifest and selected item/task references. No free-form subject substitution or evidence from outside the authorized boundary |
+| Task identity | stable task type, task contract version and permitted contribution class |
+| Behavior context | Prompt/template/configuration identifier and version, model/runtime identifier, and applicable qualification reference/status. Operational use requires a current exact grant; candidate evaluation explicitly records absent qualification where applicable and references its evaluation authorization and protocol |
+| Profile/policy | Effective policy version, actor/action authorization decision and data classification. Operational review uses its authorized laboratory or separately verified sealed profile; candidate evaluation under Section 15.1 is laboratory-only on public/synthetic inputs |
+| Context manifest | allowlisted evidence item IDs, bounded field names, locators, content hashes and projection reason |
+| Limits | input size, output size, duration, retry, concurrency and cancellation policy references |
+| Output contract | expected schema, allowed enums, reference rules and promotion state |
+| Provenance | Operational source package/version or evaluation input/protocol versions, gateway version, contract version, timestamps and attempt hash where supported |
+
+An attempt cannot replace its selected subject with a free-form one. No envelope or supplied text can grant model authority. The projection rules are:
+
+The projection builder applies the following rules before invocation:
+
+1. start from an empty context and add only fields explicitly required by the task contract;
+2. select records by immutable identity and operational package lineage or the authorized evaluation input manifest, never by a model-supplied path or URL;
+3. preserve field origin, source locator and sensitivity/classification metadata;
+4. cap number of records, field length, total input size and nesting depth according to the effective policy;
+5. replace unavailable or disallowed content with an explicit omission marker, not a fabricated value;
+6. exclude credentials, access tokens, secrets, unrelated packages, local environment variables and hidden prompts;
+7. do not resolve links, call external services or inspect arbitrary directories;
+8. include the projection manifest in retained attempt metadata, subject to the profile's sensitive-content policy;
+9. make truncation, normalization and redaction visible to downstream validation;
+10. prevent a model response from requesting an automatic context expansion within the same attempt.
+
+### 15.3 Qualification and change impact
+
+Qualification applies to `(model, runtime, task contract, behavior/configuration, policy profile, contract/schema versions, resource envelope)`. Behavior-affecting changes—including prompts, quantization, runtime patches, output schemas, context policies or limits—require impact analysis and affected qualification; a model name or moving alias cannot silently preserve permission.
+
+Retain exact identities/integrity references, task and configuration, controlled eligible challenge sets, independently determined structural expectations, human or justified deterministic oracle, resource/failure observations, applicable protection evidence and an attributable qualification decision with expiry/change triggers. Task or profile success does not grant another task/profile. Missing or stale required protection evidence prevents operational reliance; candidate evaluation remains the separate route in Section 15.1.
+
+### 15.4 Cause, execution stage and assessment outcome
+
+CONTEXT_INSUFFICIENT describes a bounded attempt limitation, not proof of absent package evidence. It does not choose an assessment status. Apply the actual cause and stage:
+
+| Established situation | Affected-work consequence |
+| --- | --- |
+| Necessary business evidence is genuinely absent, ambiguous or contradictory, and a substantive assessment was attempted | Withhold the dependent conclusion; record UNGRADABLE and the specific clarification need for that dimension. |
+| No authorized qualified capability is available, or the input is outside its declared envelope before substantive work starts | Record NOT_PERFORMED with the capability reason. This does not establish that the TC is outside MVP. |
+| Supplied material exceeds supported context/capacity before work starts | Record NOT_PERFORMED for unsupported requested work; identify the present-but-unprocessed material and any authorized independently assessable subset. |
+| Invocation starts but fails, times out, exhausts resources, produces unusable output or is interrupted by a limit | Work without a safely completed conclusion is INCOMPLETE, with an operational cause; do not infer a missing business rule. |
+| Mandatory policy, authority or protection prerequisite fails | Block the affected operation and every path depending on the failed shared control. A whole-run prerequisite produces run state BLOCKED; affected ledger work remains NOT_PERFORMED if unstarted or INCOMPLETE if started without a safe conclusion. |
+
+BLOCKED remains a run/operation state. A contained fault can coexist with normal finalization and limited results. Preserve coexisting causes, safely completed independent work and omissions. A supported basis-gap observation can be ASSESSED while a dependent technique conclusion is UNGRADABLE. Availability follows substantive committed entries, not diagnostics or finding count.
+
+Supplied-but-unprocessed evidence is a tool limitation; it does not itself require a tester to rewrite or resubmit TC. Genuine new business material requires a new package version. Subsets and retries must follow the authorized policy and run/version rules; no automatic context expansion, fabricated rule or full-inspection claim follows from a model's confident response. Candidate-evaluation failures remain under evaluation identities, without operational ledger records.
+
+### 15.5 Runtime, retry, cancellation and copies
+
+The runtime receives no arbitrary record-store access, filesystem discovery, environment secrets, commands/tools/plugins, network/DNS/URL retrieval, direct writes/export publication, policy/identity mutation or hidden context-expansion route. Required controls must be enforced and verified; prompt instructions alone are not enforcement. Every output destination is explicit, and release is through the controlled application path.
+
+Each attempt fixes context, model, profile and destination and references explicit limits; absence of a limit is not unlimited permission.
+
+| Limit | Required behavior when reached |
+| --- | --- |
+| Context record/field count | Stop projection and record the limit and omitted material; pre-start unsupported work is NOT_PERFORMED. |
+| Input size or nesting depth | Reject or bound input only under the authorized context policy; retain omissions and stage. Unsupported unstarted work is NOT_PERFORMED; unfinished work interrupted after invocation is INCOMPLETE. |
+| Output size | Stop/contain the response and record its validation failure; affected started work without a safe conclusion is INCOMPLETE. |
+| Wall-clock time | Cancel if supported; otherwise mark the attempt timed out and prevent promotion. |
+| Memory/CPU or runtime quota | Record resource failure; do not silently switch runtime or model. |
+| Retry count | Stop at the configured bound; preserve each attempt and final operational cause. |
+| Concurrent attempts | Respect the first workflow's one-active-run and configured concurrency policy. |
+
+These are future inference limits, separate from I-01's parser bounds. A lost response reconciles an existing committed operation. A model retry receives a new immutable attempt ID, parent and reason under the same authorized bounded policy. Predeclared qualified retry variants remain part of that policy; retain the actual variant and attributable request context. Retries are limited to unresolved work in an active run: they cannot restart a terminal run or reassess a committed entry. Editing behavior requires a new configuration identity, applicable qualification and a new run. No retry may silently switch model, prompt, destination, context policy or protection profile. Evaluation retries retain their evaluation purpose and protocol.
+
+Cancellation stops new work, signals in-flight work where supported and reconciles committed effects; it cannot turn a partial run into COMPLETED. An unresponsive runtime cannot have output promoted after timeout. Model behavior cannot control emergency stop. Before enabling the runtime, define who can stop it, termination, copy handling, retained evidence and verified restart/recovery. Recovery does not silently rerun assessment.
+
+Create attempt projections/buffers only after admission; record copy creation, classification, lifetime and disposal/retention outcome. Temporary copies are not canonical sources. Prefer metadata/hashes and bounded permitted excerpts over unlimited laboratory prompt/response duplication. Exact raw-retention policy remains an open decision; debug mode grants no secret logging. Mandatory shared protection/audit failure stops dependent deterministic work too; emergency containment remains possible and optional diagnostics have only their policy-defined effect.
+
+### 15.6 Output validation and candidate handling
+
+Validate transport/attempt identity, resources/encoding, schema/enums/cardinality/version, references within the selected input, policy/authority/destination and then semantic support. Passing mechanical checks does not establish that a real citation supports a claim. Required validation failure prevents promotion; malformed or unusable output after work starts leaves unfinished operational work INCOMPLETE, not a newly inferred TC defect.
+
+The accepted logical contribution classes remain design candidates; OD-SAD03-002 must resolve the executable enumeration/schema before use.
+
+| Class | Example use in MVP | What it may not do |
+| --- | --- | --- |
+| `RELATION_CANDIDATE` | Suggest that a supplied TC may relate to a supplied requirement or business rule. | Establish a missing link as fact or retrieve the requirement. |
+| `GAP_CANDIDATE` | Point to a missing precondition, expected result, input value or rule in the supplied material. | Invent the missing rule or modify the TC. |
+| `TECHNIQUE_CANDIDATE` | Suggest a possible EP, BVA, decision-table or state-transition question from supplied evidence. | Claim that the technique is mandatory or that coverage is proven. |
+| `CLASSIFICATION_CANDIDATE` | Highlight evidence that the TC may not be system-level black-box. | Override deterministic classification or human accountability. |
+| `RISK_CANDIDATE` | Highlight ambiguity, contradiction, stale source or potential impact. | Assign authoritative business severity without the approved policy/context. |
+| `EXPLANATION` | Explain an independently produced deterministic finding in bounded language. | Change the finding's derivation or turn explanation into evidence of correctness. |
+
+The logical promotion states distinguish raw, candidate, human-interpreted and withheld material; they are not run or finding-disposition enums.
+
+| State | Meaning |
+| --- | --- |
+| `RECEIVED_UNVALIDATED` | Raw response was received within the operation boundary but is not yet usable. |
+| `STRUCTURALLY_VALID` | Transport, resource, schema and reference checks passed. |
+| `CANDIDATE_RECORDED` | The response became an explicitly typed candidate contribution linked to evidence. |
+| `HUMAN_INTERPRETED` | An authorized human interpreted or confirmed its limited relevance; this is not TC approval. |
+| `WITHHELD` | The response remains retained as evidence/diagnostic but cannot support the requested conclusion. |
+| `REJECTED` | The response violated structural, policy or provenance rules and cannot enter the derived result set. |
+
+A valid operational contribution is still subject to CMP-04 evidence and human-interpretation rules. A deterministic calculation over an unconfirmed premise retains that limitation; an LLM explanation cannot change the original finding's derivation. Evaluation output remains evaluation evidence in every state. Supplied AI-directed instructions are inert content, never permission to execute tools, alter the context or bypass checks.
+
+### 15.7 Observation, profiles and later verification
+
+Retain, under the profile's content policy: purpose, operation/attempt and review or evaluation identities; actual versioned inputs; task/model/runtime/behavior/policy/contracts; qualification status or explicit absence and evaluation authorization; context manifest and omission/redaction/truncation markers; available hashes; timing/cancellation/resource evidence and retry parent; validation and promotion outcomes; coexisting causes/stages; protection/audit status; and later human-event references. Operational ledger, run state and availability remain separate. Diagnostics, assessment evidence and human decisions are linked records with different meanings.
+
+These records support later reproduction, not a promise of identical model output. Reproduction is a new linked operation, not a history rewrite. Laboratory work remains public/synthetic only; its evidence grants no confidential-data permission.
+
+Before sealed use, [RA-08][ra08] requires verified identity/role authorization on every protected operation; protected sources, projections, keys, temporary copies and backups; enforceable runtime restrictions; mandatory history/audit; controlled retention/deletion/restore; valid egress observation; and explicit ROLE-09 authorization. Sealed runtime permits no external egress, including diagnostics or telemetry. Any allowed internal destination stays inside its verified boundary. A local model, profile string or empty observer result cannot establish readiness.
+
+There is no automatic laboratory-to-sealed transition or silent package reclassification. Profile changes require current qualification context, protection evidence and human authorization; transfers or recapture are explicit and auditable. Missing mandatory evidence prevents the affected admission/operation. The retained [SAD-03 verification matrix][sad03-history] and governing RA-07/08/10 obligations guide later runtime, integration, failure and human-evidence checks.
 
 ## References
 
 [gate]: ../requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md
-[sad01]: test-design-gatekeeper-sad-01-components-review-flow-v0.1.md
-[sad02]: test-design-gatekeeper-sad-02-data-identity-contracts-v0.1.md
-[sad03]: test-design-gatekeeper-sad-03-model-protection-v0.3.md
-[review03]: ../reviews/test-design-gatekeeper-sad-03-review-record-v0.2.md
 [ra03]: ../requirements-analysis/ra-10/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.4.md
+[ra04]: ../requirements-analysis/test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md
 [ra05]: ../requirements-analysis/ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md
+[ra06]: ../requirements-analysis/ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md
+[ra07]: ../requirements-analysis/ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.2.md
 [ra08]: ../requirements-analysis/ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md
 [ra09]: ../requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md
+[ra10]: ../requirements-analysis/ra-10/test-design-gatekeeper-ra-10-evaluation-acceptance-v0.2.md
+[review03]: ../reviews/test-design-gatekeeper-sad-03-review-record-v0.2.md
+[review04]: ../reviews/test-design-gatekeeper-sad-04-review-record-v0.2.md
+[verification04]: ../reviews/test-design-gatekeeper-sad-04-review-record-v0.1.md
 [trace]: ../requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-traceability-audit-v0.1.json
 [allocation]: test-design-gatekeeper-sad-04-requirement-allocation-v0.2.json
-[allocation01]: test-design-gatekeeper-sad-04-requirement-allocation-v0.1.json
 [history04]: test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.1.md
-[review04]: ../reviews/test-design-gatekeeper-sad-04-review-record-v0.1.md
+[numeric]: test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md
+[sad01-history]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/solution-design/test-design-gatekeeper-sad-01-components-review-flow-v0.1.md
+[sad02-history]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/solution-design/test-design-gatekeeper-sad-02-data-identity-contracts-v0.1.md
+[sad03-history]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/solution-design/test-design-gatekeeper-sad-03-model-protection-v0.3.md
+[original]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md
 
-Technical references consulted on 2026-09-27; they support mechanism selection, not a TDG verification claim:
+Technical references consulted for the original 2026-09-27 choices, retained as mechanism references rather than current verification evidence:
 
-- [Python version lifecycle](https://devguide.python.org/versions/): supported-runtime planning.
-- [Python 3.13 sqlite3](https://docs.python.org/3.13/library/sqlite3.html): explicit connection/transaction and backup interfaces.
-- [Python 3.13 json](https://docs.python.org/3.13/library/json.html): resource cautions, duplicate-name and non-finite handling require deliberate application policy.
-- [jsonschema validation](https://python-jsonschema.readthedocs.io/en/stable/validate/) and [reference retrieval](https://python-jsonschema.readthedocs.io/en/stable/referencing/): local validator/registry configuration; no automatic remote schema retrieval in TDG.
-- [Windows Job Objects](https://learn.microsoft.com/en-us/windows/win32/procthread/job-objects): resource/process containment primitive; not by itself a complete security sandbox.
+- [Python version lifecycle](https://devguide.python.org/versions/)
+- [Python 3.13 sqlite3](https://docs.python.org/3.13/library/sqlite3.html)
+- [Python 3.13 json](https://docs.python.org/3.13/library/json.html)
+- [jsonschema validation](https://python-jsonschema.readthedocs.io/en/stable/validate/) and [reference retrieval](https://python-jsonschema.readthedocs.io/en/stable/referencing/)
+- [Windows Job Objects](https://learn.microsoft.com/en-us/windows/win32/procthread/job-objects)
