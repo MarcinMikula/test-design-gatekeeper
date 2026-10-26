@@ -1,16 +1,15 @@
 # I-01 / W01 — Project and Empty-Workspace Foundation
 
-| Field | State |
+This record describes the implementation and verification of the qualified W01 build. [README.md](../../README.md) reports current capability and work status.
+
+| Field | Recorded state |
 | --- | --- |
-| Date / build | 2026-09-28 / `0.1.0.dev2` |
-| Authority | [SR-SAD04-001 v0.2](../reviews/test-design-gatekeeper-sad-04-review-record-v0.2.md): explicit Owner GO to I-01 |
-| Closure authority | [W01 closure record](i01-w01-closure.md): formal Owner closure after PR #3 evidence review; W02 authorized |
-| Work item | W01 CLOSED — Owner accepted the reviewed evidence on 2026-09-29 and granted GO to W02 |
+| Verified build / date | `0.1.0.dev2` / 2026-09-28 |
+| Design authority | [SR-SAD04-001 v0.2](../reviews/test-design-gatekeeper-sad-04-review-record-v0.2.md): Owner GO to I-01 |
+| Owner decision | W01 CLOSED on 2026-09-29; exact scope and reply in the [closure record](i01-w01-closure.md) |
+| Reviewed evidence | [PR #3](https://github.com/MarcinMikula/test-design-gatekeeper/pull/3), head `fe54914f94d52afad23f5c8341222e2e13f27f95` |
 | Product target | Windows x64 / CPython 3.13 |
-| Development observation | CPython 3.13.15 / SQLite 3.53.1 / Linux x86_64 — 44 passed, 4 Windows-only skips |
-| Target-platform qualification | Windows 11 Home 10.0.26200 / AMD64 / NTFS / CPython 3.13.15 — 48 passed, 0 failed, 0 skipped |
-| Scope of evidence | W01 foundation only; no complete I-01 acceptance decision or later processing capability claimed |
-| Publication state | Feature branch published for review through PR #3; repository history records the eventual merge outcome |
+| Scope of evidence | Project entry points, capability manifest, pinned environment and empty-workspace initialization; I-01 remains incomplete |
 
 ## Implemented boundary
 
@@ -124,13 +123,11 @@ No confidential, project-derived or supplied test-case material was imported. Th
 
 ## Remaining work and closure boundary
 
-The technical prerequisites previously blocking W01 closure are now evidenced: required native Windows behavior was observed and the defect discovered during that observation was corrected and reverified.
+The 2026-09-29 [closure decision](i01-w01-closure.md) authorized W02 to prepare the synthetic corpus, specified receipt/identity oracles and detailed test inventory. It accepted W01 only; later work and I-01 completion retain their applicable evidence and decision requirements.
 
-The Project Owner formally closed W01 on 2026-09-29 after the PR #3 review findings were corrected and re-reviewed. The decision is recorded separately in [i01-w01-closure.md](i01-w01-closure.md). This closes W01 only; it does not complete or accept I-01.
+W02 was designated the first re-estimation point. The original 40–62-hour I-01 estimate remains an unvalidated planning hypothesis, with the Owner's reservation that testing alone may require comparable effort. Required tests cannot be reduced to fit that range.
 
-W02 is authorized next and develops the synthetic corpus, specified receipt/identity oracles and detailed condition-to-test inventory. That inventory is the first re-estimation point. The Owner's reservation remains unchanged: the original 40–62 hours is a highly uncertain hypothesis; testing alone may require comparable effort, and required tests are not reduced to fit that range.
-
-W03–W07 and the later I-01 completion decision remain ahead.
+Development and further fixture preparation are now paused for documentation cleanup. See [README.md](../../README.md) for current W02 progress, the provisional forecast and the next project step. This historical W01 record does not restart work.
 
 ## Implementation references
 
