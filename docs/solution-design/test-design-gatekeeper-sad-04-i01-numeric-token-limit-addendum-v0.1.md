@@ -1,63 +1,33 @@
 # Test Design Gatekeeper
 
-## SAD-04 addendum v0.1 — I-01 numeric-token limit outcome
+## SAD04-I01-NUM-001 — I-01 numeric-token limit decision
+
+**Accepted decision record.** The rule is incorporated into [SAD-04 Section 6.1][current]. This file preserves the human decision and its scope.
 
 | Field | Recorded state |
 | --- | --- |
 | Decision ID | SAD04-I01-NUM-001 |
 | Decision date | 2026-10-03 (Europe/Warsaw) |
-| Record prepared | 2026-10-04 (Europe/Warsaw) |
+| Original record prepared | 2026-10-04 (Europe/Warsaw) |
 | Status | ACCEPTED — explicit Project Owner decision |
-| Governing baseline | [SAD-04 v0.2](test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md), Sections 6.1, 8 and 9 |
-| Trigger | [W02 §9.5](../implementation/i01-w02-test-design.md#95-numeric-token-limit-accepted-outcome-mapping) |
-| Repository before publication | `0dc8d61144e82271839194de1fa7a466bbb4f92b` |
+| Trigger | [W02 Section 9.5][trigger] |
 
-### 1. Decision evidence
+## Decision and acceptance evidence
 
-The Owner was asked whether a numeric token exceeding the 128-character limit
-should produce `REJECTED` and CLI exit `2`. The proposal also stated that no
-package version is created, the minimum remains `NOT_EVALUATED`, and diagnostics
-identify the limit and affected location without exposing raw content.
+The Owner accepted rejection of an otherwise valid native JSON input when the bounded input check detects a numeric token longer than 128 characters: `REJECTED`, CLI exit `2`, no new package version/reference and minimum `NOT_EVALUATED`. The diagnostic identifies the limit and safe affected location without exposing raw numeric content or an unnecessary host path.
 
 The Owner confirmed on 2026-10-03:
 
 > tak potwierdzam, idzmy dalej
 
-This records that concrete decision. It does not accept the W02-B inventory,
-close W02, authorize confidential input, or establish executed product evidence.
+The decision resolved W02 Section 9.5's numeric-outcome question. It did not accept the W02-B inventory, close W02, authorize confidential input or establish executed product evidence. Its scope is the numeric-token bound; outcomes for other limits and operational failures remain governed by their own rules.
 
-### 2. Accepted clarification
+## Current rule and history
 
-For an otherwise valid native JSON input, a numeric token longer than 128
-characters violates the I-01 input contract. When this violation is detected
-during the bounded input check, stop before capture commit and apply:
+Read [SAD-04 Section 6.1][current] for the full rule, including 127/128-character boundary handling, source fidelity and rejection-receipt persistence failure; Sections 8 and 9 retain the CLI and resource contracts.
 
-| Observable | Required result |
-| --- | --- |
-| Capture outcome | `REJECTED` |
-| CLI exit code | `2` |
-| Package version/reference | No new package version or committed package reference |
-| Core minimum | `NOT_EVALUATED`; no substantive review |
-| Diagnostic | Explicit numeric-token limit cause and safe affected location; no raw numeric payload or unnecessary host path |
+The [original addendum snapshot][original] preserves the full earlier wording, outcome table and publication context. Recorded historical hashes refer to that snapshot. This cleanup changes neither the accepted outcome nor the limit.
 
-The existing permission, safe-retention and persistence rules still apply.
-A separate inability to persist a rejection receipt must remain visible; this
-decision does not fabricate durable history when storage fails.
-
-Tokens of 127 and 128 characters do not violate this length bound. They still
-undergo the remaining checks. Do not round, truncate or coerce an over-limit
-number to make it fit. An in-bound exact-representation limitation remains a
-separate source-fidelity/projection concern under RA-09 §3.3 and SAD-04 §6.1.
-
-### 3. Precedence and scope
-
-Read this addendum with the frozen SAD-04 v0.2 baseline and its accepted closure
-record. It supplies the previously unspecified numeric-token outcome/exit pair;
-it does not rewrite those historical files or their recorded hashes.
-
-The classification is specific to the numeric-token bound. It does not assign
-outcomes to other resource limits, worker timeouts, containment failures or
-persistence faults. Their accepted cause/stage rules remain applicable.
-
-W02 §9.5's decision prerequisite is resolved by this record. Implementation and
-runtime verification remain future work.
+[current]: test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md#61-native-input-and-mechanical-projection
+[trigger]: ../implementation/i01-w02-test-design.md#95-numeric-token-limit-accepted-outcome-mapping
+[original]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md
