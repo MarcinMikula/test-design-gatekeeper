@@ -2,23 +2,23 @@
 
 ## I-01 / W02-B — Concrete Test Inventory
 
-| Field | State |
-| --- | --- |
-| Version / preparation date | v0.1 — 2026-10-04 (Europe/Warsaw) |
-| Status at initial publication | WORKING DRAFT — prepared for review, not accepted or executed |
-| Review progress — 2026-10-07 | INVENTORY ACCEPTED — Section 8 and whole W02-B accepted without changes as the basis for W02-C; forecast remains provisional; W02 open |
-| Decision evidence | [SR-I01-W02B-001 v0.7](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.7.md); Section 8 and whole inventory accepted on 2026-10-07; no execution or W02 closure |
-| Work authority | W01 closure grants W02; Owner's 2026-10-03 instruction continues the work |
-| Source pin | `0dc8d61144e82271839194de1fa7a466bbb4f92b`, plus the accepted numeric-token addendum |
-| Governing numeric decision | [SAD04-I01-NUM-001](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md): REJECTED / exit 2 above 128 characters |
-| Oracle basis | [W02-A](i01-w02-test-design.md), read with RA/SAD and their acceptance records |
-| Fixtures / executable tests | Input specifications and test designs; W02-C creates the files and executable tests |
-| Execution / closure | No runtime results, W02 closure or I-01 acceptance claimed |
+This inventory specifies the inputs, expected results and evidence for I-01
+tests. Read each case together with the common rules in Sections 1–3. The
+[W02-A basis](i01-w02-test-design.md) explains how the expected observations
+follow from the accepted requirements and design.
 
-Editorial clarification — 2026-10-14: explanatory wording has been simplified.
-The test definitions, expected results, estimates and recorded decisions keep
-their accepted meaning. The review dates above remain historical; current
-preparation progress is summarized in [README](../../README.md).
+| Field | Recorded basis |
+| --- | --- |
+| Original version / preparation date | v0.1 — 2026-10-04 (Europe/Warsaw) |
+| Owner decision | Whole inventory accepted on 2026-10-07 as the basis for W02-C; Section 7's forecast remains provisional; decision history in Section 8 |
+| Earlier work authorization | [W01 closure](i01-w01-closure.md) and the Owner's 2026-10-03 instruction |
+| Original source pin | `0dc8d61144e82271839194de1fa7a466bbb4f92b`, plus the accepted numeric-token decision |
+| Numeric-token rule | [SAD-04 Section 6.1](../solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md#61-native-input-and-mechanical-projection); the [SAD04-I01-NUM-001 record](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md) retains the decision |
+
+**Development and further test-data preparation are paused for documentation
+cleanup.** W02 remains open. [README.md](../../README.md) reports prepared data,
+checks already performed and current product capability. The cases below are test
+designs; acceptance of this inventory does not establish their execution or I-01 acceptance.
 
 ### 1. Scope and counting
 
@@ -49,8 +49,9 @@ synthetic customer-registration scope; basis `BR-AGE-01` states that integer age
 registration acceptance, with narrative preconditions, a structured step,
 `HUMAN_AUTHORED` origin and a `basis_refs` link. This is supplied test data, not a
 business rule inferred or assessed by I-01. Human authority does not arise from
-payload fields. W02-C will create the files and check their exact bytes
-independently of TDG.
+payload fields. W02-C turns these recipes into files and checks their exact bytes
+independently of TDG; the [prepared-data index](i01-w02-test-design.md#11-current-handoff-state)
+links the existing material.
 
 Unless a row says otherwise: clone BASE-01, vary only the stated factor, use a new
 operation ID and a healthy eligible store, perform the indicated operation, and
@@ -70,7 +71,7 @@ CLI syntax errors and admission-policy refusal are different boundaries. Missing
 required arguments/invalid CLI choices are exit 2; a well-formed command refused
 by applicable admission policy is exit 3. The service-level negative admission
 cases do not require an otherwise unsupported CLI value to reach the service.
-Only the numeric-token excess has the new specific REJECTED/2 classification;
+Only the numeric-token excess has this specific REJECTED/2 classification;
 do not generalize it to other resource failures. When a full CLI mapping is not
 specified by a row, its present oracle concerns the named lower-level boundary.
 
@@ -272,11 +273,11 @@ capture/protection part. A row is not a new requirement or an executed result.
 
 ### 6. Review boundary and W02-C binding work
 
-The expected results above were defined before implementation. In W02-C, create
-the exact input files, give each listed variant its own stable ID and connect
+The expected results above were defined before implementation. W02-C prepares
+the exact input files, assigns each listed variant its own stable ID and connects
 test assertions to the selected service or CLI entry point. Preserve the original
-failing evidence if the future implementation contradicts an accepted oracle; do not update expected
-values merely to match it.
+failing evidence if the implementation contradicts an accepted oracle; do not
+update expected values merely to match it.
 
 Before an affected executable test is considered ready:
 
@@ -300,8 +301,9 @@ a completion decision. Publishing this plan does not authorize work on W03.
 
 ### 7. Effort reassessment
 
-This is a **provisional planning forecast for remaining test/evidence work**, not
-measured human effort, an approved budget or the full I-01 implementation total.
+This is the **provisional forecast accepted on 2026-10-07 for the test/evidence
+work remaining at that stage**. It is not measured human effort, an approved
+budget or the full I-01 implementation total.
 Drivers are real transaction-fault setup, process interruption, platform controls,
 boundary fixtures and diagnosis; case count alone is not the estimate.
 
@@ -324,35 +326,32 @@ those already included testing and would double-count the same work. The origina
 40–62-hour full-I-01 hypothesis remains historical and challenged; no new full
 increment total or delivery date is asserted here.
 
-Revisit after the first fixture family and the first real persistence/native
-harness, recording actual human effort by these categories, and again after
-W03/W04. Approximately five flexible hours per week remains a capacity assumption,
-not a schedule. Required coverage is not reduced to fit either forecast.
+The original reassessment checkpoints remain: after the first fixture family,
+after the first real persistence/native harness, and after W03/W04. The
+[first fixture record](i01-w02c-numeric-fixtures.md) confirms that the inputs were
+prepared but human time spent was not reported. Re-estimation still needs actual
+effort recorded by the categories above. Approximately five flexible hours per
+week remains a capacity assumption, not a schedule. Required coverage is not
+reduced to fit either forecast.
 
 ### 8. Preparation checks and handoff
 
-The author checks unique case IDs, variant arithmetic, links, existing REQ/VAL
-identities, all 16 condition routes, known W02-A oracle references, frozen baseline
-preservation and consistency of the numeric decision. These are static document
-checks, not executed product tests or independent review.
+Check unique case IDs, variant totals, valid REQ/VAL and oracle references, all
+16 condition routes and consistency with the accepted test definitions and
+numeric decision. Review whether expected observations have support in the
+accepted sources, each stimulus can distinguish the required effects, and the
+selected levels, evidence and fault points can demonstrate those effects. These
+are document checks, not product execution or independent review.
 
-The Owner accepted Sections 2–3 and groups A–F on 2026-10-04, groups G–H and
-Section 1 on 2026-10-05, and Sections 5–6 on 2026-10-06. On 2026-10-07 the Owner
-accepted Section 7 as a provisional forecast, then Section 8 and the whole
-inventory as the basis for W02-C, all without changes. All 72 case rows / 208
-listed variants have recorded test-design acceptance.
 [SR-I01-W02B-001 v0.7](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.7.md)
-records whole-inventory acceptance and carries forward v0.6, including the
-estimate reservation and parked future corpus-reuse idea. Next: prepare W02-C
-fixtures and executable skeletons under the accepted Section 6 controls.
+records whole-inventory acceptance and links the earlier section/group decisions.
+It retains the estimate reservation and the parked future corpus-reuse idea.
+Historical source pins and hashes identify the reviewed snapshots in Git history.
 
-Review whether the stimuli can distinguish the required effects, whether the
-oracles are supported, and whether the selected levels/faults provide sufficient
-evidence. Corrections belong here before preparing the affected input files and tests.
-Whole-inventory acceptance does not close W02 or establish execution evidence.
-W02 completion requires its remaining deliverables and applicable completion
-review. Section 7 remains a provisional planning hypothesis with its stated
-reassessment points and estimate reservation.
+Record corrections here before preparing the affected inputs and tests. Section 6
+retains the preparation and completion requirements. Further work, including
+TC-I01-033, remains paused; the next project decision is described in
+[README.md](../../README.md).
 
 ### Source navigation
 
@@ -360,6 +359,6 @@ reassessment points and estimate reservation.
 - [RA-05](../requirements-analysis/ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md), especially §§7.2–7.3 and VAL-012
 - [RA-08](../requirements-analysis/ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md), especially §§4, 6.2, 7.1
 - [RA-09](../requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md)
-- [Accepted SAD-04 v0.2](../solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md), §§6–9, 12–13
+- [Consolidated SAD-04](../solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md), §§6–9, 12–13
 - [SAD-04 acceptance record](../reviews/test-design-gatekeeper-sad-04-review-record-v0.2.md)
 - [W01 closure](i01-w01-closure.md)
