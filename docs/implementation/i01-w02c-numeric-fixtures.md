@@ -1,56 +1,48 @@
-# I-01 / W02-C — First numeric-token fixture family
+# I-01 / W02-C — Testing the length limit for JSON numbers
 
-Prepared 2026-10-07; verification/publication slice 2026-10-08 (Europe/Warsaw).
+Prepared 2026-10-07; verified/published 2026-10-08 (Europe/Warsaw).
 Source pin: `main` at `577e0eef38bf4865f955ddd2d06f4ed6e9e1f4ba`.
-Status: **first set of W02-C test data prepared; tests of TDG behavior still need to be connected to the implementation**.
 
-Reading this record: *fixtures* are prepared input files and test setup.
-*Asset checks* verify those files. *Product skeletons* are placeholders for tests
-of TDG itself; they are skipped until connected to the implementation.
-The dated results below describe the state at that point in the project.
-Wording clarified on 2026-10-14; recorded results and decisions are unchanged.
+These files prepare TC-I01-018 from the [accepted inventory](i01-w02-test-inventory.md):
+a JSON number written without quotes is tested just below, at and above the
+128-character limit. The three inputs are ready; tests of TDG's behavior still
+need to be connected to the implementation.
 
-The Owner accepted the whole [W02-B inventory](i01-w02-test-inventory.md) as the
-basis for W02-C on 2026-10-07, recorded in
-[SR-I01-W02B-001 v0.7](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.7.md).
-This slice implements its BASE-01 recipe and TC-I01-018's three listed variants.
-It does not close W02, start W03 or accept I-01. The accepted inventory and review
-record are unchanged.
+The results below describe the 2026-10-08 checks. Development and further test-data
+preparation are currently paused; [README.md](../../README.md) gives the current
+project status.
 
 ## Assets and expected outcomes
 
-- [BASE-01](../../tests/fixtures/i01/base-01.json): synthetic registration basis
-  BR-AGE-01, integer age 18–120 inclusive, and TC-CREATE-01 submitting age 30;
-  narrative preconditions, structured step, nested expected result, HUMAN_AUTHORED
-  declaration and basis link. These are supplied synthetic declarations, not
-  grants of human authority or an I-01 business-rule assessment.
-- [Manifest](../../tests/fixtures/i01/numeric-token/manifest.json): stable IDs,
-  fixture paths, SHA-256 digests, byte lengths, tree/text measurements, exact
-  numeric-token spans and separately stated component/capture/CLI expectations.
-  Its observation names are test metadata, not a new product DTO or issue-code
-  contract. Source offsets count UTF-8 bytes from zero, with an exclusive end.
-- [Asset checks](../../tests/test_i01_numeric_assets.py): verify exact bytes and
-  recipe measurements, the BASE-01 content, the single controlled mutation and
-  consistency of the oracle table with the accepted numeric decision.
-- [Product skeletons](../../tests/test_i01_numeric_pending.py): three variants at
-  each of U, I and C levels, explicitly skipped until real assertions are bound.
-  Removing a skip without binding assertions fails visibly; it cannot yield an
-  empty PASS.
+- [BASE-01](../../tests/fixtures/i01/base-01.json): the shared synthetic
+  registration input (`BR-AGE-01`, `TC-CREATE-01`, `HUMAN_AUTHORED`), specified in
+  [inventory Section 2](i01-w02-test-inventory.md#2-common-fixture-and-observation-contract).
+  Its supplied declarations do not grant human authority or establish an I-01
+  business-rule assessment.
+- [Manifest](../../tests/fixtures/i01/numeric-token/manifest.json): exact sizes,
+  SHA-256 digests, source byte ranges and their offset convention, resource
+  measurements and expectations for each test level. Its field names describe
+  test data; they do not define a new TDG interface or runtime issue codes.
+- [Input checks](../../tests/test_i01_numeric_assets.py): verify the BASE-01
+  recipe, file bytes, measurements, controlled change and expected outcomes.
+- [Product-test placeholders](../../tests/test_i01_numeric_pending.py): three
+  inputs at each of the component, integration and CLI levels. All nine tests
+  remain skipped until real assertions are connected. Removing a skip without
+  those assertions fails visibly rather than producing an empty PASS.
 
 Each variant adds only `test_data.n` to the TC: unquoted `1` followed by zeros.
 The checks also remove that exact byte insertion and recover BASE-01 unchanged.
 
-| Variant | Token characters | Input bytes | Length gate | Complete eligible capture / delivered CLI result |
-| --- | ---: | ---: | --- | --- |
-| TC-I01-018.01 | 127 | 1195 | Within bound | CAPTURED / 0 |
-| TC-I01-018.02 | 128 | 1196 | Within bound | CAPTURED / 0 |
-| TC-I01-018.03 | 129 | 1197 | Exceeds bound | REJECTED / 2; no new package/reference |
+| Variant | Token characters | Length gate | Complete eligible capture / delivered CLI result |
+| --- | ---: | --- | --- |
+| TC-I01-018.01 | 127 | Within bound | CAPTURED / 0 |
+| TC-I01-018.02 | 128 | Within bound | CAPTURED / 0 |
+| TC-I01-018.03 | 129 | Exceeds bound | REJECTED / 2; no new package/reference |
 
-BASE-01 is 1051 bytes and 24 JSON values; each variant has 25 values. All four
-inputs have container depth 6, maximum decoded text/member-name size 154 UTF-8
-bytes, one TC and one basis element. Other input bounds remain below their
-thresholds. `.gitattributes` disables text conversion for this fixture tree so
-checkout cannot silently change the retained bytes/digests.
+The manifest retains the detailed measurements for BASE-01 and each variant.
+Other input limits stay below their thresholds. `.gitattributes` disables text
+conversion for this fixture tree so checkout cannot silently change its bytes
+or digests.
 
 The full-capture oracle assumes a healthy initialized isolated workspace and the
 accepted Windows x64 / CPython 3.13 laboratory context, operator qa-demo,
@@ -60,10 +52,12 @@ alone cannot establish CAPTURED. All three complete paths retain minimum
 NOT_EVALUATED and perform no substantive review.
 
 Trace: TCND-I01-05/10; OR-I01-SYN-004 in the
-[W02 oracle basis](i01-w02-test-design.md); RA09-REQ-004/006/016 and RA09-VAL-003;
-SAD-04 §§6.1, 8, 9; accepted
-[SAD04-I01-NUM-001](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md).
-This is one case row / three variants from 72 / 208, not nine completed cases.
+[W02 oracle basis](i01-w02-test-design.md); RA09-REQ-004/006/016 and RA09-VAL-003.
+The current numeric rule is in
+[SAD-04 Section 6.1](../solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md#61-native-input-and-mechanical-projection),
+with CLI and resource rules in Sections 8 and 9. The
+[SAD04-I01-NUM-001 record](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md)
+preserves the decision. This is one planned case with three input variants.
 
 ## Binding still required before product execution
 
@@ -100,23 +94,13 @@ target Windows host is:
 .\.venv\Scripts\python.exe -m pytest -q -rs tests/test_i01_numeric_assets.py tests/test_i01_numeric_pending.py
 ```
 
-Expected results were taken from the accepted requirements and design before
-observing any TDG import result. The automated checks verify the prepared files;
-the nine skipped tests still need to be connected to TDG's implementation.
+Expected results came from accepted requirements and design before any TDG
+import result was observed. These synthetic development inputs are already known
+to the author and cannot serve as previously unseen acceptance data. The author
+performed the checks with AI assistance. They do not count as an independent
+human review.
 
-These files contain synthetic examples used while developing TDG. Because they
-are already available to the author, they are not a separate, previously unseen
-set for acceptance testing. The checks recorded here were performed by the
-author with AI assistance. They do not count as an independent human review.
-
-No record of human time spent was provided for this work. The estimate of
-remaining work is still provisional and will be checked against actual effort.
-Preparing these files does not finish W02 (test preparation), authorize W03
-(the next work item), or mean that I-01 (the first product increment) has been
-accepted.
-
-Next planned task at the time of this record: prepare the envelope inputs for
-TC-I01-011–015. The remaining data, connections to the implementation, corrections
-and completion review still need work. Re-estimation needs recorded human effort
-and the first working test setup for persistence or native Windows controls;
-elapsed conversation time is not a measure of human effort.
+Human time spent was not reported; conversation duration is not a measure of
+human effort. [Inventory Section 7](i01-w02-test-inventory.md#7-effort-reassessment)
+retains the provisional forecast and reassessment requirements. Preparing these
+files and checking them did not close W02, authorize W03 or accept I-01.
