@@ -8,7 +8,7 @@
 | Reviewed evidence head | `fe54914f94d52afad23f5c8341222e2e13f27f95` |
 | Qualified build | `0.1.0.dev2` |
 | Decision | W01 CLOSED |
-| Next work | GO GRANTED to I01-W02 |
+| Next work authorized on 2026-09-29 | GO GRANTED to I01-W02 |
 | Increment boundary | I-01 remains incomplete and unaccepted as a whole |
 
 ## 1. Decision
@@ -25,15 +25,9 @@ This decision formally closes W01 and authorizes the start of W02. It does not c
 
 ## 2. Evidence considered
 
-The closure decision is based on the W01 evidence already recorded in [i01-w01-foundation.md](i01-w01-foundation.md) and [i01-w01-environment.json](i01-w01-environment.json), including:
+The decision used the [implementation and verification record](i01-w01-foundation.md) and [observed environment record](i01-w01-environment.json). They retain the native Windows test results, initial directory-sharing failure and its verified correction, dependency/build checks and manual initialization trial, including refusal to overwrite the same workspace.
 
-- native Windows qualification of corrected build `0.1.0.dev2`: 48 passed, 0 failed, 0 skipped;
-- 4/4 native Windows workspace tests passed;
-- successful `uv lock --check` and wheel build;
-- manual laboratory initialization succeeded, while repeat initialization against the same workspace returned `WORKSPACE_ALREADY_EXISTS` with exit 5;
-- the first native Windows run exposed the directory-sharing defect, which was retained in the evidence, corrected with `FILE_LIST_DIRECTORY | FILE_READ_ATTRIBUTES`, and reverified;
-- follow-up PR review corrected line-ending/hash reproducibility, Windows CPU/RAM evidence, effective SQLite-policy evidence, and the transient publication-state wording;
-- the accepted SAD-04 artifact identities were rechecked against repository bytes after the line-ending control was added.
+Follow-up PR review corrected line-ending/hash reproducibility, Windows CPU/RAM evidence, effective SQLite-policy evidence and transient publication-state wording. The accepted SAD-04 artifact identities were rechecked against repository bytes after the line-ending control was added.
 
 The review found no remaining blocking W01 implementation or evidence finding after the follow-up correction commit.
 
@@ -54,8 +48,8 @@ The qualified `0.1.0.dev2` runtime manifest still contains the pre-closure strin
 
 ## 4. Next authorized work
 
-I01-W02 is authorized to begin under the accepted SAD-04 boundary. Its purpose is to prepare the synthetic corpus, independently specified receipt/identity oracles, and the traceable detailed test inventory before native capture implementation proceeds.
+The 2026-09-29 decision authorized W02 to prepare the synthetic corpus, independently specified receipt/identity oracles and detailed test inventory before native capture implementation. W03–W07 and I-01 completion retained their own evidence requirements and applicable conditions.
 
-The original 40–62 hour I-01 estimate remains an unvalidated planning hypothesis with the Owner's earlier underestimation reservation. W02 remains the first explicit re-estimation point.
+The original 40–62-hour estimate and the Owner's underestimation reservation remain recorded in [the W01 implementation record](i01-w01-foundation.md); W02 was the first explicit re-estimation point.
 
-W03–W07 and the later I-01 completion decision remain gated by their own evidence and applicable conditions.
+Development and further fixture preparation are now paused for documentation cleanup. [README.md](../../README.md) gives the current status. This record preserves the earlier authorization; it does not override that pause or grant acceptance of later work.
