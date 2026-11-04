@@ -2,79 +2,41 @@
 
 ## I-01 / W02 - Test Design, Oracle Basis, and Traceable Test Inventory
 
-| Field | Working state |
+This document defines the expected observations for I-01 tests and links them to
+the accepted requirements and design. The detailed cases are in the
+[W02-B inventory](i01-w02-test-inventory.md); Section 11 indexes the prepared
+W02-C test data.
+
+| Field | Recorded basis |
 | --- | --- |
-| Document date | 2026-10-02 (Europe/Warsaw) |
-| Review clarification date | 2026-10-03 (Europe/Warsaw) |
-| Increment | I-01 - bounded native-JSON capture and durable inspection |
-| Work item | I01-W02 |
-| Status | WORKING DRAFT - W02-A ORACLE BASIS; W02-B INVENTORY ACCEPTED; W02-C IN PROGRESS |
-| Entry authority | I01-W01 closed; GO granted to I01-W02 in `docs/implementation/i01-w01-closure.md` |
-| Current activity | W02-C: sixteen groups of test data prepared; latest is [imported identity and status claims](i01-w02c-imported-claims-fixtures.md); remaining effort will be re-estimated; W02 is still in progress |
-| Product implementation in this document | NONE |
-| Test data prepared | BASE-01 plus 81 variants across TC-I01-011–032 (groups B and C and two group-D cases) and two valid comparison files prepared; other planned inputs still need to be created |
-| Executable test progress | 238 checks of the input files and setup passed; 164 tests of TDG behavior are skipped until connected to the implementation; import behavior has not been tested here |
-| I-01 acceptance | NOT CLAIMED |
-| W02 closure | NOT CLAIMED |
-| Source-inspection pin | Repository `main` as inspected after commit `e15438973564cc790237cce7e9f1bba5e14f4846` |
-| Clarification source pin | Repository `main` at `d9a6b15513f94f710cd96853f46552c1499e0f79`; governing RA-09 and SAD-04 sources unchanged |
-| Numeric-limit decision | Owner accepted `REJECTED` / exit `2` on 2026-10-03; [SAD04-I01-NUM-001](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md) |
-| W02-B preparation | 2026-10-04, using repository `0dc8d61144e82271839194de1fa7a466bbb4f92b` plus the recorded Owner decision |
-| W02-B Owner review | Section 8 and the whole inventory accepted 2026-10-07 as the basis for W02-C; prior section/group decisions retained; Section 7 forecast remains provisional — [acceptance record v0.7](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.7.md) |
+| Preparation / review clarification | 2026-10-02 / 2026-10-03 (Europe/Warsaw) |
+| Work item | I01-W02 — test preparation for bounded native-JSON capture and durable inspection |
+| Earlier work authorization | [W01 closure](i01-w01-closure.md), 2026-09-29 |
+| Original W02-A source inspection | Repository `main` after `e15438973564cc790237cce7e9f1bba5e14f4846` |
+| Original clarification inspection | `d9a6b15513f94f710cd96853f46552c1499e0f79`; governing RA-09 and SAD-04 sources were unchanged |
+| Original W02-B preparation | 2026-10-04, using `0dc8d61144e82271839194de1fa7a466bbb4f92b` plus the recorded Owner decision |
+| W02-B decision | Inventory accepted on 2026-10-07 as the basis for W02-C; Section 10 links the decision |
+
+**W02 remains open. Development and further test-data preparation are paused for
+documentation cleanup.** [README.md](../../README.md) reports current capability,
+prepared-data counts and execution limits. Test specifications and checks of input
+files do not establish that TDG imports those files correctly or that I-01 is accepted.
 
 ## 1. Purpose
 
-W02 prepares the test assets that must exist before native capture implementation
-continues. The accepted SAD-04 work breakdown defines W02 as:
+W02 prepares synthetic inputs, expected results and test skeletons before native
+capture implementation. W02-A extracts the expected behavior from accepted
+contracts; W02-B turns it into concrete cases; W02-C prepares the files and tests.
 
-> Synthetic fixtures, independently specified receipt/identity oracles and
-> traceable test skeletons.
-
-This document starts with **W02-A: test-basis extraction**. It records expected
-observable behavior from accepted TDG contracts before implementation results are
-available.
-
-The sequence is intentionally:
-
-```text
-accepted contract
--> independent oracle
--> fixture/test inventory
--> executable test skeleton
--> implementation
--> execution evidence
-```
-
-and not:
-
-```text
-implementation result
--> expected result copied from observed behavior
-```
-
-This oracle basis does not create product behavior or mark any requirement or
-TCND condition as passed. Dated W02-C asset checks are recorded separately in the
-[numeric-token](i01-w02c-numeric-fixtures.md),
-[envelope](i01-w02c-envelope-fixtures.md),
-[syntax/encoding](i01-w02c-syntax-fixtures.md),
-[numeric/text retention](i01-w02c-numeric-retention-fixtures.md),
-[title presence](i01-w02c-title-presence-fixtures.md),
-[step representation](i01-w02c-step-representation-fixtures.md),
-[source-ID collisions](i01-w02c-source-id-collision-fixtures.md),
-[source-ID fidelity](i01-w02c-source-id-fidelity-fixtures.md),
-[incomplete/unfamiliar content](i01-w02c-deficient-content-fixtures.md),
-[declared test-case origin](i01-w02c-origin-literal-fixtures.md),
-[unrecognized origin declarations](i01-w02c-origin-unmapped-fixtures.md),
-[defaults for missing declarations](i01-w02c-case-defaults-fixtures.md),
-[explicit declarations and defaults](i01-w02c-default-preservation-fixtures.md),
-[claims of role and responsibility](i01-w02c-payload-authority-fixtures.md),
-[links and instructions as data](i01-w02c-inert-content-fixtures.md) and
-[imported identity and status claims](i01-w02c-imported-claims-fixtures.md) records.
+An **oracle** is the independently specified expected observation against which a
+test will check TDG. Define it from the accepted contract before observing the
+implementation. Copying an implementation result into the expected value would
+remove that independent check.
 
 ## 2. W02 boundary
 
-W02 is limited to test analysis, test design, synthetic test-data design,
-independent oracles, traceability, and later executable skeleton preparation.
+W02 covers test analysis, test design, synthetic test data, independent expected
+results, links to the governing requirements and design, and executable skeletons.
 
 ### In scope
 
@@ -86,10 +48,10 @@ independent oracles, traceability, and later executable skeleton preparation.
   synthetic corpus;
 - trace those oracles to accepted REQ/VAL/design sources and
   `TCND-I01-01` through `TCND-I01-16`;
-- prepare the later W02-B fixture/oracle inventory;
+- define concrete cases and expected observations in the W02-B inventory;
 - prepare the input files and product test placeholders in W02-C;
-- provide evidence for the W02 re-estimation point once the detailed inventory
-  exists.
+- support W02 re-estimation using the detailed inventory and actual preparation
+  effort.
 
 ### Out of scope
 
@@ -110,87 +72,51 @@ independent oracles, traceability, and later executable skeleton preparation.
 
 ## 3. Effective authority and source precedence
 
-W02 uses accepted repository authority, not historical status labels preserved
-inside older snapshots.
+Use the maintained requirements and consolidated design below. The source pins
+above identify the original inspections; earlier wording remains available in
+Git history. Preparation-time labels do not replace later recorded decisions.
 
 ### 3.1 RA-09
 
-Effective source:
-
-`docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md`
-
-Authority record:
-
-`docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-focused-static-review-v0.2.md`
-
-The review record designates RA-09 v0.2 as the final phase baseline, closes
-F-001/F-002, and records all 24 requirements and all 16 validation obligations
-as accepted.
-
-Therefore the historical "Owner endorsement pending" wording retained in the
-RA-09 v0.2 snapshot does not make the root-envelope clarification pending for
-W02.
+[RA-09 v0.2](../requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md)
+defines native input and receipt contracts. All 24 requirements and 16 validation
+obligations are accepted. The [acceptance record](../requirements-analysis/ra-09/test-design-gatekeeper-ra-09-focused-static-review-v0.2.md)
+closes F-001/F-002; their clarifications are incorporated in the current text.
 
 ### 3.2 RA-03
 
-Effective source:
-
-`docs/requirements-analysis/ra-10/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.4.md`
-
-Authority records:
-
-- `docs/reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md`
-- `docs/requirements-analysis/ra-10/test-design-gatekeeper-ra-10-focused-static-review-v0.2.md`
-
-All 50 RA-03 requirement statements are accepted. SR-RA10-001 v0.2 establishes
-RA-03 v0.4 as the accepted corrected baseline.
-
-The preserved `PROPOSED` cells and pre-endorsement notices inside the historical
-RA-03 wording are therefore not the current requirement status.
+[RA-03 v0.4](../requirements-analysis/ra-10/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.4.md)
+defines supplied content, provenance and identity. Its 50 requirements are
+accepted: the [RA-03 gate](../reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md)
+records requirement acceptance, and [SR-RA10-001 v0.2](../requirements-analysis/ra-10/test-design-gatekeeper-ra-10-focused-static-review-v0.2.md)
+records the corrected v0.4 baseline.
 
 ### 3.3 SAD-02
 
-Source:
-
-`docs/solution-design/test-design-gatekeeper-sad-02-data-identity-contracts-v0.1.md`
-
-SAD-02 remains the accepted source for identity, version, provenance, commit and
-retry design except where a later accepted correction/addendum governs.
-
-In particular, historical SAD-02 envelope/status wording must not be used to
-override the accepted SAD-04 corrections.
+[SAD-02](../solution-design/test-design-gatekeeper-sad-02-data-identity-contracts-v0.1.md)
+now points to its historical record and the current rules in SAD-04. Its accepted
+identity and retry decisions are in SAD-04 Section 5.1; I-01 commit, retry and
+lineage rules are in Section 7.2. Oracle traces below use those current locations.
 
 ### 3.4 SAD-04
 
-Effective source:
-
-`docs/solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md`
-
-Decision record:
-
-`docs/reviews/test-design-gatekeeper-sad-04-review-record-v0.2.md`
-
-For W02, SAD-04 Sections 6-9 and 12 are the effective design/test anchors for:
-
-- the exact three-member native JSON envelope;
-- I-01 status vocabulary;
-- minimal physical identity responsibilities;
-- commit/retry/lineage effects;
-- the 16 accepted I-01 test conditions;
-- the rule that expected outcomes are specified before implementation results.
+[SAD-04](../solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md)
+is the consolidated design. Sections 6–9 define the native envelope, status
+meanings, persistence, retry, CLI and protection boundaries; Section 12 retains
+the 16 I-01 test conditions. Its [acceptance record](../reviews/test-design-gatekeeper-sad-04-review-record-v0.2.md)
+and the [numeric-token decision](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md)
+preserve the human decisions. Accepted corrections, including the numeric-token
+outcome, are incorporated directly in SAD-04.
 
 ### 3.5 Conflict rule used by this document
 
-If historical wording conflicts with an accepted later correction, this document
-uses the accepted later correction and preserves the historical difference.
+Follow recorded acceptance and corrections when older wording differs. If those
+sources do not resolve a material conflict, stop the affected work and request a
+human decision. Do not choose an interpretation because it is easier to implement.
 
-If source authority does not resolve a material conflict, W02 stops and requests
-a human decision instead of choosing the easiest-to-implement interpretation.
-
-No unresolved source-authority conflict was found in the inspected source set.
-The 2026-10-03 review identified an under-specified numeric-limit outcome mapping.
-The Owner subsequently accepted its classification; Section 9.5 records the
-resolution and the governing SAD-04 addendum.
+The original inspection found no blocking source-authority conflict. The
+2026-10-03 review did identify a missing numeric-limit outcome classification;
+the Owner resolved it as recorded in Section 9.5.
 
 ## 4. Oracle design rules
 
@@ -253,8 +179,9 @@ are 127-, 128-, and 129-character numeric tokens, not JSON strings. Keep raw siz
 container depth, item counts and other limits below their bounds. Separate
 precision probes, such as `9007199254740993` and `0.1000000000000000000001`,
 exercise exact source/lexeme retention without crossing the token-length bound.
-This section specifies the inputs to prepare; creating the files and executable
-tests is part of W02-C.
+The prepared inputs and their checks are recorded under
+[numeric-token limits](i01-w02c-numeric-fixtures.md) and
+[numbers and text](i01-w02c-numeric-retention-fixtures.md).
 
 ### 5.2 Source fidelity, presence, and mapping
 
@@ -296,51 +223,34 @@ tests is part of W02-C.
 
 | Oracle ID | Controlled condition | Independent expected observation | Must not be inferred | Primary trace | I-01 condition |
 | --- | --- | --- | --- | --- | --- |
-| OR-I01-ID-001 | Explicit authorized import retry after acknowledgement loss; exact selected bytes/input identity/action/actor/predecessor/configuration establish the same request fingerprint for the same `operation_id` | Return the same committed receipt/package version after the fingerprint comparison; no duplicate committed effect | Assuming identical intent from operation ID/path alone or creating a new package because the CLI call was repeated | RA09-REQ-014; RA09-VAL-012; SAD-02 §7.3; SAD-04 §7.2 | TCND-I01-02, 11 |
-| OR-I01-ID-002 | Same `operation_id` reused with changed request fingerprint, including a file edited after commit/acknowledgement loss | Visible conflict; CLI exit 5; existing committed operation/receipt/version remains unchanged | Returning the old receipt as a successful identical import retry, silent overwrite, merge, or last-write-wins | RA09-REQ-014; RA09-VAL-012; SAD-02 §7.3; SAD-04 §7.2/§8 | TCND-I01-02 |
+| OR-I01-ID-001 | Explicit authorized import retry after acknowledgement loss; exact selected bytes/input identity/action/actor/predecessor/configuration establish the same request fingerprint for the same `operation_id` | Return the same committed receipt/package version after the fingerprint comparison; no duplicate committed effect | Assuming identical intent from operation ID/path alone or creating a new package because the CLI call was repeated | RA09-REQ-014; RA09-VAL-012; SAD-04 §5.1/§7.2 | TCND-I01-02, 11 |
+| OR-I01-ID-002 | Same `operation_id` reused with changed request fingerprint, including a file edited after commit/acknowledgement loss | Visible conflict; CLI exit 5; existing committed operation/receipt/version remains unchanged | Returning the old receipt as a successful identical import retry, silent overwrite, merge, or last-write-wins | RA09-REQ-014; RA09-VAL-012; SAD-04 §5.1/§7.2/§8 | TCND-I01-02 |
 | OR-I01-ID-003 | New operation submits byte-identical source without deliberate selection of an existing version | Create a separately attributable package version; without predecessor selection it starts a new lineage | Fingerprint-based merge or semantic equivalence | RA03-REQ-048; RA09-REQ-009/014; RA03-VAL-023; SAD-04 §7.2 | TCND-I01-02 |
 | OR-I01-ID-004 | New capture explicitly selects one valid predecessor | Create one new immutable child version linked to that predecessor; parent bytes/receipts/history stay unchanged | That the child fixed earlier findings or supersedes parent for every purpose | RA03-REQ-043/044/047; RA03-VAL-020/022; SAD-04 §7.2 | TCND-I01-03 |
 | OR-I01-ID-005 | Invalid predecessor reference | Reject/conflict before capture commit; no child package version is committed | Predecessor inferred from name/hash/title/content similarity | RA03-REQ-047; RA03-VAL-022; SAD-04 §7.2 | TCND-I01-03 |
 | OR-I01-ID-006 | Cancellation/crash before capture transaction commit | No captured package/version exists; where safely recordable, retain/reconcile a failed attempt with cause | Partially committed package or automatic hidden recapture | RA09-REQ-014; RA09-VAL-012; SAD-04 §7.2 | TCND-I01-11 |
 | OR-I01-ID-007 | Commit succeeds but acknowledgement/output is lost; authorized `tdg receipt OPERATION_ID` inspection or stored-operation reconciliation follows | Read the durable committed result without rereading the external source or rerunning capture; retain the same receipt/package version even if the external file later changes or disappears | Applying this source-free inspection rule to a new import invocation and bypassing its fingerprint comparison | RA09-REQ-014; RA09-VAL-012; SAD-04 §7.2/§8 | TCND-I01-02, 11 |
-| OR-I01-ID-008 | Content digest/hash of two sources is equal | Equality supports integrity/comparison only; identity, lineage, authority and semantic equivalence remain separate | Automatic package/item merge | RA03-REQ-028/048; RA09-REQ-009; SAD-02 §6.1 | TCND-I01-01, 02 |
+| OR-I01-ID-008 | Content digest/hash of two sources is equal | Equality supports integrity/comparison only; identity, lineage, authority and semantic equivalence remain separate | Automatic package/item merge | RA03-REQ-028/048; RA09-REQ-009; SAD-04 §5.1/§7.1 | TCND-I01-01, 02 |
 | OR-I01-ID-009 | Source changes or path redirection is detected during bounded acquisition | Fail the affected capture rather than combine multiple reads/content instances; retained snapshot, if any, proves only the bytes actually captured | Atomic authenticity of an external business document | RA03-REQ-005/006; RA09-REQ-005/014; SAD-04 §7.1 | TCND-I01-16 |
 | OR-I01-ID-010 | After commit/acknowledgement loss, the selected source is removed or unreadable and the operator repeats import with that path and the same operation ID | Report the input-acquisition failure; no invented fingerprint or claim of a verified identical retry, no new capture, and no overwrite of the committed result. Authorized receipt inspection remains based on stored evidence under `OR-I01-ID-007` | Substituting previously stored bytes for the unreadable newly selected input or silently changing import into receipt inspection | RA09-REQ-014; RA09-VAL-012; SAD-04 §7.2/§8 | TCND-I01-02, 11, 16 |
 
 ## 6. First coverage view against accepted I-01 conditions
 
-This is the initial W02-A extraction view, retained with the numeric-limit
-resolution. The [W02-B inventory](i01-w02-test-inventory.md) now decomposes all 16
-conditions, including the remaining RA-05/RA-08 routes identified below. These
-are design traces only; no condition is marked executed or passed.
+The initial W02-A analysis focused on RA-09/RA-03 input, receipt and identity
+behavior. It left admission, other resource limits, storage faults, concurrency
+and dedicated diagnostic cases for W02-B. The [original extraction table](https://github.com/MarcinMikula/test-design-gatekeeper/blob/27f30a5fc38e41df48475bee8d7802719a44e2c8/docs/implementation/i01-w02-test-design.md#6-first-coverage-view-against-accepted-i-01-conditions)
+retains that preparation history.
 
-| I-01 condition | W02-A status after this extraction |
-| --- | --- |
-| TCND-I01-01 | Oracle basis identified: byte fidelity, digest limits, order, locators, package/receipt linkage |
-| TCND-I01-02 | Oracle basis identified: fingerprint-checked import retry versus source-free stored-result inspection, changed/unreadable input, independent identical-byte submission |
-| TCND-I01-03 | Oracle basis identified: predecessor/child/immutability/invalid predecessor |
-| TCND-I01-04 | Oracle basis identified: exact envelope classes and empty-content distinction |
-| TCND-I01-05 | Oracle basis identified: duplicate names, BOM, UTF-8/syntax/non-finite handling, distinct numeric-token capacity and exact-representation cases; §9.5 status mapping accepted |
-| TCND-I01-06 | Oracle basis identified: presence states, wrong type, unknown fields, representation/order/source-ID preservation |
-| TCND-I01-07 | Oracle basis identified: literal origin, free text, defaults, absent/null/negative accountability |
-| TCND-I01-08 | Oracle basis identified: imported authority-like data, refs/URLs/paths, unbound source claims |
-| TCND-I01-09 | Not yet decomposed in W02-A; requires RA-08/SAD-04 admission-focused extraction |
-| TCND-I01-10 | Numeric-token 127/128/129-character variants identified with the accepted §9.5 outcome mapping; remaining limits are decomposed in the W02-B inventory |
-| TCND-I01-11 | Oracle basis identified for pre-commit and post-commit/pre-ack crash/cancel semantics; detailed fault points remain W02-B |
-| TCND-I01-12 | Partial basis identified: failed capture with and without safely retained failure receipt; remaining persistence/storage/history faults require W02-B using RA-05/SAD-04 |
-| TCND-I01-13 | Not yet decomposed in W02-A; writer/mutex/read-only boundary remains for W02-B |
-| TCND-I01-14 | Partial basis identified for inert supplied content and diagnostic/path minimization; dedicated RA-08 diagnostic cases remain |
-| TCND-I01-15 | Oracle basis identified: minimum `NOT_EVALUATED`, review not performed, no fabricated run/findings/availability |
-| TCND-I01-16 | Oracle basis identified: explicit source selection, no external retrieval, no mixed content instance |
-
-The unexpanded conditions above are not missing requirements. They mark the
-intentional boundary of this first W02-A extraction, which focused on RA-09,
-RA-03, SAD-02 and SAD-04 receipt/identity behavior.
+The current [condition-to-case mapping](i01-w02-test-inventory.md#5-bidirectional-condition-trace)
+is maintained in the W02-B inventory. It covers all 16 accepted I-01 conditions,
+including the later RA-05/RA-08 routes. These are design links, not executed or
+passing results.
 
 ## 7. Candidate fixture families for W02-B
 
 The W02-A extraction proposed the following groups of test data for W02-B.
-Progress on preparing the files is recorded in the W02-C records linked above.
+The concrete cases are in the accepted W02-B inventory; Section 11 links the
+prepared W02-C files and their checks.
 
 | Family | Purpose | Principal oracle groups |
 | --- | --- | --- |
@@ -382,18 +292,10 @@ a contradiction in the accepted oracle.
 
 ### 9.1 No blocking source-authority conflict found
 
-The inspected sources contain historical pending/proposed wording, but the later
-accepted review/closure records resolve those status differences:
-
-- RA-09 v0.2 is the accepted final RA-09 baseline;
-- RA-03 v0.4 is the accepted corrected baseline;
-- SAD-04 supplies the accepted I-01 envelope/status corrections and W02 test
-  conditions;
-- W01 closure grants GO to W02.
-
-No new Owner decision is required merely to use those accepted contracts for
-test design. The separate numeric-limit classification identified during review
-was explicitly accepted by the Owner and is recorded in Section 9.5.
+The original analysis used the accepted RA-09 and RA-03 baselines, SAD-04's
+I-01 contracts and the W01 authorization. Section 3 now links their maintained
+text and decision records. The separate numeric-limit classification was later
+accepted by the Owner; it is recorded in Section 9.5.
 
 ### 9.2 Do not over-specify issue codes yet
 
@@ -423,59 +325,41 @@ planning estimate, not measured effort, an approved ceiling or a full I-01 total
 
 ### 9.5 Numeric-token limit: accepted outcome mapping
 
-**RESOLVED — Project Owner decision, 2026-10-03.**
+The review found a missing outcome classification for exceeding the existing
+128-character bound. On 2026-10-03 the Owner accepted `REJECTED`, CLI exit `2`,
+no new package version/reference and minimum `NOT_EVALUATED`. The exact decision
+and scope remain in [SAD04-I01-NUM-001](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md).
 
-The review exposed an absent classification, rather than a dispute about the
-128-character bound. The Owner explicitly accepted `REJECTED` and CLI exit `2`
-for exceeding that bound, with no new package version/reference and minimum
-`NOT_EVALUATED`. The attributable decision, safe-diagnostic rule and scope are
-recorded in [SAD04-I01-NUM-001](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md).
-
-This resolves the former decision prerequisite for `OR-I01-SYN-004`. For
-otherwise eligible inputs, 127/128-character tokens pass this bound;
-129-character tokens are rejected. Exact representation within the bound remains
-the separate `OR-I01-SYN-005` concern. Existing safety and persistence failures
-retain their cause-specific handling; the numeric decision is not generalized
-to all resource failures.
-
-The accepted SAD-04 v0.2 bytes remain frozen. Read that baseline with the addendum.
-No product execution, W02 closure or new phase/work-item GO is claimed.
+The full rule is incorporated in [SAD-04 Section 6.1](../solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md#61-native-input-and-mechanical-projection).
+`OR-I01-SYN-004` specifies the 127/128/129-character boundary observations;
+`OR-I01-SYN-005` separately covers exact representation within the bound. Other
+safety, resource and persistence failures keep their cause-specific handling.
 
 ## 10. W02-B inventory and review
 
-The [W02-B inventory](i01-w02-test-inventory.md) converts this oracle basis and
-the remaining RA-05/RA-08/SAD-04 conditions into concrete parameterized cases.
-The Owner accepted Section 8 and the whole inventory on 2026-10-07 as the basis
-for W02-C. The
-[acceptance record v0.7](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.7.md)
-records that decision and preserves the earlier section/group decisions. All 72
-case rows / 208 variants are accepted for test design. The Section 7 forecast
-remains provisional and must be checked against actual work; the future
-corpus-reuse idea remains parked. Fixtures and executable skeletons remain W02-C
-work, and W02 is still open.
+The [W02-B inventory](i01-w02-test-inventory.md) turns this oracle basis and the
+remaining RA-05/RA-08/SAD-04 conditions into concrete cases. On 2026-10-07 the
+Owner accepted Section 8 and the whole inventory as the basis for W02-C: 72 case
+rows and 208 listed variants. The [acceptance record](../reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.7.md)
+preserves that decision and the earlier section/group decisions.
 
-It covers capture/identity, envelope/syntax, presence/accountability, admission
-and inert content, resource/containment boundaries, transactions/recovery,
-concurrency/source selection, diagnostics/copies and unavailable capabilities.
-Each row carries its stimulus, expected observation, condition/oracle route,
-test level, evidence and fault point. The bidirectional condition table reaches
-all 16 accepted conditions without claiming execution or full requirement fulfilment.
+The inventory defines each stimulus, expected observation, condition/oracle link,
+test level, evidence and fault point. Keep these distinctions when preparing or
+reviewing tests: import retry versus stored-receipt inspection, numeric capacity
+versus precision retention, and a failed capture with a stored receipt versus a
+failure that prevents receipt storage.
 
-Review particularly the separation of fingerprint-checked import retry from
-source-free receipt inspection, numeric capacity from precision retention, and
-capture failure with a stored receipt from failure that cannot retain a receipt.
-The inventory retains these concrete variants and exposes its remaining test
-harness/configuration bindings and provisional effort forecast.
+The inventory's Section 6 lists the remaining work needed to connect tests to
+specific implementation entry points and fault controls. Section 7's forecast
+remains provisional; the future corpus-reuse idea remains parked. Inventory
+acceptance did not close W02, authorize W03 or accept I-01.
 
 <a id="11-current-handoff-state"></a>
 
 ## 11. What is ready and what remains to do
 
-W02-A defines expected results from the accepted requirements and design before
-TDG's import behavior is implemented. W02-B turns those expectations into the
-approved test plan. W02-C prepares the files and tests needed to carry out that plan.
-
-The following test data have been prepared:
+The following records describe the prepared test data and retain their dated
+checks. Exact inputs and assertions belong with the tests and fixture manifests.
 
 | Record | Inputs prepared and purpose |
 | --- | --- |
@@ -496,17 +380,13 @@ The following test data have been prepared:
 | [Links and instructions as data](i01-w02c-inert-content-fixtures.md) | Five TC-I01-031 variants: retain a URL, file path, schema reference, issue key and command text without retrieving content or executing instructions |
 | [Imported identity and status claims](i01-w02c-imported-claims-fixtures.md) | Five TC-I01-032 variants: retain supplied package ID, role, approval, status and qualification without restoring trusted identity, history or authority |
 
-The checks so far verify these input files. Tests of TDG itself still need to be
-connected to the implementation. They must check the expected outcomes, including
-preserved titles and steps, separate item identities, original locations and
-stored links. The prepared data do not establish that TDG performs these actions
-correctly or that every possible defect is covered.
+These checks verify the input files and setup. Product tests still need to be
+connected to TDG and exercise the required observations, including preserved
+values, item identities, source locations and stored links. Prepared data alone
+do not establish correct importer behavior or complete defect coverage.
 
-Next, prepare the remaining inputs and connect the tests to TDG, following
-Section 6 of the accepted inventory. W02 still requires the remaining deliverables,
-any review corrections and the completion review. Approval of the test plan does
-not authorize W03 or accept I-01; those remain separate decisions.
-
-The Section 7 effort estimate is still provisional and must be revised using
-actual work. A new total estimate for all of I-01, a maximum budget and a delivery
-date have not been established.
+Further preparation is paused, including TC-I01-033. [README.md](../../README.md)
+records the current status and the need to review the delivery sequence after
+cleanup. Any resumed work must follow the resulting Owner decision. The remaining
+W02 deliverables, review corrections and completion review are still required;
+this document does not restart them.
