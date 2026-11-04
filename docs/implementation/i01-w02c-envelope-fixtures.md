@@ -1,30 +1,26 @@
-# I-01 / W02-C — Envelope fixture family
+# I-01 / W02-C — Required JSON fields, types and versions
 
 Prepared and checked 2026-10-08 (Europe/Warsaw).
 Source pin: `main` at `e1ff0d7a9114f3092fc10ac4734e27cdce7ea380`.
-Status: **19 input variants prepared; tests of TDG behavior still need to be connected to the implementation**.
 
-Reading this record: *fixtures* are prepared input files and test setup.
-*Asset checks* verify those files. *Product skeletons* are placeholders for tests
-of TDG itself; they are skipped until connected to the implementation.
-The dated results below describe the state at that point in the project.
-Wording clarified on 2026-10-14; recorded results and decisions are unchanged.
+These 19 inputs cover TC-I01-011–015 from the [accepted inventory](i01-w02-test-inventory.md)
+and reuse the unchanged [BASE-01](../../tests/fixtures/i01/base-01.json). They test
+the outer JSON structure: required fields, their types, supported document kind
+and contract version, extra fields and empty `content`.
 
-This slice follows the Owner-accepted [W02-B inventory](i01-w02-test-inventory.md),
-TC-I01-011–015, and reuses the unchanged BASE-01 from the
-[first numeric-token slice](i01-w02c-numeric-fixtures.md). It changes test assets
-and working navigation only. W02 remains open; W03 and I-01 acceptance are not
-established by this record.
+The input files are prepared; tests of TDG's behavior still need to be connected
+to the implementation. Results below describe the 2026-10-08 checks. Development
+and further test-data preparation are currently paused; [README.md](../../README.md)
+gives the current project status.
 
 ## Prepared cases and oracles
 
-The [manifest](../../tests/fixtures/i01/envelope/manifest.json) identifies each
-exact input file, its digest/size and independently rechecked tree/text metrics,
-planned levels and component/capture/CLI expectations. It pins the source
-inventory and gives the full-capture prerequisites. Observation names are test
-metadata, not a new product DTO or issue-code contract.
+The [manifest](../../tests/fixtures/i01/envelope/manifest.json) lists each input
+file, size, hash and resource measurements. It also records the source inventory,
+planned test levels, expected results and full-capture prerequisites. Its fields
+describe tests; they do not define a new TDG interface or runtime issue codes.
 
-| Case / variants | Materialized change from BASE-01 | Expected controlled result | Planned levels |
+| Case / variants | Change from BASE-01 | Expected controlled result | Planned levels |
 | --- | --- | --- | --- |
 | TC-I01-011.01–.03 | Remove document_type, contract_version or content, in that order | REJECTED; no guessed defaults or package/reference; CLI 2 | U + C |
 | TC-I01-012.01–.02 | Add the same synthetic_marker at root, then inside content | Root: REJECTED. Inside content: CAPTURED with exact marker, source location and mapping state visible | U + I |
@@ -53,21 +49,23 @@ or a claim that the core minimum is MET/NOT_MET.
 
 Trace follows W02-B: TCND-I01-04/06/08/15; OR-I01-ENV-001–007 and RCP-004 in the
 [W02 oracle basis](i01-w02-test-design.md); RA09-REQ-001/003/006/012/013/015/020/021,
-RA09-VAL-002/003/011 and SAD-04 §§6.1–6.2. These are planned clause-level routes,
-not requirement-fulfilment results.
+RA09-VAL-002/003/011 and
+[SAD-04 Sections 6.1–6.2](../solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md#61-native-input-and-mechanical-projection).
+These links identify the expected behavior, not executed evidence of requirement
+fulfilment.
 
 ## Checks, skeletons and remaining bindings
 
-[Asset checks](../../tests/test_i01_envelope_assets.py) verify file digests,
+[Input checks](../../tests/test_i01_envelope_assets.py) verify file digests,
 sizes and resource measurements, the precise mutation with all other supplied
 values unchanged, unique stable IDs, variant order, planned levels and expected
 partitions. They use Python's JSON decoder with duplicate/encoding checks and
 exact decimal decoding, not a TDG parser or TDG-produced expected results.
 
-[Product skeletons](../../tests/test_i01_envelope_pending.py) allocate exactly
-19 U, 3 I and 17 C placeholders from the accepted case levels. They are skipped
-with explicit reasons. A fail guard prevents an empty PASS if a skip is removed
-before its real assertions are supplied.
+The [39 product-test placeholders](../../tests/test_i01_envelope_pending.py) cover
+19 component, 3 integration and 17 CLI tests, following the accepted case levels.
+They are skipped with explicit reasons. A fail guard prevents an empty PASS if a
+skip is removed before real assertions are supplied.
 
 | Boundary | Binding required before product execution |
 | --- | --- |
@@ -99,23 +97,15 @@ With the normal target environment already prepared:
 .\.venv\Scripts\python.exe -m pytest -q -rs tests/test_i01_envelope_assets.py tests/test_i01_envelope_pending.py tests/test_i01_numeric_assets.py tests/test_i01_numeric_pending.py
 ```
 
-At the time of this record, the prepared files included the baseline example
-`BASE-01` and 22 input variants for six test cases (TC-I01-011–015 and TC-I01-018).
-The complete plan contains 72 test cases with 208 input variants, so more
-test data remain to be prepared. These counts describe files prepared, not
-tests passed by TDG. One input variant can be used by several automated checks,
-so the number of pytest results differs from the number of input variants.
+At that date, the envelope and numeric groups together comprised `BASE-01` and
+22 input variants for six cases (TC-I01-011–015 and TC-I01-018). One input can be
+used by several checks. The pytest totals above count checks and skipped
+placeholders; they do not establish passed TDG cases.
 
-These files contain synthetic examples used while developing TDG. Because they
-are already available to the author, they are not a separate, previously unseen
-set for acceptance testing. The checks recorded here were performed by the
-author with AI assistance. They do not count as an independent human review.
+These synthetic development inputs are already known to the author and cannot
+serve as previously unseen acceptance data. The author performed the checks
+with AI assistance. They do not count as an independent human review.
 
-No record of human time spent was provided for this work. The estimate of
-remaining work is still provisional and will be checked against actual effort.
-Preparing these files does not finish W02 (test preparation), authorize W03
-(the next work item), or mean that I-01 (the first product increment) has been
-accepted.
-
-Next planned task at the time of this record: syntax/encoding fixtures TC-I01-016–017. Remaining fixtures,
-actual assertion bindings, corrections and the W02 completion decision are open.
+Human time spent was not reported. [Inventory Section 7](i01-w02-test-inventory.md#7-effort-reassessment)
+retains the provisional forecast and reassessment requirements. Preparing these
+files and checking them did not close W02, authorize W03 or accept I-01.
