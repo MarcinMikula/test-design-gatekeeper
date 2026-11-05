@@ -6,7 +6,7 @@ Keep project documentation in **English**. Explain proposed changes and document
 
 ## Current work boundary
 
-The Owner has paused development for documentation cleanup; see [README.md](README.md). TC-I01-033 remains on hold. Prepare changes **one file at a time**, explain the exact proposal in Polish and obtain the Owner's approval before publishing that file. Do not resume development without an explicit decision to do so.
+Follow the current development authorization in [README.md](README.md). For standalone documentation cleanup, prepare changes **one file at a time**, explain the exact proposal in Polish and obtain the Owner's approval before publishing that file.
 
 Carry out work already covered by approval without asking for the same permission again. Silence is not a substitute for a required human decision.
 

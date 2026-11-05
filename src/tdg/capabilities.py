@@ -9,6 +9,7 @@ from tdg import __version__
 CONTRACT_VERSION = "1.0"
 STORE_SCHEMA_VERSION = 1
 LAB_POLICY_VERSION = "i01-lab-v1"
+LAB_AGE_BVA_COMMAND = "lab-age-bva"
 DISABLED_COMMANDS = ("import", "receipt", "package")
 
 
@@ -34,8 +35,9 @@ def capability_manifest() -> dict:
         "manifest_version": "1.0",
         "build": __version__,
         "increment": "I-01",
-        "implementation_stage": "W01_VERIFIED_CLOSURE_PENDING",
-        "enabled_commands": ["version", "capabilities"],
+        "implementation_stage": "W01_CLOSED",
+        "enabled_commands": ["version", "capabilities", LAB_AGE_BVA_COMMAND],
+        "experimental_commands": [LAB_AGE_BVA_COMMAND],
         "disabled_commands": {
             "import": "CAPTURE_AND_PROTECTION_NOT_IMPLEMENTED",
             "receipt": "CAPTURE_NOT_IMPLEMENTED",
@@ -56,7 +58,11 @@ def capability_manifest() -> dict:
         ],
         "data_policy": "PUBLIC_OR_SYNTHETIC_LABORATORY_ONLY",
         "package_processing_enabled": False,
-        "target_platform_verification": "W01_WINDOWS_TRIAL_PASSED_2026-09-28",
+        "target_platform_verification": "PENDING_FOR_CURRENT_BUILD",
+        "w01_target_platform_evidence": {
+            "build": "0.1.0.dev2",
+            "result": "W01_WINDOWS_TRIAL_PASSED_2026-09-28",
+        },
         "workspace_path_support": "DIRECT_CHILD_OF_LOCALAPPDATA_TDG_LAB_ONLY",
     }
     if supported_host():

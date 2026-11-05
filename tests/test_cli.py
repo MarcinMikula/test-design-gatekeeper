@@ -16,10 +16,14 @@ def test_manifest_reports_only_implemented_cli_and_no_processing(capsys, monkeyp
     monkeypatch.setattr("tdg.windows_workspace.supported_host", lambda: False)
     assert main(["capabilities"]) == 0
     result = json.loads(capsys.readouterr().out)
-    assert result["enabled_commands"] == ["version", "capabilities"]
+    assert result["enabled_commands"] == ["version", "capabilities", "lab-age-bva"]
+    assert result["experimental_commands"] == ["lab-age-bva"]
     assert result["package_processing_enabled"] is False
-    assert result["target_platform_verification"] == "W01_WINDOWS_TRIAL_PASSED_2026-09-28"
-    assert result["implementation_stage"] == "W01_VERIFIED_CLOSURE_PENDING"
+    assert result["target_platform_verification"] == "PENDING_FOR_CURRENT_BUILD"
+    assert result["w01_target_platform_evidence"] == {
+        "build": "0.1.0.dev2", "result": "W01_WINDOWS_TRIAL_PASSED_2026-09-28",
+    }
+    assert result["implementation_stage"] == "W01_CLOSED"
     assert set(result["disabled_commands"]) == {"init", "import", "receipt", "package"}
     assert {"core_minimum_check", "model_invocation", "sealed_processing", "tc_repair_or_approval"} <= set(
         result["disabled_capabilities"]
