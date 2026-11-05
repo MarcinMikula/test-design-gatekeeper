@@ -1,21 +1,21 @@
-# I-01 / W02-C — Numeric lexeme and text retention fixtures
+# I-01 / W02-C — Preserving exact numbers and text
 
 Prepared and checked 2026-10-09 (Europe/Warsaw).
 Source pin: `main` at `1e2a637e54a891be4c078759d695f8f2893b4f24`.
-Status: **four variants prepared; tests of TDG behavior still need to be connected to the implementation**.
 
-Reading this record: *fixtures* are prepared input files and test setup.
-*Asset checks* verify those files. *Product skeletons* are placeholders for tests
-of TDG itself; they are skipped until connected to the implementation.
-The dated results below describe the state at that point in the project.
-Wording clarified on 2026-10-14; recorded results and decisions are unchanged.
+These four inputs cover TC-I01-019–020 from the [accepted inventory](i01-w02-test-inventory.md).
+They specify how TDG must preserve a number's original written form and keep
+JSON strings containing digits as text. The files are prepared; tests of TDG's
+behavior still need to be connected to the implementation.
 
-This document records the test data prepared for TC-I01-019–020 from the Owner-accepted
-[W02-B inventory](i01-w02-test-inventory.md). The
-[manifest](../../tests/fixtures/i01/numeric-retention/manifest.json) records
-exact bytes/digests, source lexemes and locations, independent expected outcomes,
-U/I levels, E1/E2 obligations and requirement/validation traces. Its observation
-fields are test metadata, not new product schema fields or issue codes.
+The results below describe the 2026-10-09 checks. Development and further test-data
+preparation are currently paused; [README.md](../../README.md) gives the current
+project status.
+
+The [manifest](../../tests/fixtures/i01/numeric-retention/manifest.json) records
+exact sizes and hashes, source values and locations, expected outcomes, U/I test
+levels, E1/E2 evidence and requirement links. Its fields describe tests, not a new
+TDG data format or runtime issue codes.
 
 ## Inputs and distinguishing observations
 
@@ -30,10 +30,9 @@ fidelity probe, not an additional business rule or TC-quality assessment.
 | TC-I01-019.03 | `-0` | Preserve the original two-character lexeme even though numeric comparison with zero can be equal |
 | TC-I01-020 | JSON string containing `1` followed by 128 zeros | Preserve 129 text characters as a string; the 128-character numeric-token limit does not apply to this value |
 
-Files are respectively 1084, 1092, 1070 and 1199 bytes. Each has container depth
-6, 25 JSON values, maximum decoded text/member-name size 154 UTF-8 bytes, one TC
-and one basis element. All other input/count/text bounds remain below their
-limits. Numeric lexemes are 16, 24 and 2 characters, not over-limit numbers.
+Exact file sizes and resource measurements remain in the manifest. Each numeric
+case is below the 128-character token limit; the other input, count and text
+bounds also remain below their limits.
 
 No additional control files are introduced. The checks reuse
 [BASE-01](../../tests/fixtures/i01/base-01.json),
@@ -52,12 +51,14 @@ source reference must bind its locator to the exact retained artifact.
 
 ## Oracles and product binding
 
-The governing sources are [RA-09 §3.3 and §4.1](../requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md),
-[SAD-04 §6.1/§9](../solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md),
-the [numeric-limit addendum](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md)
-and OR-I01-SYN-005 / FID-003 / SYN-004 in the
-[W02 oracle basis](i01-w02-test-design.md). Trace reaches TCND-I01-05/06/10,
-RA09-REQ-004/006/016 and RA09-VAL-003/006 as allocated per case in the manifest.
+The governing rules are in [RA-09 Sections 3.3 and 4.1](../requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md)
+and [SAD-04 Sections 6.1 and 9](../solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md#61-native-input-and-mechanical-projection).
+The numeric-token rule is incorporated in SAD-04; the
+[SAD04-I01-NUM-001 record](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md)
+retains the decision. OR-I01-SYN-005 / FID-003 / SYN-004 in the
+[W02 oracle basis](i01-w02-test-design.md) specify the expected observations.
+Trace reaches TCND-I01-05/06/10, RA09-REQ-004/006/016 and RA09-VAL-003/006 as
+allocated per case in the manifest.
 
 Every controlled complete path expects CAPTURED with coherent retained source,
 projection and receipt, a new version reference only after commit, minimum
@@ -80,9 +81,9 @@ TC-I01-020 must remain text, with its exact decoded value and source reference;
 there is no implicit numeric conversion or numeric-token rejection. Its numeric
 counterpart retains the separately accepted REJECTED/exit-2 expectation.
 
-[Product skeletons](../../tests/test_i01_numeric_retention_pending.py) contain
-four U and four I placeholders, with explicit skips and fail guards. Before
-enabling them:
+The [eight product-test placeholders](../../tests/test_i01_numeric_retention_pending.py)
+cover four component and four integration tests, with explicit skips and fail
+guards. Before enabling them:
 
 - bind actual component results and original/projection locator observations;
   choose assertions for the supported projection representation from its design,
@@ -95,14 +96,14 @@ enabling them:
   records remain unchanged;
 - keep E1 asset checks distinct from the unexecuted E2 product/storage evidence.
 
-This slice adds no CLI case beyond the inventory's U + I allocation, changes no
-product module and does not enable import.
+The test allocation remains U + I, with no additional CLI case. Product code
+is unchanged and import remains unavailable.
 
 <a id="preparation-evidence-and-handoff"></a>
 
 ## What was checked and what remains to do
 
-[Asset checks](../../tests/test_i01_numeric_retention_assets.py) use a tagged
+[Input checks](../../tests/test_i01_numeric_retention_assets.py) use a tagged
 numeric-lexeme observer and exact rational comparisons only for these small
 synthetic inputs. They are independent of TDG's implementation and never rewrite
 the original fixture files. They check exact sizes/digests, resource measures,
@@ -122,23 +123,15 @@ On a prepared target environment, the focused command is:
 .\.venv\Scripts\python.exe -m pytest -q -rs tests/test_i01_numeric_retention_assets.py tests/test_i01_numeric_retention_pending.py
 ~~~
 
-At the time of this record, the prepared files included the baseline example
-`BASE-01` and 36 input variants for ten test cases (TC-I01-011–020).
-Two additional valid files serve as comparison examples.
-The complete plan contains 72 test cases with 208 input variants, so more
-test data remain to be prepared. These counts describe files prepared, not
-tests passed by TDG. One input variant can be used by several automated checks,
-so the number of pytest results differs from the number of input variants.
+At that date, the prepared material comprised `BASE-01` and 36 input variants
+for ten cases (TC-I01-011–020), plus two additional valid comparison files.
+One input can be used by several checks. The pytest totals above count checks
+and skipped placeholders; they do not establish passed TDG cases.
 
-These files contain synthetic examples used while developing TDG. Because they
-are already available to the author, they are not a separate, previously unseen
-set for acceptance testing. The checks recorded here were performed by the
-author with AI assistance. They do not count as an independent human review.
+These synthetic development inputs are already known to the author and cannot
+serve as previously unseen acceptance data. The author performed the checks
+with AI assistance. They do not count as an independent human review.
 
-No record of human time spent was provided for this work. The estimate of
-remaining work is still provisional and will be checked against actual effort.
-Preparing these files does not finish W02 (test preparation), authorize W03
-(the next work item), or mean that I-01 (the first product increment) has been
-accepted.
-
-Next planned task at the time of this record: TC-I01-021, the seven title-presence/type variants in group C.
+Human time spent was not reported. [Inventory Section 7](i01-w02-test-inventory.md#7-effort-reassessment)
+retains the provisional forecast and reassessment requirements. Preparing these
+files and checking them did not close W02, authorize W03 or accept I-01.
