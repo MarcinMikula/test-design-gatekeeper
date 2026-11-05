@@ -1,22 +1,22 @@
-# I-01 / W02-C — Syntax and encoding fixture family
+# I-01 / W02-C — JSON syntax, encoding and duplicate fields
 
-Prepared and checked 2026-10-08; publication slice 2026-10-09 (Europe/Warsaw).
+Prepared and checked 2026-10-08; published 2026-10-09 (Europe/Warsaw).
 Source pin: `main` at `bf696d9eb8f6933976b1a4a3f9f1ce360193dd36`.
-Status: **10 negative variants prepared; tests of TDG behavior still need to be connected to the implementation**.
 
-Reading this record: *fixtures* are prepared input files and test setup.
-*Asset checks* verify those files. *Product skeletons* are placeholders for tests
-of TDG itself; they are skipped until connected to the implementation.
-The dated results below describe the state at that point in the project.
-Wording clarified on 2026-10-14; recorded results and decisions are unchanged.
+These ten inputs cover TC-I01-016–017 from the [accepted inventory](i01-w02-test-inventory.md).
+TDG is expected to reject duplicate fields, encoding errors and syntax forbidden
+by its native JSON rules without silently repairing the input. The files are
+prepared; tests of TDG's behavior still need to be connected to the implementation.
 
-This document records the test data prepared for TC-I01-016–017 from the Owner-accepted
-[W02-B inventory](i01-w02-test-inventory.md). The
-[manifest](../../tests/fixtures/i01/syntax/manifest.json) records exact raw sizes
-and digests, intended defects, valid counterparts, levels and expected outcomes.
-Defect labels are test metadata, not product issue codes.
+The checks below describe the work dated above. Development and further test-data
+preparation are currently paused; [README.md](../../README.md) gives the current
+project status.
 
 ## Inputs and controls
+
+The [manifest](../../tests/fixtures/i01/syntax/manifest.json) records exact sizes
+and hashes, deliberate defects, valid comparison files, test levels and expected
+outcomes. Its defect labels describe the test data; they are not TDG issue codes.
 
 | Variants | Deliberate defect | Intended observation |
 | --- | --- | --- |
@@ -62,17 +62,20 @@ Safe rejection-retention/storage-failure rules still apply.
 
 Trace: TCND-I01-05; OR-I01-SYN-001–003 in the
 [W02 oracle basis](i01-w02-test-design.md); RA09-REQ-004 / RA09-VAL-003;
-RA-09 §3.3 and SAD-04 §6.1. The accepted inventory allocates U + C to all ten
-variants, with E1/E3 for duplicates and E1/E2/E4 for the encoding/syntax cases.
+[RA-09 Section 3.3](../requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md#33-source-fidelity-presence-and-mapping-state)
+and [SAD-04 Section 6.1](../solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md#61-native-input-and-mechanical-projection).
+The accepted inventory allocates U + C to all ten variants, with E1/E3 for
+duplicates and E1/E2/E4 for the encoding/syntax cases.
 
-[Asset checks](../../tests/test_i01_syntax_assets.py) verify exact bytes, controls,
+[Input checks](../../tests/test_i01_syntax_assets.py) verify exact bytes, controls,
 isolated mutations and observable defect classes using independent test
 observers and Python's decoder. Python's permissive handling of some inputs is
 not the TDG oracle: BOM and non-finite tokens remain forbidden by the accepted
 native profile.
 
-[Product skeletons](../../tests/test_i01_syntax_pending.py) provide 10 U and 10 C
-placeholders with explicit skips and fail guards. Before enabling them:
+The [20 product-test placeholders](../../tests/test_i01_syntax_pending.py) cover
+10 component and 10 CLI tests, with explicit skips and fail guards. Before
+enabling them:
 
 - bind the actual syntax/profile boundary, cause/location assertions and issue
   vocabulary; generic failure is insufficient proof of the intended rejection;
@@ -109,24 +112,15 @@ For this family on a prepared target environment:
 .\.venv\Scripts\python.exe -m pytest -q -rs tests/test_i01_syntax_assets.py tests/test_i01_syntax_pending.py
 ~~~
 
-At the time of this record, the prepared files included the baseline example
-`BASE-01` and 32 input variants for eight test cases (TC-I01-011–018).
-Two additional valid files serve as comparison examples.
-The complete plan contains 72 test cases with 208 input variants, so more
-test data remain to be prepared. These counts describe files prepared, not
-tests passed by TDG. One input variant can be used by several automated checks,
-so the number of pytest results differs from the number of input variants.
+At that date, the prepared material comprised `BASE-01` and 32 input variants
+for eight cases (TC-I01-011–018), plus two additional valid comparison files.
+One input can be used by several checks. The pytest totals above count checks
+and skipped placeholders; they do not establish passed TDG cases.
 
-These files contain synthetic examples used while developing TDG. Because they
-are already available to the author, they are not a separate, previously unseen
-set for acceptance testing. The checks recorded here were performed by the
-author with AI assistance. They do not count as an independent human review.
+These synthetic development inputs are already known to the author and cannot
+serve as previously unseen acceptance data. The author performed the checks
+with AI assistance. They do not count as an independent human review.
 
-No record of human time spent was provided for this work. The estimate of
-remaining work is still provisional and will be checked against actual effort.
-Preparing these files does not finish W02 (test preparation), authorize W03
-(the next work item), or mean that I-01 (the first product increment) has been
-accepted.
-
-Next planned task at the time of this record: TC-I01-019–020, exact in-bound numeric lexemes and a long
-numeric-looking string.
+Human time spent was not reported. [Inventory Section 7](i01-w02-test-inventory.md#7-effort-reassessment)
+retains the provisional forecast and reassessment requirements. Preparing these
+files and checking them did not close W02, authorize W03 or accept I-01.
