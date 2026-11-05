@@ -86,10 +86,9 @@ staged files with Git's automatic line-ending conversion enabled. All JSON
 fixture bytes remained unchanged, as required by `.gitattributes`.
 
 The checks ran on Linux x86_64 / CPython 3.12.14 with cached pytest 9.1.1 modules.
-TDG was not installed or run under that Python version. Verification on the
-target Windows/Python 3.13 environment and tests of TDG's actual identity and
-authority handling remain to be done. Product regression tests were not run
-for this change to test data and test placeholders.
+TDG was not installed or run under that Python version. Target-platform
+verification, tests of TDG's actual identity and authority handling, and
+product regression were outside the scope of this preparation run.
 
 ## What the product tests still need
 
@@ -133,18 +132,17 @@ Once the target environment is prepared, run:
 .\.venv\Scripts\python.exe -m pytest -q -rs tests/test_i01_imported_claims_assets.py tests/test_i01_imported_claims_pending.py
 ~~~
 
-## Progress and next step
+## Preparation summary
 
-Prepared data now include BASE-01, 81 input variants for 22 test cases
-(TC-I01-011–032) and two valid comparison files. The full plan contains 72 cases
-with 208 variants.
+At the end of this preparation run, the data included BASE-01, 81 input
+variants for 22 test cases (TC-I01-011–032) and two valid comparison files.
+The full plan contains 72 cases with 208 variants.
 
 These synthetic examples are already visible to the author and cannot later be
 described as previously unseen acceptance data. The checks were performed with
 AI assistance and do not count as an independent human review. No record of human
 time spent was provided; the effort estimate remains provisional.
 
-W02 (test preparation) is still in progress. Starting W03 and accepting the whole
-I-01 increment require separate decisions. The next planned task is TC-I01-033:
-a declaration about an additional source must not cause TDG to search for or
-open a file that the operation did not explicitly select.
+W02 remained open after this preparation run. Starting W03 and accepting the
+whole I-01 increment require separate decisions. See [README.md](../../README.md)
+for the current work status, including TC-I01-033.
