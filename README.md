@@ -22,7 +22,8 @@ The experiment reads a single synthetic package in memory and prints its observa
 ## Evidence so far
 
 - **Application foundation (W01):** the Windows run for `0.1.0.dev2` on 28 September 2026 passed 48 tests with no skips. It covers workspace initialization and its supporting controls. The Owner accepted this work on 29 September. See the [implementation and verification record](docs/implementation/i01-w01-foundation.md) and [closure decision](docs/implementation/i01-w01-closure.md).
-- **Test preparation (W02):** at the pause, the prepared material comprised the baseline example `BASE-01`, 81 input variants for 22 planned test cases and two valid comparison files. The [latest preparation record](docs/implementation/i01-w02c-imported-claims-fixtures.md) reports 238 passing checks of the data and setup on Linux/Python 3.12. The 164 product-test placeholders are skipped until connected to the implementation. These checks do not establish importer behavior; target Windows/Python 3.13 verification of these materials remains pending.
+- **Test preparation (W02).** The prepared corpus includes `BASE-01`, 81 input variants for 22 cases and two valid comparison files. The preparation run passed 238 fixture and setup checks on Linux / CPython 3.12. [Preparation record](docs/implementation/i01-w02c-imported-claims-fixtures.md)
+- **Age BVA experiment (`0.1.0.dev3`, commit `de94a11`).** On Windows x64 / CPython 3.13.15, 301 tests passed, including native workspace and W02 fixture checks. The run skipped 164 importer test placeholders. The PowerShell example returned `ASSESSED` with `missing_ages` of `[17, 18, 120, 121]`. [Windows verification](https://github.com/MarcinMikula/test-design-gatekeeper/actions/runs/42075218692)
 
 W02 and the first implementation increment, I-01, remain incomplete. The accepted test inventory contains 72 test cases and 208 input variants. Detailed expectations belong in the [test inventory](docs/implementation/i01-w02-test-inventory.md) and the files under [tests](tests).
 
@@ -74,7 +75,7 @@ The example reports `missing_ages` as `[17, 18, 120, 121]`, with JSON pointers t
 | What is the project's purpose and scope? | [Project Charter](docs/governance/test-design-gatekeeper-project-charter-v0.4.md) |
 | Which requirements were accepted? | [Requirements baseline and acceptance record](docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md) |
 | What is the planned input contract? | [RA-09](docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md), with its [accepted clarifications](docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-focused-static-review-v0.2.md) |
-| What design was accepted for I-01? | [SAD-04](docs/solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md), its [acceptance record](docs/reviews/test-design-gatekeeper-sad-04-review-record-v0.2.md) and [numeric-token clarification](docs/solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md) |
+| What design was accepted for I-01? | [SAD-04](docs/solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md), its [acceptance record](docs/reviews/test-design-gatekeeper-sad-04-review-record-v0.2.md) and the [numeric-token rule](docs/solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md#61-native-input-and-mechanical-projection) |
 | What must the tests observe? | [Expected-behavior basis](docs/implementation/i01-w02-test-design.md) and [case inventory](docs/implementation/i01-w02-test-inventory.md) |
 | What do project terms mean? | [CONTEXT.md](CONTEXT.md) |
 | What rules guide agent work? | [AGENTS.md](AGENTS.md) |
@@ -83,4 +84,6 @@ The [review records](docs/reviews) retain historical decisions and evidence. Use
 
 ## Next step
 
-Run the age check on the Windows target and assess the usefulness of the observation with the synthetic examples.
+Evaluate the missing ages and source pointers in a human review of `BASE-01`.
+Compare the result with a synthetic control whose linked cases cover all four
+boundary ages and produce an empty `missing_ages` list.
