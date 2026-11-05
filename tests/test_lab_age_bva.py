@@ -119,11 +119,11 @@ def test_withholds_gap_when_a_linked_age_is_unresolved(tmp_path, age):
 
 
 @pytest.mark.parametrize("data, error", [
-    (b'{"content": {}, "content": {}}', b"INVALID_LAB_PACKAGE_JSON"),
-    (b'{"age": NaN}', b"INVALID_LAB_PACKAGE_JSON"),
-    (b'{"age": "\xff"}', b"INVALID_LAB_PACKAGE_JSON"),
-    (b'{}', b"INVALID_LAB_PACKAGE_ENVELOPE"),
-    (b" " * (64 * 1024 + 1), b"LAB_PACKAGE_TOO_LARGE"),
+    pytest.param(b'{"content": {}, "content": {}}', b"INVALID_LAB_PACKAGE_JSON", id="duplicate-member"),
+    pytest.param(b'{"age": NaN}', b"INVALID_LAB_PACKAGE_JSON", id="nonfinite-number"),
+    pytest.param(b'{"age": "\xff"}', b"INVALID_LAB_PACKAGE_JSON", id="invalid-utf8"),
+    pytest.param(b'{}', b"INVALID_LAB_PACKAGE_ENVELOPE", id="invalid-envelope"),
+    pytest.param(b" " * (64 * 1024 + 1), b"LAB_PACKAGE_TOO_LARGE", id="oversize"),
 ])
 def test_rejects_unsupported_input_with_a_safe_diagnostic(tmp_path, data, error):
     completed = run_lab(data, tmp_path)
