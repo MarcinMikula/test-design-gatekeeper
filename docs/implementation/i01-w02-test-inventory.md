@@ -13,7 +13,7 @@ follow from the accepted requirements and design.
 | Owner decision | Whole inventory accepted on 2026-10-07 as the basis for W02-C; Section 7's forecast remains provisional; decision history in Section 8 |
 | Earlier work authorization | [W01 closure](i01-w01-closure.md) and the Owner's 2026-10-03 instruction |
 | Original source pin | `0dc8d61144e82271839194de1fa7a466bbb4f92b`, plus the accepted numeric-token decision |
-| Numeric-token rule | [SAD-04 Section 6.1](../solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md#61-native-input-and-mechanical-projection); the [SAD04-I01-NUM-001 record](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md) retains the decision |
+| Numeric-token rule | [SAD-04 Section 6.1](../solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md#61-native-input-and-mechanical-projection) states the rule. The [SAD04-I01-NUM-001 record](https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md) retains the decision. |
 
 **Development and further test-data preparation are paused for documentation
 cleanup.** W02 remains open. [README.md](../../README.md) reports prepared data,

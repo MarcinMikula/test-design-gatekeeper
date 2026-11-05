@@ -723,8 +723,8 @@ Development and fixture preparation remain paused for documentation cleanup, and
 [ra01]: ../test-design-gatekeeper-ra-01-stakeholders-actors-authority-v0.3.md
 [ra02]: ../test-design-gatekeeper-ra-02-system-context-workflows-use-cases-v0.3.md
 [gate03-current]: ../../reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md
-[review03]: ../../reviews/test-design-gatekeeper-ra-03-focused-static-review-v0.1.md
-[decisions]: ../test-design-gatekeeper-ra-03-decision-disposition-upstream-change-record-v0.1.md
+[review03]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/c61e3dfbf72132fbf3f4524d8cd9126021b8c6d9/docs/reviews/test-design-gatekeeper-ra-03-focused-static-review-v0.1.md
+[decisions]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/c61e3dfbf72132fbf3f4524d8cd9126021b8c6d9/docs/requirements-analysis/test-design-gatekeeper-ra-03-decision-disposition-upstream-change-record-v0.1.md
 [review10-current]: test-design-gatekeeper-ra-10-focused-static-review-v0.2.md
 [phase]: test-design-gatekeeper-requirements-analysis-readiness-v0.2.md
 [ra04]: ../test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md

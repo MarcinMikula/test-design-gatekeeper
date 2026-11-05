@@ -296,9 +296,9 @@ Concept-stage allocations now lead to these sources; an allocation is not proof 
 | --- | --- |
 | Functional/non-functional requirements, package minimum, input representations, findings and authority | [Accepted requirements baseline][requirements], including RA-01 through RA-09 |
 | UI, deployment form, stack, architecture, storage engine/schema, operational entry points and implementation increments | [SAD-04][sad04] and its linked design records |
-| Model selection/quantization, prompts/context, identity, change detection and requalification | [RA-07][ra07] and [SAD-03][sad03] |
+| Model selection/quantization, prompts/context, identity, change detection and requalification | [RA-07][ra07] and [SAD-04 §15][sad04-model-protection] |
 | Dataset size/sampling, adjudication, qualification and acceptance thresholds | [RA-10][ra10] and the later approved evaluation protocol |
-| Threat model, protection, retention, deletion, audit and backup | [RA-08][ra08] and [SAD-03][sad03] |
+| Threat model, protection, retention, deletion, audit and backup | [RA-08][ra08] and [SAD-04 §15][sad04-model-protection] |
 | CSV profiles, source mappings and future read-only integrations | [RA-09][ra09]; external integrations remain deferred |
 | Capacity, competing priorities, schedule, effort and release planning | Current work planning; the implementation sequence must be reconsidered after cleanup before development resumes |
 
@@ -376,5 +376,5 @@ On 2026-09-08 the Owner stated: “GO — zezwalam projektowi Test Design Gateke
 [ra09]: ../requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md
 [ra10]: ../requirements-analysis/ra-10/test-design-gatekeeper-ra-10-evaluation-acceptance-v0.2.md
 [requirements]: ../requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md
-[sad03]: ../solution-design/test-design-gatekeeper-sad-03-model-protection-v0.3.md
+[sad04-model-protection]: ../solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md#15-model-contribution-and-future-protection-design
 [sad04]: ../solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md

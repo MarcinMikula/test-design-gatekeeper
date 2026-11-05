@@ -273,5 +273,5 @@ The original records remain in Git history. Editorial maintenance uses this file
 [ra10]: test-design-gatekeeper-ra-10-evaluation-acceptance-v0.2.md
 [sr10]: test-design-gatekeeper-ra-10-focused-static-review-v0.2.md
 [trace]: test-design-gatekeeper-requirements-analysis-traceability-audit-v0.1.json
-[accepted-review]: test-design-gatekeeper-requirements-analysis-readiness-v0.1.md
+[accepted-review]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/e850fd31db35f18e29d1f1af4afc5b1774b829f1/docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.1.md
 [original]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/4e9ddf926c1863c4de71067c8e29c55a3372c895/docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md

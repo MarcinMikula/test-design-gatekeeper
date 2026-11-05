@@ -7,9 +7,9 @@
 | Record date / cutoff | 2026-10-07, 17:46:24 Europe/Warsaw |
 | Status | W02-B INVENTORY ACCEPTED as the basis for W02-C; W02 remains open |
 | Review authority | Project Owner's explicit acceptance of Section 8 and the whole inventory, retaining the provisional Section 7 forecast |
-| Accepted source | [W02-B inventory](../implementation/i01-w02-test-inventory.md), v0.1 at commit `a5308634493ea71ec002fddf4dff22e0c3c5e2e5` |
+| Accepted source | [W02-B inventory](https://github.com/MarcinMikula/test-design-gatekeeper/blob/a5308634493ea71ec002fddf4dff22e0c3c5e2e5/docs/implementation/i01-w02-test-inventory.md), v0.1 at commit `a5308634493ea71ec002fddf4dff22e0c3c5e2e5` |
 | Accepted inventory blob | `e5575c857afca7efd87622cf2b4b01aae789dd89` |
-| Prior record | [SR-I01-W02B-001 v0.6](test-design-gatekeeper-i01-w02b-review-progress-v0.6.md), retained unchanged |
+| Prior record | [SR-I01-W02B-001 v0.6](https://github.com/MarcinMikula/test-design-gatekeeper/blob/e850fd31db35f18e29d1f1af4afc5b1774b829f1/docs/reviews/test-design-gatekeeper-i01-w02b-review-progress-v0.6.md), retained unchanged |
 | Change class | Owner acceptance record and current handoff; no change to case design, oracles, forecast or preparation controls |
 
 ### 1. Recorded decision

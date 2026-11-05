@@ -54,7 +54,7 @@ source reference must bind its locator to the exact retained artifact.
 The governing rules are in [RA-09 Sections 3.3 and 4.1](../requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md)
 and [SAD-04 Sections 6.1 and 9](../solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md#61-native-input-and-mechanical-projection).
 The numeric-token rule is incorporated in SAD-04; the
-[SAD04-I01-NUM-001 record](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md)
+[SAD04-I01-NUM-001 record](https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md)
 retains the decision. OR-I01-SYN-005 / FID-003 / SYN-004 in the
 [W02 oracle basis](i01-w02-test-design.md) specify the expected observations.
 Trace reaches TCND-I01-05/06/10, RA09-REQ-004/006/016 and RA09-VAL-003/006 as

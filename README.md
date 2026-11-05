@@ -61,7 +61,7 @@ Setup may download the pinned interpreter and dependencies. Versions are recorde
 | What is the project's purpose and scope? | [Project Charter](docs/governance/test-design-gatekeeper-project-charter-v0.4.md) |
 | Which requirements were accepted? | [Requirements baseline and acceptance record](docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md) |
 | What is the planned input contract? | [RA-09](docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-data-representations-import-export-contracts-v0.2.md), with its [accepted clarifications](docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-focused-static-review-v0.2.md) |
-| What design was accepted for I-01? | [SAD-04](docs/solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md), its [acceptance record](docs/reviews/test-design-gatekeeper-sad-04-review-record-v0.2.md) and [numeric-token clarification](docs/solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md) |
+| What design was accepted for I-01? | [SAD-04](docs/solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md), its [acceptance record](docs/reviews/test-design-gatekeeper-sad-04-review-record-v0.2.md) and the [numeric-token rule](docs/solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md#61-native-input-and-mechanical-projection) |
 | What must the tests observe? | [Expected-behavior basis](docs/implementation/i01-w02-test-design.md) and [case inventory](docs/implementation/i01-w02-test-inventory.md) |
 | What do project terms mean? | [CONTEXT.md](CONTEXT.md) |
 | What rules guide agent work? | [AGENTS.md](AGENTS.md) |

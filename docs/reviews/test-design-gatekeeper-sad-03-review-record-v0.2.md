@@ -166,9 +166,9 @@ SAD-04 is the fourth activity already allocated in SR-RA-001 Section 5.2. Its bo
 
 **Decision state: ACCEPTED — SAD-03 CLOSED; GO TO SAD-04 GRANTED.** Authority comes from the explicit closure reply above, not from inference based on an earlier section or correction acceptance. This GO continues Solution and Architecture Design; B-01 completion and any implementation authorization require subsequent evidence and a separate decision.
 
-[sad03]: ../solution-design/test-design-gatekeeper-sad-03-model-protection-v0.2.md
-[sad03baseline]: ../solution-design/test-design-gatekeeper-sad-03-model-protection-v0.3.md
-[sad01]: ../solution-design/test-design-gatekeeper-sad-01-components-review-flow-v0.1.md
+[sad03]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/7b49146ee321fac98be93b419234d2dc9d2ecc71/docs/solution-design/test-design-gatekeeper-sad-03-model-protection-v0.2.md
+[sad03baseline]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/solution-design/test-design-gatekeeper-sad-03-model-protection-v0.3.md
+[sad01]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/solution-design/test-design-gatekeeper-sad-01-components-review-flow-v0.1.md
 [ra05]: ../requirements-analysis/ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md
 [ra07]: ../requirements-analysis/ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.2.md
 [ra08]: ../requirements-analysis/ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md

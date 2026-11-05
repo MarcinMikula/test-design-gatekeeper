@@ -56,7 +56,7 @@ Trace: TCND-I01-05/10; OR-I01-SYN-004 in the
 The current numeric rule is in
 [SAD-04 Section 6.1](../solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md#61-native-input-and-mechanical-projection),
 with CLI and resource rules in Sections 8 and 9. The
-[SAD04-I01-NUM-001 record](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md)
+[SAD04-I01-NUM-001 record](https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md)
 preserves the decision. This is one planned case with three input variants.
 
 ## Binding still required before product execution
