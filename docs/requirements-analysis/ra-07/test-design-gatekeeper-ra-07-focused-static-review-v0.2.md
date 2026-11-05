@@ -18,7 +18,7 @@
 
 ## 1. Review input, criteria, and method
 
-The current stored [RA-07 v0.1](test-design-gatekeeper-ra-07-llm-roles-qualification-v0.1.md) was read in full and compared with the retained local artifact for the review on 2026-09-19. Its identity is unchanged from the version presented to the Owner. The original snapshot remains intact; the exact [RA-07 v0.2 wording baseline](test-design-gatekeeper-ra-07-llm-roles-qualification-v0.2.md) contains the reviewed clarification and was endorsed on 2026-09-20. This closure edition records that later decision without changing the endorsed source wording.
+The current stored [RA-07 v0.1](https://github.com/MarcinMikula/test-design-gatekeeper/blob/e850fd31db35f18e29d1f1af4afc5b1774b829f1/docs/requirements-analysis/ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.1.md) was read in full and compared with the retained local artifact for the review on 2026-09-19. Its identity is unchanged from the version presented to the Owner. The original snapshot remains intact; the exact [RA-07 v0.2 wording baseline](https://github.com/MarcinMikula/test-design-gatekeeper/blob/bb1cf6e5d3dff6fa41bf69915a9d747745744077/docs/requirements-analysis/ra-07/test-design-gatekeeper-ra-07-llm-roles-qualification-v0.2.md) contains the reviewed clarification and was endorsed on 2026-09-20. This closure edition records that later decision without changing the endorsed source wording.
 
 | Artifact | Bytes | SHA-256 |
 | --- | --- | --- |
@@ -73,7 +73,7 @@ The Owner quoted the proposed combined decision covering the clarification, SR-R
 | PG-RA07-001 | GO TO RA-08 — confidentiality, security, privacy and fail-closed requirements |
 | Repository documentation update | AUTHORIZED by the quoted instruction |
 
-This record governs the current acceptance and gate state. Candidate, pending and not-granted notices in the preserved RA-07 v0.2 source and [SR-RA07-001 v0.1](test-design-gatekeeper-ra-07-focused-static-review-v0.1.md) are historical authoring notices, not current unresolved decisions. No wording requirement, qualification criterion or review scenario is changed by this closure edition.
+This record governs the current acceptance and gate state. Candidate, pending and not-granted notices in the preserved RA-07 v0.2 source and [SR-RA07-001 v0.1](https://github.com/MarcinMikula/test-design-gatekeeper/blob/e850fd31db35f18e29d1f1af4afc5b1774b829f1/docs/requirements-analysis/ra-07/test-design-gatekeeper-ra-07-focused-static-review-v0.1.md) are historical authoring notices, not current unresolved decisions. No wording requirement, qualification criterion or review scenario is changed by this closure edition.
 
 ## 3. Original focused review results
 

@@ -17,7 +17,7 @@
 
 ## 1. Review input, scope, and method
 
-The exact [RA-06 v0.1](test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.1.md) accepted by the Owner is retained unchanged. The current stored source was read for the review recorded in [SR-RA06-001 v0.1](test-design-gatekeeper-ra-06-focused-static-review-v0.1.md). The exact [RA-06 v0.2](test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md) has now been endorsed as the final phase baseline. This v0.2 review record adds the subsequent Owner decision and closure; it changes no requirement or correction-verification scenario.
+The exact [RA-06 v0.1](https://github.com/MarcinMikula/test-design-gatekeeper/blob/e850fd31db35f18e29d1f1af4afc5b1774b829f1/docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.1.md) accepted by the Owner is retained unchanged. The current stored source was read for the review recorded in [SR-RA06-001 v0.1](https://github.com/MarcinMikula/test-design-gatekeeper/blob/e850fd31db35f18e29d1f1af4afc5b1774b829f1/docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-focused-static-review-v0.1.md). The exact [RA-06 v0.2](https://github.com/MarcinMikula/test-design-gatekeeper/blob/2b21be5294eb28f1918ff37feb7789132e85a4a5/docs/requirements-analysis/ra-06/test-design-gatekeeper-ra-06-technique-applicability-design-coverage-v0.2.md) has now been endorsed as the final phase baseline. This v0.2 review record adds the subsequent Owner decision and closure; it changes no requirement or correction-verification scenario.
 
 | Artifact | Bytes | SHA-256 |
 | --- | --- | --- |

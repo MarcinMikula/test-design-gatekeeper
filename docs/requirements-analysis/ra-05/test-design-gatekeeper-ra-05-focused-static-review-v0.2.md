@@ -16,7 +16,7 @@
 
 ## 1. Review identity, sources, and method
 
-The review input is the exact [RA-05 v0.1](test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.1.md) read and accepted by the Project Owner. It is retained unchanged. The [approved v0.2 wording](test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md) records that earlier acceptance and the correction described below. Its historical candidate notices are superseded by the explicit endorsement and GO recorded here; the approved source bytes have not been rewritten.
+The review input is the exact [RA-05 v0.1](https://github.com/MarcinMikula/test-design-gatekeeper/blob/e850fd31db35f18e29d1f1af4afc5b1774b829f1/docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.1.md) read and accepted by the Project Owner. It is retained unchanged. The [approved v0.2 wording](https://github.com/MarcinMikula/test-design-gatekeeper/blob/bbd222927233095142208e9051979ea3beae1864/docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md) records that earlier acceptance and the correction described below. Its historical candidate notices are superseded by the explicit endorsement and GO recorded here; the approved source bytes have not been rewritten.
 
 | Artifact | Bytes | SHA-256 |
 | --- | --- | --- |
@@ -27,7 +27,7 @@ The upstream reference remains repository commit `7b5612b19525a97e7c43d2450b0e0e
 
 The Project Owner performed the human walkthrough and accepted v0.1. The assistant that prepared the document subsequently performed this focused static review: document inspection, comparison with the relevant upstream authority/version rules, scenario reasoning, and structural checks of identifiers, statuses, trace links, and the candidate differences. This is not an independent expert review. No product software, model, recovery mechanism, or security control was executed or validated.
 
-The record follows the actual sequence: Owner acceptance of v0.1 came before the focused review and its candidate correction; the Owner then explicitly endorsed that correction and granted GO to RA-06 on 2026-09-18. The earlier acceptance is not backdated or reinterpreted as a phase gate. This v0.2 updates the disposition of [SR-RA05-001 v0.1](test-design-gatekeeper-ra-05-focused-static-review-v0.1.md), which remains unchanged as review history.
+The record follows the actual sequence: Owner acceptance of v0.1 came before the focused review and its candidate correction; the Owner then explicitly endorsed that correction and granted GO to RA-06 on 2026-09-18. The earlier acceptance is not backdated or reinterpreted as a phase gate. This v0.2 updates the disposition of [SR-RA05-001 v0.1](https://github.com/MarcinMikula/test-design-gatekeeper/blob/e850fd31db35f18e29d1f1af4afc5b1774b829f1/docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-focused-static-review-v0.1.md), which remains unchanged as review history.
 
 ## 2. Recorded Project Owner decisions
 

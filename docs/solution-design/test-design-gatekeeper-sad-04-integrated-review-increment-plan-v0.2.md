@@ -628,11 +628,11 @@ There is no automatic laboratory-to-sealed transition or silent package reclassi
 [ra10]: ../requirements-analysis/ra-10/test-design-gatekeeper-ra-10-evaluation-acceptance-v0.2.md
 [review03]: ../reviews/test-design-gatekeeper-sad-03-review-record-v0.2.md
 [review04]: ../reviews/test-design-gatekeeper-sad-04-review-record-v0.2.md
-[verification04]: ../reviews/test-design-gatekeeper-sad-04-review-record-v0.1.md
+[verification04]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/reviews/test-design-gatekeeper-sad-04-review-record-v0.1.md
 [trace]: ../requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-traceability-audit-v0.1.json
-[allocation]: test-design-gatekeeper-sad-04-requirement-allocation-v0.2.json
-[history04]: test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.1.md
-[numeric]: test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md
+[allocation]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/solution-design/test-design-gatekeeper-sad-04-requirement-allocation-v0.2.json
+[history04]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.1.md
+[numeric]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md
 [sad01-history]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/solution-design/test-design-gatekeeper-sad-01-components-review-flow-v0.1.md
 [sad02-history]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/solution-design/test-design-gatekeeper-sad-02-data-identity-contracts-v0.1.md
 [sad03-history]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/solution-design/test-design-gatekeeper-sad-03-model-protection-v0.3.md

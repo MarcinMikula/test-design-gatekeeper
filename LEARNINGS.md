@@ -128,9 +128,9 @@ Use this existing journal when a decision, failure or observation materially cha
 [ra04]: docs/requirements-analysis/test-design-gatekeeper-ra-04-scope-qualification-classification-boundaries-v0.2.md
 [ra05]: docs/requirements-analysis/ra-05/test-design-gatekeeper-ra-05-findings-dispositions-persistence-v0.2.md
 [ra-baseline]: docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.2.md
-[sad-review]: docs/reviews/test-design-gatekeeper-sad-04-review-record-v0.1.md
+[sad-review]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/reviews/test-design-gatekeeper-sad-04-review-record-v0.1.md
 [ra09-review]: docs/requirements-analysis/ra-09/test-design-gatekeeper-ra-09-focused-static-review-v0.2.md
-[sad02]: docs/solution-design/test-design-gatekeeper-sad-02-data-identity-contracts-v0.1.md
+[sad02]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/solution-design/test-design-gatekeeper-sad-02-data-identity-contracts-v0.1.md
 [effort]: docs/implementation/i01-w02-test-inventory.md#7-effort-reassessment
 [w01]: docs/implementation/i01-w01-foundation.md
 [w01-closure]: docs/implementation/i01-w01-closure.md

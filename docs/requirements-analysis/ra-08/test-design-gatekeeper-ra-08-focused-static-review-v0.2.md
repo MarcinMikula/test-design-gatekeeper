@@ -19,7 +19,7 @@
 
 ## 1. Review input, baseline, and method
 
-The current stored [RA-08 v0.1](test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.1.md) was obtained for this review and checked against the exact artifact presented to the Owner. The contents and identity match. The original remains unchanged. The exact [RA-08 v0.2](test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md) records the original acceptance and review without changing the accepted requirements, validation obligations, or policy recommendations. The Owner subsequently designated that edition as the final phase baseline. This closure record preserves those reviewed bytes and records the later exit decision.
+The current stored [RA-08 v0.1](https://github.com/MarcinMikula/test-design-gatekeeper/blob/e850fd31db35f18e29d1f1af4afc5b1774b829f1/docs/requirements-analysis/ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.1.md) was obtained for this review and checked against the exact artifact presented to the Owner. The contents and identity match. The original remains unchanged. The exact [RA-08 v0.2](https://github.com/MarcinMikula/test-design-gatekeeper/blob/ff1cd6379717d59da09087120609d41fc7309668/docs/requirements-analysis/ra-08/test-design-gatekeeper-ra-08-confidentiality-security-privacy-v0.2.md) records the original acceptance and review without changing the accepted requirements, validation obligations, or policy recommendations. The Owner subsequently designated that edition as the final phase baseline. This closure record preserves those reviewed bytes and records the later exit decision.
 
 | Artifact | Bytes | SHA-256 |
 | --- | --- | --- |
@@ -73,7 +73,7 @@ The Owner quoted the combined decision covering SR-RA08-001, RA-08 v0.2, and GO 
 | PG-RA08-001 | GO TO RA-09 explicitly GRANTED — canonical request/result representations and import/export contracts |
 | Repository documentation update | AUTHORIZED — publish the accepted snapshots, closure record, and current project status |
 
-This v0.2 record adds the final decision to the already endorsed [SR-RA08-001 v0.1](test-design-gatekeeper-ra-08-focused-static-review-v0.1.md). The earlier review, evidence, and acceptance chronology remain inspectable. No new requirement, policy recommendation, or correction is introduced by the closure.
+This v0.2 record adds the final decision to the already endorsed [SR-RA08-001 v0.1](https://github.com/MarcinMikula/test-design-gatekeeper/blob/e850fd31db35f18e29d1f1af4afc5b1774b829f1/docs/requirements-analysis/ra-08/test-design-gatekeeper-ra-08-focused-static-review-v0.1.md). The earlier review, evidence, and acceptance chronology remain inspectable. No new requirement, policy recommendation, or correction is introduced by the closure.
 
 ## 3. Focused review results
 

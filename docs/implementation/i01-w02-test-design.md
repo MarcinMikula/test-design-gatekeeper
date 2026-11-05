@@ -93,10 +93,10 @@ records the corrected v0.4 baseline.
 
 ### 3.3 SAD-02
 
-[SAD-02](../solution-design/test-design-gatekeeper-sad-02-data-identity-contracts-v0.1.md)
-now points to its historical record and the current rules in SAD-04. Its accepted
-identity and retry decisions are in SAD-04 Section 5.1; I-01 commit, retry and
-lineage rules are in Section 7.2. Oracle traces below use those current locations.
+The [historical SAD-02 record](https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/solution-design/test-design-gatekeeper-sad-02-data-identity-contracts-v0.1.md)
+preserves the original identity and retry decisions. SAD-04 Section 5.1 states
+the current decisions, and Section 7.2 gives the I-01 commit, retry and lineage
+rules. Oracle traces below use those current locations.
 
 ### 3.4 SAD-04
 
@@ -104,7 +104,7 @@ lineage rules are in Section 7.2. Oracle traces below use those current location
 is the consolidated design. Sections 6–9 define the native envelope, status
 meanings, persistence, retry, CLI and protection boundaries; Section 12 retains
 the 16 I-01 test conditions. Its [acceptance record](../reviews/test-design-gatekeeper-sad-04-review-record-v0.2.md)
-and the [numeric-token decision](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md)
+and the [numeric-token decision](https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md)
 preserve the human decisions. Accepted corrections, including the numeric-token
 outcome, are incorporated directly in SAD-04.
 
@@ -328,7 +328,7 @@ planning estimate, not measured effort, an approved ceiling or a full I-01 total
 The review found a missing outcome classification for exceeding the existing
 128-character bound. On 2026-10-03 the Owner accepted `REJECTED`, CLI exit `2`,
 no new package version/reference and minimum `NOT_EVALUATED`. The exact decision
-and scope remain in [SAD04-I01-NUM-001](../solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md).
+and scope remain in [SAD04-I01-NUM-001](https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/solution-design/test-design-gatekeeper-sad-04-i01-numeric-token-limit-addendum-v0.1.md).
 
 The full rule is incorporated in [SAD-04 Section 6.1](../solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md#61-native-input-and-mechanical-projection).
 `OR-I01-SYN-004` specifies the 127/128/129-character boundary observations;

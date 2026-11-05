@@ -20,7 +20,7 @@
 
 ## 1. Input, review boundary, and method
 
-The current stored [RA-10 v0.1][ra10-source] was retrieved for this review and matches the exact artifact presented to the Owner. The repository's current `main` remains commit `be657405920aba0f2da2653f56266942a6ecc22e`, which records RA-09 closure and GO to RA-10. No repository publication is performed by this record.
+The current stored [RA-10 v0.1][ra10-source] was retrieved for this review and matches the exact artifact presented to the Owner. At the time of review, `main` was commit `be657405920aba0f2da2653f56266942a6ecc22e`, which records RA-09 closure and GO to RA-10. No repository publication is performed by this record.
 
 | Artifact | Bytes | SHA-256 |
 | --- | ---: | --- |
@@ -49,7 +49,7 @@ In a later event on the same date, the Owner quoted the pending combined decisio
 
 > "Czy zatwierdzasz obie poprawki, rekord `SR-RA10-001`, baseline RA-10 v0.2 i skorygowany RA-03 v0.4 oraz zamknięcie RA-10 i uwagi" tak, zatwierdzam
 
-The quoted action resolves Section 8 of record v0.1: both controlled corrections, this review, the exact corrected baselines, RA-10 closure and the targeted `SR-RA03-OBS-001` action are approved. The retained general trace duty and R-08 are not closed. This is the Owner decision captured by v0.2, not an additional approval request.
+The quoted decision resolves the request in Section 8 of the [v0.1 review record](https://github.com/MarcinMikula/test-design-gatekeeper/blob/e850fd31db35f18e29d1f1af4afc5b1774b829f1/docs/requirements-analysis/ra-10/test-design-gatekeeper-ra-10-focused-static-review-v0.1.md). It approves both controlled corrections, this review, the exact corrected baselines, RA-10 closure and the targeted `SR-RA03-OBS-001` action. The general trace duty and R-08 remain active.
 
 | Decision scope | Recorded state |
 | --- | --- |
@@ -275,9 +275,9 @@ The final focused-review outcome is **PASS AFTER VERIFIED CLARIFICATIONS**. No f
 | 0.1 | 2026-09-21 | Original RA-10 acceptance recorded; focused review, two source-table findings, correction verification, inherited bridge disposition proposal and phase-readiness inventory |
 | 0.2 | 2026-09-22 | Later explicit Owner endorsement of 2026-09-21 recorded; both corrections, VAL-015 refinement and exact baselines accepted; F-001/F-002, RA-10 and targeted OBS-001 closed; prior verification retained; consolidated phase readiness remains separate |
 
-[ra10-source]: test-design-gatekeeper-ra-10-evaluation-acceptance-v0.1.md
-[ra10-candidate]: test-design-gatekeeper-ra-10-evaluation-acceptance-v0.2.md
-[ra03-candidate]: test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.4.md
+[ra10-source]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/e850fd31db35f18e29d1f1af4afc5b1774b829f1/docs/requirements-analysis/ra-10/test-design-gatekeeper-ra-10-evaluation-acceptance-v0.1.md
+[ra10-candidate]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/8fa720fc453e5457a361fd5f4cb8ba386050750a/docs/requirements-analysis/ra-10/test-design-gatekeeper-ra-10-evaluation-acceptance-v0.2.md
+[ra03-candidate]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/8fa720fc453e5457a361fd5f4cb8ba386050750a/docs/requirements-analysis/ra-10/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.4.md
 [ra03-source]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/be657405920aba0f2da2653f56266942a6ecc22e/docs/requirements-analysis/test-design-gatekeeper-ra-03-review-package-content-provenance-validation-v0.3.md
 [charter]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/be657405920aba0f2da2653f56266942a6ecc22e/docs/governance/test-design-gatekeeper-project-charter-v0.4.md
 [gate03]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/be657405920aba0f2da2653f56266942a6ecc22e/docs/reviews/test-design-gatekeeper-ra-03-gate-record-v0.2.md
@@ -285,4 +285,4 @@ The final focused-review outcome is **PASS AFTER VERIFIED CLARIFICATIONS**. No f
 [ir-metrics]: https://nlp.stanford.edu/IR-book/html/htmledition/evaluation-of-unranked-retrieval-sets-1.html
 [nist-proportions]: https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm
 
-[readiness]: test-design-gatekeeper-requirements-analysis-readiness-v0.1.md
+[readiness]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/e850fd31db35f18e29d1f1af4afc5b1774b829f1/docs/requirements-analysis/ra-10/test-design-gatekeeper-requirements-analysis-readiness-v0.1.md
