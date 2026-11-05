@@ -1,0 +1,50 @@
+name: Windows BVA proof for PR 4
+
+on:
+  push:
+    branches:
+      - verify/windows-bva-pr4-60281cd
+
+permissions: {}
+
+env:
+  TDG_BVA_COMMIT: '60281cdc9487194c2e944be846e90d861b19505a'
+
+jobs:
+  verify:
+    runs-on: windows-2025
+    timeout-minutes: 12
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: Fetch the exact product commit
+        run: |
+          $PSNativeCommandUseErrorActionPreference = $true
+          git init
+          git -c core.autocrlf=false fetch --depth=1 https://github.com/MarcinMikula/test-design-gatekeeper.git $env:TDG_BVA_COMMIT
+          git -c core.autocrlf=false checkout --detach FETCH_HEAD
+          $checkedCommit = git rev-parse HEAD
+          if ($checkedCommit -ne $env:TDG_BVA_COMMIT) {
+            throw "Unexpected product commit $checkedCommit"
+          }
+          Write-Output "Product commit $checkedCommit"
+      - name: Install pinned uv
+        run: python -m pip install --disable-pip-version-check uv==0.12.19
+      - name: Sync the locked environment
+        run: python -m uv sync --locked
+      - name: Confirm native Windows x64 and the Python pin
+        run: |
+          Get-CimInstance Win32_OperatingSystem | Select-Object Caption, Version, OSArchitecture
+          .\.venv\Scripts\python.exe -c "import platform; from pathlib import Path; from tdg.windows_workspace import supported_host; print(platform.platform(), platform.machine(), platform.python_version()); assert supported_host(); assert platform.python_version() == Path('.python-version').read_text().strip()"
+      - name: Run the product and Windows workspace tests
+        run: .\.venv\Scripts\python.exe -m pytest -q -rs
+      - name: Verify BASE-01 through the documented console command
+        run: |
+          $output = cmd.exe /d /c '.venv\Scripts\tdg.exe lab-age-bva --classification synthetic --actor-ref lab-qa --basis-id BR-AGE-01 --confirmed-interval 18 120 < tests\fixtures\i01\base-01.json'
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $result = ($output -join [Environment]::NewLine) | ConvertFrom-Json
+          if ($result.outcome -ne 'ASSESSED' -or $result.basis_id -ne 'BR-AGE-01' -or ($result.missing_ages -join ',') -ne '17,18,120,121') {
+            throw 'BASE-01 did not produce the expected age findings'
+          }
+          $output
