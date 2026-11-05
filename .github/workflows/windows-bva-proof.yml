@@ -8,7 +8,7 @@ on:
 permissions: {}
 
 env:
-  TDG_BVA_COMMIT: '60281cdc9487194c2e944be846e90d861b19505a'
+  TDG_BVA_COMMIT: 'de94a117b43fc93aaaf7c6e8a76df9dbf83933c3'
 
 jobs:
   verify:
