@@ -61,6 +61,6 @@ The existing scope-growth risk R-08, solo AI-assisted review limitations, Window
 
 The [accepted v0.1 verification record][verification] retains the original review, correction checks, source identities and limitations. The above identities were rechecked when recording this decision. Current implementation progress and its separate execution evidence belong in the implementation work record, not in the frozen design allocation index.
 
-[design]: ../solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md
+[design]: https://github.com/MarcinMikula/test-design-gatekeeper/blob/6bf96d9748c1d4faae049786feb8c49397f4c659/docs/solution-design/test-design-gatekeeper-sad-04-integrated-review-increment-plan-v0.2.md
 [allocation]: ../solution-design/test-design-gatekeeper-sad-04-requirement-allocation-v0.2.json
 [verification]: test-design-gatekeeper-sad-04-review-record-v0.1.md
