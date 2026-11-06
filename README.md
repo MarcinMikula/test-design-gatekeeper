@@ -8,14 +8,14 @@ Test Design Gatekeeper (TDG) aims to help a human reviewer find missing test con
 
 **On 5 November 2026, the Project Owner resumed development for a bounded synthetic age BVA experiment.** This brings an executable review check forward for development evaluation. TC-I01-033 remains on hold.
 
-Build `0.1.0.dev3` provides the workspace foundation and the experiment.
+Build `0.1.0.dev4` provides the workspace foundation and the experiment.
 
 | Command | Available behavior |
 | --- | --- |
 | `tdg version` | Shows the build, runtime and contract versions. |
 | `tdg capabilities` | Lists available and unavailable functions. |
 | `tdg init` | Creates a new empty laboratory workspace on Windows x64 / CPython 3.13. |
-| `tdg lab-age-bva` | Compares explicitly linked synthetic age inputs with two-value boundary targets. |
+| `tdg lab-age-bva` | Compares linked synthetic age inputs with two-value boundary targets and optionally checks declared registration outcomes. |
 
 The experiment reads a single synthetic package in memory and prints its observation to stdout. Operational package capture, inspection, review and model use remain planned capabilities.
 
@@ -61,12 +61,17 @@ Setup may download the pinned interpreter and dependencies. Versions are recorde
 Run this from PowerShell in the repository root after setup.
 
 ```powershell
-cmd.exe /d /c '.venv\Scripts\tdg.exe lab-age-bva --classification synthetic --actor-ref lab-qa --basis-id BR-AGE-01 --confirmed-interval 18 120 < tests\fixtures\i01\base-01.json'
+Get-Content -Raw -Encoding UTF8 tests\fixtures\i01\base-01.json |
+    .\.venv\Scripts\tdg.exe lab-age-bva --classification synthetic --actor-ref lab-qa `
+        --basis-id BR-AGE-01 --confirmed-interval 18 120 `
+        --confirmed-result-texts 'Registration is accepted.' 'Registration is rejected.'
 ```
 
 Submit one UTF-8 `review_package_input` v1.0 package on stdin, up to 64 KiB. The operator confirms that the selected basis describes an inclusive integer interval, that both adjacent values are in the domain, and that the linked cases submit the ages recorded as JSON integers in `test_data.age`.
 
-The example reports `missing_ages` as `[17, 18, 120, 121]`, with JSON pointers to the supplied basis and age input. Incomplete or ambiguous evidence yields `UNGRADABLE` with a reason. The check covers the declared age inputs for this criterion. Expected-result alignment is a separate review dimension.
+The example reports `missing_ages` as `[17, 18, 120, 121]`, with JSON pointers to the supplied basis and age input. Incomplete or ambiguous coverage evidence yields `UNGRADABLE` with a reason.
+
+The optional `--confirmed-result-texts` takes the exact texts for acceptance inside the interval and rejection outside it, in that order. Use it when the declared results describe the selected age rule. For cases linked to that rule alone, TDG compares one `expected_result` on the case or its single structured action. The separate `expected_result_alignment` points to the declaration and reports `SUPPORTED` or `CONFLICTING` for a recognized text. An absent or blank declaration in that layout yields `MISSING`. Other layouts, non-text values and unrecognized text yield `UNDETERMINED`. `BASE-01` reports `SUPPORTED` for age 30.
 
 ## Documentation guide
 
@@ -84,6 +89,5 @@ The [review records](docs/reviews) retain historical decisions and evidence. Use
 
 ## Next step
 
-Evaluate the missing ages and source pointers in a human review of `BASE-01`.
-Compare the result with a synthetic control whose linked cases cover all four
-boundary ages and produce an empty `missing_ages` list.
+Review both observations together. A linked case that expects acceptance at
+age 121 covers that value and reports `CONFLICTING` for its expected result.
