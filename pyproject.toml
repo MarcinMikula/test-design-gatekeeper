@@ -1,6 +1,6 @@
 [project]
 name = "test-design-gatekeeper"
-version = "0.1.0.dev3"
+version = "0.1.0.dev4"
 description = "Local, ISTQB-informed test case review assistant"
 readme = "README.md"
 requires-python = ">=3.13,<3.14"

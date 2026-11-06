@@ -58,11 +58,50 @@ def _nonblank_text(value: object) -> bool:
     return isinstance(value, str) and bool(value.strip())
 
 
+def _expected_result_alignment(
+    case: dict, location: str, expected_outcome: str, outcomes_by_text: dict[str, str],
+) -> dict:
+    alignment = {"status": "UNDETERMINED", "locator": location, "expected_outcome": expected_outcome}
+    if len(set(case["basis_refs"])) > 1:
+        alignment["locator"] = f"{location}/basis_refs"
+        return alignment
+    steps = case.get("steps")
+    if not isinstance(steps, list) or len(steps) != 1:
+        return alignment
+    step = steps[0]
+    if not isinstance(step, dict) or not _nonblank_text(step.get("action")):
+        return alignment
+
+    if "expected_result" in case:
+        if "expected_result" in step:
+            return alignment
+        fields = case
+        alignment["locator"] = f"{location}/expected_result"
+    else:
+        fields = step
+        alignment["locator"] = f"{location}/steps/0/expected_result"
+
+    declared_text = fields.get("expected_result", "")
+    if not isinstance(declared_text, str):
+        return alignment
+    if not declared_text.strip():
+        alignment["status"] = "MISSING"
+        return alignment
+    declared_outcome = outcomes_by_text.get(declared_text)
+    if declared_outcome is not None:
+        alignment["declared_outcome"] = declared_outcome
+        alignment["status"] = "SUPPORTED" if declared_outcome == expected_outcome else "CONFLICTING"
+    return alignment
+
+
 def _ungradable(report: dict, reason: str, *locations: str) -> dict:
     return {**report, "outcome": "UNGRADABLE", "reason": reason, "unresolved_locations": list(locations)}
 
 
-def assess_age_boundaries(raw: bytes, *, basis_id: str, actor_ref: str, minimum: int, maximum: int) -> dict:
+def assess_age_boundaries(
+    raw: bytes, *, basis_id: str, actor_ref: str, minimum: int, maximum: int,
+    result_texts: tuple[str, str] | None = None,
+) -> dict:
     """Assess the declared inputs of the explicitly linked cases in one lab submission."""
     content = _decode_content(raw)
     report = {
@@ -73,6 +112,13 @@ def assess_age_boundaries(raw: bytes, *, basis_id: str, actor_ref: str, minimum:
         "basis_id": basis_id,
         "operator_interpretation": {"actor_ref": actor_ref, "inclusive_age_interval": [minimum, maximum]},
     }
+    outcomes_by_text = None
+    if result_texts is not None:
+        accepted, rejected = result_texts
+        report["operator_interpretation"]["registration_result_texts"] = {
+            "ACCEPTED": accepted, "REJECTED": rejected,
+        }
+        outcomes_by_text = {accepted: "ACCEPTED", rejected: "REJECTED"}
     scope = content.get("scope")
     if not isinstance(scope, dict) or not _nonblank_text(scope.get("description")):
         return _ungradable(report, "SCOPE_NOT_SUPPLIED", "/content/scope/description")
@@ -126,11 +172,17 @@ def assess_age_boundaries(raw: bytes, *, basis_id: str, actor_ref: str, minimum:
             unresolved.append(f"{location}/test_data/age")
             continue
         source_id = case.get("source_id")
-        observations.append({
+        observation = {
             "case_id": source_id if _nonblank_text(source_id) else None,
             "age": age,
             "locator": f"{location}/test_data/age",
-        })
+        }
+        if outcomes_by_text is not None:
+            expected_outcome = "ACCEPTED" if minimum <= age <= maximum else "REJECTED"
+            observation["expected_result_alignment"] = _expected_result_alignment(
+                case, location, expected_outcome, outcomes_by_text,
+            )
+        observations.append(observation)
 
     targets = sorted({minimum - 1, minimum, maximum, maximum + 1})
     report.update(target_ages=targets, case_age_inputs=observations, excluded_cases=excluded)

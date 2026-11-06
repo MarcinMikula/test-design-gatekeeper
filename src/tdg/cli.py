@@ -22,6 +22,13 @@ def _run_lab_age_bva(args: argparse.Namespace) -> int:
     if not args.actor_ref.strip() or not args.basis_id.strip() or minimum > maximum:
         print("INVALID_LAB_CONTEXT: provide an actor, a basis ID and an ordered interval.", file=sys.stderr)
         return 2
+    result_texts = None
+    if args.confirmed_result_texts is not None:
+        accepted, rejected = args.confirmed_result_texts
+        if not accepted.strip() or not rejected.strip() or accepted == rejected:
+            print("INVALID_LAB_RESULT_TEXTS: provide distinct non-blank texts.", file=sys.stderr)
+            return 2
+        result_texts = (accepted, rejected)
     if sys.stdin.isatty():
         print("LAB_PACKAGE_STDIN_REQUIRED: pipe or redirect one synthetic JSON package.", file=sys.stderr)
         return 2
@@ -29,6 +36,7 @@ def _run_lab_age_bva(args: argparse.Namespace) -> int:
         raw = sys.stdin.buffer.read(MAX_LAB_PACKAGE_BYTES + 1)
         result = assess_age_boundaries(
             raw, basis_id=args.basis_id, actor_ref=args.actor_ref, minimum=minimum, maximum=maximum,
+            result_texts=result_texts,
         )
     except LabInputError as error:
         print(str(error), file=sys.stderr)
@@ -73,6 +81,10 @@ def main(argv: list[str] | None = None) -> int:
     lab.add_argument(
         "--confirmed-interval", nargs=2, type=lab_integer, metavar=("MIN", "MAX"), required=True,
         help="Confirmed inclusive integer interval with the adjacent values in the submitted domain.",
+    )
+    lab.add_argument(
+        "--confirmed-result-texts", nargs=2, metavar=("ACCEPTED_TEXT", "REJECTED_TEXT"),
+        help="Confirm acceptance inside the interval and rejection outside it, with exact expected-result texts.",
     )
 
     args, remaining = parser.parse_known_args(argv)
