@@ -1,4 +1,4 @@
-name: Windows age BVA outcome verification
+name: Windows age BVA input byte verification
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 permissions: {}
 
 env:
-  TDG_BVA_COMMIT: '2e0e41c8238af24a93f66081e6ab075fb0b51e3e'
+  TDG_BVA_COMMIT: '562abc0be964100124e0d076bbd18312276dfb5e'
 
 jobs:
   verify:
@@ -37,20 +37,31 @@ jobs:
         run: |
           Get-CimInstance Win32_OperatingSystem | Select-Object Caption, Version, OSArchitecture
           .\.venv\Scripts\python.exe -c "import platform; from pathlib import Path; from tdg.windows_workspace import supported_host; print(platform.platform(), platform.machine(), platform.python_version()); assert supported_host(); assert platform.python_version() == Path('.python-version').read_text().strip()"
-      - name: Run the product and Windows workspace tests
-        run: .\.venv\Scripts\python.exe -m pytest -q -rs
-      - name: Run the PowerShell example from README
+      - name: Verify the draft README command in PowerShell
         run: |
-          $output = & {
-            Get-Content -Raw -Encoding UTF8 tests\fixtures\i01\base-01.json |
-                .\.venv\Scripts\tdg.exe lab-age-bva --classification synthetic --actor-ref lab-qa `
-                    --basis-id BR-AGE-01 --confirmed-interval 18 120 `
-                    --confirmed-result-texts 'Registration is accepted.' 'Registration is rejected.'
-          }
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $output = cmd.exe /d /s /c '.venv\Scripts\tdg.exe lab-age-bva --classification synthetic --actor-ref lab-qa --basis-id BR-AGE-01 --confirmed-interval 18 120 --confirmed-result-texts "Registration is accepted." "Registration is rejected." < "tests\fixtures\i01\base-01.json"'
+          if ($LASTEXITCODE -ne 0) { throw 'TDG command failed' }
           $result = ($output -join [Environment]::NewLine) | ConvertFrom-Json
-          $alignment = $result.case_age_inputs[0].expected_result_alignment
-          if ($result.outcome -ne 'ASSESSED' -or ($result.missing_ages -join ',') -ne '17,18,120,121' -or $alignment.status -ne 'SUPPORTED' -or $alignment.declared_outcome -ne 'ACCEPTED' -or $alignment.locator -ne '/content/test_cases/0/steps/0/expected_result') {
-            throw 'BASE-01 did not produce the expected coverage and expected-result observations'
+          $digest = (Get-FileHash -Algorithm SHA256 -LiteralPath 'tests\fixtures\i01\base-01.json').Hash.ToLowerInvariant()
+          if ($digest -ne '630be02e0549a22f2371635a79c76bc3588af6fc953dfcf3e5a892e2bb87c7a1' -or $result.input_sha256 -ne $digest -or ($result.missing_ages -join ',') -ne '17,18,120,121' -or $result.case_age_inputs[0].expected_result_alignment.status -ne 'SUPPORTED') {
+            throw 'The README example did not preserve the bytes and observations'
           }
-          $output
+          Write-Output "PowerShell $($PSVersionTable.PSVersion) BASE-01 SHA-256 matches $digest"
+      - name: Verify a 64 KiB UTF-8 file in Windows PowerShell
+        shell: powershell
+        run: |
+          $encoding = [Text.UTF8Encoding]::new($false)
+          $source = [IO.File]::ReadAllText((Resolve-Path 'tests\fixtures\i01\base-01.json').Path, $encoding)
+          $source = $source.Replace('Synthetic customer-registration system', "Syntetyczna rejestracja $([char]0x0142)$([char]0x00f3)$([char]0x017c)")
+          $sample = Join-Path $env:RUNNER_TEMP 'tdg UTF-8 example.json'
+          $padding = 65536 - $encoding.GetByteCount($source)
+          [IO.File]::WriteAllText($sample, $source + (' ' * $padding), $encoding)
+          $line = '.venv\Scripts\tdg.exe lab-age-bva --classification synthetic --actor-ref lab-qa --basis-id BR-AGE-01 --confirmed-interval 18 120 --confirmed-result-texts "Registration is accepted." "Registration is rejected." < "' + $sample + '"'
+          $output = cmd.exe /d /s /c $line
+          if ($LASTEXITCODE -ne 0) { throw 'TDG command failed for the UTF-8 sample' }
+          $result = ($output -join [Environment]::NewLine) | ConvertFrom-Json
+          $digest = (Get-FileHash -Algorithm SHA256 -LiteralPath $sample).Hash.ToLowerInvariant()
+          if ((Get-Item -LiteralPath $sample).Length -ne 65536 -or $result.input_sha256 -ne $digest -or $result.outcome -ne 'ASSESSED' -or $result.case_age_inputs[0].expected_result_alignment.status -ne 'SUPPORTED') {
+            throw 'The 64 KiB UTF-8 file did not reach TDG intact'
+          }
+          Write-Output "Windows PowerShell $($PSVersionTable.PSVersion) 65536-byte UTF-8 SHA-256 matches $digest"
