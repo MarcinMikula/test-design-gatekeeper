@@ -6,7 +6,7 @@
 | --- | --- |
 | Basis | Accepted SAD-01/02, corrected SAD-03 v0.3 and SAD-04 v0.2, with the accepted numeric-token clarification |
 | Design and implementation decision | SAD-04 and its allocation index accepted on 2026-09-28; both SAD-04 findings closed, B-01 closed for the selected I-01 boundary and GO to I-01 granted in [SR-SAD04-001 v0.2][review04] |
-| Current work | Development paused for documentation cleanup; TC-I01-033 remains on hold. [README.md](../../README.md) describes implemented capability and current evidence |
+| Current work | [README.md](../../README.md) describes current authorization, implemented capability and evidence |
 | Text maintenance | Consolidated on 2026-10-25 in the existing SAD-04 file; decision IDs and Section 4–14 contract locations retained |
 | Evidence boundary | Accepted design and historical document reviews; the design itself supplies no runtime, model-quality or sealed-readiness evidence |
 
@@ -149,7 +149,7 @@ SAD-D-001–003 were accepted on 2026-09-22, SAD-D-004–008 on 2026-09-23, and 
 | SAD-D-020 — Strict control, tolerant supplied content | Implement RA-09's version 1.0 envelope; a local schema registry with remote retrieval denied; preserve all content values and deficiencies without coercion. | Rejects malformed control input without discarding capturable incomplete TC. Full schema/profile IDs are separate from package and behavior versions. |
 | SAD-D-021 — Laboratory limits and unavailable-path enforcement | Apply Section 9's versioned limits, bounded parser worker, data/copy policy and explicit disabled capabilities. | No LLM endpoint, credentials, browser, renderer or network client is part of the I-01 processing path. Locality alone is not a confidentiality claim. |
 
-SAD-D-016–021 and the detailed I-01 contracts were accepted on 2026-09-27; the complete baseline and implementation gate followed on 2026-09-28. The resource settings are engineering containment limits, not statistical acceptance thresholds or measured hardware performance. Current development remains paused.
+SAD-D-016–021 and the detailed I-01 contracts were accepted on 2026-09-27. The complete baseline and implementation gate followed on 2026-09-28. The resource settings express engineering containment policy. Statistical acceptance criteria and observed hardware performance require separate evidence.
 
 ## 6. Interchange and status contracts
 
@@ -437,7 +437,7 @@ Later verification retains the [SAD-01 flow challenges][sad01-history], [SAD-02 
 
 **Accepted with an effort-estimate reservation on 2026-09-27 (Europe/Warsaw).** The Project Owner stated: "akceptuje paragraf 13 z zastrzezeniem ze nakład prac szacowany na 40-60 godzin uważam za mocno szacunkowy, podejrzewam ze same testy tyle zajmą." The work breakdown is accepted. The original 40–62-hour total and its component estimates remain very uncertain, unvalidated planning hypotheses, not an approved budget, effort ceiling or delivery commitment. The Owner's concern that testing alone could require comparable effort is retained as an underestimation risk, not adopted as a new testing estimate or added mechanically to the original total.
 
-The table preserves the accepted W01–W07 sequence and original estimates. Current status and the later provisional test-work forecast are linked from [README.md](../../README.md); this is not a live progress table. Development and further fixture preparation are paused pending documentation cleanup and an agreed revised implementation plan. The sole human remains accountable for understanding changes and evidence; AI assistance is not independent review or additional staffing.
+The table preserves the accepted W01–W07 sequence and original estimates. [README.md](../../README.md) links current status and the later provisional test-work forecast. The sole human remains accountable for understanding changes and evidence. AI assistance does not establish independent review or add human staffing.
 
 | Work item | Bounded output | Dependency | Original indicative human effort — unvalidated |
 | --- | --- | --- | ---: |
@@ -470,7 +470,7 @@ On 2026-09-28 the Owner accepted the complete corrected SAD-04 v0.2, allocation 
 
 > Tak zatwierdzam i udzielam GO
 
-That permission covered W01 and the remaining accepted increment work without another invented starting gate. It retained public/synthetic laboratory admission, all required tests, the effort reservation and later model/sealed/product gates. The subsequent development pause governs current work; this cleanup does not resume implementation.
+That permission covered W01 and the remaining accepted increment work without another starting gate. It retained public/synthetic laboratory admission, all required tests, the effort reservation and later model/sealed/product gates. See [README.md](../../README.md) for the current development authorization.
 
 ### 14.3 I-01 completion and subsequent gates
 

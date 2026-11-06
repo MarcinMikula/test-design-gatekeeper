@@ -6,22 +6,24 @@ Test Design Gatekeeper (TDG) aims to help a human reviewer find missing test con
 
 ## Current status
 
-**Development is paused for documentation cleanup.** On 18 October 2026, the Project Owner paused feature development and further test-data preparation to address duplication, conflicting descriptions and excessive documentation. TC-I01-033 remains on hold. Documents are being reviewed one at a time, with Owner approval before each change is applied.
+**On 5 November 2026, the Project Owner resumed development for a bounded synthetic age BVA experiment.** This brings an executable review check forward for development evaluation. TC-I01-033 remains on hold.
 
-The current build, `0.1.0.dev2`, provides the application foundation:
+Build `0.1.0.dev3` provides the workspace foundation and the experiment.
 
 | Command | Available behavior |
 | --- | --- |
 | `tdg version` | Shows the build, runtime and contract versions. |
 | `tdg capabilities` | Lists available and unavailable functions. |
 | `tdg init` | Creates a new empty laboratory workspace on Windows x64 / CPython 3.13. |
+| `tdg lab-age-bva` | Compares explicitly linked synthetic age inputs with two-value boundary targets. |
 
-Importing JSON or CSV, inspecting captured packages and receipts, reviewing test cases, invoking a model and exporting review results are not implemented. The `import`, `receipt` and `package` commands report that they are unavailable.
+The experiment reads a single synthetic package in memory and prints its observation to stdout. Operational package capture, inspection, review and model use remain planned capabilities.
 
 ## Evidence so far
 
-- **Application foundation (W01):** the recorded Windows run on 28 September 2026 passed 48 tests with no skips. It covers workspace initialization and its supporting controls. The Owner accepted this work on 29 September. See the [implementation and verification record](docs/implementation/i01-w01-foundation.md) and [closure decision](docs/implementation/i01-w01-closure.md).
-- **Test preparation (W02):** at the pause, the prepared material comprised the baseline example `BASE-01`, 81 input variants for 22 planned test cases and two valid comparison files. The [latest preparation record](docs/implementation/i01-w02c-imported-claims-fixtures.md) reports 238 passing checks of the data and setup on Linux/Python 3.12. The 164 product-test placeholders are skipped until connected to the implementation. These checks do not establish importer behavior; target Windows/Python 3.13 verification of these materials remains pending.
+- **Application foundation (W01):** the Windows run for `0.1.0.dev2` on 28 September 2026 passed 48 tests with no skips. It covers workspace initialization and its supporting controls. The Owner accepted this work on 29 September. See the [implementation and verification record](docs/implementation/i01-w01-foundation.md) and [closure decision](docs/implementation/i01-w01-closure.md).
+- **Test preparation (W02).** The prepared corpus includes `BASE-01`, 81 input variants for 22 cases and two valid comparison files. The preparation run passed 238 fixture and setup checks on Linux / CPython 3.12. [Preparation record](docs/implementation/i01-w02c-imported-claims-fixtures.md)
+- **Age BVA experiment (`0.1.0.dev3`, commit `de94a11`).** On Windows x64 / CPython 3.13.15, 301 tests passed, including native workspace and W02 fixture checks. The run skipped 164 importer test placeholders. The PowerShell example returned `ASSESSED` with `missing_ages` of `[17, 18, 120, 121]`. [Windows verification](https://github.com/MarcinMikula/test-design-gatekeeper/actions/runs/42075218692)
 
 W02 and the first implementation increment, I-01, remain incomplete. The accepted test inventory contains 72 test cases and 208 input variants. Detailed expectations belong in the [test inventory](docs/implementation/i01-w02-test-inventory.md) and the files under [tests](tests).
 
@@ -39,7 +41,7 @@ Current laboratory work permits only public or synthetic data. Confidential use 
 
 [ISTQB CTFL](https://www.istqb.org/certifications/certified-tester-foundation-level-ctfl-v4-0/) and the [ISTQB Glossary](https://glossary.istqb.org/) provide methodological references. TDG's product policies are project decisions. The project claims no official ISTQB endorsement, certification or proof of test-suite completeness.
 
-## Running the foundation
+## Running TDG
 
 The product target is Windows x64 with CPython 3.13. From the repository root, with [uv installed](https://docs.astral.sh/uv/getting-started/installation/):
 
@@ -54,6 +56,18 @@ Setup may download the pinned interpreter and dependencies. Versions are recorde
 
 `init` supports a new direct child of `%LOCALAPPDATA%\TDG\lab` and refuses an existing workspace. The [W01 record](docs/implementation/i01-w01-foundation.md) explains path restrictions and verified controls. Linux can be used for portable development checks with `.venv/bin/python`; it is not an additional supported product target.
 
+### Try the age boundary check
+
+Run this from PowerShell in the repository root after setup.
+
+```powershell
+cmd.exe /d /c '.venv\Scripts\tdg.exe lab-age-bva --classification synthetic --actor-ref lab-qa --basis-id BR-AGE-01 --confirmed-interval 18 120 < tests\fixtures\i01\base-01.json'
+```
+
+Submit one UTF-8 `review_package_input` v1.0 package on stdin, up to 64 KiB. The operator confirms that the selected basis describes an inclusive integer interval, that both adjacent values are in the domain, and that the linked cases submit the ages recorded as JSON integers in `test_data.age`.
+
+The example reports `missing_ages` as `[17, 18, 120, 121]`, with JSON pointers to the supplied basis and age input. Incomplete or ambiguous evidence yields `UNGRADABLE` with a reason. The check covers the declared age inputs for this criterion. Expected-result alignment is a separate review dimension.
+
 ## Documentation guide
 
 | Question | Start here |
@@ -66,8 +80,10 @@ Setup may download the pinned interpreter and dependencies. Versions are recorde
 | What do project terms mean? | [CONTEXT.md](CONTEXT.md) |
 | What rules guide agent work? | [AGENTS.md](AGENTS.md) |
 
-Documentation consolidation is in progress. Existing requirements and design decisions remain in place until an approved change replaces them. Older files can contain preparation-time labels such as `PENDING`; their linked acceptance records establish the later decisions. [Review records](docs/reviews) and the full [documentation tree](docs) retain the history.
+The [review records](docs/reviews) retain historical decisions and evidence. Use the linked acceptance records to interpret preparation-time labels such as `PENDING` in older documents.
 
 ## Next step
 
-Consolidate the documentation and make the current rules easy to find. Then review the delivery sequence so a small, useful test-case review can be evaluated sooner. The revised implementation plan still needs to be agreed before development resumes.
+Evaluate the missing ages and source pointers in a human review of `BASE-01`.
+Compare the result with a synthetic control whose linked cases cover all four
+boundary ages and produce an empty `missing_ages` list.
